@@ -7,9 +7,9 @@
   "split": 2019,
   "games": 24440,
   "S": 12.74606604732316,
-  "n_strategies": 5818,
+  "n_strategies": 5820,
   "n_evaluated": 2904,
-  "n_discovered": 10,
+  "n_discovered": 9,
   "n_validated": 2,
   "baseline": {
     "ats_h": -0.05233350812794962,
