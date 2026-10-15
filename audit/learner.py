@@ -18,7 +18,7 @@ From the posterior:  mean edge, P(edge > 0), fractional-Kelly stake multiplier:
 
 Strategy state machine with hysteresis.  Two trackers per strategy:
     slow : the sizing posterior above (skeptical prior, long half-life, 1500 bets)
-    fast : a change detector, half-life 100 bets, near-neutral prior N(0, 0.05^2), so it measures
+    fast : a change detector, half-life 100 bets, near-neutral prior N(0, 0.10^2), so it measures
            RECENT EVIDENCE rather than prior skepticism.
 State changes require evidence (v0 of this design retired every strategy after 30 bets purely
 because the skeptical prior starts at P(edge>0)=0.07 -- see results/audit_report.md):
@@ -135,7 +135,7 @@ class StrategyState:
 
 class Learner:
     def __init__(self, prior_mean=PRIOR_MEAN, prior_sd=PRIOR_SD, half_life=1500.0, fast_half_life=100.0,
-                 fast_prior=(0.0, 0.05), seg_tau=0.02, gate=0.6, ref_edge=0.03, cap=1.5, min_bets=50,
+                 fast_prior=(0.0, 0.10), seg_tau=0.02, gate=0.6, ref_edge=0.03, cap=1.5, min_bets=50,
                  min_watch=50,
                  priors: dict | None = None, use_segments=True):
         self.kw = dict(prior_mean=prior_mean, prior_sd=prior_sd)

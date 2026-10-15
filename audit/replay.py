@@ -372,6 +372,23 @@ def clv_correlations(C: pd.DataFrame, min_n=15) -> dict:
     return out, G
 
 
+# =================================================================== production helper
+def warm_learner(journal_dir=None, **learner_kw) -> Learner:
+    """Learner state for tonight's card: all historical ledger + props bets, then every settled
+    journal bet (date order).  Unit P&L, so zero-stake paper bets count too."""
+    from .journal import load as load_journal
+    lr = Learner(**learner_kw)
+    for r in load_bets().itertuples(index=False):
+        lr.update(r.strategy, r.unit, r.dec, r.segment, r.date)
+    j = load_journal(journal_dir)
+    j = j[j.result.notna()].sort_values("settled_at")
+    for r in j.itertuples(index=False):
+        dec = float(american_to_decimal(r.price_taken))
+        x = (dec - 1.0) if r.result > 0 else (-1.0 if r.result < 0 else 0.0)
+        lr.update(r.strategy, x, dec, r.segment, r.settled_at)
+    return lr
+
+
 # =================================================================== main
 def main():
     B = load_bets()
