@@ -134,6 +134,15 @@ def apply_strategy_edges(legs: list[dict], key_legs: list[dict]):
                 if k.get("os_agree"):          # OpenSkill-confirmed youth spot: holdout ROI +21% -> half = 10.6%
                     e = max(e, 0.106)
                     L["boost"] = "OpenSkill agrees"
+                if k["strategy"] == "Blowout Bounce-Back":   # Elo confirmation (engine/confirmation_test.py):
+                    if k.get("_elo_agree"):                   # agree +7.1%/+8.0% vs disagree +5.5%/+0.2%
+                        e = max(e, 0.04)
+                        L["boost"] = "Elo agrees"
+                    else:
+                        e = min(e, 0.0)                       # holdout edge vanishes without confirmation
+                if e <= 0:
+                    L["note"] = f"{k['strategy']} fired without confirmation: not bet"
+                    continue
                 L["p"] = min(0.97, (1 + e) * L["p_fair"])
                 L["edge_src"] = k["strategy"]
 

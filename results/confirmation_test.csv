@@ -1,0 +1,17 @@
+strategy,elo_agrees,sample,n,roi,z
+Bounce-back dogs ATS,False,discovery,60,0.1643,1.34
+Bounce-back dogs ATS,False,holdout,56,0.1941,1.57
+Bounce-back dogs ATS,True,discovery,113,0.1528,1.67
+Bounce-back dogs ATS,True,holdout,108,0.0959,1.03
+Rested Conference Dogs,False,discovery,76,0.0562,0.52
+Rested Conference Dogs,False,holdout,51,0.1818,1.43
+Rested Conference Dogs,True,discovery,261,0.1303,2.24
+Rested Conference Dogs,True,holdout,191,-0.02,-0.29
+Blowout Bounce-Back,False,discovery,454,0.0552,1.38
+Blowout Bounce-Back,False,holdout,663,0.0017,0.05
+Blowout Bounce-Back,True,discovery,259,0.071,1.31
+Blowout Bounce-Back,True,holdout,304,0.0802,1.62
+Blowout Believers,False,discovery,392,0.0211,0.84
+Blowout Believers,False,holdout,1633,0.0001,0.01
+Blowout Believers,True,discovery,292,0.0048,0.1
+Blowout Believers,True,holdout,1579,0.0445,2.15

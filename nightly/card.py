@@ -94,7 +94,10 @@ def team_legs(sport: str, date: pd.Timestamp, history: pd.DataFrame | None = Non
                 pick = f"{r['home'] if home_side else r['away']} {line:+g}"
             else:
                 pick = f"{r['home'] if home_side else r['away']} ML"
-            legs.append(dict(sport=sport, strategy=name, tier=tier, event=f"{r['away']} @ {r['home']}",
+            p_elo_side = r["p_home_elo"] if home_side else 1 - r["p_home_elo"]
+            p_mkt_side = r["p_home_mkt"] if home_side else 1 - r["p_home_mkt"]
+            elo_agree = bool(p_elo_side >= p_mkt_side) if pd.notna(p_elo_side) and pd.notna(p_mkt_side) else None
+            legs.append(dict(sport=sport, strategy=name, tier=tier, event=f"{r['away']} @ {r['home']}", _elo_agree=elo_agree,
                              market=mkt, pick=pick, price=float(price) if pd.notna(price) else -110.0,
                              _home=r["home"], _away=r["away"], _home_name=r.get("home_name"), _away_name=r.get("away_name"),
                              _home_side=home_side, _line=r.get("spread_home"),
