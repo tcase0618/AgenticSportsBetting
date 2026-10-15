@@ -66,9 +66,12 @@ def _local_day(ts) -> str:
         return ""
 
 def _fair(a, b):
+    """Fair two-way probabilities. Method chosen by engine/devig.py on real outcomes (odds-ratio beat the
+    multiplicative method on holdout seasons; multiplicative overrated +250-or-longer underdogs by ~1.7 pts)."""
     if a is None or b is None or a != a or b != b:
         return np.nan, np.nan
-    pa, pb, _ = no_vig_probs(a, b)
+    from engine.devig import devig, best_method
+    pa, pb = devig(float(a), float(b), best_method())
     return float(pa), float(pb)
 
 
@@ -128,6 +131,9 @@ def apply_strategy_edges(legs: list[dict], key_legs: list[dict]):
                    ("home" if k.get("_home_side", True) else "away")
             if L["kind"] == kind and L["side"] == side:
                 e = max(roi.get(k["strategy"], 0.0), 0) / 2
+                if k.get("os_agree"):          # OpenSkill-confirmed youth spot: holdout ROI +21% -> half = 10.6%
+                    e = max(e, 0.106)
+                    L["boost"] = "OpenSkill agrees"
                 L["p"] = min(0.97, (1 + e) * L["p_fair"])
                 L["edge_src"] = k["strategy"]
 
@@ -303,11 +309,12 @@ def cross_game_day(legs_day: list[dict], day: str, max_legs=20) -> dict:
         dec = float(np.prod([american_to_decimal(L["fd_price"]) for _, L in sel]))
         p = float(np.prod([L["p"] for _, L in sel]))
         return dict(day=day, book="FanDuel", n_legs=len(sel),
-                    legs=" + ".join(f"{L['pick']} ({fmt_american(L['fd_price'])})" for _, L in sel),
+                    legs=" + ".join(f"{L['pick']} ({fmt_american(L['fd_price'])}){' 🔥' if L.get('boost') else ''}" for _, L in sel),
                     odds=fmt_american(decimal_to_american(dec)), hit_prob=p, ev=p * dec - 1,
                     one_in=round(1 / max(p, 1e-12)), stake=stake, note=note)
     edge = [(e, L) for e, L in per_game.values() if L["edge_src"] and TIER_OF.get(L["edge_src"], "C") in ("A", "B")]
-    edge.sort(key=lambda x: (TIER_OF.get(x[1]["edge_src"], "C"), american_to_decimal(x[1]["fd_price"])))
+    edge.sort(key=lambda x: (TIER_OF.get(x[1]["edge_src"], "C"), not bool(x[1].get("boost")),
+                             american_to_decimal(x[1]["fd_price"])))
     plan = []
     for kind, stake, note in PLAYBOOK["weekend" if weekend else "weekday"]:
         if kind == "best3" and len(edge) >= 3:
@@ -433,6 +440,17 @@ def render(res: dict, per_sport=2) -> str:
                        f"**{s.bet_if_fanduel_at_least}** | {s.edge_sources} |")
         if S.empty:
             out += ["| – | – | No SGP contains a validated edge leg tonight | – | – | – | – |"]
+    # NFL injury watch (context only: QB changes did not hurt the NFL strategies in the backtest)
+    try:
+        nfl_events = sorted({L["event"] for L in res["legs"] if L["sport"] == "nfl" and L.get("edge_src")})
+        if nfl_events:
+            from nightly.injuries import current_report, notes_for_game
+            d0 = pd.Timestamp(res["date"])
+            rep = current_report(d0.year if d0.month >= 3 else d0.year - 1)
+            lines = [f"- {e}: {notes_for_game(rep, e) or 'no key injuries listed yet'}" for e in nfl_events]
+            out += ["", "## NFL injury watch (context only, does not change the bet)", ""] + lines
+    except Exception as e:
+        res["notes"].append(f"injuries: {e}")
     for day, X in res["cross"].items():
         wkend = pd.Timestamp(day).weekday() >= 5
         out += ["", f"## {pd.Timestamp(day):%A %b %d}: parlay playbook ({'WEEKEND' if wkend else 'weekday'} rules, exact prices)", ""]

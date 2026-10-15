@@ -1,0 +1,5 @@
+{
+ "method": "odds_ratio",
+ "holdout_log_loss": 0.5928263969495098,
+ "multiplicative_holdout_log_loss": 0.5934040919030845
+}

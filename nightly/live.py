@@ -394,9 +394,20 @@ def live_ufc_legs(today: pd.Timestamp, notes: list) -> list[dict]:
         for me, op, p, price, name, is_home in ((a, b, pa, r.home_ml, r.home_name, True),
                                                  (b, a, pb, r.away_ml, r.away_name, False)):
             if p > 0.5 and age(op) - age(me) >= 5:
+                # OpenSkill confirmation: when the rating model also favors this fighter vs the market,
+                # the strategy returned +21% (holdout) vs +5% when it disagreed (engine/ufc_openskill.py)
+                agree = None
+                try:
+                    from engine.ufc_openskill import p_win
+                    me_name = name
+                    op_name = r.away_name if is_home else r.home_name
+                    pos = p_win(me_name, op_name)
+                    agree = None if pos is None else bool(pos >= p)
+                except Exception:
+                    pass
                 legs.append(dict(sport="ufc", strategy="Youth Over Experience", tier="A",
                                  event=f"{r.away_name} vs {r.home_name}", market="ml", pick=f"{name} ML",
-                                 price=float(price), _home="", _away="", _home_side=is_home))
+                                 price=float(price), _home="", _away="", _home_side=is_home, os_agree=agree))
     return legs
 
 
