@@ -1,0 +1,19 @@
+{
+  "sport": "ufc",
+  "seasons": [
+    2010,
+    2026
+  ],
+  "split": 2020,
+  "fights": 7062,
+  "n_strategies": 2800,
+  "n_evaluated": 620,
+  "n_discovered": 20,
+  "n_validated": 14,
+  "fav_win_rate": 0.6516567544604928,
+  "avg_overround": 1.0361268516747715,
+  "baseline": {
+    "bet_A": 0.0015430441761345253,
+    "bet_B": -0.10645287806504168
+  }
+}

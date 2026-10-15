@@ -1,0 +1,426 @@
+{
+  "nfl": {
+    "sport": "nfl",
+    "name": "Wind Wall Unders",
+    "rule": "Bet the UNDER at the closing total in any NFL game played in sustained wind of 15+ mph.",
+    "why": "Wind degrades deep passing and field goals far more than totals adjust for. The edge survives even at the closing number, after the forecast was already public.",
+    "key": [
+      "tot",
+      "wind15",
+      "game",
+      "under",
+      "all"
+    ],
+    "split": 2016,
+    "all": {
+      "n": 684,
+      "wins": 384,
+      "losses": 290,
+      "pushes": 10,
+      "win_pct": 0.56973293768546,
+      "units": 68.72675198775971,
+      "roi": 0.10047770758444402,
+      "z": 2.7605781488088983,
+      "p": 0.0028849575879014,
+      "ci_lo": 0.029138916849437285,
+      "ci_hi": 0.17181649831945076,
+      "max_dd": 13.462267266913344,
+      "seasons": 27,
+      "pos_seasons": 17,
+      "pct_pos_seasons": 0.6296296296296297
+    },
+    "train": {
+      "n": 480,
+      "wins": 271,
+      "losses": 201,
+      "pushes": 8,
+      "win_pct": 0.5741525423728814,
+      "units": 52.33190712149889,
+      "roi": 0.10902480650312268,
+      "z": 2.513623807707787,
+      "p": 0.005974891295332747,
+      "ci_lo": 0.024012634001070163,
+      "ci_hi": 0.1940369790051752,
+      "max_dd": 13.462267266913344
+    },
+    "holdout": {
+      "n": 204,
+      "wins": 113,
+      "losses": 89,
+      "pushes": 2,
+      "win_pct": 0.5594059405940595,
+      "units": 16.394844866260815,
+      "roi": 0.08036688659931772,
+      "z": 1.198419279577459,
+      "p": 0.11537691526568727,
+      "ci_lo": -0.05107216851184597,
+      "ci_hi": 0.2118059417104814,
+      "max_dd": 11.568292437189562
+    },
+    "recent": {
+      "n": 51,
+      "wins": 27,
+      "losses": 22,
+      "pushes": 2,
+      "win_pct": 0.5510204081632653,
+      "units": 2.2903547706421694,
+      "roi": 0.04490891707141509,
+      "z": 0.3427472961831571,
+      "p": 0.3658942891405759,
+      "ci_lo": -0.21190267105833255,
+      "ci_hi": 0.3017205052011627,
+      "max_dd": 6.998224870737767
+    },
+    "recent_seasons": [
+      2023,
+      2024,
+      2025
+    ],
+    "by_season": {
+      "1999": {
+        "bets": 35,
+        "units": 5.09,
+        "roi": 0.1455,
+        "record": "21-14-0"
+      },
+      "2000": {
+        "bets": 28,
+        "units": 10.18,
+        "roi": 0.3636,
+        "record": "20-8-0"
+      },
+      "2001": {
+        "bets": 38,
+        "units": -5.45,
+        "roi": -0.1435,
+        "record": "16-20-2"
+      },
+      "2002": {
+        "bets": 28,
+        "units": 0.64,
+        "roi": 0.0227,
+        "record": "15-13-0"
+      },
+      "2003": {
+        "bets": 25,
+        "units": 1.73,
+        "roi": 0.0691,
+        "record": "14-11-0"
+      },
+      "2004": {
+        "bets": 39,
+        "units": 13.55,
+        "roi": 0.3473,
+        "record": "27-11-1"
+      },
+      "2005": {
+        "bets": 25,
+        "units": -2.09,
+        "roi": -0.0836,
+        "record": "12-13-0"
+      },
+      "2006": {
+        "bets": 25,
+        "units": -0.61,
+        "roi": -0.0243,
+        "record": "12-12-1"
+      },
+      "2007": {
+        "bets": 24,
+        "units": -0.86,
+        "roi": -0.0357,
+        "record": "12-12-0"
+      },
+      "2008": {
+        "bets": 40,
+        "units": 19.79,
+        "roi": 0.4948,
+        "record": "30-9-1"
+      },
+      "2009": {
+        "bets": 18,
+        "units": 3.49,
+        "roi": 0.194,
+        "record": "11-7-0"
+      },
+      "2010": {
+        "bets": 33,
+        "units": -7.38,
+        "roi": -0.2235,
+        "record": "13-20-0"
+      },
+      "2011": {
+        "bets": 30,
+        "units": 3.24,
+        "roi": 0.108,
+        "record": "17-13-0"
+      },
+      "2012": {
+        "bets": 25,
+        "units": 7.31,
+        "roi": 0.2923,
+        "record": "16-8-1"
+      },
+      "2013": {
+        "bets": 21,
+        "units": 0.74,
+        "roi": 0.0354,
+        "record": "11-10-0"
+      },
+      "2014": {
+        "bets": 22,
+        "units": -1.4,
+        "roi": -0.0634,
+        "record": "10-11-1"
+      },
+      "2015": {
+        "bets": 24,
+        "units": 4.36,
+        "roi": 0.1816,
+        "record": "14-9-1"
+      },
+      "2016": {
+        "bets": 23,
+        "units": -3.57,
+        "roi": -0.1551,
+        "record": "10-13-0"
+      },
+      "2017": {
+        "bets": 20,
+        "units": 3.47,
+        "roi": 0.1734,
+        "record": "12-8-0"
+      },
+      "2018": {
+        "bets": 17,
+        "units": 8.28,
+        "roi": 0.4873,
+        "record": "13-4-0"
+      },
+      "2019": {
+        "bets": 23,
+        "units": 0.25,
+        "roi": 0.0108,
+        "record": "12-11-0"
+      },
+      "2020": {
+        "bets": 26,
+        "units": -8.35,
+        "roi": -0.3212,
+        "record": "9-17-0"
+      },
+      "2021": {
+        "bets": 30,
+        "units": 10.62,
+        "roi": 0.3541,
+        "record": "21-9-0"
+      },
+      "2022": {
+        "bets": 14,
+        "units": 3.4,
+        "roi": 0.2429,
+        "record": "9-5-0"
+      },
+      "2023": {
+        "bets": 14,
+        "units": 5.21,
+        "roi": 0.3723,
+        "record": "9-3-2"
+      },
+      "2024": {
+        "bets": 16,
+        "units": -2.75,
+        "roi": -0.1716,
+        "record": "7-9-0"
+      },
+      "2025": {
+        "bets": 21,
+        "units": -0.18,
+        "roi": -0.0083,
+        "record": "11-10-0"
+      }
+    }
+  },
+  "ufc": {
+    "sport": "ufc",
+    "name": "Youth Over Experience",
+    "rule": "At 155 lbs and below (incl. all women's divisions), bet the moneyline FAVORITE when that fighter is 5+ years younger than the opponent.",
+    "why": "Speed and reaction time decline fastest in the lighter divisions, and the market prices record and name value more heavily than age. Younger favorites win more often than their price implies. Young underdogs show no edge, so this is mispricing at the top of the market, not a general 'youth' effect.",
+    "key": [
+      "ml",
+      "younger5",
+      "fav",
+      "on",
+      "lightweight_down"
+    ],
+    "split": 2020,
+    "all": {
+      "n": 946,
+      "wins": 705,
+      "losses": 228,
+      "pushes": 13,
+      "win_pct": 0.7556270096463023,
+      "units": 66.38573740584509,
+      "roi": 0.07017519810343033,
+      "z": 3.4185249601396905,
+      "p": 0.0003148077138885681,
+      "ci_lo": 0.029940479946771605,
+      "ci_hi": 0.11040991626008906,
+      "max_dd": 8.845603125526587,
+      "seasons": 17,
+      "pos_seasons": 15,
+      "pct_pos_seasons": 0.8823529411764706
+    },
+    "train": {
+      "n": 455,
+      "wins": 334,
+      "losses": 111,
+      "pushes": 10,
+      "win_pct": 0.750561797752809,
+      "units": 30.61977349708829,
+      "roi": 0.06729620548810614,
+      "z": 2.255833262395902,
+      "p": 0.012040537683050113,
+      "ci_lo": 0.00882532248649745,
+      "ci_hi": 0.12576708848971482,
+      "max_dd": 8.845603125526587
+    },
+    "holdout": {
+      "n": 491,
+      "wins": 371,
+      "losses": 117,
+      "pushes": 3,
+      "win_pct": 0.7602459016393442,
+      "units": 35.7659639087568,
+      "roi": 0.07284310368382241,
+      "z": 2.572734379970393,
+      "p": 0.005044930583282375,
+      "ci_lo": 0.017348652203784683,
+      "ci_hi": 0.12833755516386014,
+      "max_dd": 5.684762964220361
+    },
+    "recent": {
+      "n": 194,
+      "wins": 151,
+      "losses": 43,
+      "pushes": 0,
+      "win_pct": 0.7783505154639175,
+      "units": 15.41096466883883,
+      "roi": 0.07943796221050943,
+      "z": 1.8247187993238818,
+      "p": 0.03402173742841832,
+      "ci_lo": -0.005889380276612344,
+      "ci_hi": 0.1647653046976312,
+      "max_dd": 5.684762964220361
+    },
+    "recent_seasons": [
+      2024,
+      2025,
+      2026
+    ],
+    "by_season": {
+      "2010": {
+        "bets": 9,
+        "units": -1.08,
+        "roi": -0.1195,
+        "record": "6-3-0"
+      },
+      "2011": {
+        "bets": 31,
+        "units": 7.55,
+        "roi": 0.2436,
+        "record": "26-4-1"
+      },
+      "2012": {
+        "bets": 27,
+        "units": 4.24,
+        "roi": 0.1572,
+        "record": "21-5-1"
+      },
+      "2013": {
+        "bets": 29,
+        "units": 1.2,
+        "roi": 0.0416,
+        "record": "21-7-1"
+      },
+      "2014": {
+        "bets": 61,
+        "units": 2.99,
+        "roi": 0.0489,
+        "record": "44-15-2"
+      },
+      "2015": {
+        "bets": 73,
+        "units": -3.07,
+        "roi": -0.0421,
+        "record": "51-22-0"
+      },
+      "2016": {
+        "bets": 44,
+        "units": 4.9,
+        "roi": 0.1113,
+        "record": "33-11-0"
+      },
+      "2017": {
+        "bets": 54,
+        "units": 0.99,
+        "roi": 0.0183,
+        "record": "37-15-2"
+      },
+      "2018": {
+        "bets": 61,
+        "units": 4.7,
+        "roi": 0.0771,
+        "record": "46-14-1"
+      },
+      "2019": {
+        "bets": 66,
+        "units": 8.2,
+        "roi": 0.1242,
+        "record": "49-15-2"
+      },
+      "2020": {
+        "bets": 62,
+        "units": 6.76,
+        "roi": 0.109,
+        "record": "46-15-1"
+      },
+      "2021": {
+        "bets": 67,
+        "units": 2.64,
+        "roi": 0.0394,
+        "record": "48-18-1"
+      },
+      "2022": {
+        "bets": 88,
+        "units": 4.1,
+        "roi": 0.0466,
+        "record": "64-23-1"
+      },
+      "2023": {
+        "bets": 80,
+        "units": 6.86,
+        "roi": 0.0858,
+        "record": "62-18-0"
+      },
+      "2024": {
+        "bets": 79,
+        "units": 4.75,
+        "roi": 0.0601,
+        "record": "59-20-0"
+      },
+      "2025": {
+        "bets": 91,
+        "units": 9.62,
+        "roi": 0.1057,
+        "record": "73-18-0"
+      },
+      "2026": {
+        "bets": 24,
+        "units": 1.04,
+        "roi": 0.0434,
+        "record": "19-5-0"
+      }
+    }
+  }
+}
