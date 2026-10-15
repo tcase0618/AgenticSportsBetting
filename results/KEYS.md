@@ -10,7 +10,7 @@ z ≈ 2 means about a 1-in-40 chance the result is pure luck; z ≈ 3.4 means ab
 | 2 | NFL | Wind Wall Unders | 684 | **+10.0%** | +68.7 | 2.76 | 17/27 | +8.0% | **7/10** |
 | 3 | NCAAF | Rested Conference Dogs | 579 | **+7.6%** | +43.7 | 1.93 | 16/19 | +2.3% | **6/10** |
 | 4 | NHL | Blowout Bounce-Back | 1,680 | **+4.1%** | +68.9 | 1.95 | 9/11 | +2.6% | **6/10** |
-| 5 | NBA | Load-Management Overs | 459 | **+8.4%** | +38.5 | 1.91 | 8/11 | +6.6% | **5/10** |
+| 5 | NBA | Load-Management Overs | 399 | **+10.6%** | +42.2 | 2.25 | 8/11 | +6.1% | **5/10** |
 | 6 | NCAAM | Blowout Believers | 3,896 | **+2.1%** | +80.2 | 1.84 | 6/7 | +2.2% | **4/10** |
 | 7 | MLB | Series Carryover Unders | 4,255 | **+2.0%** | +83.3 | 1.37 | 9/16 | +3.4% | **3/10** |
 
@@ -233,33 +233,33 @@ Profitable seasons: **9/16** · Max drawdown: **40.4u** · 95% CI on ROI: -0.8% 
 
 
 ## Load-Management Overs  (NBA)
-**Rule:** Final quarter of the NBA season (incl. playoffs): bet the OVER when the closing total has dropped 1.5+ points from the opening total.
-**Why it works:** Late-season totals get bet down on rest/injury news (stars sitting, tanking, slowed playoff pace), but replacement-level rotations defend worse and the drop overshoots. Moderate-low confidence: the market moves are only recorded through 2022 and again in 2026, so 2023-25 can't be tested.
+**Rule:** Home team's 78th+ game of the season (the last few regular-season games and the playoffs): bet the OVER when the closing total has dropped 1.5+ points from the opening total.
+**Why it works:** Late-season totals get bet down on rest/injury news (stars sitting, tanking, slowed playoff pace), but replacement-level rotations defend worse and the drop overshoots. ~60% of qualifying games are playoff games. Moderate-low confidence: the market moves are only recorded through 2022 and again in 2026, so 2023-25 can't be tested.
 
 | Sample | Bets | W-L-P | Win% | ROI | Units | z | p (one-sided) |
 |---|---|---|---|---|---|---|---|
-| All seasons | 459 | 258-196-5 | 56.8% | +8.4% | +38.5 | 1.91 | 0.0280 |
-| Discovery (<2019) | 296 | 168-125-3 | 57.3% | +9.4% | +27.7 | 1.71 | 0.0434 |
-| Holdout (2019+) | 163 | 90-71-2 | 55.9% | +6.6% | +10.8 | 0.90 | 0.1849 |
-| Last 3 seasons (2021-2026) | 119 | 63-54-2 | 53.8% | +2.8% | +3.3 | 0.32 | 0.3758 |
+| All seasons | 399 | 229-166-4 | 58.0% | +10.6% | +42.2 | 2.25 | 0.0122 |
+| Discovery (<2019) | 255 | 150-103-2 | 59.3% | +13.1% | +33.4 | 2.23 | 0.0128 |
+| Holdout (2019+) | 144 | 79-63-2 | 55.6% | +6.1% | +8.8 | 0.78 | 0.2184 |
+| Last 3 seasons (2021-2026) | 100 | 52-46-2 | 53.1% | +1.3% | +1.3 | 0.13 | 0.4466 |
 
-Profitable seasons: **8/11** · Max drawdown: **13.1u** · 95% CI on ROI: -0.2% to +17.0%
+Profitable seasons: **8/11** · Max drawdown: **13.5u** · 95% CI on ROI: +1.4% to +19.8%
 
 <details><summary>Season by season</summary>
 
 | Season | Bets | Record | Units | ROI |
 |---|---|---|---|---|
-| 2012 | 20 | 9-11-0 | -2.82 | -14.1% |
+| 2012 | 2 | 1-1-0 | -0.09 | -4.5% |
 | 2013 | 34 | 18-15-1 | +1.36 | +4.0% |
 | 2014 | 39 | 26-13-0 | +10.64 | +27.3% |
-| 2015 | 50 | 30-19-1 | +8.27 | +16.6% |
-| 2016 | 35 | 18-17-0 | -0.64 | -1.8% |
-| 2017 | 77 | 43-33-1 | +6.09 | +7.9% |
+| 2015 | 41 | 27-14-0 | +10.55 | +25.7% |
+| 2016 | 38 | 21-17-0 | +2.09 | +5.5% |
+| 2017 | 60 | 33-26-1 | +4.00 | +6.7% |
 | 2018 | 41 | 24-17-0 | +4.82 | +11.8% |
 | 2019 | 44 | 27-17-0 | +7.55 | +17.2% |
-| 2021 | 41 | 21-19-1 | +0.09 | +0.2% |
-| 2022 | 50 | 21-28-1 | -8.91 | -17.8% |
-| 2026 | 28 | 21-7-0 | +12.09 | +43.2% |
+| 2021 | 13 | 6-6-1 | -0.55 | -4.2% |
+| 2022 | 53 | 21-31-1 | -11.91 | -22.5% |
+| 2026 | 34 | 25-9-0 | +13.73 | +40.4% |
 
 </details>
 

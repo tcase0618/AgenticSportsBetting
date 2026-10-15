@@ -1218,46 +1218,28 @@ date,season,sport,strategy,event,pick,price,outcome,pnl
 2012-04-25,2012,mlb,Series Carryover Unders,NYY @ TEX,UNDER 10.0,-110.0,0,0.0
 2012-04-25,2012,mlb,Series Carryover Unders,TOR @ BAL,UNDER 8.5,-110.0,1,0.9090909090909092
 2012-04-26,2012,mlb,Series Carryover Unders,TOR @ BAL,UNDER 9.0,-110.0,1,0.9090909090909092
-2012-04-28,2012,nba,Load-Management Overs,Dallas Mavericks @ Oklahoma City Thunder,OVER 192.5,-110.0,1,0.9090909090909092
 2012-04-29,2012,mlb,Series Carryover Unders,BOS @ CHW,UNDER 8.0,-110.0,1,0.9090909090909092
 2012-04-29,2012,mlb,Series Carryover Unders,LAA @ CLE,UNDER 8.0,-110.0,1,0.9090909090909092
-2012-04-29,2012,nba,Load-Management Overs,Utah Jazz @ San Antonio Spurs,OVER 205.5,-110.0,-1,-1.0
-2012-04-30,2012,nba,Load-Management Overs,Dallas Mavericks @ Oklahoma City Thunder,OVER 193.0,-110.0,1,0.9090909090909092
 2012-05-01,2012,mlb,Series Carryover Unders,BAL @ NYY,UNDER 10.0,-110.0,1,0.9090909090909092
 2012-05-01,2012,mlb,Series Carryover Unders,TEX @ TOR,UNDER 9.0,-110.0,-1,-1.0
 2012-05-02,2012,mlb,Series Carryover Unders,MIL @ SD,UNDER 7.0,-110.0,1,0.9090909090909092
 2012-05-02,2012,mlb,Series Carryover Unders,MIN @ LAA,UNDER 7.0,-110.0,-1,-1.0
 2012-05-02,2012,mlb,Series Carryover Unders,SEA @ TB,UNDER 7.5,-110.0,-1,-1.0
-2012-05-02,2012,nba,Load-Management Overs,LA Clippers @ Memphis Grizzlies,OVER 185.0,-110.0,1,0.9090909090909092
-2012-05-02,2012,nba,Load-Management Overs,Utah Jazz @ San Antonio Spurs,OVER 203.0,-110.0,-1,-1.0
 2012-05-03,2012,mlb,Series Carryover Unders,CHC @ CIN,UNDER 8.0,-110.0,1,0.9090909090909092
-2012-05-03,2012,nba,Load-Management Overs,Oklahoma City Thunder @ Dallas Mavericks,OVER 193.5,-110.0,-1,-1.0
 2012-05-05,2012,mlb,Series Carryover Unders,TOR @ LAA,UNDER 7.0,-110.0,-1,-1.0
-2012-05-05,2012,nba,Load-Management Overs,Indiana Pacers @ Orlando Magic,OVER 180.0,-110.0,1,0.9090909090909092
-2012-05-05,2012,nba,Load-Management Overs,Memphis Grizzlies @ LA Clippers,OVER 184.5,-110.0,-1,-1.0
-2012-05-05,2012,nba,Load-Management Overs,San Antonio Spurs @ Utah Jazz,OVER 200.5,-110.0,-1,-1.0
 2012-05-05,2012,ufc,Youth Over Experience,Louis Gaudinot vs John Lineker,John Lineker ML,-265.0,-1,-1.0
-2012-05-06,2012,nba,Load-Management Overs,Chicago Bulls @ Philadelphia 76ers,OVER 172.0,-110.0,-1,-1.0
-2012-05-08,2012,nba,Load-Management Overs,Denver Nuggets @ Los Angeles Lakers,OVER 196.0,-110.0,1,0.9090909090909092
 2012-05-10,2012,mlb,Series Carryover Unders,TB @ NYY,UNDER 7.5,-110.0,-1,-1.0
-2012-05-10,2012,nba,Load-Management Overs,Atlanta Hawks @ Boston Celtics,OVER 173.5,-110.0,-1,-1.0
-2012-05-10,2012,nba,Load-Management Overs,Los Angeles Lakers @ Denver Nuggets,OVER 196.0,-110.0,1,0.9090909090909092
-2012-05-11,2012,nba,Load-Management Overs,Memphis Grizzlies @ LA Clippers,OVER 178.5,-110.0,-1,-1.0
 2012-05-12,2012,mlb,Series Carryover Unders,HOU @ PIT,UNDER 8.0,-110.0,1,0.9090909090909092
-2012-05-12,2012,nba,Load-Management Overs,Philadelphia 76ers @ Boston Celtics,OVER 193.5,-110.0,-1,-1.0
 2012-05-13,2012,mlb,Series Carryover Unders,CLE @ BOS,UNDER 10.0,-110.0,-1,-1.0
 2012-05-13,2012,mlb,Series Carryover Unders,COL @ LAD,UNDER 7.0,-110.0,-1,-1.0
 2012-05-13,2012,mlb,Series Carryover Unders,TOR @ MIN,UNDER 8.0,-110.0,1,0.9090909090909092
 2012-05-13,2012,mlb,Series Carryover Unders,WSH @ CIN,UNDER 7.5,-110.0,-1,-1.0
-2012-05-13,2012,nba,Load-Management Overs,Indiana Pacers @ Miami Heat,OVER 177.0,-110.0,1,0.9090909090909092
-2012-05-13,2012,nba,Load-Management Overs,LA Clippers @ Memphis Grizzlies,OVER 187.0,-110.0,-1,-1.0
 2012-05-15,2012,mlb,Series Carryover Unders,CIN @ ATL,UNDER 7.0,-110.0,-1,-1.0
 2012-05-15,2012,mlb,Series Carryover Unders,KC @ TEX,UNDER 10.0,-110.0,-1,-1.0
 2012-05-15,2012,mlb,Series Carryover Unders,MIL @ NYM,UNDER 7.0,-110.0,-1,-1.0
 2012-05-15,2012,ufc,Youth Over Experience,Rafael Dos Anjos vs Kamal Shalorus,Rafael Dos Anjos ML,-365.0,1,0.273972602739726
 2012-05-16,2012,mlb,Series Carryover Unders,SEA @ CLE,UNDER 7.5,-110.0,-1,-1.0
 2012-05-17,2012,mlb,Series Carryover Unders,BOS @ TB,UNDER 8.5,-110.0,1,0.9090909090909092
-2012-05-18,2012,nba,Load-Management Overs,Oklahoma City Thunder @ Los Angeles Lakers,OVER 189.0,-110.0,1,0.9090909090909092
 2012-05-19,2012,mlb,Series Carryover Unders,BAL @ WSH,UNDER 7.0,-110.0,-1,-1.0
 2012-05-19,2012,mlb,Series Carryover Unders,CHW @ CHC,UNDER 9.0,-110.0,-1,-1.0
 2012-05-19,2012,mlb,Series Carryover Unders,CIN @ NYY,UNDER 9.5,-110.0,-1,-1.0
@@ -2644,28 +2626,19 @@ date,season,sport,strategy,event,pick,price,outcome,pnl
 2015-04-02,2015,nhl,Blowout Bounce-Back,WSH @ MTL,MTL ML,-130.0,-1,-1.0
 2015-04-03,2015,nhl,Blowout Bounce-Back,MTL @ NJD,MTL ML,-145.0,-1,-1.0
 2015-04-03,2015,nhl,Blowout Bounce-Back,STL @ DAL,DAL ML,-115.0,-1,-1.0
-2015-04-04,2015,nba,Load-Management Overs,Miami Heat @ Detroit Pistons,OVER 190.0,-110.0,1,0.9090909090909092
-2015-04-04,2015,nba,Load-Management Overs,Utah Jazz @ Phoenix Suns,OVER 188.0,-110.0,-1,-1.0
-2015-04-04,2015,nba,Load-Management Overs,Washington Wizards @ Memphis Grizzlies,OVER 187.0,-110.0,-1,-1.0
 2015-04-04,2015,nhl,Blowout Bounce-Back,PHI @ CAR,CAR ML,-140.0,1,0.7142857142857144
 2015-04-04,2015,nhl,Blowout Bounce-Back,PIT @ CBJ,PIT ML,-130.0,-1,-1.0
 2015-04-04,2015,ufc,Youth Over Experience,Gray Maynard vs Alexander Yakovlev,Alexander Yakovlev ML,-140.0,1,0.7142857142857144
-2015-04-05,2015,nba,Load-Management Overs,Chicago Bulls @ Cleveland Cavaliers,OVER 194.5,-110.0,-1,-1.0
 2015-04-05,2015,nhl,Blowout Bounce-Back,PIT @ PHI,PIT ML,-130.0,-1,-1.0
 2015-04-06,2015,nhl,Blowout Bounce-Back,DAL @ SJS,SJS ML,-135.0,-1,-1.0
 2015-04-06,2015,nhl,Blowout Bounce-Back,WPG @ MIN,MIN ML,-150.0,-1,-1.0
 2015-04-07,2015,mlb,Series Carryover Unders,ATL @ MIA,UNDER 7.0,-110.0,-1,-1.0
-2015-04-07,2015,nba,Load-Management Overs,Phoenix Suns @ Atlanta Hawks,OVER 200.0,-110.0,-1,-1.0
-2015-04-07,2015,nba,Load-Management Overs,San Antonio Spurs @ Oklahoma City Thunder,OVER 215.0,-110.0,-1,-1.0
 2015-04-07,2015,nhl,Blowout Bounce-Back,NSH @ COL,NSH ML,-145.0,-1,-1.0
 2015-04-08,2015,mlb,Series Carryover Unders,CLE @ HOU,UNDER 8.5,-110.0,1,0.9090909090909092
 2015-04-08,2015,mlb,Series Carryover Unders,LAA @ SEA,UNDER 7.0,-110.0,-1,-1.0
 2015-04-08,2015,mlb,Series Carryover Unders,MIN @ DET,UNDER 8.5,-110.0,-1,-1.0
 2015-04-08,2015,mlb,Series Carryover Unders,STL @ CHC,UNDER 6.0,-110.0,1,0.9090909090909092
-2015-04-08,2015,nba,Load-Management Overs,Chicago Bulls @ Orlando Magic,OVER 190.5,-110.0,1,0.9090909090909092
 2015-04-08,2015,nba,Load-Management Overs,Houston Rockets @ San Antonio Spurs,OVER 204.5,-110.0,1,0.9090909090909092
-2015-04-08,2015,nba,Load-Management Overs,New Orleans Pelicans @ Memphis Grizzlies,OVER 184.0,-110.0,0,0.0
-2015-04-08,2015,nba,Load-Management Overs,Sacramento Kings @ Utah Jazz,OVER 190.0,-110.0,1,0.9090909090909092
 2015-04-08,2015,nba,Load-Management Overs,Washington Wizards @ Philadelphia 76ers,OVER 186.5,-110.0,1,0.9090909090909092
 2015-04-08,2015,nhl,Blowout Bounce-Back,DAL @ ANA,ANA ML,-160.0,-1,-1.0
 2015-04-09,2015,mlb,Series Carryover Unders,CLE @ HOU,UNDER 9.0,-110.0,1,0.9090909090909092
@@ -3260,6 +3233,7 @@ date,season,sport,strategy,event,pick,price,outcome,pnl
 2016-04-03,2016,nhl,Blowout Bounce-Back,STL @ COL,STL ML,-150.0,1,0.6666666666666665
 2016-04-04,2016,nhl,Blowout Bounce-Back,NYR @ CBJ,NYR ML,-162.0,1,0.617283950617284
 2016-04-04,2016,nhl,Blowout Bounce-Back,TBL @ NYI,NYI ML,-115.0,1,0.8695652173913042
+2016-04-05,2016,nba,Load-Management Overs,Oklahoma City Thunder @ Denver Nuggets,OVER 217.5,-110.0,1,0.9090909090909092
 2016-04-05,2016,nhl,Blowout Bounce-Back,LAK @ CGY,LAK ML,-145.0,1,0.6896551724137931
 2016-04-05,2016,nhl,Blowout Bounce-Back,SJS @ MIN,MIN ML,-120.0,-1,-1.0
 2016-04-06,2016,mlb,Series Carryover Unders,LAD @ SD,UNDER 7.0,-110.0,0,0.0
@@ -3268,7 +3242,9 @@ date,season,sport,strategy,event,pick,price,outcome,pnl
 2016-04-06,2016,nba,Load-Management Overs,Oklahoma City Thunder @ Portland Trail Blazers,OVER 214.5,-110.0,1,0.9090909090909092
 2016-04-06,2016,nhl,Blowout Bounce-Back,VAN @ EDM,EDM ML,-160.0,1,0.625
 2016-04-07,2016,mlb,Series Carryover Unders,CHW @ ATH,UNDER 8.5,-110.0,1,0.9090909090909092
+2016-04-07,2016,nba,Load-Management Overs,San Antonio Spurs @ Golden State Warriors,OVER 209.0,-110.0,1,0.9090909090909092
 2016-04-07,2016,nhl,Blowout Bounce-Back,PIT @ WSH,WSH ML,-131.0,-1,-1.0
+2016-04-08,2016,nba,Load-Management Overs,Memphis Grizzlies @ Dallas Mavericks,OVER 191.0,-110.0,1,0.9090909090909092
 2016-04-08,2016,nba,Load-Management Overs,Washington Wizards @ Detroit Pistons,OVER 203.0,-110.0,1,0.9090909090909092
 2016-04-09,2016,mlb,Series Carryover Unders,CHC @ ARI,UNDER 8.0,-110.0,1,0.9090909090909092
 2016-04-09,2016,mlb,Series Carryover Unders,NYY @ DET,UNDER 9.0,-110.0,-1,-1.0
@@ -3876,29 +3852,12 @@ date,season,sport,strategy,event,pick,price,outcome,pnl
 2017-03-28,2017,nhl,Blowout Bounce-Back,NYR @ SJS,SJS ML,-148.0,1,0.6756756756756757
 2017-03-28,2017,nhl,Blowout Bounce-Back,WSH @ MIN,MIN ML,-115.0,-1,-1.0
 2017-03-29,2017,nhl,Blowout Bounce-Back,CHI @ PIT,PIT ML,-125.0,-1,-1.0
-2017-03-31,2017,nba,Load-Management Overs,Denver Nuggets @ Charlotte Hornets,OVER 219.0,-110.0,1,0.9090909090909092
-2017-03-31,2017,nba,Load-Management Overs,Detroit Pistons @ Milwaukee Bucks,OVER 197.0,-110.0,1,0.9090909090909092
-2017-03-31,2017,nba,Load-Management Overs,Indiana Pacers @ Toronto Raptors,OVER 203.5,-110.0,1,0.9090909090909092
-2017-03-31,2017,nba,Load-Management Overs,New York Knicks @ Miami Heat,OVER 203.0,-110.0,-1,-1.0
-2017-03-31,2017,nba,Load-Management Overs,Orlando Magic @ Boston Celtics,OVER 216.0,-110.0,1,0.9090909090909092
 2017-03-31,2017,nhl,Blowout Bounce-Back,PIT @ NYR,PIT ML,-116.0,1,0.8620689655172413
 2017-03-31,2017,nhl,Blowout Bounce-Back,SJS @ CGY,CGY ML,-135.0,1,0.7407407407407407
-2017-04-01,2017,nba,Load-Management Overs,Los Angeles Lakers @ LA Clippers,OVER 220.0,-110.0,-1,-1.0
 2017-04-01,2017,nhl,Blowout Bounce-Back,MIN @ NSH,NSH ML,-140.0,1,0.7142857142857144
-2017-04-02,2017,nba,Load-Management Overs,Boston Celtics @ New York Knicks,OVER 206.0,-110.0,-1,-1.0
-2017-04-02,2017,nba,Load-Management Overs,Charlotte Hornets @ Oklahoma City Thunder,OVER 211.5,-110.0,1,0.9090909090909092
-2017-04-02,2017,nba,Load-Management Overs,Houston Rockets @ Phoenix Suns,OVER 226.5,-110.0,1,0.9090909090909092
-2017-04-02,2017,nba,Load-Management Overs,Memphis Grizzlies @ Los Angeles Lakers,OVER 205.5,-110.0,1,0.9090909090909092
-2017-04-02,2017,nba,Load-Management Overs,Utah Jazz @ San Antonio Spurs,OVER 189.0,-110.0,1,0.9090909090909092
 2017-04-02,2017,nhl,Blowout Bounce-Back,NSH @ STL,STL ML,-137.0,1,0.7299270072992701
 2017-04-02,2017,nhl,Blowout Bounce-Back,WSH @ CBJ,WSH ML,-119.0,1,0.8403361344537816
-2017-04-03,2017,nba,Load-Management Overs,Portland Trail Blazers @ Minnesota Timberwolves,OVER 216.5,-110.0,1,0.9090909090909092
 2017-04-04,2017,mlb,Series Carryover Unders,SEA @ HOU,UNDER 8.5,-110.0,1,0.9090909090909092
-2017-04-04,2017,nba,Load-Management Overs,Chicago Bulls @ New York Knicks,OVER 203.5,-110.0,-1,-1.0
-2017-04-04,2017,nba,Load-Management Overs,Milwaukee Bucks @ Oklahoma City Thunder,OVER 209.5,-110.0,-1,-1.0
-2017-04-04,2017,nba,Load-Management Overs,Minnesota Timberwolves @ Golden State Warriors,OVER 218.5,-110.0,1,0.9090909090909092
-2017-04-04,2017,nba,Load-Management Overs,Portland Trail Blazers @ Utah Jazz,OVER 201.5,-110.0,-1,-1.0
-2017-04-04,2017,nba,Load-Management Overs,Toronto Raptors @ Indiana Pacers,OVER 203.0,-110.0,-1,-1.0
 2017-04-04,2017,nhl,Blowout Bounce-Back,EDM @ LAK,LAK ML,-111.0,1,0.900900900900901
 2017-04-05,2017,mlb,Series Carryover Unders,SEA @ HOU,UNDER 7.5,-110.0,-1,-1.0
 2017-04-05,2017,nba,Load-Management Overs,Miami Heat @ Charlotte Hornets,OVER 203.5,-110.0,1,0.9090909090909092
@@ -8170,67 +8129,39 @@ date,season,sport,strategy,event,pick,price,outcome,pnl
 2021-05-15,2021,ufc,Youth Over Experience,Shane Burgos vs Edson Barboza,Shane Burgos ML,-147.0,-1,-1.0
 2021-05-15,2021,ufc,Youth Over Experience,Tony Ferguson vs Beneil Dariush,Beneil Dariush ML,-147.0,1,0.6802721088435373
 2021-05-16,2021,mlb,Series Carryover Unders,PHI @ TOR,UNDER 10.0,-110.0,-1,-1.0
-2021-05-16,2021,nba,Load-Management Overs,Boston Celtics @ New York Knicks,OVER 211.0,-110.0,-1,-1.0
-2021-05-16,2021,nba,Load-Management Overs,Denver Nuggets @ Portland Trail Blazers,OVER 228.5,-110.0,1,0.9090909090909092
-2021-05-16,2021,nba,Load-Management Overs,Indiana Pacers @ Toronto Raptors,OVER 226.5,-110.0,1,0.9090909090909092
-2021-05-16,2021,nba,Load-Management Overs,Los Angeles Lakers @ New Orleans Pelicans,OVER 222.0,-110.0,-1,-1.0
-2021-05-16,2021,nba,Load-Management Overs,Memphis Grizzlies @ Golden State Warriors,OVER 228.0,-110.0,-1,-1.0
-2021-05-16,2021,nba,Load-Management Overs,Miami Heat @ Detroit Pistons,OVER 212.0,-110.0,1,0.9090909090909092
-2021-05-16,2021,nba,Load-Management Overs,Orlando Magic @ Philadelphia 76ers,OVER 214.0,-110.0,1,0.9090909090909092
-2021-05-16,2021,nba,Load-Management Overs,Phoenix Suns @ San Antonio Spurs,OVER 220.0,-110.0,1,0.9090909090909092
-2021-05-16,2021,nba,Load-Management Overs,Utah Jazz @ Sacramento Kings,OVER 221.5,-110.0,-1,-1.0
 2021-05-16,2021,nhl,Blowout Bounce-Back,TBL @ FLA,TBL ML,-124.0,1,0.8064516129032258
 2021-05-17,2021,nhl,Blowout Bounce-Back,BOS @ WSH,BOS ML,-135.0,1,0.7407407407407407
 2021-05-18,2021,mlb,Series Carryover Unders,NYM @ ATL,UNDER 8.5,-110.0,1,0.9090909090909092
-2021-05-18,2021,nba,Load-Management Overs,Charlotte Hornets @ Indiana Pacers,OVER 226.0,-110.0,1,0.9090909090909092
-2021-05-18,2021,nba,Load-Management Overs,Washington Wizards @ Boston Celtics,OVER 233.0,-110.0,-1,-1.0
 2021-05-18,2021,nhl,Blowout Bounce-Back,NYI @ PIT,PIT ML,-134.0,1,0.7462686567164178
 2021-05-19,2021,mlb,Series Carryover Unders,COL @ SD,UNDER 8.0,-110.0,1,0.9090909090909092
 2021-05-19,2021,mlb,Series Carryover Unders,MIL @ KC,UNDER 7.5,-110.0,-1,-1.0
-2021-05-19,2021,nba,Load-Management Overs,Golden State Warriors @ Los Angeles Lakers,OVER 217.0,-110.0,-1,-1.0
 2021-05-19,2021,nhl,Blowout Bounce-Back,WPG @ EDM,EDM ML,-155.0,-1,-1.0
 2021-05-20,2021,mlb,Series Carryover Unders,NYY @ TEX,UNDER 7.5,-110.0,1,0.9090909090909092
 2021-05-20,2021,mlb,Series Carryover Unders,SF @ CIN,UNDER 8.5,-110.0,-1,-1.0
 2021-05-21,2021,mlb,Series Carryover Unders,CHW @ NYY,UNDER 8.0,-110.0,1,0.9090909090909092
-2021-05-21,2021,nba,Load-Management Overs,Memphis Grizzlies @ Golden State Warriors,OVER 220.5,-110.0,1,0.9090909090909092
 2021-05-22,2021,mlb,Series Carryover Unders,CHW @ NYY,UNDER 8.0,-110.0,1,0.9090909090909092
 2021-05-22,2021,mlb,Series Carryover Unders,LAD @ SF,UNDER 7.5,-110.0,-1,-1.0
-2021-05-22,2021,nba,Load-Management Overs,Dallas Mavericks @ LA Clippers,OVER 217.5,-110.0,-1,-1.0
-2021-05-22,2021,nba,Load-Management Overs,Miami Heat @ Milwaukee Bucks,OVER 226.0,-110.0,-1,-1.0
-2021-05-22,2021,nba,Load-Management Overs,Portland Trail Blazers @ Denver Nuggets,OVER 226.0,-110.0,1,0.9090909090909092
 2021-05-22,2021,nhl,Blowout Bounce-Back,FLA @ TBL,TBL ML,-150.0,1,0.6666666666666665
 2021-05-23,2021,mlb,Series Carryover Unders,CHC @ STL,UNDER 9.0,-110.0,1,0.9090909090909092
 2021-05-23,2021,mlb,Series Carryover Unders,TB @ TOR,UNDER 9.0,-110.0,-1,-1.0
-2021-05-23,2021,nba,Load-Management Overs,Atlanta Hawks @ New York Knicks,OVER 214.0,-110.0,-1,-1.0
-2021-05-23,2021,nba,Load-Management Overs,Los Angeles Lakers @ Phoenix Suns,OVER 213.5,-110.0,-1,-1.0
-2021-05-23,2021,nba,Load-Management Overs,Washington Wizards @ Philadelphia 76ers,OVER 227.5,-110.0,1,0.9090909090909092
 2021-05-23,2021,nhl,Blowout Bounce-Back,CAR @ NSH,CAR ML,-150.0,-1,-1.0
 2021-05-23,2021,nhl,Blowout Bounce-Back,EDM @ WPG,EDM ML,-128.0,-1,-1.0
-2021-05-24,2021,nba,Load-Management Overs,Portland Trail Blazers @ Denver Nuggets,OVER 224.5,-110.0,1,0.9090909090909092
 2021-05-24,2021,nhl,Blowout Bounce-Back,EDM @ WPG,EDM ML,-110.0,-1,-1.0
 2021-05-26,2021,mlb,Series Carryover Unders,ATL @ BOS,UNDER 11.0,-110.0,-1,-1.0
 2021-05-26,2021,mlb,Series Carryover Unders,CLE @ DET,UNDER 9.5,-110.0,1,0.9090909090909092
 2021-05-26,2021,mlb,Series Carryover Unders,KC @ TB,UNDER 7.0,-110.0,1,0.9090909090909092
 2021-05-26,2021,mlb,Series Carryover Unders,PHI @ MIA,UNDER 7.0,-110.0,1,0.9090909090909092
-2021-05-26,2021,nba,Load-Management Overs,Washington Wizards @ Philadelphia 76ers,OVER 229.0,-110.0,-1,-1.0
 2021-05-26,2021,nhl,Blowout Bounce-Back,FLA @ TBL,TBL ML,-140.0,1,0.7142857142857144
 2021-05-26,2021,nhl,Blowout Bounce-Back,PIT @ NYI,PIT ML,-113.0,-1,-1.0
 2021-05-26,2021,nhl,Blowout Bounce-Back,VGK @ MIN,VGK ML,-139.0,-1,-1.0
 2021-05-27,2021,mlb,Series Carryover Unders,CLE @ DET,UNDER 7.0,-110.0,0,0.0
 2021-05-27,2021,mlb,Series Carryover Unders,KC @ TB,UNDER 7.5,-110.0,-1,-1.0
 2021-05-27,2021,mlb,Series Carryover Unders,SD @ MIL,UNDER 8.0,-110.0,-1,-1.0
-2021-05-27,2021,nba,Load-Management Overs,Denver Nuggets @ Portland Trail Blazers,OVER 227.0,-110.0,1,0.9090909090909092
-2021-05-27,2021,nba,Load-Management Overs,Milwaukee Bucks @ Miami Heat,OVER 224.5,-110.0,-1,-1.0
-2021-05-28,2021,nba,Load-Management Overs,Brooklyn Nets @ Boston Celtics,OVER 227.0,-110.0,1,0.9090909090909092
-2021-05-28,2021,nba,Load-Management Overs,LA Clippers @ Dallas Mavericks,OVER 219.0,-110.0,1,0.9090909090909092
 2021-05-29,2021,mlb,Series Carryover Unders,CIN @ CHC,UNDER 7.0,-110.0,-1,-1.0
 2021-05-30,2021,mlb,Series Carryover Unders,LAA @ ATH,UNDER 9.0,-110.0,1,0.9090909090909092
-2021-05-30,2021,nba,Load-Management Overs,Brooklyn Nets @ Boston Celtics,OVER 228.0,-110.0,1,0.9090909090909092
-2021-05-30,2021,nba,Load-Management Overs,LA Clippers @ Dallas Mavericks,OVER 219.5,-110.0,-1,-1.0
 2021-06-01,2021,mlb,Series Carryover Unders,TB @ NYY,UNDER 7.5,-110.0,-1,-1.0
 2021-06-01,2021,nhl,Blowout Bounce-Back,TBL @ CAR,CAR ML,-111.0,-1,-1.0
 2021-06-02,2021,mlb,Series Carryover Unders,TEX @ COL,UNDER 11.0,-110.0,1,0.9090909090909092
-2021-06-02,2021,nba,Load-Management Overs,Washington Wizards @ Philadelphia 76ers,OVER 229.0,-110.0,1,0.9090909090909092
 2021-06-03,2021,mlb,Series Carryover Unders,BOS @ HOU,UNDER 9.0,-110.0,1,0.9090909090909092
 2021-06-03,2021,nhl,Blowout Bounce-Back,BOS @ NYI,BOS ML,-149.0,1,0.6711409395973154
 2021-06-04,2021,nhl,Blowout Bounce-Back,MTL @ WPG,WPG ML,-106.0,-1,-1.0
@@ -9415,9 +9346,12 @@ date,season,sport,strategy,event,pick,price,outcome,pnl
 2022-03-27,2022,nhl,Blowout Bounce-Back,FLA @ TOR,TOR ML,-120.0,1,0.8333333333333335
 2022-03-28,2022,nhl,Blowout Bounce-Back,VAN @ STL,STL ML,-155.0,1,0.6451612903225805
 2022-04-02,2022,nhl,Blowout Bounce-Back,LAK @ WPG,WPG ML,-124.0,-1,-1.0
+2022-04-03,2022,nba,Load-Management Overs,Golden State Warriors @ Sacramento Kings,OVER 221.0,-110.0,-1,-1.0
+2022-04-03,2022,nba,Load-Management Overs,Philadelphia 76ers @ Cleveland Cavaliers,OVER 225.0,-110.0,-1,-1.0
 2022-04-03,2022,nhl,Blowout Bounce-Back,MIN @ WSH,WSH ML,-128.0,-1,-1.0
 2022-04-04,2022,nhl,Blowout Bounce-Back,TOR @ TBL,TBL ML,-128.0,-1,-1.0
 2022-04-05,2022,nba,Load-Management Overs,New Orleans Pelicans @ Sacramento Kings,OVER 224.5,-110.0,1,0.9090909090909092
+2022-04-05,2022,nba,Load-Management Overs,Portland Trail Blazers @ Oklahoma City Thunder,OVER 220.5,-110.0,-1,-1.0
 2022-04-05,2022,nba,Load-Management Overs,San Antonio Spurs @ Denver Nuggets,OVER 234.5,-110.0,-1,-1.0
 2022-04-05,2022,nhl,Blowout Bounce-Back,MIN @ NSH,NSH ML,-108.0,1,0.925925925925926
 2022-04-05,2022,nhl,Blowout Bounce-Back,NYI @ DAL,DAL ML,-122.0,1,0.819672131147541
@@ -12802,6 +12736,12 @@ date,season,sport,strategy,event,pick,price,outcome,pnl
 2026-03-21,2026,ufc,Youth Over Experience,Kurtis Campbell vs Danny Silva,Kurtis Campbell ML,-230.0,-1,-1.0
 2026-03-28,2026,ufc,Youth Over Experience,Ignacio Bahamondes vs Tofiq Musayev,Ignacio Bahamondes ML,-295.0,-1,-1.0
 2026-03-28,2026,ufc,Youth Over Experience,Julian Erosa vs Lerryan Douglas,Lerryan Douglas ML,-320.0,1,0.3125
+2026-04-05,2026,nba,Load-Management Overs,LA Clippers @ Sacramento Kings,OVER 228.5,-110.0,1,0.9090909090909092
+2026-04-06,2026,nba,Load-Management Overs,Cleveland Cavaliers @ Memphis Grizzlies,OVER 231.5,-110.0,1,0.9090909090909092
+2026-04-06,2026,nba,Load-Management Overs,Detroit Pistons @ Orlando Magic,OVER 222.5,-110.0,1,0.9090909090909092
+2026-04-06,2026,nba,Load-Management Overs,New York Knicks @ Atlanta Hawks,OVER 226.5,-110.0,-1,-1.0
+2026-04-06,2026,nba,Load-Management Overs,Portland Trail Blazers @ Denver Nuggets,OVER 235.5,-110.0,1,0.9090909090909092
+2026-04-07,2026,nba,Load-Management Overs,Oklahoma City Thunder @ Los Angeles Lakers,OVER 221.5,-110.0,-1,-1.0
 2026-04-08,2026,nba,Load-Management Overs,Oklahoma City Thunder @ LA Clippers,OVER 223.5,-110.0,1,0.9090909090909092
 2026-04-08,2026,nba,Load-Management Overs,Portland Trail Blazers @ San Antonio Spurs,OVER 229.5,-110.0,-1,-1.0
 2026-04-09,2026,nba,Load-Management Overs,Boston Celtics @ New York Knicks,OVER 210.5,-110.0,1,0.9090909090909092

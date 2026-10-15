@@ -942,8 +942,8 @@
   "nba": {
     "sport": "nba",
     "name": "Load-Management Overs",
-    "rule": "Final quarter of the NBA season (incl. playoffs): bet the OVER when the closing total has dropped 1.5+ points from the opening total.",
-    "why": "Late-season totals get bet down on rest/injury news (stars sitting, tanking, slowed playoff pace), but replacement-level rotations defend worse and the drop overshoots. Moderate-low confidence: the market moves are only recorded through 2022 and again in 2026, so 2023-25 can't be tested.",
+    "rule": "Home team's 78th+ game of the season (the last few regular-season games and the playoffs): bet the OVER when the closing total has dropped 1.5+ points from the opening total.",
+    "why": "Late-season totals get bet down on rest/injury news (stars sitting, tanking, slowed playoff pace), but replacement-level rotations defend worse and the drop overshoots. ~60% of qualifying games are playoff games. Moderate-low confidence: the market moves are only recorded through 2022 and again in 2026, so 2023-25 can't be tested.",
     "key": [
       "tot",
       "late_season+total_down",
@@ -953,63 +953,63 @@
     ],
     "split": 2019,
     "all": {
-      "n": 459,
-      "wins": 258,
-      "losses": 196,
-      "pushes": 5,
-      "win_pct": 0.5682819383259912,
-      "units": 38.54545454545456,
-      "roi": 0.08397702515349578,
-      "z": 1.9109262560229385,
-      "p": 0.028007029185221133,
-      "ci_lo": -0.0021565808828828137,
-      "ci_hi": 0.17011063118987438,
-      "max_dd": 13.090909090909104,
+      "n": 399,
+      "wins": 229,
+      "losses": 166,
+      "pushes": 4,
+      "win_pct": 0.579746835443038,
+      "units": 42.1818181818182,
+      "roi": 0.10571884256094788,
+      "z": 2.2493269210852223,
+      "p": 0.012245852128589843,
+      "ci_lo": 0.013598426681389247,
+      "ci_hi": 0.1978392584405065,
+      "max_dd": 13.45454545454551,
       "seasons": 11,
       "pos_seasons": 8,
       "pct_pos_seasons": 0.7272727272727273
     },
     "train": {
-      "n": 296,
-      "wins": 168,
-      "losses": 125,
-      "pushes": 3,
-      "win_pct": 0.5733788395904437,
-      "units": 27.727272727272737,
-      "roi": 0.0936732186732187,
-      "z": 1.7125677216770303,
-      "p": 0.0433960479098941,
-      "ci_lo": -0.013533933648745541,
-      "ci_hi": 0.20088037099518297,
-      "max_dd": 8.63636363636363
+      "n": 255,
+      "wins": 150,
+      "losses": 103,
+      "pushes": 2,
+      "win_pct": 0.5928853754940712,
+      "units": 33.36363636363638,
+      "roi": 0.13083778966131915,
+      "z": 2.231803177456825,
+      "p": 0.012813987120505492,
+      "ci_lo": 0.01593425769825181,
+      "ci_hi": 0.2457413216243865,
+      "max_dd": 9.999999999999979
     },
     "holdout": {
-      "n": 163,
-      "wins": 90,
-      "losses": 71,
+      "n": 144,
+      "wins": 79,
+      "losses": 63,
       "pushes": 2,
-      "win_pct": 0.5590062111801242,
-      "units": 10.818181818181825,
-      "roi": 0.06636921360847746,
-      "z": 0.8966862123161232,
-      "p": 0.1849431899310478,
-      "ci_lo": -0.0787023363784597,
-      "ci_hi": 0.21144076359541464,
-      "max_dd": 13.09090909090909
+      "win_pct": 0.5563380281690141,
+      "units": 8.818181818181825,
+      "roi": 0.061237373737373785,
+      "z": 0.7774753626503949,
+      "p": 0.218439182323521,
+      "ci_lo": -0.0931408333302938,
+      "ci_hi": 0.21561558080504137,
+      "max_dd": 13.454545454545448
     },
     "recent": {
-      "n": 119,
-      "wins": 63,
-      "losses": 54,
+      "n": 100,
+      "wins": 52,
+      "losses": 46,
       "pushes": 2,
-      "win_pct": 0.5384615384615384,
-      "units": 3.272727272727278,
-      "roi": 0.027501909854851073,
-      "z": 0.31657262154594873,
-      "p": 0.3757839564412886,
-      "ci_lo": -0.1427710058896467,
-      "ci_hi": 0.19777482559934884,
-      "max_dd": 13.09090909090909
+      "win_pct": 0.5306122448979592,
+      "units": 1.272727272727277,
+      "roi": 0.01272727272727277,
+      "z": 0.13426350533198728,
+      "p": 0.44659710521402896,
+      "ci_lo": -0.1730674783018556,
+      "ci_hi": 0.19852202375640116,
+      "max_dd": 13.45454545454545
     },
     "recent_seasons": [
       2021,
@@ -1018,10 +1018,10 @@
     ],
     "by_season": {
       "2012": {
-        "bets": 20,
-        "units": -2.82,
-        "roi": -0.1409,
-        "record": "9-11-0"
+        "bets": 2,
+        "units": -0.09,
+        "roi": -0.0455,
+        "record": "1-1-0"
       },
       "2013": {
         "bets": 34,
@@ -1036,22 +1036,22 @@
         "record": "26-13-0"
       },
       "2015": {
-        "bets": 50,
-        "units": 8.27,
-        "roi": 0.1655,
-        "record": "30-19-1"
+        "bets": 41,
+        "units": 10.55,
+        "roi": 0.2572,
+        "record": "27-14-0"
       },
       "2016": {
-        "bets": 35,
-        "units": -0.64,
-        "roi": -0.0182,
-        "record": "18-17-0"
+        "bets": 38,
+        "units": 2.09,
+        "roi": 0.055,
+        "record": "21-17-0"
       },
       "2017": {
-        "bets": 77,
-        "units": 6.09,
-        "roi": 0.0791,
-        "record": "43-33-1"
+        "bets": 60,
+        "units": 4.0,
+        "roi": 0.0667,
+        "record": "33-26-1"
       },
       "2018": {
         "bets": 41,
@@ -1066,22 +1066,22 @@
         "record": "27-17-0"
       },
       "2021": {
-        "bets": 41,
-        "units": 0.09,
-        "roi": 0.0022,
-        "record": "21-19-1"
+        "bets": 13,
+        "units": -0.55,
+        "roi": -0.042,
+        "record": "6-6-1"
       },
       "2022": {
-        "bets": 50,
-        "units": -8.91,
-        "roi": -0.1782,
-        "record": "21-28-1"
+        "bets": 53,
+        "units": -11.91,
+        "roi": -0.2247,
+        "record": "21-31-1"
       },
       "2026": {
-        "bets": 28,
-        "units": 12.09,
-        "roi": 0.4318,
-        "record": "21-7-0"
+        "bets": 34,
+        "units": 13.73,
+        "roi": 0.4037,
+        "record": "25-9-0"
       }
     }
   },

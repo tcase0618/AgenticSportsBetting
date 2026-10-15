@@ -1,0 +1,19 @@
+strategy,target_roi,bets_per_year,mult_at_flip,realized_roi,med_bets_to_watch,med_bets_to_zero_stake,med_bets_to_retired,pct_retired_within_horizon,yrs_to_zero_stake,units_first300_static,units_first300_learner
+Wind Wall Unders,-0.045,26.0,0.0,-0.035,0.0,0.0,0.0,1.0,0.0,-10.9,0.0
+Wind Wall Unders,-0.15,26.0,0.0,-0.142,0.0,0.0,0.0,1.0,0.0,-42.9,0.0
+Bounce-back dogs ATS,-0.045,16.0,0.0,-0.045,0.0,0.0,0.0,1.0,0.0,-17.5,0.0
+Bounce-back dogs ATS,-0.15,16.0,0.0,-0.149,0.0,0.0,0.0,1.0,0.0,-47.7,0.0
+Rested Conference Dogs,-0.045,30.0,0.0,-0.045,0.0,0.0,0.0,1.0,0.0,-9.4,0.0
+Rested Conference Dogs,-0.15,30.0,0.0,-0.153,0.0,0.0,0.0,1.0,0.0,-33.0,0.0
+Youth Over Experience,-0.045,58.0,0.0,-0.038,0.0,0.0,0.0,1.0,0.0,-9.4,0.0
+Youth Over Experience,-0.15,58.0,0.0,-0.145,0.0,0.0,0.0,1.0,0.0,-42.4,0.0
+Series Carryover Unders,-0.045,277.0,0.0,-0.038,0.0,0.0,0.0,1.0,0.0,-6.0,0.0
+Series Carryover Unders,-0.15,277.0,0.0,-0.145,0.0,0.0,0.0,1.0,0.0,-21.4,0.0
+Load-Management Overs,-0.045,29.0,0.0,-0.051,0.0,0.0,0.0,1.0,0.0,-9.7,0.0
+Load-Management Overs,-0.15,29.0,0.0,-0.157,0.0,0.0,0.0,1.0,0.0,-32.1,0.0
+Blowout Bounce-Back,-0.045,149.0,0.0,-0.045,0.0,0.0,0.0,1.0,0.0,-10.3,0.0
+Blowout Bounce-Back,-0.15,149.0,0.0,-0.152,0.0,0.0,0.0,1.0,0.0,-34.3,0.0
+Blowout Believers,-0.045,467.0,0.0,-0.043,0.0,0.0,0.0,1.0,0.0,-7.4,0.0
+Blowout Believers,-0.15,467.0,0.0,-0.149,0.0,0.0,0.0,1.0,0.0,-23.1,0.0
+NBA points: blend EV,-0.045,3345.0,0.0,-0.046,0.0,0.0,0.0,1.0,0.0,-7.7,0.0
+NBA points: blend EV,-0.15,3345.0,0.0,-0.151,0.0,0.0,0.0,1.0,0.0,-22.8,0.0
