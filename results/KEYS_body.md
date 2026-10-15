@@ -86,3 +86,118 @@ Profitable seasons: **15/17** · Max drawdown: **8.8u** · 95% CI on ROI: +3.0% 
 </details>
 
 **Runners-up that also survived holdout:** Same rule with an 8+ year age gap (359 bets, +11.8% ROI, holdout z 2.71); Fade 35+ year-old underdogs at 155 lbs and below (528 bets, +7.6% ROI)
+
+
+## Rested Conference Dogs  (NCAAF)
+**Rule:** In CONFERENCE games, bet the ATS underdog of roughly 7+ points (market win prob <= 30%) when it has 2+ more days of rest than its opponent (e.g. off a bye or Thursday game).
+**Why it works:** Extra preparation is worth more against a familiar conference opponent, and big spreads price talent gaps rather than prep and scheme. The same spot outside conference play (cupcake mismatches) shows no edge, which is why the conference filter is part of the rule.
+
+| Sample | Bets | W-L-P | Win% | ROI | Units | z | p (one-sided) |
+|---|---|---|---|---|---|---|---|
+| All seasons | 579 | 322-249-8 | 56.4% | +7.6% | +43.7 | 1.93 | 0.0267 |
+| Discovery (<2018) | 337 | 195-139-3 | 58.4% | +11.4% | +38.3 | 2.22 | 0.0131 |
+| Holdout (2018+) | 242 | 127-110-5 | 53.6% | +2.3% | +5.5 | 0.37 | 0.3552 |
+| Last 3 seasons (2023-2025) | 119 | 63-51-5 | 55.3% | +5.3% | +6.3 | 0.62 | 0.2689 |
+
+Profitable seasons: **16/19** · Max drawdown: **14.4u** · 95% CI on ROI: -0.1% to +15.2%
+
+<details><summary>Season by season</summary>
+
+| Season | Bets | Record | Units | ROI |
+|---|---|---|---|---|
+| 2006 | 14 | 9-4-1 | +4.18 | +29.9% |
+| 2007 | 21 | 12-9-0 | +1.91 | +9.1% |
+| 2008 | 15 | 8-7-0 | +0.27 | +1.8% |
+| 2009 | 20 | 12-8-0 | +2.91 | +14.5% |
+| 2010 | 31 | 18-13-0 | +3.36 | +10.8% |
+| 2011 | 34 | 18-16-0 | +0.36 | +1.1% |
+| 2012 | 27 | 16-10-1 | +4.55 | +16.8% |
+| 2013 | 52 | 28-24-0 | +1.45 | +2.8% |
+| 2014 | 42 | 23-18-1 | +2.91 | +6.9% |
+| 2015 | 26 | 16-10-0 | +4.55 | +17.5% |
+| 2016 | 30 | 20-10-0 | +8.18 | +27.3% |
+| 2017 | 25 | 15-10-0 | +3.64 | +14.5% |
+| 2018 | 28 | 16-12-0 | +2.55 | +9.1% |
+| 2019 | 37 | 18-19-0 | -2.64 | -7.1% |
+| 2021 | 35 | 19-16-0 | +1.27 | +3.6% |
+| 2022 | 23 | 11-12-0 | -2.00 | -8.7% |
+| 2023 | 31 | 21-8-2 | +11.09 | +35.8% |
+| 2024 | 48 | 28-20-0 | +5.45 | +11.4% |
+| 2025 | 40 | 14-23-3 | -10.27 | -25.7% |
+
+</details>
+
+**Runners-up that also survived holdout:** Off-bye conference big dogs vs. a non-bye opponent (412 bets, +9.2% ROI, holdout +6.1%)
+
+
+## Blowout Bounce-Back  (NHL)
+**Rule:** Bet the moneyline on a SMALL favorite (about -101 to -150) whose previous game was a puck-line disaster: lost as the puck-line favorite, or lost by 4+ goals as an underdog.
+**Why it works:** NHL results are very noisy (goaltending, shooting luck), but the market overreacts to the most recent ugly result. Good teams coming off a bad loss are priced too cheaply. NFL has the same overreaction pattern (see the NFL runner-up).
+
+| Sample | Bets | W-L-P | Win% | ROI | Units | z | p (one-sided) |
+|---|---|---|---|---|---|---|---|
+| All seasons | 1680 | 997-683-0 | 59.3% | +4.1% | +68.9 | 1.95 | 0.0259 |
+| Discovery (<2019) | 713 | 431-282-0 | 60.4% | +6.1% | +43.4 | 1.89 | 0.0294 |
+| Holdout (2019+) | 967 | 566-401-0 | 58.5% | +2.6% | +25.5 | 0.95 | 0.1722 |
+| Last 3 seasons (2024-2026) | 430 | 259-171-0 | 60.2% | +4.1% | +17.7 | 1.01 | 0.1568 |
+
+Profitable seasons: **9/11** · Max drawdown: **21.3u** · 95% CI on ROI: -0.0% to +8.2%
+
+<details><summary>Season by season</summary>
+
+| Season | Bets | Record | Units | ROI |
+|---|---|---|---|---|
+| 2015 | 165 | 94-71-0 | -0.68 | -0.4% |
+| 2016 | 181 | 112-69-0 | +16.51 | +9.1% |
+| 2017 | 192 | 114-78-0 | +7.12 | +3.7% |
+| 2018 | 175 | 111-64-0 | +20.50 | +11.7% |
+| 2019 | 173 | 99-74-0 | +3.16 | +1.8% |
+| 2020 | 147 | 79-68-0 | -7.02 | -4.8% |
+| 2021 | 71 | 41-30-0 | +1.86 | +2.6% |
+| 2022 | 146 | 88-58-0 | +9.74 | +6.7% |
+| 2024 | 160 | 94-66-0 | +3.00 | +1.9% |
+| 2025 | 159 | 97-62-0 | +7.55 | +4.8% |
+| 2026 | 111 | 68-43-0 | +7.20 | +6.5% |
+
+</details>
+
+**Runners-up that also survived holdout:** Small favorites on a 3+ game puck-line losing streak, puck line (878 bets, +9.4% ROI, volatile); Small favorites after any 3+ goal loss (1,754 bets since 2008, +3.1% ROI)
+
+
+## Series Carryover Unders  (MLB)
+**Rule:** Bet the UNDER when BOTH teams' previous game finished 3.5+ runs under its closing total (usually yesterday's game in the same series and park).
+**Why it works:** Park, weather, umpire-zone and lineup conditions persist day to day within a series, and the next total under-adjusts. LOW CONFIDENCE: MLB moneylines and totals proved the most efficient market tested, and nothing passed the strict discovery+holdout gate. This is the best lean, not a proven edge.
+
+| Sample | Bets | W-L-P | Win% | ROI | Units | z | p (one-sided) |
+|---|---|---|---|---|---|---|---|
+| All seasons | 4255 | 2180-1892-183 | 53.5% | +2.0% | +83.3 | 1.37 | 0.0850 |
+| Discovery (<2019) | 2565 | 1294-1150-121 | 52.9% | +1.0% | +26.4 | 0.56 | 0.2879 |
+| Holdout (2019+) | 1690 | 886-742-62 | 54.4% | +3.4% | +56.9 | 1.49 | 0.0684 |
+| Last 3 seasons (2023-2025) | 746 | 404-323-19 | 55.6% | +5.4% | +40.1 | 1.57 | 0.0579 |
+
+Profitable seasons: **9/16** · Max drawdown: **40.4u** · 95% CI on ROI: -0.8% to +4.8%
+
+<details><summary>Season by season</summary>
+
+| Season | Bets | Record | Units | ROI |
+|---|---|---|---|---|
+| 2010 | 281 | 136-130-15 | -6.36 | -2.3% |
+| 2011 | 254 | 130-108-16 | +10.18 | +4.0% |
+| 2012 | 266 | 123-130-13 | -18.18 | -6.8% |
+| 2013 | 305 | 160-129-16 | +16.45 | +5.4% |
+| 2014 | 267 | 124-124-19 | -11.27 | -4.2% |
+| 2015 | 249 | 136-106-7 | +17.64 | +7.1% |
+| 2016 | 282 | 134-135-13 | -13.18 | -4.7% |
+| 2017 | 336 | 161-162-13 | -15.64 | -4.7% |
+| 2018 | 325 | 190-126-9 | +46.73 | +14.4% |
+| 2019 | 305 | 156-136-13 | +5.82 | +1.9% |
+| 2020 | 107 | 62-42-3 | +14.36 | +13.4% |
+| 2021 | 281 | 131-131-19 | -11.91 | -4.2% |
+| 2022 | 251 | 133-110-8 | +8.56 | +3.4% |
+| 2023 | 271 | 138-126-7 | -2.05 | -0.8% |
+| 2024 | 253 | 136-109-8 | +13.58 | +5.4% |
+| 2025 | 222 | 130-88-4 | +28.58 | +12.9% |
+
+</details>
+
+**Runners-up that also survived holdout:** Fade a 5+ point moneyline steam move (2021-25 only, +4.8% on 1,352 bets). Excluded because the 2021+ 'closing' prices failed an integrity check

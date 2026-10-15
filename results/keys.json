@@ -422,5 +422,521 @@
         "record": "19-5-0"
       }
     }
+  },
+  "ncaaf": {
+    "sport": "ncaaf",
+    "name": "Rested Conference Dogs",
+    "rule": "In CONFERENCE games, bet the ATS underdog of roughly 7+ points (market win prob <= 30%) when it has 2+ more days of rest than its opponent (e.g. off a bye or Thursday game).",
+    "why": "Extra preparation is worth more against a familiar conference opponent, and big spreads price talent gaps rather than prep and scheme. The same spot outside conference play (cupcake mismatches) shows no edge, which is why the conference filter is part of the rule.",
+    "key": [
+      "ats",
+      "rest_adv2",
+      "big_dog",
+      "on",
+      "conf"
+    ],
+    "split": 2018,
+    "all": {
+      "n": 579,
+      "wins": 322,
+      "losses": 249,
+      "pushes": 8,
+      "win_pct": 0.563922942206655,
+      "units": 43.72727272727275,
+      "roi": 0.07552205997801856,
+      "z": 1.9311732305542098,
+      "p": 0.026730816645146007,
+      "ci_lo": -0.0011273235236554657,
+      "ci_hi": 0.15217144347969258,
+      "max_dd": 14.363636363636374,
+      "seasons": 19,
+      "pos_seasons": 16,
+      "pct_pos_seasons": 0.8421052631578947
+    },
+    "train": {
+      "n": 337,
+      "wins": 195,
+      "losses": 139,
+      "pushes": 3,
+      "win_pct": 0.5838323353293413,
+      "units": 38.27272727272729,
+      "roi": 0.11356892365794448,
+      "z": 2.221965727056776,
+      "p": 0.013142810938450506,
+      "ci_lo": 0.013389570007687479,
+      "ci_hi": 0.21374827730820148,
+      "max_dd": 8.363636363636349
+    },
+    "holdout": {
+      "n": 242,
+      "wins": 127,
+      "losses": 110,
+      "pushes": 5,
+      "win_pct": 0.5358649789029536,
+      "units": 5.454545454545463,
+      "roi": 0.022539444027047367,
+      "z": 0.3713694224524985,
+      "p": 0.3551811985534723,
+      "ci_lo": -0.09641841201093464,
+      "ci_hi": 0.14149730006502936,
+      "max_dd": 14.36363636363636
+    },
+    "recent": {
+      "n": 119,
+      "wins": 63,
+      "losses": 51,
+      "pushes": 5,
+      "win_pct": 0.5526315789473685,
+      "units": 6.272727272727279,
+      "roi": 0.05271199388846453,
+      "z": 0.6162596419254163,
+      "p": 0.2688615852493036,
+      "ci_lo": -0.11493732304326859,
+      "ci_hi": 0.22036131082019766,
+      "max_dd": 14.36363636363636
+    },
+    "recent_seasons": [
+      2023,
+      2024,
+      2025
+    ],
+    "by_season": {
+      "2006": {
+        "bets": 14,
+        "units": 4.18,
+        "roi": 0.2987,
+        "record": "9-4-1"
+      },
+      "2007": {
+        "bets": 21,
+        "units": 1.91,
+        "roi": 0.0909,
+        "record": "12-9-0"
+      },
+      "2008": {
+        "bets": 15,
+        "units": 0.27,
+        "roi": 0.0182,
+        "record": "8-7-0"
+      },
+      "2009": {
+        "bets": 20,
+        "units": 2.91,
+        "roi": 0.1455,
+        "record": "12-8-0"
+      },
+      "2010": {
+        "bets": 31,
+        "units": 3.36,
+        "roi": 0.1085,
+        "record": "18-13-0"
+      },
+      "2011": {
+        "bets": 34,
+        "units": 0.36,
+        "roi": 0.0107,
+        "record": "18-16-0"
+      },
+      "2012": {
+        "bets": 27,
+        "units": 4.55,
+        "roi": 0.1684,
+        "record": "16-10-1"
+      },
+      "2013": {
+        "bets": 52,
+        "units": 1.45,
+        "roi": 0.028,
+        "record": "28-24-0"
+      },
+      "2014": {
+        "bets": 42,
+        "units": 2.91,
+        "roi": 0.0693,
+        "record": "23-18-1"
+      },
+      "2015": {
+        "bets": 26,
+        "units": 4.55,
+        "roi": 0.1748,
+        "record": "16-10-0"
+      },
+      "2016": {
+        "bets": 30,
+        "units": 8.18,
+        "roi": 0.2727,
+        "record": "20-10-0"
+      },
+      "2017": {
+        "bets": 25,
+        "units": 3.64,
+        "roi": 0.1455,
+        "record": "15-10-0"
+      },
+      "2018": {
+        "bets": 28,
+        "units": 2.55,
+        "roi": 0.0909,
+        "record": "16-12-0"
+      },
+      "2019": {
+        "bets": 37,
+        "units": -2.64,
+        "roi": -0.0713,
+        "record": "18-19-0"
+      },
+      "2021": {
+        "bets": 35,
+        "units": 1.27,
+        "roi": 0.0364,
+        "record": "19-16-0"
+      },
+      "2022": {
+        "bets": 23,
+        "units": -2.0,
+        "roi": -0.087,
+        "record": "11-12-0"
+      },
+      "2023": {
+        "bets": 31,
+        "units": 11.09,
+        "roi": 0.3578,
+        "record": "21-8-2"
+      },
+      "2024": {
+        "bets": 48,
+        "units": 5.45,
+        "roi": 0.1136,
+        "record": "28-20-0"
+      },
+      "2025": {
+        "bets": 40,
+        "units": -10.27,
+        "roi": -0.2568,
+        "record": "14-23-3"
+      }
+    }
+  },
+  "nhl": {
+    "sport": "nhl",
+    "name": "Blowout Bounce-Back",
+    "rule": "Bet the moneyline on a SMALL favorite (about -101 to -150) whose previous game was a puck-line disaster: lost as the puck-line favorite, or lost by 4+ goals as an underdog.",
+    "why": "NHL results are very noisy (goaltending, shooting luck), but the market overreacts to the most recent ugly result. Good teams coming off a bad loss are priced too cheaply. NFL has the same overreaction pattern (see the NFL runner-up).",
+    "key": [
+      "ml",
+      "prev_big_ats_fail",
+      "small_fav",
+      "on",
+      "all"
+    ],
+    "split": 2019,
+    "all": {
+      "n": 1680,
+      "wins": 997,
+      "losses": 683,
+      "pushes": 0,
+      "win_pct": 0.593452380952381,
+      "units": 68.92585063565028,
+      "roi": 0.041027292045029924,
+      "z": 1.9456118766793509,
+      "p": 0.025850689639622858,
+      "ci_lo": -0.0003034036461905601,
+      "ci_hi": 0.08235798773625042,
+      "max_dd": 21.3194614003296,
+      "seasons": 11,
+      "pos_seasons": 9,
+      "pct_pos_seasons": 0.8181818181818182
+    },
+    "train": {
+      "n": 713,
+      "wins": 431,
+      "losses": 282,
+      "pushes": 0,
+      "win_pct": 0.6044880785413744,
+      "units": 43.44623057923751,
+      "roi": 0.060934404739463544,
+      "z": 1.8893210013653001,
+      "p": 0.029424414563159,
+      "ci_lo": -0.0022795399544463524,
+      "ci_hi": 0.12414834943337344,
+      "max_dd": 19.295870561512395
+    },
+    "holdout": {
+      "n": 967,
+      "wins": 566,
+      "losses": 401,
+      "pushes": 0,
+      "win_pct": 0.5853154084798345,
+      "units": 25.479620056412763,
+      "roi": 0.026349141733622298,
+      "z": 0.9453269273565087,
+      "p": 0.17224599762371012,
+      "ci_lo": -0.028282030089988742,
+      "ci_hi": 0.08098031355723334,
+      "max_dd": 21.319461400329544
+    },
+    "recent": {
+      "n": 430,
+      "wins": 259,
+      "losses": 171,
+      "pushes": 0,
+      "win_pct": 0.6023255813953489,
+      "units": 17.744658949729796,
+      "roi": 0.04126664872030185,
+      "z": 1.0075020085632644,
+      "p": 0.1568467964924986,
+      "ci_lo": -0.03901371876713698,
+      "ci_hi": 0.12154701620774068,
+      "max_dd": 11.455544793925599
+    },
+    "recent_seasons": [
+      2024,
+      2025,
+      2026
+    ],
+    "by_season": {
+      "2015": {
+        "bets": 165,
+        "units": -0.68,
+        "roi": -0.0041,
+        "record": "94-71-0"
+      },
+      "2016": {
+        "bets": 181,
+        "units": 16.51,
+        "roi": 0.0912,
+        "record": "112-69-0"
+      },
+      "2017": {
+        "bets": 192,
+        "units": 7.12,
+        "roi": 0.0371,
+        "record": "114-78-0"
+      },
+      "2018": {
+        "bets": 175,
+        "units": 20.5,
+        "roi": 0.1172,
+        "record": "111-64-0"
+      },
+      "2019": {
+        "bets": 173,
+        "units": 3.16,
+        "roi": 0.0183,
+        "record": "99-74-0"
+      },
+      "2020": {
+        "bets": 147,
+        "units": -7.02,
+        "roi": -0.0478,
+        "record": "79-68-0"
+      },
+      "2021": {
+        "bets": 71,
+        "units": 1.86,
+        "roi": 0.0261,
+        "record": "41-30-0"
+      },
+      "2022": {
+        "bets": 146,
+        "units": 9.74,
+        "roi": 0.0667,
+        "record": "88-58-0"
+      },
+      "2024": {
+        "bets": 160,
+        "units": 3.0,
+        "roi": 0.0187,
+        "record": "94-66-0"
+      },
+      "2025": {
+        "bets": 159,
+        "units": 7.55,
+        "roi": 0.0475,
+        "record": "97-62-0"
+      },
+      "2026": {
+        "bets": 111,
+        "units": 7.2,
+        "roi": 0.0648,
+        "record": "68-43-0"
+      }
+    }
+  },
+  "mlb": {
+    "sport": "mlb",
+    "name": "Series Carryover Unders",
+    "rule": "Bet the UNDER when BOTH teams' previous game finished 3.5+ runs under its closing total (usually yesterday's game in the same series and park).",
+    "why": "Park, weather, umpire-zone and lineup conditions persist day to day within a series, and the next total under-adjusts. LOW CONFIDENCE: MLB moneylines and totals proved the most efficient market tested, and nothing passed the strict discovery+holdout gate. This is the best lean, not a proven edge.",
+    "key": [
+      "tot",
+      "prev_both_under_big",
+      "game",
+      "under",
+      "all"
+    ],
+    "split": 2019,
+    "all": {
+      "n": 4255,
+      "wins": 2180,
+      "losses": 1892,
+      "pushes": 183,
+      "win_pct": 0.5353634577603144,
+      "units": 83.29574781855139,
+      "roi": 0.019575968935029706,
+      "z": 1.3722996366269389,
+      "p": 0.08498508935913833,
+      "ci_lo": -0.008383594769998691,
+      "ci_hi": 0.0475355326400581,
+      "max_dd": 40.36363636363632,
+      "seasons": 16,
+      "pos_seasons": 9,
+      "pct_pos_seasons": 0.5625
+    },
+    "train": {
+      "n": 2565,
+      "wins": 1294,
+      "losses": 1150,
+      "pushes": 121,
+      "win_pct": 0.5294599018003273,
+      "units": 26.363636363636466,
+      "roi": 0.010278220804536635,
+      "z": 0.5595350011561087,
+      "p": 0.2878983253903629,
+      "ci_lo": -0.02572544784044116,
+      "ci_hi": 0.04628188944951443,
+      "max_dd": 40.36363636363632
+    },
+    "holdout": {
+      "n": 1690,
+      "wins": 886,
+      "losses": 742,
+      "pushes": 62,
+      "win_pct": 0.5442260442260443,
+      "units": 56.9321114549149,
+      "roi": 0.03368763991415083,
+      "z": 1.4876749635627204,
+      "p": 0.06841831665737941,
+      "ci_lo": -0.01069555927178606,
+      "ci_hi": 0.07807083910008772,
+      "max_dd": 24.257850350088802
+    },
+    "recent": {
+      "n": 746,
+      "wins": 404,
+      "losses": 323,
+      "pushes": 19,
+      "win_pct": 0.5557083906464925,
+      "units": 40.10376162439113,
+      "roi": 0.053758393598379535,
+      "z": 1.5725471954534151,
+      "p": 0.057911851413472645,
+      "ci_lo": -0.013245287917483271,
+      "ci_hi": 0.12076207511424233,
+      "max_dd": 18.641710290470527
+    },
+    "recent_seasons": [
+      2023,
+      2024,
+      2025
+    ],
+    "by_season": {
+      "2010": {
+        "bets": 281,
+        "units": -6.36,
+        "roi": -0.0226,
+        "record": "136-130-15"
+      },
+      "2011": {
+        "bets": 254,
+        "units": 10.18,
+        "roi": 0.0401,
+        "record": "130-108-16"
+      },
+      "2012": {
+        "bets": 266,
+        "units": -18.18,
+        "roi": -0.0684,
+        "record": "123-130-13"
+      },
+      "2013": {
+        "bets": 305,
+        "units": 16.45,
+        "roi": 0.0539,
+        "record": "160-129-16"
+      },
+      "2014": {
+        "bets": 267,
+        "units": -11.27,
+        "roi": -0.0422,
+        "record": "124-124-19"
+      },
+      "2015": {
+        "bets": 249,
+        "units": 17.64,
+        "roi": 0.0708,
+        "record": "136-106-7"
+      },
+      "2016": {
+        "bets": 282,
+        "units": -13.18,
+        "roi": -0.0467,
+        "record": "134-135-13"
+      },
+      "2017": {
+        "bets": 336,
+        "units": -15.64,
+        "roi": -0.0465,
+        "record": "161-162-13"
+      },
+      "2018": {
+        "bets": 325,
+        "units": 46.73,
+        "roi": 0.1438,
+        "record": "190-126-9"
+      },
+      "2019": {
+        "bets": 305,
+        "units": 5.82,
+        "roi": 0.0191,
+        "record": "156-136-13"
+      },
+      "2020": {
+        "bets": 107,
+        "units": 14.36,
+        "roi": 0.1342,
+        "record": "62-42-3"
+      },
+      "2021": {
+        "bets": 281,
+        "units": -11.91,
+        "roi": -0.0424,
+        "record": "131-131-19"
+      },
+      "2022": {
+        "bets": 251,
+        "units": 8.56,
+        "roi": 0.0341,
+        "record": "133-110-8"
+      },
+      "2023": {
+        "bets": 271,
+        "units": -2.05,
+        "roi": -0.0076,
+        "record": "138-126-7"
+      },
+      "2024": {
+        "bets": 253,
+        "units": 13.58,
+        "roi": 0.0537,
+        "record": "136-109-8"
+      },
+      "2025": {
+        "bets": 222,
+        "units": 28.58,
+        "roi": 0.1287,
+        "record": "130-88-4"
+      }
+    }
   }
 }
