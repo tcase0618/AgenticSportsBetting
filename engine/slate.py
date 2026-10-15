@@ -81,10 +81,12 @@ def game_legs(sport: str, g: pd.Series) -> list[dict]:
     def add(kind, side, label, price_col, fair_p, line=None):
         b = best.get(price_col.replace("_odds", ""))
         price, src = (b[0], b[1]) if b else (g.get(price_col), g.get("source", "FanDuel"))
+        fd = g.get(price_col) if g.get("source", "FanDuel") == "FanDuel" else None
         if price is None or price != price or fair_p != fair_p:
             return
         legs.append(dict(sport=sport, event=ev, game_key=ev, kind=kind, side=side, pick=label, line=line,
                          price=float(price), book=src, p_fair=fair_p, p=fair_p, edge_src="",
+                         fd_price=float(fd) if fd is not None and fd == fd else None,
                          home=g.home_name, away=g.away_name, day=_local_day(g.get("commence"))))
     ph, pa = _fair(g.get("home_ml"), g.get("away_ml"))
     add("ml", "home", f"{g.home_name} ML", "home_ml", ph)
@@ -165,7 +167,7 @@ def prop_legs_nba(board: pd.DataFrame) -> list[dict]:
         for side, price, p, pf in (("over", r.over_odds, p_over, po), ("under", r.under_odds, 1 - p_over, pu)):
             legs.append(dict(sport="nba", event=ev, game_key=ev, kind="prop", side=side, day=_local_day(r.commence),
                              pick=f"{r.player} {side.upper()} {r.line:g} pts", line=float(r.line), price=float(price),
-                             book="FanDuel", p_fair=pf, p=p, edge_src="props model" if pr else "",
+                             book="FanDuel", fd_price=float(price), p_fair=pf, p=p, edge_src="props model" if pr else "",
                              player=r.player, team_home=team_home))
     return legs
 
@@ -288,33 +290,41 @@ def cross_game_day(legs_day: list[dict], day: str, max_legs=20) -> dict:
     from backtest.parlay import TIER_OF
     weekend = pd.Timestamp(day).weekday() >= 5 if day else False
     per_game = {}
+    legs_day = [L for L in legs_day if L.get("fd_price") is not None and L["kind"] != "prop"]
     for L in legs_day:
-        e = L["p"] * american_to_decimal(L["price"]) - 1
+        e = L["p"] * american_to_decimal(L["fd_price"]) - 1
         key = L["game_key"]
         if key not in per_game or (bool(L["edge_src"]), e) > (bool(per_game[key][1]["edge_src"]), per_game[key][0]):
             per_game[key] = (e, L)
 
     def ticket(sel, stake=None, note=""):
-        dec = float(np.prod([american_to_decimal(L["price"]) for _, L in sel]))
+        # one book: every parlay leg at its FanDuel price (Polymarket has no parlays)
+        dec = float(np.prod([american_to_decimal(L["fd_price"]) for _, L in sel]))
         p = float(np.prod([L["p"] for _, L in sel]))
-        return dict(day=day, n_legs=len(sel), legs=" + ".join(f"{L['pick']} ({fmt_american(L['price'])})" for _, L in sel),
+        return dict(day=day, book="FanDuel", n_legs=len(sel),
+                    legs=" + ".join(f"{L['pick']} ({fmt_american(L['fd_price'])})" for _, L in sel),
                     odds=fmt_american(decimal_to_american(dec)), hit_prob=p, ev=p * dec - 1,
                     one_in=round(1 / max(p, 1e-12)), stake=stake, note=note)
     edge = [(e, L) for e, L in per_game.values() if L["edge_src"] and TIER_OF.get(L["edge_src"], "C") in ("A", "B")]
-    edge.sort(key=lambda x: (TIER_OF.get(x[1]["edge_src"], "C"), american_to_decimal(x[1]["price"])))
+    edge.sort(key=lambda x: (TIER_OF.get(x[1]["edge_src"], "C"), american_to_decimal(x[1]["fd_price"])))
     plan = []
     for kind, stake, note in PLAYBOOK["weekend" if weekend else "weekday"]:
         if kind == "best3" and len(edge) >= 3:
             plan.append(dict(type="Best 3", **ticket(edge[:3], stake, note)))
         elif kind == "best3" and len(edge) == 2:
             plan.append(dict(type="Best 2", **ticket(edge, stake, "Only 2 edge legs: 2-leg parlay (hit 46%, ROI +12%)")))
-        elif kind == "all" and len(edge) >= 4:
-            plan.append(dict(type="All edge legs", **ticket(edge, stake, note)))
+        elif kind == "all" and len(edge) >= 4:   # backtested full-day parlays averaged 3-4 legs: cap at 5
+            plan.append(dict(type=f"All edge legs (top {min(len(edge), 5)})", **ticket(edge[:5], stake, note)))
         elif kind == "rr2" and len(edge) >= 3:
             for a, b in itertools.combinations(edge, 2):
                 plan.append(dict(type="RR2", **ticket([a, b], stake, note)))
     # moonshot: the 20 MOST LIKELY legs on different games that are not negative-EV (no longshot chasing)
-    safe = sorted([x for x in per_game.values() if x[0] >= -0.005 and x[1]["price"] >= -600], key=lambda x: -x[1]["p"])
+    best_p = {}
+    for L in legs_day:   # most likely leg per game whose FanDuel price is not worse than fair
+        e = L["p"] * american_to_decimal(L["fd_price"]) - 1
+        if e >= -0.03 and L["fd_price"] >= -600 and (L["game_key"] not in best_p or L["p"] > best_p[L["game_key"]][1]["p"]):
+            best_p[L["game_key"]] = (e, L)
+    safe = sorted(best_p.values(), key=lambda x: -x[1]["p"])
     moon = ticket(safe[:max_legs], 0.1, "Lottery: 20 most-likely non-negative-EV legs. Tiny stake only.") \
         if len(safe) >= max_legs else None
     every = []
@@ -416,6 +426,7 @@ def render(res: dict, per_sport=2) -> str:
         out += ["## Best same-game parlays by sport", "", "| Sport | Game | Legs | Hit prob | Fair | Bet if ≥ | Edge source |",
                 "|---|---|---|---|---|---|---|"]
         S = S[S.edge_legs > 0].sort_values(["sport", "edge_vs_market", "p_model"], ascending=[True, False, False])
+        S = S.drop_duplicates("event")
         for _, s in S.groupby("sport").head(per_sport).iterrows():
             out.append(f"| {s.sport.upper()} | {s.event} | {s.legs} | {s.p_model*100:.1f}% | {s.fair_odds} | "
                        f"**{s.bet_if_fanduel_at_least}** | {s.edge_sources} |")
