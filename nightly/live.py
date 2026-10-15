@@ -298,13 +298,13 @@ def nfl_wind(slate: pd.DataFrame) -> pd.Series:
 
 
 # ------------------------------------------------------------------ live card
-def today_slate(sport: str) -> pd.DataFrame:
-    now = datetime.now()
+def today_slate(sport: str, day: datetime | None = None, board: pd.DataFrame | None = None) -> pd.DataFrame:
+    now = day or datetime.now()
     g = espn_games(sport, now)
     g = g[~g.completed]
     if g.empty:
         return g
-    g = attach_odds(g, odds_board(sport))
+    g = attach_odds(g, odds_board(sport) if board is None else board)
     g["season"] = season_of(sport, now)
     if sport == "nfl":
         g["wind"] = nfl_wind(g)
@@ -379,7 +379,7 @@ def live_ufc_legs(today: pd.Timestamp, notes: list) -> list[dict]:
     T = tott.drop_duplicates("k").set_index("k")
     legs = []
     for _, r in board.iterrows():
-        if pd.Timestamp(r.commence).tz_convert("America/New_York").date() > (today + pd.Timedelta(days=1)).date():
+        if pd.Timestamp(r.commence).tz_convert("America/New_York").date() > (today + pd.Timedelta(days=3)).date():
             continue
         a, b = norm_name(r.home_name), norm_name(r.away_name)
         if a not in T.index or b not in T.index or pd.isna(r.home_ml) or pd.isna(r.away_ml):
@@ -389,11 +389,12 @@ def live_ufc_legs(today: pd.Timestamp, notes: list) -> list[dict]:
         if max(wa, wb) > 155:
             continue
         age = lambda k: (today - T.loc[k, "dob"]).days / 365.25
-        for me, op, p, price, name in ((a, b, pa, r.home_ml, r.home_name), (b, a, pb, r.away_ml, r.away_name)):
+        for me, op, p, price, name, is_home in ((a, b, pa, r.home_ml, r.home_name, True),
+                                                 (b, a, pb, r.away_ml, r.away_name, False)):
             if p > 0.5 and age(op) - age(me) >= 5:
                 legs.append(dict(sport="ufc", strategy="Youth Over Experience", tier="A",
-                                 event=f"{r.home_name} vs {r.away_name}", market="ml", pick=f"{name} ML",
-                                 price=float(price), _home="", _away="", _home_side=True))
+                                 event=f"{r.away_name} vs {r.home_name}", market="ml", pick=f"{name} ML",
+                                 price=float(price), _home="", _away="", _home_side=is_home))
     return legs
 
 

@@ -325,9 +325,13 @@ def build(days=1) -> dict:
             key_legs = []
             if sport != "ufc":
                 try:
-                    slate = live.today_slate(sport)
-                    if len(slate):
-                        key_legs = team_legs(sport, today, history=live.history_with_today(sport, slate))
+                    days_list = [datetime.now() + timedelta(days=d) for d in range(days)]
+                    slates = [live.today_slate(sport, day=d, board=board) for d in days_list]
+                    slates = [x for x in slates if len(x)]
+                    if slates:
+                        H = live.history_with_today(sport, pd.concat(slates, ignore_index=True))
+                        for d in days_list:
+                            key_legs += team_legs(sport, pd.Timestamp(d.date()), history=H)
                 except Exception as e:
                     notes.append(f"{sport} strategies: {e}")
             else:
@@ -410,24 +414,6 @@ def render(res: dict, per_sport=2) -> str:
     if res["notes"]:
         out += ["", "_Feed notes: " + "; ".join(res["notes"]) + "_"]
     return "\n".join(out)
-
-
-if __name__ == "__main__":
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--days", type=int, default=1)
-    ap.add_argument("--settle", action="store_true", help="grade logged SGPs and refit calibration, then exit")
-    a = ap.parse_args()
-    if a.settle:
-        settle_sgp_log()
-        raise SystemExit
-    res = build(a.days)
-    md = render(res)
-    OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / f"slate_{res['date']:%Y-%m-%d}.md").write_text(md)
-    x = to_excel(res)
-    log_for_learning(res)
-    print(md)
-    print(f"\nExcel -> {x}  ({len(res['sgps'])} SGPs, {len(res['legs'])} legs)")
 
 
 # ------------------------------------------------------------------ learning loop
@@ -516,3 +502,21 @@ def calibration_factor() -> float:
         return float(json.loads(CAL_FILE.read_text())["factor"])
     except Exception:
         return 1.0
+
+
+if __name__ == "__main__":
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--days", type=int, default=1)
+    ap.add_argument("--settle", action="store_true", help="grade logged SGPs and refit calibration, then exit")
+    a = ap.parse_args()
+    if a.settle:
+        settle_sgp_log()
+        raise SystemExit
+    res = build(a.days)
+    md = render(res)
+    OUT.mkdir(parents=True, exist_ok=True)
+    (OUT / f"slate_{res['date']:%Y-%m-%d}.md").write_text(md)
+    x = to_excel(res)
+    log_for_learning(res)
+    print(md)
+    print(f"\nExcel -> {x}  ({len(res['sgps'])} SGPs, {len(res['legs'])} legs)")
