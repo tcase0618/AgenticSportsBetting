@@ -1,0 +1,13 @@
+structure,tickets,avg_legs,hit_rate,roi,units,avg_price,biggest_hit,longest_drought
+"Edge-only weekend parlay, tiers A (all seasons)",506,2.9,0.3379,0.1863,94.3,+268,+2436,20.0
+"Edge-only weekend parlay, tiers A (holdout)",232,2.9,0.3621,0.125,29.0,+265,+1247,12.0
+"Edge-only weekend parlay, tiers A+B (all seasons)",771,3.3,0.2542,0.1194,92.1,+313,+4741,20.0
+"Edge-only weekend parlay, tiers A+B (holdout)",331,3.4,0.281,0.0823,27.2,+292,+4741,20.0
+"Edge-only weekend parlay, tiers A+B+C (all seasons)",1322,4.8,0.1823,0.0668,88.3,+596,+4943,33.0
+"Edge-only weekend parlay, tiers A+B+C (holdout)",550,5.9,0.1655,-0.1339,-73.6,+655,+4741,25.0
+"NFL Sunday every-game parlay, all games",423,10.7,0.0827,-0.8234,-348.3,+19443,+304,43.0
+"NFL Sunday every-game parlay, top 3 most-likely legs",346,3.0,0.4913,-0.0934,-32.3,-110,+332,8.0
+"NFL Sunday every-game parlay, top 5 most-likely legs",340,5.0,0.2735,-0.0389,-13.2,+270,+1365,16.0
+"NFL Sunday every-game parlay, top 8 most-likely legs",339,8.0,0.0796,-0.1322,-44.8,+1285,+2607,27.0
+"NFL Sunday every-game parlay, top 10 most-likely legs",338,10.0,0.0296,-0.3125,-105.6,+3921,+3855,75.0
+"NFL Sunday every-game parlay, top 20 most-likely legs",0,,,,,,,

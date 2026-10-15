@@ -1,0 +1,174 @@
+date,espn_id,start,home,away,home_name,away_name,home_score,away_score,completed,neutral,conference_game,playoff,espn_spread_home,espn_total,espn_home_ml,espn_away_ml,indoor,city,state,home_ml,away_ml,spread_home,spread_home_odds,spread_away_odds,total,over_odds,under_odds,best,source,line_source
+2026-10-14,401892504,2026-10-14T23:30Z,WSH,MTL,Washington Capitals,Montreal Canadiens,5.0,4.0,True,0,0,0,,,,,True,Washington,DC,-110.0,-110.0,-1.5,210.0,-258.0,6.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-10-14,401892505,2026-10-15T00:30Z,COL,DAL,Colorado Avalanche,Dallas Stars,2.0,3.0,True,0,0,0,,,,,True,Denver,CO,-162.0,136.0,-1.5,164.0,-198.0,5.5,-135.0,114.0,,,espn-pickcenter:DraftKings
+2026-10-13,401892488,2026-10-13T22:00Z,DET,NJD,Detroit Red Wings,New Jersey Devils,4.0,5.0,True,0,0,0,,,,,True,Detroit,MI,-115.0,-105.0,-1.5,225.0,-278.0,6.5,114.0,-135.0,,,espn-pickcenter:DraftKings
+2026-10-13,401892489,2026-10-13T22:15Z,CBJ,FLA,Columbus Blue Jackets,Florida Panthers,3.0,7.0,True,0,0,0,,,,,True,Columbus,OH,-130.0,110.0,-1.5,190.0,-230.0,5.5,-130.0,110.0,,,espn-pickcenter:DraftKings
+2026-10-13,401892490,2026-10-13T22:30Z,MTL,BUF,Montreal Canadiens,Buffalo Sabres,4.0,3.0,True,0,0,0,,,,,True,Montreal,QC,-155.0,130.0,-1.5,160.0,-192.0,6.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-10-13,401892491,2026-10-13T22:45Z,CAR,WSH,Carolina Hurricanes,Washington Capitals,4.0,2.0,True,0,0,0,,,,,True,Raleigh,NC,-155.0,130.0,-1.5,160.0,-192.0,6.5,110.0,-130.0,,,espn-pickcenter:DraftKings
+2026-10-13,401892492,2026-10-13T23:00Z,PHI,SEA,Philadelphia Flyers,Seattle Kraken,2.0,3.0,True,0,0,0,,,,,True,Philadelphia,PA,-112.0,-108.0,-1.5,220.0,-270.0,5.5,-125.0,105.0,,,espn-pickcenter:DraftKings
+2026-10-13,401892493,2026-10-13T23:15Z,NYR,TBL,New York Rangers,Tampa Bay Lightning,4.0,1.0,True,0,0,0,,,,,True,New York,NY,136.0,-162.0,1.5,-192.0,160.0,5.5,-122.0,102.0,,,espn-pickcenter:DraftKings
+2026-10-13,401892494,2026-10-13T23:30Z,OTT,STL,Ottawa Senators,St. Louis Blues,2.0,7.0,True,0,0,0,,,,,True,Ottawa,ON,110.0,-130.0,1.5,-250.0,205.0,5.5,-120.0,100.0,,,espn-pickcenter:DraftKings
+2026-10-13,401892495,2026-10-13T23:45Z,NYI,VAN,New York Islanders,Vancouver Canucks,3.0,2.0,True,0,0,0,,,,,True,Elmont,NY,-205.0,170.0,-1.5,120.0,-142.0,5.5,-135.0,114.0,,,espn-pickcenter:DraftKings
+2026-10-13,401892496,2026-10-14T00:00Z,CHI,PIT,Chicago Blackhawks,Pittsburgh Penguins,5.0,3.0,True,0,0,0,,,,,True,Chicago,IL,136.0,-162.0,1.5,-192.0,160.0,6.5,-120.0,100.0,,,espn-pickcenter:DraftKings
+2026-10-13,401892497,2026-10-14T00:15Z,WPG,MIN,Winnipeg Jets,Minnesota Wild,5.0,2.0,True,0,0,0,,,,,True,Winnipeg,MB,-110.0,-110.0,1.5,-285.0,230.0,6.5,110.0,-130.0,,,espn-pickcenter:DraftKings
+2026-10-13,401892498,2026-10-14T00:45Z,DAL,COL,Dallas Stars,Colorado Avalanche,2.0,3.0,True,0,0,0,,,,,True,Dallas,TX,-115.0,-105.0,-1.5,230.0,-285.0,5.5,-122.0,102.0,,,espn-pickcenter:DraftKings
+2026-10-13,401892499,2026-10-14T00:45Z,NSH,VGK,Nashville Predators,Vegas Golden Knights,2.0,5.0,True,0,0,0,,,,,True,Nashville,TN,114.0,-135.0,1.5,-230.0,190.0,6.5,110.0,-130.0,,,espn-pickcenter:DraftKings
+2026-10-13,401892500,2026-10-14T01:00Z,UTA,TOR,Utah Mammoth,Toronto Maple Leafs,5.0,4.0,True,0,0,0,,,,,True,Salt Lake City,UT,-162.0,136.0,-1.5,145.0,-175.0,6.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-10-13,401892501,2026-10-14T01:45Z,ANA,CGY,Anaheim Ducks,Calgary Flames,2.0,4.0,True,0,0,0,,,,,True,Anaheim,CA,-175.0,145.0,-1.5,142.0,-170.0,6.5,110.0,-130.0,,,espn-pickcenter:DraftKings
+2026-10-13,401892502,2026-10-14T02:30Z,LAK,EDM,Los Angeles Kings,Edmonton Oilers,1.0,4.0,True,0,0,0,,,,,True,Los Angeles,CA,105.0,-125.0,1.5,-238.0,195.0,6.5,110.0,-130.0,,,espn-pickcenter:DraftKings
+2026-10-13,401892503,2026-10-14T03:15Z,SJS,BOS,San Jose Sharks,Boston Bruins,3.0,6.0,True,0,0,0,,,,,True,San Jose,CA,114.0,-135.0,1.5,-230.0,190.0,6.5,105.0,-125.0,,,espn-pickcenter:DraftKings
+2026-10-12,401892485,2026-10-12T17:00Z,BUF,FLA,Buffalo Sabres,Florida Panthers,5.0,3.0,True,0,0,0,,,,,True,Buffalo,NY,-115.0,-105.0,-1.5,220.0,-270.0,5.5,-130.0,110.0,,,espn-pickcenter:DraftKings
+2026-10-12,401892486,2026-10-12T23:00Z,NJD,OTT,New Jersey Devils,Ottawa Senators,1.0,4.0,True,0,0,0,,,,,True,Newark,NJ,-118.0,-102.0,-1.5,210.0,-258.0,5.5,-130.0,110.0,,,espn-pickcenter:DraftKings
+2026-10-12,401892487,2026-10-13T00:00Z,MIN,VGK,Minnesota Wild,Vegas Golden Knights,4.0,2.0,True,0,0,0,,,,,True,Saint Paul,MN,-112.0,-108.0,-1.5,230.0,-285.0,5.5,-135.0,114.0,,,espn-pickcenter:DraftKings
+2026-10-11,401892482,2026-10-11T21:00Z,WSH,SEA,Washington Capitals,Seattle Kraken,3.0,5.0,True,0,0,0,,,,,True,Washington,DC,-205.0,170.0,-1.5,120.0,-142.0,6.5,-102.0,-118.0,,,espn-pickcenter:DraftKings
+2026-10-11,401892483,2026-10-11T22:00Z,NYR,VAN,New York Rangers,Vancouver Canucks,6.0,2.0,True,0,0,0,,,,,True,New York,NY,-290.0,235.0,-1.5,-105.0,-115.0,6.5,110.0,-130.0,,,espn-pickcenter:DraftKings
+2026-10-11,401892484,2026-10-11T23:00Z,PHI,CAR,Philadelphia Flyers,Carolina Hurricanes,1.0,4.0,True,0,0,0,,,,,True,Philadelphia,PA,190.0,-230.0,1.5,-142.0,120.0,5.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-10,401892469,2026-10-10T17:00Z,BOS,PHI,Boston Bruins,Philadelphia Flyers,5.0,1.0,True,0,0,0,,,,,True,Boston,MA,-148.0,124.0,-1.5,185.0,-225.0,5.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-10,401892470,2026-10-10T19:30Z,NJD,VAN,New Jersey Devils,Vancouver Canucks,4.0,1.0,True,0,0,0,,,,,True,Newark,NJ,-298.0,240.0,-1.5,-112.0,-108.0,6.5,-102.0,-118.0,,,espn-pickcenter:DraftKings
+2026-10-10,401892471,2026-10-10T20:00Z,SJS,EDM,San Jose Sharks,Edmonton Oilers,1.0,3.0,True,0,0,0,,,,,True,San Jose,CA,130.0,-155.0,1.5,-185.0,154.0,6.5,-135.0,114.0,,,espn-pickcenter:DraftKings
+2026-10-10,401891805,2026-10-10T22:00Z,FLA,MIN,Florida Panthers,Minnesota Wild,1.0,4.0,True,0,0,0,,,,,True,Sunrise,FL,-135.0,114.0,-1.5,185.0,-225.0,5.5,-125.0,105.0,,,espn-pickcenter:DraftKings
+2026-10-10,401892472,2026-10-10T23:00Z,BUF,UTA,Buffalo Sabres,Utah Mammoth,1.0,4.0,True,0,0,0,,,,,True,Buffalo,NY,-108.0,-112.0,1.5,-270.0,220.0,6.5,102.0,-122.0,,,espn-pickcenter:DraftKings
+2026-10-10,401892473,2026-10-10T23:00Z,MTL,DET,Montreal Canadiens,Detroit Red Wings,1.0,0.0,True,0,0,0,,,,,True,Montreal,QC,-192.0,160.0,-1.5,130.0,-155.0,6.5,102.0,-122.0,,,espn-pickcenter:DraftKings
+2026-10-10,401892474,2026-10-10T23:00Z,OTT,NSH,Ottawa Senators,Nashville Predators,3.0,2.0,True,0,0,0,,,,,True,Ottawa,ON,-170.0,142.0,-1.5,154.0,-185.0,5.5,-135.0,114.0,,,espn-pickcenter:DraftKings
+2026-10-10,401892475,2026-10-10T23:00Z,PIT,DAL,Pittsburgh Penguins,Dallas Stars,2.0,1.0,True,0,0,0,,,,,True,Pittsburgh,PA,150.0,-180.0,1.5,-166.0,140.0,6.5,100.0,-120.0,,,espn-pickcenter:DraftKings
+2026-10-10,401892476,2026-10-10T23:00Z,CHI,CAR,Chicago Blackhawks,Carolina Hurricanes,2.0,5.0,True,0,0,0,,,,,True,Chicago,IL,210.0,-258.0,1.5,-125.0,105.0,5.5,-130.0,110.0,,,espn-pickcenter:DraftKings
+2026-10-10,401892477,2026-10-10T23:00Z,STL,CBJ,St. Louis Blues,Columbus Blue Jackets,5.0,3.0,True,0,0,0,,,,,True,St. Louis,MO,-115.0,-105.0,-1.5,205.0,-250.0,5.5,-135.0,114.0,,,espn-pickcenter:DraftKings
+2026-10-10,401892478,2026-10-10T23:00Z,COL,TOR,Colorado Avalanche,Toronto Maple Leafs,3.0,6.0,True,0,0,0,,,,,True,Denver,CO,-225.0,185.0,-1.5,110.0,-130.0,6.5,-125.0,105.0,,,espn-pickcenter:DraftKings
+2026-10-10,401892479,2026-10-10T23:30Z,NYI,TBL,New York Islanders,Tampa Bay Lightning,3.0,5.0,True,0,0,0,,,,,True,Elmont,NY,150.0,-180.0,1.5,-180.0,150.0,5.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-10,401892480,2026-10-11T02:00Z,CGY,ANA,Calgary Flames,Anaheim Ducks,2.0,4.0,True,0,0,0,,,,,True,Calgary,AB,102.0,-122.0,1.5,-250.0,205.0,6.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-10-10,401892481,2026-10-11T02:00Z,VGK,LAK,Vegas Golden Knights,Los Angeles Kings,2.0,1.0,True,0,0,0,,,,,True,Las Vegas,NV,-170.0,142.0,-1.5,154.0,-185.0,6.5,110.0,-130.0,,,espn-pickcenter:DraftKings
+2026-10-09,401892465,2026-10-09T23:00Z,DET,SEA,Detroit Red Wings,Seattle Kraken,3.0,6.0,True,0,0,0,,,,,True,Detroit,MI,-155.0,130.0,-1.5,170.0,-205.0,5.5,-135.0,114.0,,,espn-pickcenter:DraftKings
+2026-10-09,401892466,2026-10-09T23:00Z,WSH,NYR,Washington Capitals,New York Rangers,3.0,1.0,True,0,0,0,,,,,True,Washington,DC,-142.0,120.0,-1.5,180.0,-218.0,5.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-10-09,401892467,2026-10-09T23:00Z,CBJ,PIT,Columbus Blue Jackets,Pittsburgh Penguins,3.0,2.0,True,0,0,0,,,,,True,Columbus,OH,-112.0,-108.0,-1.5,205.0,-250.0,6.5,-130.0,110.0,,,espn-pickcenter:DraftKings
+2026-10-09,401892468,2026-10-10T00:00Z,WPG,ANA,Winnipeg Jets,Anaheim Ducks,1.0,5.0,True,0,0,0,,,,,True,Winnipeg,MB,-120.0,100.0,-1.5,205.0,-250.0,6.5,-102.0,-118.0,,,espn-pickcenter:DraftKings
+2026-10-08,401891820,2026-10-08T23:00Z,OTT,PHI,Ottawa Senators,Philadelphia Flyers,2.0,1.0,True,0,0,0,,,,,True,Ottawa,ON,-180.0,150.0,-1.5,154.0,-185.0,5.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-08,401892457,2026-10-08T23:00Z,BOS,UTA,Boston Bruins,Utah Mammoth,6.0,1.0,True,0,0,0,,,,,True,Boston,MA,120.0,-142.0,1.5,-230.0,190.0,6.5,114.0,-135.0,,,espn-pickcenter:DraftKings
+2026-10-08,401892458,2026-10-08T23:00Z,BUF,DAL,Buffalo Sabres,Dallas Stars,0.0,4.0,True,0,0,0,,,,,True,Buffalo,NY,102.0,-122.0,1.5,-245.0,200.0,6.5,110.0,-130.0,,,espn-pickcenter:DraftKings
+2026-10-08,401892459,2026-10-08T23:00Z,MTL,NSH,Montreal Canadiens,Nashville Predators,2.0,5.0,True,0,0,0,,,,,True,Montreal,QC,-166.0,140.0,-1.5,150.0,-180.0,6.5,105.0,-125.0,,,espn-pickcenter:DraftKings
+2026-10-08,401892460,2026-10-08T23:00Z,TBL,MIN,Tampa Bay Lightning,Minnesota Wild,3.0,2.0,True,0,0,0,,,,,True,Tampa,FL,-142.0,120.0,-1.5,170.0,-205.0,6.5,110.0,-130.0,,,espn-pickcenter:DraftKings
+2026-10-08,401892461,2026-10-08T23:00Z,CAR,VAN,Carolina Hurricanes,Vancouver Canucks,7.0,2.0,True,0,0,0,,,,,True,Raleigh,NC,-380.0,300.0,-1.5,-148.0,124.0,6.5,-102.0,-118.0,,,espn-pickcenter:DraftKings
+2026-10-08,401892462,2026-10-08T23:30Z,NYI,CHI,New York Islanders,Chicago Blackhawks,4.0,1.0,True,0,0,0,,,,,True,Elmont,NY,-185.0,154.0,-1.5,140.0,-166.0,5.5,-125.0,105.0,,,espn-pickcenter:DraftKings
+2026-10-08,401891825,2026-10-09T00:00Z,STL,SJS,St. Louis Blues,San Jose Sharks,2.0,3.0,True,0,0,0,,,,,True,St. Louis,MO,-162.0,136.0,-1.5,160.0,-192.0,5.5,-125.0,105.0,,,espn-pickcenter:DraftKings
+2026-10-08,401892463,2026-10-09T01:00Z,CGY,COL,Calgary Flames,Colorado Avalanche,3.0,7.0,True,0,0,0,,,,,True,Calgary,AB,195.0,-238.0,1.5,-125.0,105.0,6.5,105.0,-125.0,,,espn-pickcenter:DraftKings
+2026-10-08,401892464,2026-10-09T02:00Z,VGK,TOR,Vegas Golden Knights,Toronto Maple Leafs,4.0,3.0,True,0,0,0,,,,,True,Las Vegas,NV,-170.0,142.0,-1.5,150.0,-180.0,6.5,-125.0,105.0,,,espn-pickcenter:DraftKings
+2026-10-07,401891830,2026-10-07T23:30Z,WSH,PIT,Washington Capitals,Pittsburgh Penguins,5.0,3.0,True,0,0,0,,,,,True,Washington,DC,-155.0,130.0,-1.5,154.0,-185.0,6.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-07,401892455,2026-10-07T23:30Z,WPG,COL,Winnipeg Jets,Colorado Avalanche,3.0,2.0,True,0,0,0,,,,,True,Winnipeg,MB,164.0,-198.0,1.5,-148.0,124.0,6.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-07,401892456,2026-10-08T02:00Z,ANA,EDM,Anaheim Ducks,Edmonton Oilers,2.0,5.0,True,0,0,0,,,,,True,Anaheim,CA,114.0,-135.0,1.5,-218.0,180.0,6.5,-148.0,124.0,,,espn-pickcenter:DraftKings
+2026-10-06,401891815,2026-10-06T23:00Z,MTL,CAR,Montreal Canadiens,Carolina Hurricanes,4.0,6.0,True,0,0,0,,,,,True,Montreal,QC,110.0,-130.0,1.5,-230.0,190.0,6.5,110.0,-130.0,,,espn-pickcenter:DraftKings
+2026-10-06,401892449,2026-10-06T23:00Z,TOR,NSH,Toronto Maple Leafs,Nashville Predators,5.0,4.0,True,0,0,0,,,,,True,Toronto,ON,-166.0,140.0,-1.5,160.0,-192.0,5.5,-135.0,114.0,,,espn-pickcenter:DraftKings
+2026-10-06,401892450,2026-10-06T23:00Z,DET,OTT,Detroit Red Wings,Ottawa Senators,5.0,3.0,True,0,0,0,,,,,True,Detroit,MI,-130.0,110.0,-1.5,205.0,-250.0,6.5,114.0,-135.0,,,espn-pickcenter:DraftKings
+2026-10-06,401892451,2026-10-06T23:00Z,NJD,UTA,New Jersey Devils,Utah Mammoth,3.0,5.0,True,0,0,0,,,,,True,Newark,NJ,-125.0,105.0,-1.5,195.0,-238.0,6.5,105.0,-125.0,,,espn-pickcenter:DraftKings
+2026-10-06,401892453,2026-10-06T23:00Z,BUF,MIN,Buffalo Sabres,Minnesota Wild,3.0,2.0,True,0,0,0,,,,,True,Buffalo,NY,-108.0,-112.0,1.5,-270.0,220.0,6.5,102.0,-122.0,,,espn-pickcenter:DraftKings
+2026-10-06,401892452,2026-10-06T23:30Z,NYR,NYI,New York Rangers,New York Islanders,5.0,2.0,True,0,0,0,,,,,True,New York,NY,-162.0,136.0,-1.5,164.0,-198.0,5.5,-120.0,100.0,,,espn-pickcenter:DraftKings
+2026-10-06,401891779,2026-10-07T00:00Z,CHI,STL,Chicago Blackhawks,St. Louis Blues,4.0,2.0,True,0,0,0,,,,,True,Chicago,IL,124.0,-148.0,1.5,-218.0,180.0,5.5,-120.0,100.0,,,espn-pickcenter:DraftKings
+2026-10-06,401892454,2026-10-07T01:40Z,SEA,VGK,Seattle Kraken,Vegas Golden Knights,2.0,6.0,True,0,0,0,,,,,True,Seattle,WA,140.0,-166.0,1.5,-180.0,150.0,6.5,110.0,-130.0,,,espn-pickcenter:DraftKings
+2026-10-06,401891806,2026-10-07T02:20Z,LAK,FLA,Los Angeles Kings,Florida Panthers,1.0,2.0,True,0,0,0,,,,,True,Los Angeles,CA,-102.0,-118.0,1.5,-258.0,210.0,5.5,-130.0,110.0,,,espn-pickcenter:DraftKings
+2026-10-05,401892445,2026-10-05T23:00Z,TBL,PHI,Tampa Bay Lightning,Philadelphia Flyers,4.0,1.0,True,0,0,0,,,,,True,Tampa,FL,-218.0,180.0,-1.5,114.0,-135.0,5.5,-130.0,110.0,,,espn-pickcenter:DraftKings
+2026-10-05,401892446,2026-10-05T23:30Z,BOS,OTT,Boston Bruins,Ottawa Senators,1.0,4.0,True,0,0,0,,,,,True,Boston,MA,-102.0,-118.0,1.5,-265.0,215.0,5.5,-120.0,100.0,,,espn-pickcenter:DraftKings
+2026-10-05,401892447,2026-10-05T23:30Z,PIT,WPG,Pittsburgh Penguins,Winnipeg Jets,2.0,3.0,True,0,0,0,,,,,True,Pittsburgh,PA,-175.0,145.0,-1.5,145.0,-175.0,6.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-10-05,401892448,2026-10-06T00:00Z,DAL,SJS,Dallas Stars,San Jose Sharks,5.0,0.0,True,0,0,0,,,,,True,Dallas,TX,-218.0,180.0,-1.5,130.0,-155.0,6.5,100.0,-120.0,,,espn-pickcenter:DraftKings
+2026-10-04,401892442,2026-10-04T17:00Z,DET,WPG,Detroit Red Wings,Winnipeg Jets,2.0,3.0,True,0,0,0,,,,,True,Detroit,MI,-102.0,-118.0,1.5,-265.0,215.0,5.5,-122.0,102.0,,,espn-pickcenter:DraftKings
+2026-10-04,401892443,2026-10-04T22:00Z,NYR,UTA,New York Rangers,Utah Mammoth,4.0,2.0,True,0,0,0,,,,,True,New York,NY,-120.0,100.0,-1.5,200.0,-245.0,5.5,-120.0,100.0,,,espn-pickcenter:DraftKings
+2026-10-04,401891778,2026-10-05T00:00Z,ANA,FLA,Anaheim Ducks,Florida Panthers,3.0,2.0,True,0,0,0,,,,,True,Anaheim,CA,120.0,-142.0,1.5,-218.0,180.0,6.5,-122.0,102.0,,,espn-pickcenter:DraftKings
+2026-10-04,401891824,2026-10-05T00:00Z,SEA,CGY,Seattle Kraken,Calgary Flames,6.0,1.0,True,0,0,0,,,,,True,Seattle,WA,-162.0,136.0,-1.5,164.0,-198.0,5.5,-120.0,100.0,,,espn-pickcenter:DraftKings
+2026-10-04,401892444,2026-10-05T01:00Z,VAN,VGK,Vancouver Canucks,Vegas Golden Knights,2.0,3.0,True,0,0,0,,,,,True,Vancouver,BC,235.0,-290.0,1.5,-105.0,-115.0,6.5,105.0,-125.0,,,espn-pickcenter:DraftKings
+2026-10-03,401891776,2026-10-03T23:00Z,BUF,CHI,Buffalo Sabres,Chicago Blackhawks,4.0,3.0,True,0,0,0,,,,,True,Buffalo,NY,-230.0,190.0,-1.5,102.0,-122.0,5.5,-135.0,114.0,,,espn-pickcenter:DraftKings
+2026-10-03,401891822,2026-10-03T23:00Z,PIT,MTL,Pittsburgh Penguins,Montreal Canadiens,6.0,5.0,True,0,0,0,,,,,True,Pittsburgh,PA,-105.0,-115.0,1.5,-258.0,210.0,6.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-03,401891826,2026-10-03T23:00Z,TBL,WSH,Tampa Bay Lightning,Washington Capitals,3.0,1.0,True,0,0,0,,,,,True,Tampa,FL,-205.0,170.0,-1.5,130.0,-155.0,6.5,105.0,-125.0,,,espn-pickcenter:DraftKings
+2026-10-03,401892434,2026-10-03T23:00Z,TOR,OTT,Toronto Maple Leafs,Ottawa Senators,2.0,3.0,True,0,0,0,,,,,True,Toronto,ON,-115.0,-105.0,-1.5,220.0,-270.0,6.5,110.0,-130.0,,,espn-pickcenter:DraftKings
+2026-10-03,401892435,2026-10-03T23:00Z,PHI,CAR,Philadelphia Flyers,Carolina Hurricanes,2.0,3.0,True,0,0,0,,,,,True,Philadelphia,PA,114.0,-135.0,1.5,-230.0,190.0,5.5,-125.0,105.0,,,espn-pickcenter:DraftKings
+2026-10-03,401892436,2026-10-03T23:00Z,CBJ,UTA,Columbus Blue Jackets,Utah Mammoth,1.0,4.0,True,0,0,0,,,,,True,Columbus,OH,-102.0,-118.0,1.5,-270.0,220.0,6.5,114.0,-135.0,,,espn-pickcenter:DraftKings
+2026-10-03,401892437,2026-10-03T23:00Z,EDM,SEA,Edmonton Oilers,Seattle Kraken,3.0,1.0,True,0,0,0,,,,,True,Edmonton,AB,-205.0,170.0,-1.5,120.0,-142.0,6.5,-122.0,102.0,,,espn-pickcenter:DraftKings
+2026-10-03,401891818,2026-10-03T23:30Z,NYI,NJD,New York Islanders,New Jersey Devils,6.0,0.0,True,0,0,0,,,,,True,Elmont,NY,114.0,-135.0,1.5,-225.0,185.0,5.5,-130.0,110.0,,,espn-pickcenter:DraftKings
+2026-10-03,401891814,2026-10-04T00:00Z,MIN,BOS,Minnesota Wild,Boston Bruins,4.0,1.0,True,0,0,0,,,,,True,Saint Paul,MN,-218.0,180.0,-1.5,124.0,-148.0,6.5,105.0,-125.0,,,espn-pickcenter:DraftKings
+2026-10-03,401892438,2026-10-04T00:00Z,NSH,DAL,Nashville Predators,Dallas Stars,2.0,1.0,True,0,0,0,,,,,True,Nashville,TN,120.0,-142.0,1.5,-225.0,185.0,6.5,114.0,-135.0,,,espn-pickcenter:DraftKings
+2026-10-03,401892439,2026-10-04T01:00Z,COL,STL,Colorado Avalanche,St. Louis Blues,6.0,1.0,True,0,0,0,,,,,True,Denver,CO,-298.0,240.0,-1.5,-115.0,-105.0,6.5,-102.0,-118.0,,,espn-pickcenter:DraftKings
+2026-10-03,401892440,2026-10-04T02:00Z,VAN,CGY,Vancouver Canucks,Calgary Flames,4.0,1.0,True,0,0,0,,,,,True,Vancouver,BC,-110.0,-110.0,-1.5,215.0,-265.0,6.5,110.0,-130.0,,,espn-pickcenter:DraftKings
+2026-10-03,401892441,2026-10-04T02:00Z,SJS,LAK,San Jose Sharks,Los Angeles Kings,5.0,4.0,True,0,0,0,,,,,True,San Jose,CA,-110.0,-110.0,-1.5,215.0,-265.0,6.5,105.0,-125.0,,,espn-pickcenter:DraftKings
+2026-10-02,401891803,2026-10-02T22:30Z,DET,NYR,Detroit Red Wings,New York Rangers,0.0,2.0,True,0,0,0,,,,,True,Detroit,MI,-125.0,105.0,-1.5,190.0,-230.0,5.5,-135.0,114.0,,,espn-pickcenter:DraftKings
+2026-10-02,401892432,2026-10-02T23:00Z,CAR,WSH,Carolina Hurricanes,Washington Capitals,2.0,5.0,True,0,0,0,,,,,True,Raleigh,NC,-148.0,124.0,-1.5,170.0,-205.0,6.5,110.0,-130.0,,,espn-pickcenter:DraftKings
+2026-10-02,401891831,2026-10-03T00:00Z,WPG,BOS,Winnipeg Jets,Boston Bruins,3.0,4.0,True,0,0,0,,,,,True,Winnipeg,MB,-122.0,102.0,-1.5,205.0,-250.0,5.5,-125.0,105.0,,,espn-pickcenter:DraftKings
+2026-10-02,401891782,2026-10-03T01:00Z,DAL,STL,Dallas Stars,St. Louis Blues,0.0,4.0,True,0,0,0,,,,,True,Dallas,TX,-185.0,154.0,-1.5,145.0,-175.0,5.5,-135.0,114.0,,,espn-pickcenter:DraftKings
+2026-10-02,401892433,2026-10-03T02:00Z,VGK,ANA,Vegas Golden Knights,Anaheim Ducks,3.0,4.0,True,0,0,0,,,,,True,Las Vegas,NV,-218.0,180.0,-1.5,120.0,-142.0,6.5,-130.0,110.0,,,espn-pickcenter:DraftKings
+2026-10-01,401891781,2026-10-01T23:00Z,CBJ,BUF,Columbus Blue Jackets,Buffalo Sabres,6.0,3.0,True,0,0,0,,,,,True,Columbus,OH,-102.0,-118.0,1.5,-270.0,220.0,6.5,114.0,-135.0,,,espn-pickcenter:DraftKings
+2026-10-01,401891817,2026-10-01T23:00Z,NJD,PHI,New Jersey Devils,Philadelphia Flyers,3.0,2.0,True,0,0,0,,,,,True,Newark,NJ,-180.0,150.0,-1.5,145.0,-175.0,5.5,-120.0,100.0,,,espn-pickcenter:DraftKings
+2026-10-01,401891819,2026-10-01T23:00Z,NYR,TBL,New York Rangers,Tampa Bay Lightning,5.0,1.0,True,0,0,0,,,,,True,New York,NY,124.0,-148.0,1.5,-205.0,170.0,5.5,-120.0,100.0,,,espn-pickcenter:DraftKings
+2026-10-01,401891816,2026-10-02T00:00Z,NSH,MIN,Nashville Predators,Minnesota Wild,1.0,3.0,True,0,0,0,,,,,True,Nashville,TN,124.0,-148.0,1.5,-205.0,170.0,6.5,105.0,-125.0,,,espn-pickcenter:DraftKings
+2026-10-01,401891777,2026-10-02T01:00Z,CGY,SEA,Calgary Flames,Seattle Kraken,1.0,6.0,True,0,0,0,,,,,True,Calgary,AB,-112.0,-108.0,-1.5,225.0,-278.0,5.5,-125.0,105.0,,,espn-pickcenter:DraftKings
+2026-10-01,401891828,2026-10-02T01:30Z,UTA,CHI,Utah Mammoth,Chicago Blackhawks,6.0,0.0,True,0,0,0,,,,,True,Salt Lake City,UT,-230.0,190.0,-1.5,110.0,-130.0,6.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-10-01,401891823,2026-10-02T02:00Z,SJS,FLA,San Jose Sharks,Florida Panthers,4.0,3.0,True,0,0,0,,,,,True,San Jose,CA,124.0,-148.0,1.5,-198.0,164.0,6.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-10-01,401891829,2026-10-02T02:00Z,VAN,EDM,Vancouver Canucks,Edmonton Oilers,7.0,9.0,True,0,0,0,,,,,True,Vancouver,BC,180.0,-218.0,1.5,-125.0,105.0,6.5,-125.0,105.0,,,espn-pickcenter:DraftKings
+2026-09-30,401891821,2026-09-30T23:30Z,PHI,PIT,Philadelphia Flyers,Pittsburgh Penguins,0.0,7.0,True,0,0,0,,,,,True,Philadelphia,PA,-148.0,124.0,-1.5,180.0,-218.0,6.5,110.0,-130.0,,,espn-pickcenter:DraftKings
+2026-09-30,401892431,2026-09-30T23:30Z,TOR,NYI,Toronto Maple Leafs,New York Islanders,2.0,1.0,True,0,0,0,,,,,True,Toronto,ON,-142.0,120.0,-1.5,185.0,-225.0,5.5,-135.0,114.0,,,espn-pickcenter:DraftKings
+2026-09-30,401891780,2026-10-01T02:00Z,COL,LAK,Colorado Avalanche,Los Angeles Kings,8.0,4.0,True,0,0,0,,,,,True,Denver,CO,-205.0,170.0,-1.5,130.0,-155.0,6.5,102.0,-122.0,,,espn-pickcenter:DraftKings
+2026-09-29,401891773,2026-09-29T21:00Z,CAR,FLA,Carolina Hurricanes,Florida Panthers,0.0,1.0,True,0,0,0,,,,,True,Raleigh,NC,-130.0,110.0,-1.5,190.0,-230.0,6.5,105.0,-125.0,,,espn-pickcenter:DraftKings
+2026-09-29,401891827,2026-09-29T23:00Z,TOR,MTL,Toronto Maple Leafs,Montreal Canadiens,2.0,3.0,True,0,0,0,,,,,True,Toronto,ON,-115.0,-105.0,-1.5,210.0,-258.0,6.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-29,401891774,2026-09-30T00:00Z,BOS,NYR,Boston Bruins,New York Rangers,3.0,0.0,True,0,0,0,,,,,True,Boston,MA,-110.0,-110.0,-1.5,215.0,-265.0,5.5,-130.0,110.0,,,espn-pickcenter:DraftKings
+2026-09-29,401891804,2026-09-30T02:00Z,EDM,VAN,Edmonton Oilers,Vancouver Canucks,5.0,6.0,True,0,0,0,,,,,True,Edmonton,AB,-305.0,245.0,-1.5,-122.0,102.0,6.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-29,401891775,2026-09-30T02:45Z,VGK,CHI,Vegas Golden Knights,Chicago Blackhawks,5.0,2.0,True,0,0,0,,,,,True,Las Vegas,NV,-270.0,220.0,-1.5,105.0,-125.0,6.5,110.0,-130.0,,,espn-pickcenter:DraftKings
+2026-09-26,401879457,2026-09-26T19:00Z,BUF,PIT,Buffalo Sabres,Pittsburgh Penguins,1.0,3.0,True,0,0,0,,,,,True,Buffalo,NY,,,,,,,,,,,
+2026-09-26,401879935,2026-09-26T19:00Z,NSH,CAR,Nashville Predators,Carolina Hurricanes,0.0,6.0,True,0,0,0,,,,,True,Nashville,TN,,,,,,,,,,,
+2026-09-26,401879371,2026-09-26T20:00Z,LAK,ANA,Los Angeles Kings,Anaheim Ducks,6.0,2.0,True,0,0,0,,,,,True,Los Angeles,CA,,,,,,,,,,,
+2026-09-26,401879361,2026-09-26T21:00Z,PHI,WSH,Philadelphia Flyers,Washington Capitals,1.0,5.0,True,0,0,0,,,,,True,Philadelphia,PA,,,,,,,,,,,
+2026-09-26,401879365,2026-09-26T21:00Z,UTA,COL,Utah Mammoth,Colorado Avalanche,2.0,0.0,True,0,0,0,,,,,True,Salt Lake City,UT,,,,,,,,,,,
+2026-09-26,401881134,2026-09-26T22:00Z,FLA,TBL,Florida Panthers,Tampa Bay Lightning,2.0,3.0,True,0,0,0,,,,,True,Sunrise,FL,,,,,,,,,,,
+2026-09-26,401879453,2026-09-26T23:00Z,DET,CBJ,Detroit Red Wings,Columbus Blue Jackets,2.0,4.0,True,0,0,0,,,,,True,Detroit,MI,,,,,,,,,,,
+2026-09-26,401879651,2026-09-26T23:00Z,OTT,MTL,Ottawa Senators,Montreal Canadiens,4.0,3.0,True,0,0,0,,,,,True,Ottawa,ON,,,,,,,,,,,
+2026-09-26,401879653,2026-09-26T23:00Z,VAN,SEA,Vancouver Canucks,Seattle Kraken,4.0,3.0,True,0,0,0,,,,,True,Vancouver,BC,,,,,,,,,,,
+2026-09-26,401881724,2026-09-26T23:00Z,MTL,OTT,Montreal Canadiens,Ottawa Senators,4.0,2.0,True,0,0,0,,,,,True,Montreal,QC,,,,,,,,,,,
+2026-09-26,401886261,2026-09-26T23:00Z,CHI,STL,Chicago Blackhawks,St. Louis Blues,3.0,2.0,True,0,0,0,,,,,True,Chicago,IL,,,,,,,,,,,
+2026-09-26,401879647,2026-09-26T23:30Z,NYI,NJD,New York Islanders,New Jersey Devils,1.0,4.0,True,0,0,0,,,,,True,Elmont,NY,,,,,,,,,,,
+2026-09-26,401878104,2026-09-27T01:00Z,EDM,CGY,Edmonton Oilers,Calgary Flames,4.0,1.0,True,0,0,0,,,,,True,Edmonton,AB,,,,,,,,,,,
+2026-09-26,401879414,2026-09-27T02:00Z,VGK,SJS,Vegas Golden Knights,San Jose Sharks,2.0,4.0,True,0,0,0,,,,,True,Las Vegas,NV,,,,,,,,,,,
+2026-09-25,401879360,2026-09-25T23:00Z,WSH,BOS,Washington Capitals,Boston Bruins,3.0,2.0,True,0,0,0,,,,,True,Washington,DC,,,,,,,,,,,
+2026-09-25,401879649,2026-09-25T23:30Z,NYI,NYR,New York Islanders,New York Rangers,1.0,6.0,True,0,0,0,,,,,True,Elmont,NY,,,,,,,,,,,
+2026-09-25,401886430,2026-09-26T00:00Z,MIN,DAL,Minnesota Wild,Dallas Stars,1.0,2.0,True,0,0,0,,,,,True,Saint Paul,MN,,,,,,,,,,,
+2026-09-25,401878108,2026-09-26T00:30Z,COL,WPG,Colorado Avalanche,Winnipeg Jets,5.0,2.0,True,0,0,0,,,,,True,Denver,CO,,,,,,,,,,,
+2026-09-24,401879363,2026-09-24T23:00Z,PHI,BOS,Philadelphia Flyers,Boston Bruins,2.0,0.0,True,0,0,0,,,,,True,Philadelphia,PA,,,,,,,,,,,
+2026-09-24,401879452,2026-09-24T23:00Z,DET,BUF,Detroit Red Wings,Buffalo Sabres,3.0,2.0,True,0,0,0,,,,,True,Detroit,MI,,,,,,,,,,,
+2026-09-24,401879455,2026-09-24T23:00Z,CBJ,PIT,Columbus Blue Jackets,Pittsburgh Penguins,4.0,0.0,True,0,0,0,,,,,True,Columbus,OH,,,,,,,,,,,
+2026-09-24,401879646,2026-09-24T23:00Z,NYR,NJD,New York Rangers,New Jersey Devils,4.0,3.0,True,0,0,0,,,,,True,New York,NY,,,,,,,,,,,
+2026-09-24,401879934,2026-09-24T23:00Z,CAR,NSH,Carolina Hurricanes,Nashville Predators,6.0,5.0,True,1,0,0,,,,,True,Greensboro,NC,,,,,,,,,,,
+2026-09-24,401881133,2026-09-24T23:00Z,TBL,FLA,Tampa Bay Lightning,Florida Panthers,3.0,5.0,True,0,0,0,,,,,True,Tampa,FL,,,,,,,,,,,
+2026-09-24,401886260,2026-09-25T00:00Z,STL,CHI,St. Louis Blues,Chicago Blackhawks,1.0,0.0,True,0,0,0,,,,,True,St. Louis,MO,,,,,,,,,,,
+2026-09-24,401878103,2026-09-25T01:00Z,VAN,EDM,Vancouver Canucks,Edmonton Oilers,1.0,2.0,True,0,0,0,,,,,True,Vancouver,BC,,,,,,,,,,,
+2026-09-24,401879332,2026-09-25T01:40Z,SEA,CGY,Seattle Kraken,Calgary Flames,4.0,3.0,True,0,0,0,,,,,True,Seattle,WA,,,,,,,,,,,
+2026-09-24,401879367,2026-09-25T02:00Z,VGK,UTA,Vegas Golden Knights,Utah Mammoth,5.0,4.0,True,0,0,0,,,,,True,Las Vegas,NV,,,,,,,,,,,
+2026-09-24,401879370,2026-09-25T02:00Z,SJS,ANA,San Jose Sharks,Anaheim Ducks,10.0,0.0,True,0,0,0,,,,,True,San Jose,CA,,,,,,,,,,,
+2026-09-23,401879650,2026-09-23T23:00Z,OTT,TOR,Ottawa Senators,Toronto Maple Leafs,2.0,4.0,True,0,0,0,,,,,True,Ottawa,ON,,,,,,,,,,,
+2026-09-23,401886441,2026-09-23T23:00Z,TOR,OTT,Toronto Maple Leafs,Ottawa Senators,6.0,1.0,True,0,0,0,,,,,True,Toronto,ON,,,,,,,,,,,
+2026-09-23,401886429,2026-09-24T00:00Z,DAL,MIN,Dallas Stars,Minnesota Wild,2.0,0.0,True,0,0,0,,,,,True,Dallas,TX,,,,,,,,,,,
+2026-09-23,401879369,2026-09-24T02:00Z,ANA,LAK,Anaheim Ducks,Los Angeles Kings,1.0,2.0,True,0,0,0,,,,,True,Anaheim,CA,,,,,,,,,,,
+2026-09-22,401879362,2026-09-22T23:00Z,BOS,PHI,Boston Bruins,Philadelphia Flyers,5.0,1.0,True,0,0,0,,,,,True,Boston,MA,,,,,,,,,,,
+2026-09-22,401879451,2026-09-22T23:00Z,PIT,DET,Pittsburgh Penguins,Detroit Red Wings,4.0,7.0,True,0,0,0,,,,,True,Pittsburgh,PA,,,,,,,,,,,
+2026-09-22,401879454,2026-09-22T23:00Z,BUF,CBJ,Buffalo Sabres,Columbus Blue Jackets,5.0,1.0,True,0,0,0,,,,,True,Buffalo,NY,,,,,,,,,,,
+2026-09-22,401879648,2026-09-22T23:00Z,NYR,NYI,New York Rangers,New York Islanders,3.0,4.0,True,0,0,0,,,,,True,New York,NY,,,,,,,,,,,
+2026-09-22,401879933,2026-09-22T23:00Z,CAR,FLA,Carolina Hurricanes,Florida Panthers,3.0,2.0,True,0,0,0,,,,,True,Raleigh,NC,,,,,,,,,,,
+2026-09-22,401878101,2026-09-23T00:00Z,WPG,EDM,Winnipeg Jets,Edmonton Oilers,1.0,2.0,True,0,0,0,,,,,True,Winnipeg,MB,,,,,,,,,,,
+2026-09-22,401881132,2026-09-23T00:00Z,NSH,TBL,Nashville Predators,Tampa Bay Lightning,3.0,2.0,True,0,0,0,,,,,True,Nashville,TN,,,,,,,,,,,
+2026-09-22,401879310,2026-09-23T01:00Z,CGY,VAN,Calgary Flames,Vancouver Canucks,3.0,1.0,True,0,0,0,,,,,True,Calgary,AB,,,,,,,,,,,
+2026-09-22,401879366,2026-09-23T02:00Z,LAK,UTA,Los Angeles Kings,Utah Mammoth,3.0,6.0,True,0,0,0,,,,,True,Los Angeles,CA,,,,,,,,,,,
+2026-09-22,401879413,2026-09-23T02:00Z,SJS,VGK,San Jose Sharks,Vegas Golden Knights,1.0,2.0,True,0,0,0,,,,,True,San Jose,CA,,,,,,,,,,,
+2026-09-21,401879359,2026-09-21T23:00Z,WSH,PHI,Washington Capitals,Philadelphia Flyers,5.0,2.0,True,1,0,0,,,,,True,Hershey,PA,,,,,,,,,,,
+2026-09-21,401879450,2026-09-21T23:00Z,CBJ,DET,Columbus Blue Jackets,Detroit Red Wings,1.0,0.0,True,0,0,0,,,,,True,Columbus,OH,,,,,,,,,,,
+2026-09-21,401879456,2026-09-21T23:00Z,PIT,BUF,Pittsburgh Penguins,Buffalo Sabres,4.0,1.0,True,0,0,0,,,,,True,Pittsburgh,PA,,,,,,,,,,,
+2026-09-21,401879645,2026-09-21T23:00Z,NJD,NYR,New Jersey Devils,New York Rangers,3.0,2.0,True,0,0,0,,,,,True,Newark,NJ,,,,,,,,,,,
+2026-09-21,401881921,2026-09-21T23:00Z,MTL,OTT,Montreal Canadiens,Ottawa Senators,3.0,2.0,True,1,0,0,,,,,True,Trois Rivieres,QC,,,,,,,,,,,
+2026-09-21,401878107,2026-09-22T00:00Z,WPG,COL,Winnipeg Jets,Colorado Avalanche,3.0,1.0,True,0,0,0,,,,,True,Winnipeg,MB,,,,,,,,,,,
+2026-09-21,401886259,2026-09-22T00:00Z,CHI,MIN,Chicago Blackhawks,Minnesota Wild,4.0,3.0,True,0,0,0,,,,,True,Chicago,IL,,,,,,,,,,,
+2026-09-21,401886428,2026-09-22T00:00Z,DAL,STL,Dallas Stars,St. Louis Blues,2.0,1.0,True,0,0,0,,,,,True,Dallas,TX,,,,,,,,,,,
+2026-09-20,401879644,2026-09-20T17:00Z,NJD,NYI,New Jersey Devils,New York Islanders,2.0,1.0,True,0,0,0,,,,,True,Newark,NJ,,,,,,,,,,,
+2026-09-20,401879368,2026-09-20T20:00Z,ANA,SJS,Anaheim Ducks,San Jose Sharks,6.0,2.0,True,0,0,0,,,,,True,Anaheim,CA,,,,,,,,,,,
+2026-09-20,401879358,2026-09-20T21:00Z,BOS,WSH,Boston Bruins,Washington Capitals,3.0,2.0,True,0,0,0,,,,,True,Boston,MA,,,,,,,,,,,
+2026-09-20,401881131,2026-09-20T21:00Z,TBL,NSH,Tampa Bay Lightning,Nashville Predators,2.0,1.0,True,0,0,0,,,,,True,Tampa,FL,,,,,,,,,,,
+2026-09-20,401879364,2026-09-20T23:00Z,COL,UTA,Colorado Avalanche,Utah Mammoth,4.0,1.0,True,0,0,0,,,,,True,Denver,CO,,,,,,,,,,,
+2026-09-20,401879932,2026-09-20T23:00Z,FLA,CAR,Florida Panthers,Carolina Hurricanes,6.0,3.0,True,0,0,0,,,,,True,Sunrise,FL,,,,,,,,,,,
+2026-09-20,401879309,2026-09-21T00:00Z,CGY,SEA,Calgary Flames,Seattle Kraken,2.0,4.0,True,0,0,0,,,,,True,Calgary,AB,,,,,,,,,,,
+2026-09-19,401881922,2026-09-19T23:00Z,TOR,MTL,Toronto Maple Leafs,Montreal Canadiens,1.0,4.0,True,0,0,0,,,,,True,Toronto,ON,,,,,,,,,,,
+2026-09-19,401881923,2026-09-19T23:00Z,MTL,TOR,Montreal Canadiens,Toronto Maple Leafs,4.0,3.0,True,0,0,0,,,,,True,Montreal,QC,,,,,,,,,,,
+2026-09-19,401886427,2026-09-19T23:00Z,STL,DAL,St. Louis Blues,Dallas Stars,1.0,2.0,True,0,0,0,,,,,True,St. Louis,MO,,,,,,,,,,,
+2026-09-19,401878099,2026-09-20T00:00Z,EDM,WPG,Edmonton Oilers,Winnipeg Jets,5.0,2.0,True,0,0,0,,,,,True,Edmonton,AB,,,,,,,,,,,
+2026-09-19,401886258,2026-09-20T00:00Z,MIN,CHI,Minnesota Wild,Chicago Blackhawks,3.0,2.0,True,0,0,0,,,,,True,Saint Paul,MN,,,,,,,,,,,
+2026-09-19,401879412,2026-09-20T01:00Z,LAK,VGK,Los Angeles Kings,Vegas Golden Knights,2.0,4.0,True,1,0,0,,,,,True,Ontario,CA,,,,,,,,,,,
+2026-09-19,401879652,2026-09-20T01:00Z,SEA,VAN,Seattle Kraken,Vancouver Canucks,4.0,2.0,True,0,0,0,,,,,True,Seattle,WA,,,,,,,,,,,
+2026-06-14,401874176,2026-06-15T00:00Z,VGK,CAR,Vegas Golden Knights,Carolina Hurricanes,0.0,3.0,True,0,0,1,,,,,True,Las Vegas,NV,-105.0,-115.0,1.5,-265.0,215.0,5.5,-130.0,110.0,,,espn-pickcenter:DraftKings

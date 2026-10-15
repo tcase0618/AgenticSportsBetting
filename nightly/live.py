@@ -123,6 +123,15 @@ def _espn_spread(o: dict, home: dict):
 
 # ------------------------------------------------------------------ The Odds API
 def odds_board(sport: str) -> pd.DataFrame:
+    """Free default: FanDuel + Polymarket (nightly.providers). Set ODDS_PROVIDER=oddsapi (+ ODDS_API_KEY)
+    to use The Odds API multi-book consensus instead."""
+    if os.environ.get("ODDS_PROVIDER", "free") != "oddsapi":
+        from nightly.providers import combined_board
+        return combined_board(sport)
+    return oddsapi_board(sport)
+
+
+def oddsapi_board(sport: str) -> pd.DataFrame:
     """One row per event: consensus (median) lines across books + best price & book per side."""
     key = os.environ.get("ODDS_API_KEY")
     if not key:
@@ -163,15 +172,27 @@ def _best(best, k, price, book):
 
 
 def attach_odds(games: pd.DataFrame, board: pd.DataFrame) -> pd.DataFrame:
+    """Match board rows to ESPN games by team names (fuzzy: 'Syracuse' ~ 'Syracuse Orange') and start time."""
+    from nightly.providers import _same_team
     g = games.copy()
-    for c in ["home_ml", "away_ml", "spread_home", "spread_home_odds", "spread_away_odds", "total", "over_odds",
-              "under_odds", "best"]:
+    cols = ["home_ml", "away_ml", "spread_home", "spread_home_odds", "spread_away_odds", "total", "over_odds",
+            "under_odds", "best", "source"]
+    for c in cols:
         g[c] = np.nan
+    g["best"] = g["best"].astype(object)
+    g["source"] = g["source"].astype(object)
     if not board.empty:
-        b = board.assign(k=board.home_name.map(norm_name) + "|" + board.away_name.map(norm_name))
-        g["k"] = g.home_name.map(norm_name) + "|" + g.away_name.map(norm_name)
-        g = g.drop(columns=[c for c in b.columns if c in g.columns and c not in ("k",)], errors="ignore")
-        g = g.merge(b.drop(columns=["home_name", "away_name"]), on="k", how="left").drop(columns="k")
+        for i, r in g.iterrows():
+            t = pd.to_datetime(r.get("start"), utc=True, errors="coerce")
+            for _, b in board.iterrows():
+                bt = pd.to_datetime(b.get("commence"), utc=True, errors="coerce")
+                if pd.notna(t) and pd.notna(bt) and abs((bt - t).total_seconds()) > 12 * 3600:
+                    continue
+                if _same_team(r.home_name, b.home_name) and _same_team(r.away_name, b.away_name):
+                    for c in cols:
+                        if c in b and pd.notna(b[c]) if not isinstance(b.get(c), str) else c in b:
+                            g.at[i, c] = b[c]
+                    break
     # ESPN fallback where the odds feed had nothing
     g["home_ml"] = g["home_ml"].fillna(g.espn_home_ml)
     g["away_ml"] = g["away_ml"].fillna(g.espn_away_ml)
@@ -181,17 +202,36 @@ def attach_odds(games: pd.DataFrame, board: pd.DataFrame) -> pd.DataFrame:
 
 
 # ------------------------------------------------------------------ history maintenance
-def update_results(sport: str, days_back=3) -> pd.DataFrame:
-    """Append recent finals to data/live/<sport>.csv using the lines we captured pre-game
-    (data/live/slate_<sport>_<date>.csv) or ESPN's odds as a fallback."""
+def _last_known_date(sport: str, hist: pd.DataFrame):
+    from backtest import run_team as rt
+    try:
+        base = pd.to_datetime(rt.load(sport)["date"]).max()
+    except Exception:
+        base = pd.Timestamp("2026-01-01")
+    if len(hist):
+        base = max(base, pd.to_datetime(hist["date"]).max())
+    return base
+
+
+def update_results(sport: str, days_back: int | None = None, max_backfill=240) -> pd.DataFrame:
+    """Append finals to data/live/<sport>.csv, backfilling every day since the dataset (or live file) ends,
+    using the lines we captured pre-game (slate snapshots) or ESPN's odds as a fallback."""
     LIVE.mkdir(parents=True, exist_ok=True)
     f = LIVE / f"{sport}.csv"
     hist = pd.read_csv(f, parse_dates=["date"]) if f.exists() else pd.DataFrame()
     today = datetime.now()
+    if days_back is None:
+        gap = (pd.Timestamp(today.date()) - _last_known_date(sport, hist)).days
+        days_back = int(min(max(gap, 1), max_backfill))
     new = []
     for d in range(1, days_back + 1):
         day = today - timedelta(days=d)
-        g = espn_games(sport, day)
+        try:
+            g = espn_games(sport, day)
+        except Exception:
+            continue
+        if g.empty:
+            continue
         g = g[g.completed]
         snap = LIVE / f"slate_{sport}_{day:%Y-%m-%d}.csv"
         if snap.exists():
@@ -413,3 +453,77 @@ def live_nba_props(today: pd.Timestamp) -> pd.DataFrame:
     q["p_blend"] = 0.75 * q.p_mkt + 0.25 * q.p_mod
     B = P.pick_bets(q, "p_blend", 0.04)
     return B.sort_values("ev", ascending=False)
+
+
+# ------------------------------------------------------------------ line backfill (ESPN PickCenter)
+def _pickcenter(sport: str, espn_id) -> dict:
+    path = SPORTS[sport][0]
+    js = _get(f"https://site.api.espn.com/apis/site/v2/sports/{path}/summary", {"event": espn_id})
+    pcs = js.get("pickcenter") or []
+    if not pcs:
+        return {}
+    pc = sorted(pcs, key=lambda x: (x.get("provider") or {}).get("priority", 99))[0]
+    h, a = pc.get("homeTeamOdds") or {}, pc.get("awayTeamOdds") or {}
+    out = dict(home_ml=h.get("moneyLine"), away_ml=a.get("moneyLine"), total=pc.get("overUnder"),
+               over_odds=pc.get("overOdds"), under_odds=pc.get("underOdds"),
+               spread_home_odds=h.get("spreadOdds"), spread_away_odds=a.get("spreadOdds"),
+               line_source=f"espn-pickcenter:{(pc.get('provider') or {}).get('name', '')}")
+    if pc.get("spread") is not None:
+        sp = abs(float(pc["spread"]))
+        out["spread_home"] = -sp if h.get("favorite") else sp
+    return {k: v for k, v in out.items() if v is not None}
+
+
+def fill_lines(sport: str, max_games: int | None = None, days: int | None = None) -> int:
+    """Fill missing closing lines in data/live/<sport>.csv from each game's ESPN PickCenter."""
+    f = LIVE / f"{sport}.csv"
+    if not f.exists():
+        return 0
+    h = pd.read_csv(f, parse_dates=["date"])
+    for c in ["home_ml", "away_ml", "spread_home", "spread_home_odds", "spread_away_odds", "total", "over_odds",
+              "under_odds", "line_source"]:
+        if c not in h:
+            h[c] = np.nan
+    h["line_source"] = h["line_source"].astype(object)
+    need = h.index[h.home_ml.isna() & h.total.isna() & h.espn_id.notna()]
+    if days:
+        need = [i for i in need if h.at[i, "date"] >= h.date.max() - pd.Timedelta(days=days)]
+    if max_games:
+        need = list(need)[-max_games:]
+    n = 0
+    for i in need:
+        try:
+            d = _pickcenter(sport, int(h.at[i, "espn_id"]))
+        except Exception:
+            continue
+        for k, v in d.items():
+            h.at[i, k] = v
+        n += bool(d)
+    h.to_csv(f, index=False)
+    return n
+
+
+def live_projection_table(q: pd.DataFrame) -> dict:
+    """q: FanDuel prop quotes (player, home_team, away_team). Returns player(lower) ->
+    (projected points, sd, plays_for_home_team) from the walk-forward model, using only past box scores."""
+    from backtest import props_nba as P
+    box = pd.read_csv(P.proc_path("nba_player_box"), low_memory=False,
+                      usecols=["date", "player_id", "player", "team", "team_name"])
+    ids = box.sort_values("date").drop_duplicates("player_id", keep="last")
+    ids["k"] = ids.player.map(norm_name)
+    names = ids.drop_duplicates("team").set_index("team_name")["team"].to_dict()
+    q = q.copy()
+    q["k"] = q.player.map(norm_name)
+    q = q.merge(ids[["k", "player_id", "team", "team_name"]], on="k", how="inner").drop_duplicates("player_id")
+    if q.empty:
+        return {}
+    today = pd.Timestamp(datetime.now().date())
+    season = season_of("nba", datetime.now())
+    q["home"] = (q.team_name.map(norm_name) == q.home_team.map(norm_name)).astype(int)
+    q["opp"] = np.where(q.home == 1, q.away_team.map(names.get), q.home_team.map(names.get))
+    q["game_id"] = -(q.home_team + q.away_team).map(lambda x: abs(hash(x)) % 10**9)
+    up = q.assign(date=today, season=season)[["date", "season", "game_id", "team", "opp", "home", "player_id", "player"]]
+    F = P.box_features(upcoming=up)
+    proj = P.projections_for(F, F[F.upcoming == True], season)  # noqa: E712
+    proj = proj.merge(q[["player_id", "player", "home"]], on="player_id")
+    return {r.player.lower(): (float(r.proj), float(r.proj_sd), bool(r.home)) for r in proj.itertuples()}

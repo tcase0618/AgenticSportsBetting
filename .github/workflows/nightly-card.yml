@@ -23,6 +23,8 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install pandas numpy scipy scikit-learn requests pyarrow openpyxl
+      - name: Fetch nflverse schedule/lines (gitignored raw file)
+        run: mkdir -p data/raw && curl -sSL -o data/raw/nfl_games.csv https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv
       - name: Morning - refresh box scores, settle, build card
         if: github.event.schedule == '47 15 * * *' || (github.event_name == 'workflow_dispatch' && inputs.step != 'close')
         env:
@@ -30,7 +32,10 @@ jobs:
         run: |
           python -m nightly.refresh_box || echo "box refresh failed"
           python -m engine.super settle || echo "settle failed"
+          python -m engine.slate --settle || echo "sgp settle failed"
           python -m engine.super card
+          DAYS=1; [ "$(date -u +%u)" = "6" ] && DAYS=2   # Saturday run also builds Sunday
+          python -m engine.slate --days $DAYS
       - name: Evening - closing lines / CLV
         if: github.event.schedule == '33 22 * * *' || (github.event_name == 'workflow_dispatch' && inputs.step == 'close')
         env:
@@ -40,6 +45,6 @@ jobs:
         run: |
           git config user.name "super-engine-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add results/cards data/live data/journal data/processed/nba_player_box.csv.gz || true
+          git add results/cards results/slates results/sgp_calibration.json data/live data/journal data/processed/nba_player_box.csv.gz || true
           git commit -m "Super engine $(date -u +%F-%H%M)" || echo "nothing to commit"
           git push
