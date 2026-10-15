@@ -1,453 +1,453 @@
-date,espn_id,start,home,away,home_name,away_name,home_score,away_score,completed,neutral,conference_game,playoff,espn_spread_home,espn_total,espn_home_ml,espn_away_ml,indoor,city,state,home_ml,away_ml,spread_home,spread_home_odds,spread_away_odds,total,over_odds,under_odds,best,source
-2026-10-14,401871054,2026-10-14T23:30Z,Missouri State,Kennesaw State,Missouri State Bears,Kennesaw State Owls,24.0,21.0,True,0,1,0,,,,,False,Springfield,MO,,,,,,,,,,
-2026-10-14,401871068,2026-10-15T00:00Z,Sam Houston,Western Kentucky,Sam Houston Bearkats,Western Kentucky Hilltoppers,3.0,16.0,True,0,1,0,,,,,False,Huntsville,TX,,,,,,,,,,
-2026-10-13,401871067,2026-10-13T23:00Z,Middle Tennessee,Delaware,Middle Tennessee Blue Raiders,Delaware Blue Hens,33.0,30.0,True,0,1,0,,,,,False,Murfreesboro,TN,,,,,,,,,,
-2026-10-13,401871053,2026-10-14T00:00Z,Jacksonville State,Florida International,Jacksonville State Gamecocks,Florida International Panthers,27.0,24.0,True,0,1,0,,,,,False,Jacksonville,AL,,,,,,,,,,
-2026-10-10,401856717,2026-10-10T19:30Z,Oklahoma,Texas,Oklahoma Sooners,Texas Longhorns,27.0,24.0,True,1,1,0,,,,,False,Dallas,TX,,,,,,,,,,
-2026-10-10,401856712,2026-10-10T23:30Z,Alabama,Georgia,Alabama Crimson Tide,Georgia Bulldogs,17.0,20.0,True,0,1,0,,,,,False,Tuscaloosa,AL,,,,,,,,,,
-2026-10-10,401858257,2026-10-10T19:30Z,Notre Dame,Stanford,Notre Dame Fighting Irish,Stanford Cardinal,58.0,7.0,True,0,0,0,,,,,False,Notre Dame,IN,,,,,,,,,,
-2026-10-10,401858483,2026-10-10T20:15Z,Ohio State,Maryland,Ohio State Buckeyes,Maryland Terrapins,45.0,16.0,True,0,1,0,,,,,False,Columbus,OH,,,,,,,,,,
-2026-10-10,401858481,2026-10-10T16:00Z,Nebraska,Indiana,Nebraska Cornhuskers,Indiana Hoosiers,17.0,20.0,True,0,1,0,,,,,False,Lincoln,NE,,,,,,,,,,
-2026-10-10,401856718,2026-10-10T19:30Z,Vanderbilt,Ole Miss,Vanderbilt Commodores,Ole Miss Rebels,17.0,52.0,True,0,1,0,,,,,False,Nashville,TN,,,,,,,,,,
-2026-10-10,401856715,2026-10-10T23:00Z,Kentucky,LSU,Kentucky Wildcats,LSU Tigers,35.0,34.0,True,0,1,0,,,,,False,Lexington,KY,,,,,,,,,,
-2026-10-10,401856827,2026-10-11T00:00Z,Utah,Kansas,Utah Utes,Kansas Jayhawks,41.0,24.0,True,0,1,0,,,,,False,Salt Lake City,UT,,,,,,,,,,
-2026-10-10,401858484,2026-10-10T19:30Z,Oregon,UCLA,Oregon Ducks,UCLA Bruins,15.0,17.0,True,0,1,0,,,,,False,Eugene,OR,,,,,,,,,,
-2026-10-10,401856716,2026-10-10T16:00Z,Missouri,Texas A&M,Missouri Tigers,Texas A&M Aggies,27.0,6.0,True,0,1,0,,,,,False,Columbia,MO,,,,,,,,,,
-2026-10-10,401856713,2026-10-10T20:15Z,Arkansas,Tennessee,Arkansas Razorbacks,Tennessee Volunteers,17.0,24.0,True,0,1,0,,,,,False,Fayetteville,AR,,,,,,,,,,
-2026-10-10,401856714,2026-10-10T16:45Z,Florida,South Carolina,Florida Gators,South Carolina Gamecocks,19.0,38.0,True,0,1,0,,,,,False,Gainesville,FL,,,,,,,,,,
-2026-10-10,401856824,2026-10-10T16:00Z,Oklahoma State,UCF,Oklahoma State Cowboys,UCF Knights,42.0,28.0,True,0,1,0,,,,,False,Stillwater,OK,,,,,,,,,,
-2026-10-10,401858485,2026-10-10T23:30Z,Penn State,USC,Penn State Nittany Lions,USC Trojans,23.0,31.0,True,0,1,0,,,,,False,University Park,PA,,,,,,,,,,
-2026-10-10,401856825,2026-10-10T19:30Z,Kansas State,Houston,Kansas State Wildcats,Houston Cougars,16.0,35.0,True,0,1,0,,,,,False,Manhattan,KS,,,,,,,,,,
-2026-10-10,401860901,2026-10-11T02:30Z,Fresno State,Boise State,Fresno State Bulldogs,Boise State Broncos,31.0,38.0,True,0,1,0,,,,,False,Fresno,CA,,,,,,,,,,
-2026-10-10,401858256,2026-10-10T16:00Z,Pittsburgh,North Carolina,Pittsburgh Panthers,North Carolina Tar Heels,17.0,21.0,True,0,1,0,,,,,False,Pittsburgh,PA,,,,,,,,,,
-2026-10-10,401856823,2026-10-10T16:00Z,West Virginia,Arizona,West Virginia Mountaineers,Arizona Wildcats,31.0,52.0,True,0,1,0,,,,,False,Morgantown,WV,,,,,,,,,,
-2026-10-10,401858260,2026-10-10T16:00Z,NC State,Wake Forest,NC State Wolfpack,Wake Forest Demon Deacons,14.0,38.0,True,0,1,0,,,,,False,Raleigh,NC,,,,,,,,,,
-2026-10-10,401862795,2026-10-10T16:00Z,Army,Tulane,Army Black Knights,Tulane Green Wave,20.0,17.0,True,0,1,0,,,,,False,West Point,NY,,,,,,,,,,
-2026-10-10,401866436,2026-10-10T16:00Z,Bowling Green,Sacramento State,Bowling Green Falcons,Sacramento State Hornets,38.0,10.0,True,0,1,0,,,,,False,Bowling Green,OH,,,,,,,,,,
-2026-10-10,401858482,2026-10-10T16:30Z,Northwestern,Ball State,Northwestern Wildcats,Ball State Cardinals,45.0,14.0,True,0,0,0,,,,,False,Evanston,IL,,,,,,,,,,
-2026-10-10,401862797,2026-10-10T17:00Z,East Carolina,Rice,East Carolina Pirates,Rice Owls,28.0,12.0,True,0,1,0,,,,,False,Greenville,NC,,,,,,,,,,
-2026-10-10,401869843,2026-10-10T17:00Z,App State,Old Dominion,App State Mountaineers,Old Dominion Monarchs,3.0,10.0,True,0,1,0,,,,,False,Boone,NC,,,,,,,,,,
-2026-10-10,401866440,2026-10-10T18:00Z,Massachusetts,Miami (OH),Massachusetts Minutemen,Miami (OH) RedHawks,19.0,20.0,True,0,1,0,,,,,False,Amherst,MA,,,,,,,,,,
-2026-10-10,401858255,2026-10-10T19:30Z,Georgia Tech,Duke,Georgia Tech Yellow Jackets,Duke Blue Devils,28.0,25.0,True,0,1,0,,,,,False,Atlanta,GA,,,,,,,,,,
-2026-10-10,401858259,2026-10-10T19:30Z,California,Virginia Tech,California Golden Bears,Virginia Tech Hokies,25.0,20.0,True,0,1,0,,,,,False,Berkeley,CA,,,,,,,,,,
-2026-10-10,401858480,2026-10-10T19:30Z,Michigan State,Illinois,Michigan State Spartans,Illinois Fighting Illini,37.0,38.0,True,0,1,0,,,,,False,East Lansing,MI,,,,,,,,,,
-2026-10-10,401862796,2026-10-10T19:30Z,North Texas,Charlotte,North Texas Mean Green,Charlotte 49ers,50.0,10.0,True,0,1,0,,,,,False,Denton,TX,,,,,,,,,,
-2026-10-10,401862799,2026-10-10T19:30Z,Navy,Tulsa,Navy Midshipmen,Tulsa Golden Hurricane,34.0,26.0,True,0,1,0,,,,,False,Annapolis,MD,,,,,,,,,,
-2026-10-10,401866435,2026-10-10T19:30Z,Akron,Eastern Michigan,Akron Zips,Eastern Michigan Eagles,23.0,25.0,True,0,1,0,,,,,False,Akron,OH,,,,,,,,,,
-2026-10-10,401866437,2026-10-10T19:30Z,Toledo,Buffalo,Toledo Rockets,Buffalo Bulls,8.0,23.0,True,0,1,0,,,,,False,Toledo,OH,,,,,,,,,,
-2026-10-10,401866438,2026-10-10T19:30Z,Ohio,Central Michigan,Ohio Bobcats,Central Michigan Chippewas,31.0,14.0,True,0,1,0,,,,,False,Athens,OH,,,,,,,,,,
-2026-10-10,401866439,2026-10-10T19:30Z,Western Michigan,Kent State,Western Michigan Broncos,Kent State Golden Flashes,38.0,7.0,True,0,1,0,,,,,False,Kalamazoo,MI,,,,,,,,,,
-2026-10-10,401861964,2026-10-10T19:45Z,Temple,UConn,Temple Owls,UConn Huskies,20.0,34.0,True,0,0,0,,,,,False,Philadelphia,PA,,,,,,,,,,
-2026-10-10,401860902,2026-10-10T22:00Z,Oregon State,San Diego State,Oregon State Beavers,San Diego State Aztecs,66.0,14.0,True,0,1,0,,,,,False,Corvallis,OR,,,,,,,,,,
-2026-10-10,401862798,2026-10-10T23:00Z,Memphis,UAB,Memphis Tigers,UAB Blazers,38.0,13.0,True,0,1,0,,,,,False,Memphis,TN,,,,,,,,,,
-2026-10-10,401864517,2026-10-10T23:00Z,UTEP,Nevada,UTEP Miners,Nevada Wolf Pack,13.0,30.0,True,0,1,0,,,,,False,El Paso,TX,,,,,,,,,,
-2026-10-10,401864518,2026-10-10T23:00Z,UNLV,North Dakota State,UNLV Rebels,North Dakota State Bison,13.0,7.0,True,0,1,0,,,,,True,Las Vegas,NV,,,,,,,,,,
-2026-10-10,401869943,2026-10-10T23:00Z,Marshall,Coastal Carolina,Marshall Thundering Herd,Coastal Carolina Chanticleers,21.0,27.0,True,0,1,0,,,,,False,Huntington,WV,,,,,,,,,,
-2026-10-10,401858258,2026-10-10T23:30Z,Virginia,Syracuse,Virginia Cavaliers,Syracuse Orange,28.0,25.0,True,0,1,0,,,,,False,Charlottesville,VA,,,,,,,,,,
-2026-10-10,401864516,2026-10-10T23:30Z,Northern Illinois,Air Force,Northern Illinois Huskies,Air Force Falcons,7.0,28.0,True,0,1,0,,,,,False,Dekalb,IL,,,,,,,,,,
-2026-10-10,401869965,2026-10-10T23:30Z,Louisiana Tech,Louisiana,Louisiana Tech Bulldogs,Louisiana Ragin' Cajuns,32.0,31.0,True,0,1,0,,,,,False,Ruston,LA,,,,,,,,,,
-2026-10-10,401858486,2026-10-11T00:00Z,Purdue,Minnesota,Purdue Boilermakers,Minnesota Golden Gophers,41.0,13.0,True,0,1,0,,,,,False,West Lafayette,IN,,,,,,,,,,
-2026-10-10,401869949,2026-10-11T00:10Z,Georgia Southern,James Madison,Georgia Southern Eagles,James Madison Dukes,24.0,27.0,True,0,1,0,,,,,False,Statesboro,GA,,,,,,,,,,
-2026-10-10,401856808,2026-10-11T02:30Z,Arizona State,Hawai'i,Arizona State Sun Devils,Hawai'i Rainbow Warriors,30.0,12.0,True,0,0,0,,,,,False,Tempe,AZ,,,,,,,,,,
-2026-10-09,401856826,2026-10-10T02:30Z,BYU,Iowa State,BYU Cougars,Iowa State Cyclones,24.0,10.0,True,0,1,0,,,,,False,Provo,UT,,,,,,,,,,
-2026-10-09,401858487,2026-10-10T01:00Z,Washington,Iowa,Washington Huskies,Iowa Hawkeyes,24.0,41.0,True,0,1,0,,,,,False,Seattle,WA,,,,,,,,,,
-2026-10-09,401858254,2026-10-09T23:00Z,Louisville,Florida State,Louisville Cardinals,Florida State Seminoles,44.0,20.0,True,0,1,0,,,,,False,Louisville,KY,,,,,,,,,,
-2026-10-09,401860922,2026-10-10T01:00Z,Utah State,Washington State,Utah State Aggies,Washington State Cougars,17.0,16.0,True,0,1,0,,,,,False,Logan,UT,,,,,,,,,,
-2026-10-09,401864519,2026-10-10T01:00Z,San José State,Wyoming,San José State Spartans,Wyoming Cowboys,13.0,16.0,True,0,1,0,,,,,False,San Jose,CA,,,,,,,,,,
-2026-10-08,401870766,2026-10-08T23:00Z,Liberty,Sam Houston,Liberty Flames,Sam Houston Bearkats,35.0,3.0,True,0,1,0,,,,,False,Lynchburg,VA,,,,,,,,,,
-2026-10-08,401871052,2026-10-08T23:00Z,Western Kentucky,Missouri State,Western Kentucky Hilltoppers,Missouri State Bears,34.0,13.0,True,0,1,0,,,,,False,Bowling Green,KY,,,,,,,,,,
-2026-10-08,401862794,2026-10-08T23:30Z,UTSA,South Florida,UTSA Roadrunners,South Florida Bulls,31.0,24.0,True,0,1,0,,,,,True,San Antonio,TX,,,,,,,,,,
-2026-10-08,401869933,2026-10-08T23:30Z,Arkansas State,South Alabama,Arkansas State Red Wolves,South Alabama Jaguars,49.0,56.0,True,0,1,0,,,,,False,Jonesboro,AR,,,,,,,,,,
-2026-10-07,401871051,2026-10-07T23:00Z,Kennesaw State,Jacksonville State,Kennesaw State Owls,Jacksonville State Gamecocks,26.0,27.0,True,0,1,0,,,,,False,Kennesaw,GA,,,,,,,,,,
-2026-10-07,401871066,2026-10-08T00:04Z,Florida International,New Mexico State,Florida International Panthers,New Mexico State Aggies,22.0,3.0,True,0,1,0,,,,,False,Miami,FL,,,,,,,,,,
-2026-10-06,401871090,2026-10-07T00:00Z,Troy,Southern Miss,Troy Trojans,Southern Miss Golden Eagles,55.0,34.0,True,0,1,0,,,,,False,Troy,AL,,,,,,,,,,
-2026-10-03,401856705,2026-10-03T16:45Z,Georgia,Vanderbilt,Georgia Bulldogs,Vanderbilt Commodores,38.0,14.0,True,0,1,0,,,,,False,Athens,GA,,,,,,,,,,
-2026-10-03,401858250,2026-10-03T16:00Z,North Carolina,Notre Dame,North Carolina Tar Heels,Notre Dame Fighting Irish,26.0,37.0,True,0,0,0,,,,,False,Chapel Hill,NC,,,,,,,,,,
-2026-10-03,401858249,2026-10-03T23:30Z,Clemson,Miami,Clemson Tigers,Miami Hurricanes,13.0,41.0,True,0,1,0,,,,,False,Clemson,SC,,,,,,,,,,
-2026-10-03,401858473,2026-10-03T19:30Z,Iowa,Ohio State,Iowa Hawkeyes,Ohio State Buckeyes,14.0,31.0,True,0,1,0,,,,,False,Iowa City,IA,,,,,,,,,,
-2026-10-03,401858477,2026-10-04T00:00Z,Rutgers,Indiana,Rutgers Scarlet Knights,Indiana Hoosiers,15.0,47.0,True,0,1,0,,,,,False,Piscataway,NJ,,,,,,,,,,
-2026-10-03,401856707,2026-10-03T16:00Z,Mississippi State,Alabama,Mississippi State Bulldogs,Alabama Crimson Tide,23.0,56.0,True,0,1,0,,,,,False,Starkville,MS,,,,,,,,,,
-2026-10-03,401856708,2026-10-03T19:50Z,Missouri,Florida,Missouri Tigers,Florida Gators,45.0,17.0,True,0,1,0,,,,,False,Columbia,MO,,,,,,,,,,
-2026-10-03,401856818,2026-10-03T23:00Z,TCU,BYU,TCU Horned Frogs,BYU Cougars,10.0,17.0,True,0,1,0,,,,,False,Fort Worth,TX,,,,,,,,,,
-2026-10-03,401856706,2026-10-03T23:45Z,LSU,McNeese,LSU Tigers,McNeese Cowboys,63.0,14.0,True,0,0,0,,,,,False,Baton Rouge,LA,,,,,,,,,,
-2026-10-03,401856821,2026-10-03T23:30Z,Colorado,Texas Tech,Colorado Buffaloes,Texas Tech Red Raiders,7.0,29.0,True,0,1,0,,,,,False,Boulder,CO,,,,,,,,,,
-2026-10-03,401856710,2026-10-03T19:30Z,Tennessee,Auburn,Tennessee Volunteers,Auburn Tigers,24.0,14.0,True,0,1,0,,,,,False,Knoxville,TN,,,,,,,,,,
-2026-10-03,401858478,2026-10-03T23:30Z,USC,Washington,USC Trojans,Washington Huskies,25.0,21.0,True,0,1,0,,,,,False,Los Angeles,CA,,,,,,,,,,
-2026-10-03,401856819,2026-10-03T16:00Z,Houston,UCF,Houston Cougars,UCF Knights,27.0,17.0,True,0,1,0,,,,,False,Houston,TX,,,,,,,,,,
-2026-10-03,401858246,2026-10-03T16:00Z,SMU,Boston College,SMU Mustangs,Boston College Eagles,25.0,16.0,True,0,1,0,,,,,False,Dallas,TX,,,,,,,,,,
-2026-10-03,401860898,2026-10-03T23:30Z,Boise State,Utah State,Boise State Broncos,Utah State Aggies,37.0,18.0,True,0,1,0,,,,,False,Boise,ID,,,,,,,,,,
-2026-10-03,401856709,2026-10-03T20:15Z,South Carolina,Kentucky,South Carolina Gamecocks,Kentucky Wildcats,34.0,35.0,True,0,1,0,,,,,False,Columbia,SC,,,,,,,,,,
-2026-10-03,401862787,2026-10-03T15:00Z,Charlotte,Memphis,Charlotte 49ers,Memphis Tigers,8.0,59.0,True,0,1,0,,,,,False,Charlotte,NC,,,,,,,,,,
-2026-10-03,401856807,2026-10-03T16:00Z,Kansas,Middle Tennessee,Kansas Jayhawks,Middle Tennessee Blue Raiders,55.0,0.0,True,0,0,0,,,,,False,Lawrence,KS,,,,,,,,,,
-2026-10-03,401856822,2026-10-03T16:00Z,Iowa State,West Virginia,Iowa State Cyclones,West Virginia Mountaineers,45.0,42.0,True,0,1,0,,,,,False,Ames,IA,,,,,,,,,,
-2026-10-03,401858251,2026-10-03T16:00Z,Wake Forest,Stanford,Wake Forest Demon Deacons,Stanford Cardinal,57.0,3.0,True,0,1,0,,,,,False,Winston-Salem,NC,,,,,,,,,,
-2026-10-03,401858252,2026-10-03T16:00Z,UConn,Syracuse,UConn Huskies,Syracuse Orange,41.0,42.0,True,0,0,0,,,,,False,East Hartford,CT,,,,,,,,,,
-2026-10-03,401858474,2026-10-03T16:00Z,Minnesota,Michigan,Minnesota Golden Gophers,Michigan Wolverines,20.0,14.0,True,0,1,0,,,,,False,Minneapolis,MN,,,,,,,,,,
-2026-10-03,401862791,2026-10-03T16:00Z,Air Force,Navy,Air Force Falcons,Navy Midshipmen,14.0,9.0,True,0,0,0,,,,,False,USAF Academy,CO,,,,,,,,,,
-2026-10-03,401858479,2026-10-03T16:30Z,Wisconsin,Michigan State,Wisconsin Badgers,Michigan State Spartans,31.0,3.0,True,0,1,0,,,,,False,Madison,WI,,,,,,,,,,
-2026-10-03,401866432,2026-10-03T17:00Z,Buffalo,Western Michigan,Buffalo Bulls,Western Michigan Broncos,17.0,20.0,True,0,1,0,,,,,False,Buffalo,NY,,,,,,,,,,
-2026-10-03,401866431,2026-10-03T18:00Z,Ball State,Toledo,Ball State Cardinals,Toledo Rockets,24.0,39.0,True,0,1,0,,,,,False,Muncie,IN,,,,,,,,,,
-2026-10-03,401858247,2026-10-03T19:30Z,UNLV,California,UNLV Rebels,California Golden Bears,39.0,31.0,True,0,0,0,,,,,True,Las Vegas,NV,,,,,,,,,,
-2026-10-03,401858248,2026-10-03T19:30Z,NC State,Louisville,NC State Wolfpack,Louisville Cardinals,31.0,28.0,True,0,1,0,,,,,False,Raleigh,NC,,,,,,,,,,
-2026-10-03,401858253,2026-10-03T19:30Z,Florida State,Virginia,Florida State Seminoles,Virginia Cavaliers,38.0,7.0,True,0,1,0,,,,,False,Tallahassee,FL,,,,,,,,,,
-2026-10-03,401862793,2026-10-03T19:30Z,UAB,Samford,UAB Blazers,Samford Bulldogs,33.0,14.0,True,0,0,0,,,,,False,Birmingham,AL,,,,,,,,,,
-2026-10-03,401864515,2026-10-03T19:30Z,North Dakota State,Wyoming,North Dakota State Bison,Wyoming Cowboys,28.0,0.0,True,0,1,0,,,,,True,Fargo,ND,,,,,,,,,,
-2026-10-03,401866430,2026-10-03T19:30Z,Central Michigan,Akron,Central Michigan Chippewas,Akron Zips,41.0,17.0,True,0,1,0,,,,,False,Mount Pleasant,MI,,,,,,,,,,
-2026-10-03,401866433,2026-10-03T19:30Z,Massachusetts,Eastern Michigan,Massachusetts Minutemen,Eastern Michigan Eagles,14.0,38.0,True,0,1,0,,,,,False,Amherst,MA,,,,,,,,,,
-2026-10-03,401866434,2026-10-03T19:30Z,Kent State,Ohio,Kent State Golden Flashes,Ohio Bobcats,10.0,13.0,True,0,1,0,,,,,False,Kent,OH,,,,,,,,,,
-2026-10-03,401866477,2026-10-03T19:30Z,Miami (OH),Bowling Green,Miami (OH) RedHawks,Bowling Green Falcons,20.0,24.0,True,0,1,0,,,,,False,Oxford,OH,,,,,,,,,,
-2026-10-03,401869956,2026-10-03T19:30Z,Georgia State,Old Dominion,Georgia State Panthers,Old Dominion Monarchs,42.0,10.0,True,0,1,0,,,,,False,Atlanta,GA,,,,,,,,,,
-2026-10-03,401869962,2026-10-03T19:45Z,James Madison,Marshall,James Madison Dukes,Marshall Thundering Herd,45.0,17.0,True,0,1,0,,,,,False,Harrisonburg,VA,,,,,,,,,,
-2026-10-03,401858475,2026-10-03T20:00Z,Nebraska,Maryland,Nebraska Cornhuskers,Maryland Terrapins,48.0,23.0,True,0,1,0,,,,,False,Lincoln,NE,,,,,,,,,,
-2026-10-03,401864514,2026-10-03T20:00Z,New Mexico,UTEP,New Mexico Lobos,UTEP Miners,61.0,7.0,True,0,1,0,,,,,False,Albuquerque,NM,,,,,,,,,,
-2026-10-03,401858472,2026-10-03T20:15Z,Illinois,Purdue,Illinois Fighting Illini,Purdue Boilermakers,17.0,24.0,True,0,1,0,,,,,False,Champaign,IL,,,,,,,,,,
-2026-10-03,401860899,2026-10-03T22:00Z,Colorado State,Oregon State,Colorado State Rams,Oregon State Beavers,26.0,56.0,True,0,1,0,,,,,False,Fort Collins,CO,,,,,,,,,,
-2026-10-03,401862790,2026-10-03T22:00Z,Florida Atlantic,Texas Southern,Florida Atlantic Owls,Texas Southern Tigers,66.0,10.0,True,0,0,0,,,,,False,Boca Raton,FL,,,,,,,,,,
-2026-10-03,401856711,2026-10-03T23:00Z,Texas A&M,Arkansas,Texas A&M Aggies,Arkansas Razorbacks,34.0,7.0,True,0,1,0,,,,,False,College Station,TX,,,,,,,,,,
-2026-10-03,401862788,2026-10-03T23:00Z,Rice,UTSA,Rice Owls,UTSA Roadrunners,14.0,16.0,True,0,1,0,,,,,False,Houston,TX,,,,,,,,,,
-2026-10-03,401869942,2026-10-03T23:00Z,Coastal Carolina,Georgia Southern,Coastal Carolina Chanticleers,Georgia Southern Eagles,24.0,31.0,True,0,1,0,,,,,False,Conway,SC,,,,,,,,,,
-2026-10-03,401871089,2026-10-03T23:00Z,South Alabama,UL Monroe,South Alabama Jaguars,UL Monroe Warhawks,52.0,35.0,True,0,1,0,,,,,False,Mobile,AL,,,,,,,,,,
-2026-10-03,401862792,2026-10-03T23:30Z,South Florida,Temple,South Florida Bulls,Temple Owls,13.0,17.0,True,0,1,0,,,,,False,Tampa,FL,,,,,,,,,,
-2026-10-03,401869842,2026-10-03T23:30Z,Louisiana Tech,Army,Louisiana Tech Bulldogs,Army Black Knights,31.0,29.0,True,0,0,0,,,,,False,Ruston,LA,,,,,,,,,,
-2026-10-03,401869932,2026-10-04T00:00Z,Louisiana,Arkansas State,Louisiana Ragin' Cajuns,Arkansas State Red Wolves,23.0,20.0,True,0,1,0,,,,,False,Lafayette,LA,,,,,,,,,,
-2026-10-03,401860921,2026-10-04T01:30Z,Washington State,Fresno State,Washington State Cougars,Fresno State Bulldogs,6.0,26.0,True,0,1,0,,,,,False,Pullman,WA,,,,,,,,,,
-2026-10-03,401856817,2026-10-04T02:30Z,Arizona State,Baylor,Arizona State Sun Devils,Baylor Bears,19.0,55.0,True,0,1,0,,,,,False,Tempe,AZ,,,,,,,,,,
-2026-10-03,401860900,2026-10-04T02:30Z,San Diego State,Texas State,San Diego State Aztecs,Texas State Bobcats,31.0,29.0,True,0,1,0,,,,,False,San Diego,CA,,,,,,,,,,
-2026-10-03,401856820,2026-10-04T03:00Z,Arizona,Cincinnati,Arizona Wildcats,Cincinnati Bearcats,34.0,7.0,True,0,1,0,,,,,False,Tucson,AZ,,,,,,,,,,
-2026-10-03,401864513,2026-10-04T03:59Z,Hawai'i,San José State,Hawai'i Rainbow Warriors,San José State Spartans,16.0,20.0,True,0,1,0,,,,,False,Honolulu,HI,,,,,,,,,,
-2026-10-02,401858245,2026-10-02T23:00Z,Virginia Tech,Pittsburgh,Virginia Tech Hokies,Pittsburgh Panthers,33.0,35.0,True,0,1,0,,,,,False,Blacksburg,VA,,,,,,,,,,
-2026-10-02,401871050,2026-10-02T23:00Z,Delaware,Liberty,Delaware Blue Hens,Liberty Flames,14.0,30.0,True,0,1,0,,,,,False,Newark,DE,,,,,,,,,,
-2026-10-02,401858476,2026-10-03T00:00Z,Northwestern,Penn State,Northwestern Wildcats,Penn State Nittany Lions,34.0,13.0,True,0,1,0,,,,,False,Evanston,IL,,,,,,,,,,
-2026-10-01,401871049,2026-10-02T00:00Z,New Mexico State,Western Kentucky,New Mexico State Aggies,Western Kentucky Hilltoppers,34.0,13.0,True,0,1,0,,,,,False,Las Cruces,NM,,,,,,,,,,
-2026-10-01,401862786,2026-10-02T01:00Z,Tulsa,North Texas,Tulsa Golden Hurricane,North Texas Mean Green,44.0,45.0,True,0,1,0,,,,,False,Tulsa,OK,,,,,,,,,,
-2026-09-26,401856704,2026-09-26T16:00Z,Tennessee,Texas,Tennessee Volunteers,Texas Longhorns,17.0,20.0,True,0,1,0,,,,,False,Knoxville,TN,,,,,,,,,,
-2026-09-26,401856700,2026-09-26T19:30Z,Georgia,Oklahoma,Georgia Bulldogs,Oklahoma Sooners,41.0,13.0,True,0,1,0,,,,,False,Athens,GA,,,,,,,,,,
-2026-09-26,401858467,2026-09-26T18:00Z,Purdue,Notre Dame,Purdue Boilermakers,Notre Dame Fighting Irish,10.0,49.0,True,0,0,0,,,,,False,West Lafayette,IN,,,,,,,,,,
-2026-09-26,401856699,2026-09-26T19:30Z,Florida,Ole Miss,Florida Gators,Ole Miss Rebels,52.0,28.0,True,0,1,0,,,,,False,Gainesville,FL,,,,,,,,,,
-2026-09-26,401858238,2026-09-26T22:30Z,Miami,Central Michigan,Miami Hurricanes,Central Michigan Chippewas,52.0,3.0,True,0,0,0,,,,,False,Miami Gardens,FL,,,,,,,,,,
-2026-09-26,401858465,2026-09-26T16:00Z,Ohio State,Illinois,Ohio State Buckeyes,Illinois Fighting Illini,42.0,19.0,True,0,1,0,,,,,False,Columbus,OH,,,,,,,,,,
-2026-09-26,401856696,2026-09-26T23:10Z,Alabama,South Carolina,Alabama Crimson Tide,South Carolina Gamecocks,49.0,18.0,True,0,1,0,,,,,False,Tuscaloosa,AL,,,,,,,,,,
-2026-09-26,401856702,2026-09-26T23:30Z,LSU,Texas A&M,LSU Tigers,Texas A&M Aggies,35.0,6.0,True,0,1,0,,,,,False,Baton Rouge,LA,,,,,,,,,,
-2026-09-26,401856805,2026-09-26T16:00Z,Texas Tech,Sam Houston,Texas Tech Red Raiders,Sam Houston Bearkats,49.0,14.0,True,0,0,0,,,,,False,Lubbock,TX,,,,,,,,,,
-2026-09-26,401858469,2026-09-26T23:30Z,USC,Oregon,USC Trojans,Oregon Ducks,27.0,41.0,True,0,1,0,,,,,False,Los Angeles,CA,,,,,,,,,,
-2026-09-26,401858466,2026-09-26T21:00Z,Penn State,Wisconsin,Penn State Nittany Lions,Wisconsin Badgers,20.0,24.0,True,0,1,0,,,,,False,University Park,PA,,,,,,,,,,
-2026-09-26,401856816,2026-09-26T19:30Z,Iowa State,Utah,Iowa State Cyclones,Utah Utes,17.0,31.0,True,0,1,0,,,,,False,Ames,IA,,,,,,,,,,
-2026-09-26,401858243,2026-09-26T16:00Z,Louisville,Wake Forest,Louisville Cardinals,Wake Forest Demon Deacons,27.0,30.0,True,0,1,0,,,,,False,Louisville,KY,,,,,,,,,,
-2026-09-26,401858463,2026-09-26T19:30Z,Michigan,Iowa,Michigan Wolverines,Iowa Hawkeyes,19.0,20.0,True,0,1,0,,,,,False,Ann Arbor,MI,,,,,,,,,,
-2026-09-26,401856703,2026-09-26T23:45Z,Mississippi State,Missouri,Mississippi State Bulldogs,Missouri Tigers,31.0,24.0,True,0,1,0,,,,,False,Starkville,MS,,,,,,,,,,
-2026-09-26,401858241,2026-09-27T01:00Z,SMU,Missouri State,SMU Mustangs,Missouri State Bears,34.0,24.0,True,0,0,0,,,,,False,Dallas,TX,,,,,,,,,,
-2026-09-26,401856806,2026-09-26T20:00Z,Georgia Southern,Houston,Georgia Southern Eagles,Houston Cougars,28.0,42.0,True,0,0,0,,,,,False,Statesboro,GA,,,,,,,,,,
-2026-09-26,401856813,2026-09-26T16:00Z,Baylor,Colorado,Baylor Bears,Colorado Buffaloes,23.0,13.0,True,0,1,0,,,,,False,Waco,TX,,,,,,,,,,
-2026-09-26,401858236,2026-09-26T16:00Z,Pittsburgh,Bucknell,Pittsburgh Panthers,Bucknell Bison,59.0,0.0,True,0,0,0,,,,,False,Pittsburgh,PA,,,,,,,,,,
-2026-09-26,401858242,2026-09-26T16:00Z,Boston College,Virginia Tech,Boston College Eagles,Virginia Tech Hokies,14.0,21.0,True,0,1,0,,,,,False,Chestnut Hill,MA,,,,,,,,,,
-2026-09-26,401860893,2026-09-26T16:00Z,Toledo,San Diego State,Toledo Rockets,San Diego State Aztecs,41.0,16.0,True,0,0,0,,,,,False,Toledo,OH,,,,,,,,,,
-2026-09-26,401860896,2026-09-26T16:00Z,UTSA,Colorado State,UTSA Roadrunners,Colorado State Rams,59.0,45.0,True,0,0,0,,,,,True,San Antonio,TX,,,,,,,,,,
-2026-09-26,401864512,2026-09-26T16:00Z,Akron,UNLV,Akron Zips,UNLV Rebels,10.0,38.0,True,0,0,0,,,,,False,Akron,OH,,,,,,,,,,
-2026-09-26,401866425,2026-09-26T16:00Z,Kent State,Ball State,Kent State Golden Flashes,Ball State Cardinals,26.0,13.0,True,0,1,0,,,,,False,Kent,OH,,,,,,,,,,
-2026-09-26,401864576,2026-09-26T16:45Z,Kentucky,South Alabama,Kentucky Wildcats,South Alabama Jaguars,45.0,21.0,True,0,0,0,,,,,False,Lexington,KY,,,,,,,,,,
-2026-09-26,401866427,2026-09-26T17:00Z,Eastern Michigan,Lindenwood,Eastern Michigan Eagles,Lindenwood Lions,29.0,3.0,True,0,0,0,,,,,False,Ypsilanti,MI,,,,,,,,,,
-2026-09-26,401858462,2026-09-26T17:30Z,Maryland,UCLA,Maryland Terrapins,UCLA Bruins,3.0,54.0,True,0,1,0,,,,,False,College Park,MD,,,,,,,,,,
-2026-09-26,401864511,2026-09-26T18:00Z,Georgia State,Northern Illinois,Georgia State Panthers,Northern Illinois Huskies,35.0,14.0,True,0,0,0,,,,,False,Atlanta,GA,,,,,,,,,,
-2026-09-26,401858237,2026-09-26T19:00Z,Florida State,Central Arkansas,Florida State Seminoles,Central Arkansas Bears,34.0,7.0,True,0,0,0,,,,,False,Tallahassee,FL,,,,,,,,,,
-2026-09-26,401864510,2026-09-26T19:00Z,Wyoming,Hawai'i,Wyoming Cowboys,Hawai'i Rainbow Warriors,27.0,10.0,True,0,1,0,,,,,False,Laramie,WY,,,,,,,,,,
-2026-09-26,401856815,2026-09-26T19:30Z,UCF,TCU,UCF Knights,TCU Horned Frogs,21.0,13.0,True,0,1,0,,,,,False,Orlando,FL,,,,,,,,,,
-2026-09-26,401858244,2026-09-26T19:30Z,Duke,William & Mary,Duke Blue Devils,William & Mary Tribe,62.0,7.0,True,0,0,0,,,,,False,Durham,NC,,,,,,,,,,
-2026-09-26,401860897,2026-09-26T19:30Z,Western Michigan,Boise State,Western Michigan Broncos,Boise State Broncos,7.0,32.0,True,0,0,0,,,,,False,Kalamazoo,MI,,,,,,,,,,
-2026-09-26,401861970,2026-09-26T19:30Z,Miami (OH),UConn,Miami (OH) RedHawks,UConn Huskies,24.0,21.0,True,0,0,0,,,,,False,Oxford,OH,,,,,,,,,,
-2026-09-26,401864579,2026-09-26T19:30Z,New Mexico State,New Mexico,New Mexico State Aggies,New Mexico Lobos,18.0,42.0,True,0,0,0,,,,,False,Las Cruces,NM,,,,,,,,,,
-2026-09-26,401866426,2026-09-26T19:30Z,Buffalo,Robert Morris,Buffalo Bulls,Robert Morris Colonials,31.0,28.0,True,0,0,0,,,,,False,Buffalo,NY,,,,,,,,,,
-2026-09-26,401866428,2026-09-26T19:30Z,Ohio,Stonehill,Ohio Bobcats,Stonehill Skyhawks,35.0,7.0,True,0,0,0,,,,,False,Athens,OH,,,,,,,,,,
-2026-09-26,401868188,2026-09-26T19:30Z,Marshall,Gardner-Webb,Marshall Thundering Herd,Gardner-Webb Runnin' Bulldogs,36.0,35.0,True,0,0,0,,,,,False,Huntington,WV,,,,,,,,,,
-2026-09-26,401862781,2026-09-26T20:00Z,East Carolina,North Carolina Central,East Carolina Pirates,North Carolina Central Eagles,42.0,9.0,True,0,0,0,,,,,False,Greenville,NC,,,,,,,,,,
-2026-09-26,401856698,2026-09-26T20:15Z,Auburn,Vanderbilt,Auburn Tigers,Vanderbilt Commodores,21.0,15.0,True,0,1,0,,,,,False,Auburn,AL,,,,,,,,,,
-2026-09-26,401858464,2026-09-26T21:00Z,Michigan State,Nebraska,Michigan State Spartans,Nebraska Cornhuskers,13.0,31.0,True,0,1,0,,,,,False,East Lansing,MI,,,,,,,,,,
-2026-09-26,401862785,2026-09-26T21:00Z,Bowling Green,South Florida,Bowling Green Falcons,South Florida Bulls,6.0,14.0,True,0,0,0,,,,,False,Bowling Green,OH,,,,,,,,,,
-2026-09-26,401858239,2026-09-26T22:00Z,Virginia,Delaware,Virginia Cavaliers,Delaware Blue Hens,42.0,3.0,True,0,0,0,,,,,False,Charlottesville,VA,,,,,,,,,,
-2026-09-26,401860892,2026-09-26T22:00Z,Texas State,Incarnate Word,Texas State Bobcats,Incarnate Word Cardinals,63.0,10.0,True,0,0,0,,,,,False,San Marcos,TX,,,,,,,,,,
-2026-09-26,401867909,2026-09-26T22:00Z,Florida International,Long Island University,Florida International Panthers,Long Island University Sharks,20.0,3.0,True,0,0,0,,,,,False,Miami,FL,,,,,,,,,,
-2026-09-26,401869961,2026-09-26T22:00Z,Old Dominion,James Madison,Old Dominion Monarchs,James Madison Dukes,20.0,46.0,True,0,1,0,,,,,False,Norfolk,VA,,,,,,,,,,
-2026-09-26,401862780,2026-09-26T22:30Z,Charlotte,Louisiana,Charlotte 49ers,Louisiana Ragin' Cajuns,7.0,34.0,True,0,0,0,,,,,False,Charlotte,NC,,,,,,,,,,
-2026-09-26,401856814,2026-09-26T23:00Z,Cincinnati,Kansas State,Cincinnati Bearcats,Kansas State Wildcats,31.0,26.0,True,0,1,0,,,,,False,Cincinnati,OH,,,,,,,,,,
-2026-09-26,401856881,2026-09-26T23:00Z,West Virginia,Oklahoma State,West Virginia Mountaineers,Oklahoma State Cowboys,24.0,41.0,True,0,1,0,,,,,False,Morgantown,WV,,,,,,,,,,
-2026-09-26,401862784,2026-09-26T23:00Z,Tulane,Southern Miss,Tulane Green Wave,Southern Miss Golden Eagles,24.0,21.0,True,0,0,0,,,,,False,New Orleans,LA,,,,,,,,,,
-2026-09-26,401869931,2026-09-26T23:00Z,Arkansas State,Kennesaw State,Arkansas State Red Wolves,Kennesaw State Owls,17.0,14.0,True,0,0,0,,,,,False,Jonesboro,AR,,,,,,,,,,
-2026-09-26,401870745,2026-09-26T23:00Z,Western Kentucky,Mercyhurst,Western Kentucky Hilltoppers,Mercyhurst Lakers,52.0,7.0,True,0,0,0,,,,,False,Bowling Green,KY,,,,,,,,,,
-2026-09-26,401871048,2026-09-26T23:00Z,Jacksonville State,Middle Tennessee,Jacksonville State Gamecocks,Middle Tennessee Blue Raiders,23.0,13.0,True,0,1,0,,,,,False,Jacksonville,AL,,,,,,,,,,
-2026-09-26,401856804,2026-09-26T23:30Z,Washington State,Arizona,Washington State Cougars,Arizona Wildcats,24.0,34.0,True,0,0,0,,,,,False,Pullman,WA,,,,,,,,,,
-2026-09-26,401860894,2026-09-26T23:30Z,Utah State,Troy,Utah State Aggies,Troy Trojans,21.0,10.0,True,0,0,0,,,,,False,Logan,UT,,,,,,,,,,
-2026-09-26,401862783,2026-09-26T23:30Z,North Texas,Houston Christian,North Texas Mean Green,Houston Christian Huskies,63.0,14.0,True,0,0,0,,,,,False,Denton,TX,,,,,,,,,,
-2026-09-26,401864572,2026-09-26T23:30Z,NC State,App State,NC State Wolfpack,App State Mountaineers,41.0,31.0,True,0,0,0,,,,,False,Raleigh,NC,,,,,,,,,,
-2026-09-26,401856697,2026-09-27T00:00Z,Arkansas,Tulsa,Arkansas Razorbacks,Tulsa Golden Hurricane,34.0,6.0,True,0,0,0,,,,,False,Fayetteville,AR,,,,,,,,,,
-2026-09-26,401862782,2026-09-27T00:00Z,UL Monroe,Florida Atlantic,UL Monroe Warhawks,Florida Atlantic Owls,17.0,45.0,True,0,0,0,,,,,False,Monroe,LA,,,,,,,,,,
-2026-09-26,401860895,2026-09-27T01:00Z,UTEP,Oregon State,UTEP Miners,Oregon State Beavers,7.0,33.0,True,0,0,0,,,,,False,El Paso,TX,,,,,,,,,,
-2026-09-26,401866429,2026-09-27T01:00Z,Sacramento State,Massachusetts,Sacramento State Hornets,Massachusetts Minutemen,6.0,35.0,True,0,1,0,,,,,False,Sacramento,CA,,,,,,,,,,
-2026-09-26,401860891,2026-09-27T02:00Z,Fresno State,Rice,Fresno State Bulldogs,Rice Owls,38.0,24.0,True,0,0,0,,,,,False,Fresno,CA,,,,,,,,,,
-2026-09-26,401858240,2026-09-27T02:30Z,Stanford,Georgia Tech,Stanford Cardinal,Georgia Tech Yellow Jackets,34.0,27.0,True,0,1,0,,,,,False,Stanford,CA,,,,,,,,,,
-2026-09-26,401864509,2026-09-27T02:30Z,Nevada,Air Force,Nevada Wolf Pack,Air Force Falcons,33.0,36.0,True,0,1,0,,,,,False,Reno,NV,,,,,,,,,,
-2026-09-26,401858470,2026-09-27T03:00Z,Washington,Minnesota,Washington Huskies,Minnesota Golden Gophers,24.0,27.0,True,0,1,0,,,,,False,Seattle,WA,,,,,,,,,,
-2026-09-25,401858461,2026-09-26T00:00Z,Indiana,Northwestern,Indiana Hoosiers,Northwestern Wildcats,29.0,23.0,True,0,1,0,,,,,False,Bloomington,IN,,,,,,,,,,
-2026-09-25,401862779,2026-09-25T20:00Z,Temple,Army,Temple Owls,Army Black Knights,17.0,21.0,True,0,1,0,,,,,False,Philadelphia,PA,,,,,,,,,,
-2026-09-25,401858468,2026-09-25T23:00Z,Rutgers,Howard,Rutgers Scarlet Knights,Howard Bison,58.0,7.0,True,0,0,0,,,,,False,Piscataway,NJ,,,,,,,,,,
-2026-09-25,401862778,2026-09-25T23:00Z,UAB,Navy,UAB Blazers,Navy Midshipmen,24.0,20.0,True,0,1,0,,,,,False,Birmingham,AL,,,,,,,,,,
-2026-09-25,401858234,2026-09-26T02:30Z,California,Clemson,California Golden Bears,Clemson Tigers,10.0,24.0,True,0,1,0,,,,,False,Berkeley,CA,,,,,,,,,,
-2026-09-24,401869941,2026-09-24T23:30Z,Coastal Carolina,Liberty,Coastal Carolina Chanticleers,Liberty Flames,17.0,34.0,True,0,0,0,,,,,False,Conway,SC,,,,,,,,,,
-2026-09-19,401856693,2026-09-20T00:00Z,Texas,UTSA,Texas Longhorns,UTSA Roadrunners,30.0,6.0,True,0,0,0,,,,,False,Austin,TX,,,,,,,,,,
-2026-09-19,401856686,2026-09-19T16:00Z,Arkansas,Georgia,Arkansas Razorbacks,Georgia Bulldogs,17.0,45.0,True,0,1,0,,,,,False,Fayetteville,AR,,,,,,,,,,
-2026-09-19,401858453,2026-09-19T23:30Z,Notre Dame,Michigan State,Notre Dame Fighting Irish,Michigan State Spartans,27.0,10.0,True,0,0,0,,,,,False,Notre Dame,IN,,,,,,,,,,
-2026-09-19,401858449,2026-09-19T20:00Z,Indiana,Western Kentucky,Indiana Hoosiers,Western Kentucky Hilltoppers,38.0,0.0,True,0,0,0,,,,,False,Bloomington,IN,,,,,,,,,,
-2026-09-19,401858454,2026-09-19T16:00Z,Ohio State,Kent State,Ohio State Buckeyes,Kent State Golden Flashes,59.0,3.0,True,0,0,0,,,,,False,Columbus,OH,,,,,,,,,,
-2026-09-19,401856688,2026-09-19T23:30Z,Ole Miss,LSU,Ole Miss Rebels,LSU Tigers,32.0,24.0,True,0,1,0,,,,,False,Oxford,MS,,,,,,,,,,
-2026-09-19,401856694,2026-09-19T19:40Z,Texas A&M,Kentucky,Texas A&M Aggies,Kentucky Wildcats,21.0,31.0,True,0,1,0,,,,,False,College Station,TX,,,,,,,,,,
-2026-09-19,401856685,2026-09-19T21:15Z,Alabama,Florida State,Alabama Crimson Tide,Florida State Seminoles,50.0,36.0,True,0,0,0,,,,,False,Tuscaloosa,AL,,,,,,,,,,
-2026-09-19,401856795,2026-09-20T00:15Z,Colorado State,BYU,Colorado State Rams,BYU Cougars,23.0,41.0,True,0,0,0,,,,,False,Fort Collins,CO,,,,,,,,,,
-2026-09-19,401858457,2026-09-19T19:30Z,Rutgers,USC,Rutgers Scarlet Knights,USC Trojans,35.0,42.0,True,0,1,0,,,,,False,Piscataway,NJ,,,,,,,,,,
-2026-09-19,401858456,2026-09-19T16:00Z,Penn State,Buffalo,Penn State Nittany Lions,Buffalo Bulls,55.0,13.0,True,0,0,0,,,,,False,University Park,PA,,,,,,,,,,
-2026-09-19,401856692,2026-09-19T23:45Z,Tennessee,Kennesaw State,Tennessee Volunteers,Kennesaw State Owls,42.0,9.0,True,0,0,0,,,,,False,Knoxville,TN,,,,,,,,,,
-2026-09-19,401858230,2026-09-19T19:30Z,Louisville,SMU,Louisville Cardinals,SMU Mustangs,41.0,31.0,True,0,1,0,,,,,False,Louisville,KY,,,,,,,,,,
-2026-09-19,401856801,2026-09-19T19:30Z,Utah,Utah State,Utah Utes,Utah State Aggies,33.0,0.0,True,0,0,0,,,,,False,Salt Lake City,UT,,,,,,,,,,
-2026-09-19,401858471,2026-09-19T20:00Z,Iowa,Northern Iowa,Iowa Hawkeyes,Northern Iowa Panthers,55.0,0.0,True,0,0,0,,,,,False,Iowa City,IA,,,,,,,,,,
-2026-09-19,401858450,2026-09-19T19:30Z,Michigan,UTEP,Michigan Wolverines,UTEP Miners,52.0,17.0,True,0,0,0,,,,,False,Ann Arbor,MI,,,,,,,,,,
-2026-09-19,401856689,2026-09-19T23:00Z,Missouri,Troy,Missouri Tigers,Troy Trojans,27.0,17.0,True,0,0,0,,,,,False,Columbia,MO,,,,,,,,,,
-2026-09-19,401856690,2026-09-19T23:30Z,Oklahoma,New Mexico,Oklahoma Sooners,New Mexico Lobos,14.0,6.0,True,0,0,0,,,,,False,Norman,OK,,,,,,,,,,
-2026-09-19,401856802,2026-09-19T23:30Z,Virginia,West Virginia,Virginia Cavaliers,West Virginia Mountaineers,27.0,38.0,True,1,0,0,,,,,False,Charlotte,NC,,,,,,,,,,
-2026-09-19,401869940,2026-09-19T15:30Z,Delaware,Coastal Carolina,Delaware Blue Hens,Coastal Carolina Chanticleers,22.0,14.0,True,0,0,0,,,,,False,Newark,DE,,,,,,,,,,
-2026-09-19,401856792,2026-09-19T16:00Z,Kansas State,Tulane,Kansas State Wildcats,Tulane Green Wave,31.0,20.0,True,0,0,0,,,,,False,Manhattan,KS,,,,,,,,,,
-2026-09-19,401856798,2026-09-19T16:00Z,Iowa State,Bowling Green,Iowa State Cyclones,Bowling Green Falcons,55.0,7.0,True,0,0,0,,,,,False,Ames,IA,,,,,,,,,,
-2026-09-19,401856812,2026-09-19T16:00Z,Kansas,Arizona State,Kansas Jayhawks,Arizona State Sun Devils,17.0,24.0,True,1,1,0,,,,,False,London,,,,,,,,,,,
-2026-09-19,401858228,2026-09-19T16:00Z,Georgia Tech,Mercer,Georgia Tech Yellow Jackets,Mercer Bears,44.0,11.0,True,0,0,0,,,,,False,Atlanta,GA,,,,,,,,,,
-2026-09-19,401858229,2026-09-19T16:00Z,Clemson,North Carolina,Clemson Tigers,North Carolina Tar Heels,28.0,20.0,True,0,1,0,,,,,False,Clemson,SC,,,,,,,,,,
-2026-09-19,401858451,2026-09-19T16:00Z,Minnesota,Akron,Minnesota Golden Gophers,Akron Zips,41.0,7.0,True,0,0,0,,,,,False,Minneapolis,MN,,,,,,,,,,
-2026-09-19,401860889,2026-09-19T16:00Z,Texas State,North Texas,Texas State Bobcats,North Texas Mean Green,49.0,35.0,True,0,0,0,,,,,False,San Marcos,TX,,,,,,,,,,
-2026-09-19,401858460,2026-09-19T16:30Z,Wisconsin,Eastern Michigan,Wisconsin Badgers,Eastern Michigan Eagles,54.0,10.0,True,0,0,0,,,,,False,Madison,WI,,,,,,,,,,
-2026-09-19,401856695,2026-09-19T16:45Z,Vanderbilt,NC State,Vanderbilt Commodores,NC State Wolfpack,35.0,31.0,True,0,0,0,,,,,False,Nashville,TN,,,,,,,,,,
-2026-09-19,401864508,2026-09-19T17:00Z,Central Michigan,Wyoming,Central Michigan Chippewas,Wyoming Cowboys,24.0,10.0,True,0,0,0,,,,,False,Mount Pleasant,MI,,,,,,,,,,
-2026-09-19,401858227,2026-09-19T18:00Z,Boston College,Maine,Boston College Eagles,Maine Black Bears,22.0,16.0,True,0,0,0,,,,,False,Chestnut Hill,MA,,,,,,,,,,
-2026-09-19,401858448,2026-09-19T18:00Z,Illinois,Southern Illinois,Illinois Fighting Illini,Southern Illinois Salukis,48.0,10.0,True,0,0,0,,,,,False,Champaign,IL,,,,,,,,,,
-2026-09-19,401862774,2026-09-19T19:00Z,Toledo,Temple,Toledo Rockets,Temple Owls,49.0,48.0,True,0,0,0,,,,,False,Toledo,OH,,,,,,,,,,
-2026-09-19,401856797,2026-09-19T19:30Z,Cincinnati,Miami (OH),Cincinnati Bearcats,Miami (OH) RedHawks,35.0,31.0,True,0,0,0,,,,,False,Cincinnati,OH,,,,,,,,,,
-2026-09-19,401858233,2026-09-19T19:30Z,California,Wagner,California Golden Bears,Wagner Seahawks,49.0,7.0,True,0,0,0,,,,,False,Berkeley,CA,,,,,,,,,,
-2026-09-19,401860890,2026-09-19T19:30Z,Washington State,Duquesne,Washington State Cougars,Duquesne Dukes,48.0,7.0,True,0,0,0,,,,,False,Pullman,WA,,,,,,,,,,
-2026-09-19,401866424,2026-09-19T19:30Z,Massachusetts,Stonehill,Massachusetts Minutemen,Stonehill Skyhawks,36.0,14.0,True,0,0,0,,,,,False,Amherst,MA,,,,,,,,,,
-2026-09-19,401858231,2026-09-19T20:00Z,Duke,Stanford,Duke Blue Devils,Stanford Cardinal,35.0,7.0,True,0,1,0,,,,,False,Durham,NC,,,,,,,,,,
-2026-09-19,401866422,2026-09-19T20:00Z,Liberty,Ball State,Liberty Flames,Ball State Cardinals,51.0,15.0,True,0,0,0,,,,,False,Lynchburg,VA,,,,,,,,,,
-2026-09-19,401867804,2026-09-19T20:00Z,Baylor,Louisiana Tech,Baylor Bears,Louisiana Tech Bulldogs,36.0,19.0,True,0,0,0,,,,,False,Waco,TX,,,,,,,,,,
-2026-09-19,401868317,2026-09-19T20:30Z,UL Monroe,SE Louisiana,UL Monroe Warhawks,SE Louisiana Lions,35.0,38.0,True,0,0,0,,,,,False,Monroe,LA,,,,,,,,,,
-2026-09-19,401856691,2026-09-19T21:35Z,South Carolina,Mississippi State,South Carolina Gamecocks,Mississippi State Bulldogs,34.0,41.0,True,0,1,0,,,,,False,Columbia,SC,,,,,,,,,,
-2026-09-19,401862710,2026-09-19T22:00Z,Old Dominion,East Carolina,Old Dominion Monarchs,East Carolina Pirates,17.0,20.0,True,0,0,0,,,,,False,Norfolk,VA,,,,,,,,,,
-2026-09-19,401862771,2026-09-19T22:00Z,Florida Atlantic,Florida International,Florida Atlantic Owls,Florida International Panthers,16.0,10.0,True,0,0,0,,,,,False,Boca Raton,FL,,,,,,,,,,
-2026-09-19,401871047,2026-09-19T22:30Z,Missouri State,Marshall,Missouri State Bears,Marshall Thundering Herd,24.0,30.0,True,0,0,0,,,,,False,Springfield,MO,,,,,,,,,,
-2026-09-19,401856687,2026-09-19T23:00Z,Auburn,Florida,Auburn Tigers,Florida Gators,39.0,44.0,True,0,1,0,,,,,False,Auburn,AL,,,,,,,,,,
-2026-09-19,401856800,2026-09-19T23:00Z,UCF,Georgia State,UCF Knights,Georgia State Panthers,44.0,30.0,True,0,0,0,,,,,False,Orlando,FL,,,,,,,,,,
-2026-09-19,401856803,2026-09-19T23:00Z,Oklahoma State,Murray State,Oklahoma State Cowboys,Murray State Racers,59.0,0.0,True,0,0,0,,,,,False,Stillwater,OK,,,,,,,,,,
-2026-09-19,401861963,2026-09-19T23:00Z,Southern Miss,UConn,Southern Miss Golden Eagles,UConn Huskies,20.0,48.0,True,0,0,0,,,,,False,Hattiesburg,MS,,,,,,,,,,
-2026-09-19,401862772,2026-09-19T23:00Z,Memphis,UT Martin,Memphis Tigers,UT Martin Skyhawks,45.0,21.0,True,0,0,0,,,,,False,Memphis,TN,,,,,,,,,,
-2026-09-19,401862773,2026-09-19T23:00Z,Rice,Western Michigan,Rice Owls,Western Michigan Broncos,21.0,28.0,True,0,0,0,,,,,False,Houston,TX,,,,,,,,,,
-2026-09-19,401862777,2026-09-19T23:00Z,South Florida,Delaware State,South Florida Bulls,Delaware State Hornets,59.0,17.0,True,0,0,0,,,,,False,Tampa,FL,,,,,,,,,,
-2026-09-19,401864443,2026-09-19T23:00Z,Middle Tennessee,Nevada,Middle Tennessee Blue Raiders,Nevada Wolf Pack,27.0,20.0,True,0,0,0,,,,,False,Murfreesboro,TN,,,,,,,,,,
-2026-09-19,401866423,2026-09-19T23:00Z,South Alabama,Ohio,South Alabama Jaguars,Ohio Bobcats,41.0,36.0,True,0,0,0,,,,,False,Mobile,AL,,,,,,,,,,
-2026-09-19,401869948,2026-09-19T23:00Z,Jacksonville State,Georgia Southern,Jacksonville State Gamecocks,Georgia Southern Eagles,31.0,27.0,True,0,0,0,,,,,False,Jacksonville,AL,,,,,,,,,,
-2026-09-19,401870764,2026-09-19T23:00Z,Sam Houston,Nicholls,Sam Houston Bearkats,Nicholls Colonels,59.0,0.0,True,0,0,0,,,,,False,Huntsville,TX,,,,,,,,,,
-2026-09-19,401858452,2026-09-19T23:15Z,Nebraska,North Dakota,Nebraska Cornhuskers,North Dakota Fighting Hawks,34.0,7.0,True,0,0,0,,,,,False,Lincoln,NE,,,,,,,,,,
-2026-09-19,401858459,2026-09-19T23:15Z,Washington,Eastern Washington,Washington Huskies,Eastern Washington Eagles,48.0,16.0,True,0,0,0,,,,,False,Seattle,WA,,,,,,,,,,
-2026-09-19,401856796,2026-09-19T23:30Z,Northwestern,Colorado,Northwestern Wildcats,Colorado Buffaloes,41.0,7.0,True,0,0,0,,,,,False,Evanston,IL,,,,,,,,,,
-2026-09-19,401858232,2026-09-19T23:30Z,Maryland,Virginia Tech,Maryland Terrapins,Virginia Tech Hokies,26.0,35.0,True,0,0,0,,,,,False,College Park,MD,,,,,,,,,,
-2026-09-19,401856799,2026-09-20T00:00Z,TCU,Arkansas State,TCU Horned Frogs,Arkansas State Red Wolves,31.0,7.0,True,0,0,0,,,,,False,Fort Worth,TX,,,,,,,,,,
-2026-09-19,401862775,2026-09-20T00:00Z,Tulsa,East Texas A&M,Tulsa Golden Hurricane,East Texas A&M Lions,42.0,0.0,True,0,0,0,,,,,False,Tulsa,OK,,,,,,,,,,
-2026-09-19,401862776,2026-09-20T00:00Z,Louisiana,UAB,Louisiana Ragin' Cajuns,UAB Blazers,21.0,14.0,True,0,0,0,,,,,False,Lafayette,LA,,,,,,,,,,
-2026-09-19,401864574,2026-09-20T01:30Z,App State,Charlotte,App State Mountaineers,Charlotte 49ers,26.0,21.0,True,0,0,0,,,,,False,Boone,NC,,,,,,,,,,
-2026-09-19,401860885,2026-09-20T02:00Z,Boise State,South Dakota,Boise State Broncos,South Dakota Coyotes,38.0,24.0,True,0,0,0,,,,,False,Boise,ID,,,,,,,,,,
-2026-09-19,401860887,2026-09-20T02:00Z,San Diego State,James Madison,San Diego State Aztecs,James Madison Dukes,13.0,26.0,True,0,0,0,,,,,False,San Diego,CA,,,,,,,,,,
-2026-09-19,401856793,2026-09-20T02:30Z,Arizona,Northern Illinois,Arizona Wildcats,Northern Illinois Huskies,42.0,17.0,True,0,0,0,,,,,False,Tucson,AZ,,,,,,,,,,
-2026-09-19,401864507,2026-09-20T02:30Z,Sacramento State,North Dakota State,Sacramento State Hornets,North Dakota State Bison,10.0,31.0,True,0,0,0,,,,,False,Sacramento,CA,,,,,,,,,,
-2026-09-19,401858458,2026-09-20T03:00Z,UCLA,Purdue,UCLA Bruins,Purdue Boilermakers,52.0,38.0,True,0,1,0,,,,,False,Pasadena,CA,,,,,,,,,,
-2026-09-19,401860886,2026-09-20T03:00Z,Oregon State,Montana,Oregon State Beavers,Montana Grizzlies,52.0,17.0,True,0,0,0,,,,,False,Corvallis,OR,,,,,,,,,,
-2026-09-19,401860888,2026-09-20T03:00Z,San José State,Fresno State,San José State Spartans,Fresno State Bulldogs,10.0,26.0,True,0,0,0,,,,,False,San Jose,CA,,,,,,,,,,
-2026-09-18,401858226,2026-09-18T23:30Z,Wake Forest,Miami,Wake Forest Demon Deacons,Miami Hurricanes,20.0,33.0,True,0,1,0,,,,,False,Winston-Salem,NC,,,,,,,,,,
-2026-09-18,401856811,2026-09-19T00:00Z,Texas Tech,Houston,Texas Tech Red Raiders,Houston Cougars,28.0,26.0,True,0,1,0,,,,,False,Lubbock,TX,,,,,,,,,,
-2026-09-18,401858455,2026-09-19T02:30Z,Oregon,Portland State,Oregon Ducks,Portland State Vikings,84.0,0.0,True,0,0,0,,,,,False,Eugene,OR,,,,,,,,,,
-2026-09-17,401858225,2026-09-17T23:30Z,Pittsburgh,Syracuse,Pittsburgh Panthers,Syracuse Orange,27.0,13.0,True,0,1,0,,,,,False,Pittsburgh,PA,,,,,,,,,,
-2026-09-12,401856682,2026-09-12T23:30Z,Texas,Ohio State,Texas Longhorns,Ohio State Buckeyes,24.0,23.0,True,0,0,0,,,,,False,Austin,TX,,,,,,,,,,
-2026-09-12,401856673,2026-09-12T16:45Z,Georgia,Western Kentucky,Georgia Bulldogs,Western Kentucky Hilltoppers,70.0,20.0,True,0,0,0,,,,,False,Athens,GA,,,,,,,,,,
-2026-09-12,401859184,2026-09-12T19:30Z,Notre Dame,Rice,Notre Dame Fighting Irish,Rice Owls,52.0,0.0,True,0,0,0,,,,,False,Notre Dame,IN,,,,,,,,,,
-2026-09-12,401858439,2026-09-12T16:00Z,Indiana,Howard,Indiana Hoosiers,Howard Bison,55.0,0.0,True,0,0,0,,,,,False,Bloomington,IN,,,,,,,,,,
-2026-09-12,401856782,2026-09-12T17:30Z,Oklahoma State,Oregon,Oklahoma State Cowboys,Oregon Ducks,39.0,31.0,True,0,0,0,,,,,False,Stillwater,OK,,,,,,,,,,
-2026-09-12,401867796,2026-09-12T23:30Z,LSU,Louisiana Tech,LSU Tigers,Louisiana Tech Bulldogs,45.0,14.0,True,0,0,0,,,,,False,Baton Rouge,LA,,,,,,,,,,
-2026-09-12,401856676,2026-09-12T23:45Z,Ole Miss,Charlotte,Ole Miss Rebels,Charlotte 49ers,41.0,9.0,True,0,0,0,,,,,False,Oxford,MS,,,,,,,,,,
-2026-09-12,401856683,2026-09-12T16:00Z,Texas A&M,Arizona State,Texas A&M Aggies,Arizona State Sun Devils,48.0,20.0,True,0,0,0,,,,,False,College Station,TX,,,,,,,,,,
-2026-09-12,401856679,2026-09-12T16:00Z,Michigan,Oklahoma,Michigan Wolverines,Oklahoma Sooners,17.0,10.0,True,0,0,0,,,,,False,Ann Arbor,MI,,,,,,,,,,
-2026-09-12,401856674,2026-09-12T19:30Z,Kentucky,Alabama,Kentucky Wildcats,Alabama Crimson Tide,17.0,45.0,True,0,1,0,,,,,False,Lexington,KY,,,,,,,,,,
-2026-09-12,401856783,2026-09-12T23:30Z,Oregon State,Texas Tech,Oregon State Beavers,Texas Tech Red Raiders,24.0,35.0,True,0,0,0,,,,,False,Corvallis,OR,,,,,,,,,,
-2026-09-12,401858445,2026-09-13T03:00Z,USC,Louisiana,USC Trojans,Louisiana Ragin' Cajuns,49.0,30.0,True,0,0,0,,,,,False,Los Angeles,CA,,,,,,,,,,
-2026-09-12,401856810,2026-09-12T19:30Z,BYU,Arizona,BYU Cougars,Arizona Wildcats,28.0,17.0,True,0,1,0,,,,,False,Provo,UT,,,,,,,,,,
-2026-09-12,401858442,2026-09-12T16:00Z,Temple,Penn State,Temple Owls,Penn State Nittany Lions,9.0,27.0,True,0,0,0,,,,,False,Philadelphia,PA,,,,,,,,,,
-2026-09-12,401858223,2026-09-12T20:00Z,SMU,UC Davis,SMU Mustangs,UC Davis Aggies,56.0,10.0,True,0,0,0,,,,,False,Dallas,TX,,,,,,,,,,
-2026-09-12,401856681,2026-09-12T23:00Z,Georgia Tech,Tennessee,Georgia Tech Yellow Jackets,Tennessee Volunteers,24.0,45.0,True,0,0,0,,,,,False,Atlanta,GA,,,,,,,,,,
-2026-09-12,401858446,2026-09-12T19:30Z,Washington,Utah State,Washington Huskies,Utah State Aggies,16.0,14.0,True,0,0,0,,,,,False,Seattle,WA,,,,,,,,,,
-2026-09-12,401856670,2026-09-13T02:30Z,Utah,Arkansas,Utah Utes,Arkansas Razorbacks,43.0,10.0,True,0,0,0,,,,,False,Salt Lake City,UT,,,,,,,,,,
-2026-09-12,401856788,2026-09-12T23:30Z,Iowa,Iowa State,Iowa Hawkeyes,Iowa State Cyclones,16.0,13.0,True,0,0,0,,,,,False,Iowa City,IA,,,,,,,,,,
-2026-09-12,401856787,2026-09-12T23:00Z,Houston,Southern,Houston Cougars,Southern Jaguars,77.0,6.0,True,0,0,0,,,,,False,Houston,TX,,,,,,,,,,
-2026-09-12,401856781,2026-09-12T16:00Z,Kansas State,Washington State,Kansas State Wildcats,Washington State Cougars,34.0,7.0,True,0,0,0,,,,,False,Manhattan,KS,,,,,,,,,,
-2026-09-12,401858218,2026-09-12T16:00Z,North Carolina,East Tennessee State,North Carolina Tar Heels,East Tennessee State Buccaneers,35.0,3.0,True,0,0,0,,,,,False,Chapel Hill,NC,,,,,,,,,,
-2026-09-12,401858221,2026-09-12T16:00Z,Virginia Tech,Old Dominion,Virginia Tech Hokies,Old Dominion Monarchs,44.0,21.0,True,0,0,0,,,,,False,Blacksburg,VA,,,,,,,,,,
-2026-09-12,401858224,2026-09-12T16:00Z,Purdue,Wake Forest,Purdue Boilermakers,Wake Forest Demon Deacons,36.0,38.0,True,0,0,0,,,,,False,West Lafayette,IN,,,,,,,,,,
-2026-09-12,401862702,2026-09-12T16:00Z,Army,South Florida,Army Black Knights,South Florida Bulls,24.0,28.0,True,0,1,0,,,,,False,West Point,NY,,,,,,,,,,
-2026-09-12,401864571,2026-09-12T16:00Z,East Carolina,App State,East Carolina Pirates,App State Mountaineers,24.0,27.0,True,0,0,0,,,,,False,Greenville,NC,,,,,,,,,,
-2026-09-12,401866416,2026-09-12T16:00Z,Kent State,Wofford,Kent State Golden Flashes,Wofford Terriers,36.0,15.0,True,0,0,0,,,,,False,Kent,OH,,,,,,,,,,
-2026-09-12,401867929,2026-09-12T16:00Z,James Madison,Wagner,James Madison Dukes,Wagner Seahawks,87.0,3.0,True,0,0,0,,,,,False,Harrisonburg,VA,,,,,,,,,,
-2026-09-12,401868187,2026-09-12T16:00Z,Liberty,Gardner-Webb,Liberty Flames,Gardner-Webb Runnin' Bulldogs,24.0,23.0,True,0,0,0,,,,,False,Lynchburg,VA,,,,,,,,,,
-2026-09-12,401856791,2026-09-12T17:00Z,West Virginia,UT Martin,West Virginia Mountaineers,UT Martin Skyhawks,52.0,7.0,True,0,0,0,,,,,False,Morgantown,WV,,,,,,,,,,
-2026-09-12,401866415,2026-09-12T17:00Z,Central Michigan,Colgate,Central Michigan Chippewas,Colgate Raiders,13.0,10.0,True,0,0,0,,,,,False,Mount Pleasant,MI,,,,,,,,,,
-2026-09-12,401866417,2026-09-12T17:00Z,Miami (OH),Holy Cross,Miami (OH) RedHawks,Holy Cross Crusaders,45.0,7.0,True,0,0,0,,,,,False,Oxford,OH,,,,,,,,,,
-2026-09-12,401866413,2026-09-12T18:00Z,Ball State,Stony Brook,Ball State Cardinals,Stony Brook Seawolves,41.0,17.0,True,0,0,0,,,,,False,Muncie,IN,,,,,,,,,,
-2026-09-12,401856677,2026-09-12T19:30Z,Minnesota,Mississippi State,Minnesota Golden Gophers,Mississippi State Bulldogs,13.0,38.0,True,0,0,0,,,,,False,Minneapolis,MN,,,,,,,,,,
-2026-09-12,401856785,2026-09-12T19:30Z,Colorado,Weber State,Colorado Buffaloes,Weber State Wildcats,52.0,21.0,True,0,0,0,,,,,False,Boulder,CO,,,,,,,,,,
-2026-09-12,401856790,2026-09-12T19:30Z,Pittsburgh,UCF,Pittsburgh Panthers,UCF Knights,12.0,7.0,True,0,0,0,,,,,False,Pittsburgh,PA,,,,,,,,,,
-2026-09-12,401858216,2026-09-12T19:30Z,Syracuse,California,Syracuse Orange,California Golden Bears,18.0,21.0,True,0,1,0,,,,,True,Syracuse,NY,,,,,,,,,,
-2026-09-12,401858217,2026-09-12T19:30Z,Illinois,Duke,Illinois Fighting Illini,Duke Blue Devils,27.0,31.0,True,0,0,0,,,,,False,Champaign,IL,,,,,,,,,,
-2026-09-12,401858440,2026-09-12T19:30Z,Michigan State,Eastern Michigan,Michigan State Spartans,Eastern Michigan Eagles,35.0,7.0,True,0,0,0,,,,,False,East Lansing,MI,,,,,,,,,,
-2026-09-12,401858444,2026-09-12T19:30Z,UConn,Maryland,UConn Huskies,Maryland Terrapins,14.0,38.0,True,0,0,0,,,,,False,East Hartford,CT,,,,,,,,,,
-2026-09-12,401860884,2026-09-12T19:30Z,Texas State,UTSA,Texas State Bobcats,UTSA Roadrunners,26.0,31.0,True,0,0,0,,,,,False,San Marcos,TX,,,,,,,,,,
-2026-09-12,401862708,2026-09-12T19:30Z,UAB,UL Monroe,UAB Blazers,UL Monroe Warhawks,26.0,20.0,True,0,0,0,,,,,False,Birmingham,AL,,,,,,,,,,
-2026-09-12,401866412,2026-09-12T19:30Z,Akron,Robert Morris,Akron Zips,Robert Morris Colonials,45.0,10.0,True,0,0,0,,,,,False,Akron,OH,,,,,,,,,,
-2026-09-12,401866419,2026-09-12T19:30Z,Toledo,Central Connecticut,Toledo Rockets,Central Connecticut Blue Devils,63.0,10.0,True,0,0,0,,,,,False,Toledo,OH,,,,,,,,,,
-2026-09-12,401866420,2026-09-12T19:30Z,Massachusetts,Sacred Heart,Massachusetts Minutemen,Sacred Heart Pioneers,37.0,10.0,True,0,0,0,,,,,False,Amherst,MA,,,,,,,,,,
-2026-09-12,401862705,2026-09-12T19:45Z,North Texas,UNLV,North Texas Mean Green,UNLV Rebels,44.0,6.0,True,0,0,0,,,,,False,Denton,TX,,,,,,,,,,
-2026-09-12,401864506,2026-09-12T20:00Z,Wyoming,Northern Colorado,Wyoming Cowboys,Northern Colorado Bears,21.0,13.0,True,0,0,0,,,,,False,Laramie,WY,,,,,,,,,,
-2026-09-12,401865252,2026-09-12T20:00Z,New Mexico,Mercyhurst,New Mexico Lobos,Mercyhurst Lakers,70.0,7.0,True,0,0,0,,,,,False,Albuquerque,NM,,,,,,,,,,
-2026-09-12,401868326,2026-09-12T20:00Z,Troy,Alabama State,Troy Trojans,Alabama State Hornets,34.0,17.0,True,0,0,0,,,,,False,Troy,AL,,,,,,,,,,
-2026-09-12,401856684,2026-09-12T20:15Z,Vanderbilt,Delaware,Vanderbilt Commodores,Delaware Blue Hens,35.0,26.0,True,0,0,0,,,,,False,Nashville,TN,,,,,,,,,,
-2026-09-12,401856672,2026-09-12T21:30Z,Florida,Campbell,Florida Gators,Campbell Fighting Camels,52.0,3.0,True,0,0,0,,,,,False,Gainesville,FL,,,,,,,,,,
-2026-09-12,401860881,2026-09-12T22:00Z,Boise State,Memphis,Boise State Broncos,Memphis Tigers,38.0,20.0,True,0,0,0,,,,,False,Boise,ID,,,,,,,,,,
-2026-09-12,401866414,2026-09-12T22:00Z,Florida International,Buffalo,Florida International Panthers,Buffalo Bulls,33.0,20.0,True,0,0,0,,,,,False,Miami,FL,,,,,,,,,,
-2026-09-12,401866418,2026-09-12T22:00Z,Ohio,Jacksonville State,Ohio Bobcats,Jacksonville State Gamecocks,29.0,27.0,True,0,0,0,,,,,False,Athens,OH,,,,,,,,,,
-2026-09-12,401866421,2026-09-12T22:30Z,Western Michigan,Monmouth,Western Michigan Broncos,Monmouth Hawks,49.0,14.0,True,0,0,0,,,,,False,Kalamazoo,MI,,,,,,,,,,
-2026-09-12,401856680,2026-09-12T23:00Z,South Carolina,Towson,South Carolina Gamecocks,Towson Tigers,45.0,9.0,True,0,0,0,,,,,False,Columbia,SC,,,,,,,,,,
-2026-09-12,401856786,2026-09-12T23:00Z,Cincinnati,Western Carolina,Cincinnati Bearcats,Western Carolina Catamounts,62.0,10.0,True,0,0,0,,,,,False,Cincinnati,OH,,,,,,,,,,
-2026-09-12,401858441,2026-09-12T23:00Z,Nebraska,Bowling Green,Nebraska Cornhuskers,Bowling Green Falcons,56.0,7.0,True,0,0,0,,,,,False,Lincoln,NE,,,,,,,,,,
-2026-09-12,401860882,2026-09-12T23:00Z,Colorado State,Southern Utah,Colorado State Rams,Southern Utah Thunderbirds,58.0,24.0,True,0,0,0,,,,,False,Fort Collins,CO,,,,,,,,,,
-2026-09-12,401862707,2026-09-12T23:00Z,Sam Houston,Tulsa,Sam Houston Bearkats,Tulsa Golden Hurricane,17.0,23.0,True,0,0,0,,,,,False,Huntsville,TX,,,,,,,,,,
-2026-09-12,401864503,2026-09-12T23:00Z,Northern Illinois,Illinois State,Northern Illinois Huskies,Illinois State Redbirds,24.0,28.0,True,0,0,0,,,,,False,Dekalb,IL,,,,,,,,,,
-2026-09-12,401864575,2026-09-12T23:00Z,Tulane,South Alabama,Tulane Green Wave,South Alabama Jaguars,28.0,24.0,True,0,0,0,,,,,False,New Orleans,LA,,,,,,,,,,
-2026-09-12,401868241,2026-09-12T23:00Z,Arkansas State,West Georgia,Arkansas State Red Wolves,West Georgia Wolves,52.0,7.0,True,0,0,0,,,,,False,Jonesboro,AR,,,,,,,,,,
-2026-09-12,401869955,2026-09-12T23:00Z,Kennesaw State,Georgia State,Kennesaw State Owls,Georgia State Panthers,17.0,31.0,True,0,0,0,,,,,False,Kennesaw,GA,,,,,,,,,,
-2026-09-12,401871045,2026-09-12T23:00Z,Marshall,Middle Tennessee,Marshall Thundering Herd,Middle Tennessee Blue Raiders,28.0,26.0,True,0,0,0,,,,,False,Huntington,WV,,,,,,,,,,
-2026-09-12,401871046,2026-09-12T23:00Z,Missouri State,Lindenwood,Missouri State Bears,Lindenwood Lions,48.0,14.0,True,0,0,0,,,,,False,Springfield,MO,,,,,,,,,,
-2026-09-12,401858443,2026-09-12T23:15Z,UCLA,San Diego State,UCLA Bruins,San Diego State Aztecs,28.0,10.0,True,0,0,0,,,,,False,Pasadena,CA,,,,,,,,,,
-2026-09-12,401858447,2026-09-12T23:15Z,Wisconsin,Western Illinois,Wisconsin Badgers,Western Illinois Leathernecks,36.0,9.0,True,0,0,0,,,,,False,Madison,WI,,,,,,,,,,
-2026-09-12,401862703,2026-09-12T23:30Z,Florida Atlantic,Navy,Florida Atlantic Owls,Navy Midshipmen,38.0,30.0,True,0,1,0,,,,,False,Boca Raton,FL,,,,,,,,,,
-2026-09-12,401868008,2026-09-12T23:30Z,Coastal Carolina,Fordham,Coastal Carolina Chanticleers,Fordham Rams,45.0,7.0,True,0,0,0,,,,,False,Conway,SC,,,,,,,,,,
-2026-09-12,401856789,2026-09-13T00:00Z,TCU,Grambling,TCU Horned Frogs,Grambling Tigers,63.0,7.0,True,0,0,0,,,,,False,Fort Worth,TX,,,,,,,,,,
-2026-09-12,401856784,2026-09-13T00:08Z,Baylor,Prairie View A&M,Baylor Bears,Prairie View A&M Panthers,44.0,3.0,True,0,0,0,,,,,False,Waco,TX,,,,,,,,,,
-2026-09-12,401856671,2026-09-13T00:50Z,Auburn,Southern Miss,Auburn Tigers,Southern Miss Golden Eagles,43.0,8.0,True,0,0,0,,,,,False,Auburn,AL,,,,,,,,,,
-2026-09-12,401864504,2026-09-13T01:00Z,San José State,Cal Poly,San José State Spartans,Cal Poly Mustangs,30.0,20.0,True,0,0,0,,,,,False,San Jose,CA,,,,,,,,,,
-2026-09-12,401864505,2026-09-13T01:00Z,UTEP,Texas Southern,UTEP Miners,Texas Southern Tigers,51.0,10.0,True,0,0,0,,,,,False,El Paso,TX,,,,,,,,,,
-2026-09-12,401858219,2026-09-13T01:30Z,Clemson,Georgia Southern,Clemson Tigers,Georgia Southern Eagles,22.0,7.0,True,0,0,0,,,,,False,Clemson,SC,,,,,,,,,,
-2026-09-12,401864502,2026-09-13T02:00Z,Air Force,North Dakota State,Air Force Falcons,North Dakota State Bison,32.0,38.0,True,0,1,0,,,,,False,USAF Academy,CO,,,,,,,,,,
-2026-09-12,401860883,2026-09-13T02:30Z,Fresno State,Sacramento State,Fresno State Bulldogs,Sacramento State Hornets,49.0,3.0,True,0,0,0,,,,,False,Fresno,CA,,,,,,,,,,
-2026-09-12,401864500,2026-09-13T02:30Z,Nevada,Montana State,Nevada Wolf Pack,Montana State Bobcats,7.0,20.0,True,0,0,0,,,,,False,Reno,NV,,,,,,,,,,
-2026-09-12,401864578,2026-09-13T03:59Z,Hawai'i,New Mexico State,Hawai'i Rainbow Warriors,New Mexico State Aggies,29.0,19.0,True,0,0,0,,,,,False,Honolulu,HI,,,,,,,,,,
-2026-09-11,401856678,2026-09-12T00:00Z,Kansas,Missouri,Kansas Jayhawks,Missouri Tigers,21.0,38.0,True,0,0,0,,,,,False,Lawrence,KS,,,,,,,,,,
-2026-09-11,401858215,2026-09-11T23:00Z,Louisville,Villanova,Louisville Cardinals,Villanova Wildcats,59.0,13.0,True,0,0,0,,,,,False,Louisville,KY,,,,,,,,,,
-2026-09-11,401858220,2026-09-11T23:00Z,Virginia,Norfolk State,Virginia Cavaliers,Norfolk State Spartans,59.0,3.0,True,0,0,0,,,,,False,Charlottesville,VA,,,,,,,,,,
-2026-09-11,401858222,2026-09-11T23:00Z,NC State,Richmond,NC State Wolfpack,Richmond Spiders,73.0,0.0,True,0,0,0,,,,,False,Raleigh,NC,,,,,,,,,,
-2026-09-11,401858214,2026-09-11T23:30Z,Boston College,Rutgers,Boston College Eagles,Rutgers Scarlet Knights,28.0,21.0,True,0,0,0,,,,,False,Chestnut Hill,MA,,,,,,,,,,
-2026-09-10,401858213,2026-09-11T00:00Z,Miami,Florida A&M,Miami Hurricanes,Florida A&M Rattlers,77.0,7.0,True,0,0,0,,,,,False,Miami Gardens,FL,,,,,,,,,,
-2026-09-07,401858212,2026-09-07T23:30Z,Florida State,SMU,Florida State Seminoles,SMU Mustangs,24.0,27.0,True,0,1,0,,,,,False,Tallahassee,FL,,,,,,,,,,
-2026-09-06,401858438,2026-09-06T23:30Z,Notre Dame,Wisconsin,Notre Dame Fighting Irish,Wisconsin Badgers,41.0,13.0,True,1,0,0,,,,,False,Green Bay,WI,,,,,,,,,,
-2026-09-06,401856661,2026-09-06T23:30Z,Ole Miss,Louisville,Ole Miss Rebels,Louisville Cardinals,41.0,38.0,True,1,0,0,,,,,False,Nashville,TN,,,,,,,,,,
-2026-09-06,401858437,2026-09-06T20:00Z,Washington,Washington State,Washington Huskies,Washington State Cougars,24.0,10.0,True,0,0,0,,,,,False,Seattle,WA,,,,,,,,,,
-2026-09-05,401858432,2026-09-05T16:30Z,Ohio State,Ball State,Ohio State Buckeyes,Ball State Cardinals,56.0,3.0,True,0,0,0,,,,,False,Columbus,OH,,,,,,,,,,
-2026-09-05,401858433,2026-09-05T19:30Z,Oregon,Boise State,Oregon Ducks,Boise State Broncos,34.0,27.0,True,0,0,0,,,,,False,Eugene,OR,,,,,,,,,,
-2026-09-05,401856658,2026-09-05T19:00Z,Georgia,Tennessee State,Georgia Bulldogs,Tennessee State Tigers,63.0,3.0,True,0,0,0,,,,,False,Athens,GA,,,,,,,,,,
-2026-09-05,401856667,2026-09-05T19:30Z,Texas,Texas State,Texas Longhorns,Texas State Bobcats,59.0,7.0,True,0,0,0,,,,,False,Austin,TX,,,,,,,,,,
-2026-09-05,401858425,2026-09-05T16:00Z,Indiana,North Texas,Indiana Hoosiers,North Texas Mean Green,52.0,16.0,True,0,0,0,,,,,False,Bloomington,IN,,,,,,,,,,
-2026-09-05,401856668,2026-09-05T23:00Z,Texas A&M,Missouri State,Texas A&M Aggies,Missouri State Bears,50.0,0.0,True,0,0,0,,,,,False,College Station,TX,,,,,,,,,,
-2026-09-05,401856660,2026-09-06T01:40Z,LSU,Clemson,LSU Tigers,Clemson Tigers,51.0,10.0,True,0,0,0,,,,,False,Baton Rouge,LA,,,,,,,,,,
-2026-09-05,401856770,2026-09-05T23:00Z,Texas Tech,Abilene Christian,Texas Tech Red Raiders,Abilene Christian Wildcats,33.0,10.0,True,0,0,0,,,,,False,Lubbock,TX,,,,,,,,,,
-2026-09-05,401856634,2026-09-05T16:00Z,Alabama,East Carolina,Alabama Crimson Tide,East Carolina Pirates,48.0,10.0,True,0,0,0,,,,,False,Tuscaloosa,AL,,,,,,,,,,
-2026-09-05,401856775,2026-09-06T00:00Z,BYU,Utah Tech,BYU Cougars,Utah Tech Trailblazers,63.0,7.0,True,0,0,0,,,,,False,Provo,UT,,,,,,,,,,
-2026-09-05,401858428,2026-09-05T23:30Z,Michigan,Western Michigan,Michigan Wolverines,Western Michigan Broncos,13.0,12.0,True,0,0,0,,,,,False,Ann Arbor,MI,,,,,,,,,,
-2026-09-05,401858434,2026-09-05T19:30Z,Penn State,Marshall,Penn State Nittany Lions,Marshall Thundering Herd,45.0,0.0,True,0,0,0,,,,,False,University Park,PA,,,,,,,,,,
-2026-09-05,401856666,2026-09-05T19:30Z,Tennessee,Furman,Tennessee Volunteers,Furman Paladins,56.0,9.0,True,0,0,0,,,,,False,Knoxville,TN,,,,,,,,,,
-2026-09-05,401858426,2026-09-05T20:15Z,Iowa,Northern Illinois,Iowa Hawkeyes,Northern Illinois Huskies,40.0,0.0,True,0,0,0,,,,,False,Iowa City,IA,,,,,,,,,,
-2026-09-05,401856778,2026-09-05T16:00Z,Houston,Oregon State,Houston Cougars,Oregon State Beavers,33.0,20.0,True,0,0,0,,,,,False,Houston,TX,,,,,,,,,,
-2026-09-05,401856780,2026-09-05T16:00Z,West Virginia,Coastal Carolina,West Virginia Mountaineers,Coastal Carolina Chanticleers,31.0,24.0,True,0,0,0,,,,,False,Morgantown,WV,,,,,,,,,,
-2026-09-05,401858208,2026-09-05T16:00Z,Syracuse,New Hampshire,Syracuse Orange,New Hampshire Wildcats,66.0,3.0,True,0,0,0,,,,,True,Syracuse,NY,,,,,,,,,,
-2026-09-05,401858430,2026-09-05T16:00Z,Nebraska,Ohio,Nebraska Cornhuskers,Ohio Bobcats,49.0,21.0,True,0,0,0,,,,,False,Lincoln,NE,,,,,,,,,,
-2026-09-05,401861962,2026-09-05T16:00Z,UConn,Lafayette,UConn Huskies,Lafayette Leopards,56.0,7.0,True,0,0,0,,,,,False,East Hartford,CT,,,,,,,,,,
-2026-09-05,401862701,2026-09-05T16:00Z,Army,Bryant,Army Black Knights,Bryant Bulldogs,59.0,3.0,True,0,0,0,,,,,False,West Point,NY,,,,,,,,,,
-2026-09-05,401866410,2026-09-05T16:00Z,Bowling Green,Tarleton State,Bowling Green Falcons,Tarleton State Texans,13.0,20.0,True,0,0,0,,,,,False,Bowling Green,OH,,,,,,,,,,
-2026-09-05,401869960,2026-09-05T16:00Z,James Madison,Liberty,James Madison Dukes,Liberty Flames,20.0,13.0,True,0,0,0,,,,,False,Harrisonburg,VA,,,,,,,,,,
-2026-09-05,401858207,2026-09-05T16:30Z,Pittsburgh,Miami (OH),Pittsburgh Panthers,Miami (OH) RedHawks,59.0,14.0,True,0,0,0,,,,,False,Pittsburgh,PA,,,,,,,,,,
-2026-09-05,401856665,2026-09-05T16:45Z,South Carolina,Kent State,South Carolina Gamecocks,Kent State Golden Flashes,57.0,0.0,True,0,0,0,,,,,False,Columbia,SC,,,,,,,,,,
-2026-09-05,401856659,2026-09-05T17:00Z,Kentucky,Youngstown State,Kentucky Wildcats,Youngstown State Penguins,45.0,13.0,True,0,0,0,,,,,False,Lexington,KY,,,,,,,,,,
-2026-09-05,401856779,2026-09-05T17:00Z,Iowa State,Southeast Missouri State,Iowa State Cyclones,Southeast Missouri State Redhawks,38.0,10.0,True,0,0,0,,,,,False,Ames,IA,,,,,,,,,,
-2026-09-05,401864496,2026-09-05T17:00Z,Air Force,Duquesne,Air Force Falcons,Duquesne Dukes,34.0,0.0,True,0,0,0,,,,,False,USAF Academy,CO,,,,,,,,,,
-2026-09-05,401862698,2026-09-05T18:00Z,Temple,Rhode Island,Temple Owls,Rhode Island Rams,38.0,14.0,True,0,0,0,,,,,False,Philadelphia,PA,,,,,,,,,,
-2026-09-05,401856636,2026-09-05T19:30Z,Auburn,Baylor,Auburn Tigers,Baylor Bears,17.0,16.0,True,1,0,0,,,,,True,Atlanta,GA,,,,,,,,,,
-2026-09-05,401856777,2026-09-05T19:30Z,Cincinnati,Boston College,Cincinnati Bearcats,Boston College Eagles,34.0,15.0,True,0,0,0,,,,,False,Cincinnati,OH,,,,,,,,,,
-2026-09-05,401858209,2026-09-05T19:30Z,Duke,Tulane,Duke Blue Devils,Tulane Green Wave,17.0,3.0,True,0,0,0,,,,,False,Durham,NC,,,,,,,,,,
-2026-09-05,401862694,2026-09-05T19:30Z,Charlotte,The Citadel,Charlotte 49ers,The Citadel Bulldogs,41.0,43.0,True,0,0,0,,,,,False,Charlotte,NC,,,,,,,,,,
-2026-09-05,401862696,2026-09-05T19:30Z,Navy,Towson,Navy Midshipmen,Towson Tigers,42.0,15.0,True,0,0,0,,,,,False,Annapolis,MD,,,,,,,,,,
-2026-09-05,401862700,2026-09-05T19:30Z,UTSA,UT Rio Grande Valley,UTSA Roadrunners,UT Rio Grande Valley Vaqueros,45.0,16.0,True,0,0,0,,,,,True,San Antonio,TX,,,,,,,,,,
-2026-09-05,401864499,2026-09-05T19:30Z,North Dakota State,Fordham,North Dakota State Bison,Fordham Rams,38.0,0.0,True,0,0,0,,,,,True,Fargo,ND,,,,,,,,,,
-2026-09-05,401866627,2026-09-05T19:30Z,App State,Maine,App State Mountaineers,Maine Black Bears,55.0,3.0,True,0,0,0,,,,,False,Boone,NC,,,,,,,,,,
-2026-09-05,401856772,2026-09-05T19:45Z,Tulsa,Oklahoma State,Tulsa Golden Hurricane,Oklahoma State Cowboys,24.0,10.0,True,0,0,0,,,,,False,Tulsa,OK,,,,,,,,,,
-2026-09-05,401856635,2026-09-05T20:15Z,Arkansas,North Alabama,Arkansas Razorbacks,North Alabama Lions,31.0,14.0,True,0,0,0,,,,,False,Fayetteville,AR,,,,,,,,,,
-2026-09-05,401868356,2026-09-05T21:00Z,Southern Miss,Alcorn State,Southern Miss Golden Eagles,Alcorn State Braves,49.0,3.0,True,0,0,0,,,,,False,Hattiesburg,MS,,,,,,,,,,
-2026-09-05,401860878,2026-09-05T22:00Z,Colorado State,Wyoming,Colorado State Rams,Wyoming Cowboys,35.0,13.0,True,0,0,0,,,,,False,Fort Collins,CO,,,,,,,,,,
-2026-09-05,401867973,2026-09-05T22:00Z,Old Dominion,Norfolk State,Old Dominion Monarchs,Norfolk State Spartans,31.0,10.0,True,0,0,0,,,,,False,Norfolk,VA,,,,,,,,,,
-2026-09-05,401856669,2026-09-05T23:00Z,Vanderbilt,Austin Peay,Vanderbilt Commodores,Austin Peay Governors,28.0,9.0,True,0,0,0,,,,,False,Nashville,TN,,,,,,,,,,
-2026-09-05,401856771,2026-09-05T23:00Z,Kansas State,Nicholls,Kansas State Wildcats,Nicholls Colonels,71.0,3.0,True,0,0,0,,,,,False,Manhattan,KS,,,,,,,,,,
-2026-09-05,401860880,2026-09-05T23:00Z,Utah State,Idaho State,Utah State Aggies,Idaho State Bengals,17.0,29.0,True,0,0,0,,,,,False,Logan,UT,,,,,,,,,,
-2026-09-05,401862695,2026-09-05T23:00Z,Memphis,Arkansas State,Memphis Tigers,Arkansas State Red Wolves,42.0,24.0,True,0,0,0,,,,,False,Memphis,TN,,,,,,,,,,
-2026-09-05,401862697,2026-09-05T23:00Z,Rice,Houston Christian,Rice Owls,Houston Christian Huskies,31.0,3.0,True,0,0,0,,,,,False,Houston,TX,,,,,,,,,,
-2026-09-05,401862699,2026-09-05T23:00Z,South Florida,Florida International,South Florida Bulls,Florida International Panthers,19.0,9.0,True,0,0,0,,,,,False,Tampa,FL,,,,,,,,,,
-2026-09-05,401868140,2026-09-05T23:00Z,Jacksonville State,Eastern Kentucky,Jacksonville State Gamecocks,Eastern Kentucky Colonels,49.0,7.0,True,0,0,0,,,,,False,Jacksonville,AL,,,,,,,,,,
-2026-09-05,401868170,2026-09-05T23:00Z,Georgia Southern,Charleston Southern,Georgia Southern Eagles,Charleston Southern Buccaneers,31.0,0.0,True,0,0,0,,,,,False,Statesboro,GA,,,,,,,,,,
-2026-09-05,401868316,2026-09-05T23:00Z,South Alabama,SE Louisiana,South Alabama Jaguars,SE Louisiana Lions,39.0,14.0,True,0,0,0,,,,,False,Mobile,AL,,,,,,,,,,
-2026-09-05,401870763,2026-09-05T23:00Z,Troy,Sam Houston,Troy Trojans,Sam Houston Bearkats,24.0,21.0,True,0,0,0,,,,,False,Troy,AL,,,,,,,,,,
-2026-09-05,401856662,2026-09-05T23:30Z,Mississippi State,UL Monroe,Mississippi State Bulldogs,UL Monroe Warhawks,62.0,13.0,True,0,0,0,,,,,False,Starkville,MS,,,,,,,,,,
-2026-09-05,401858211,2026-09-05T23:30Z,Virginia Tech,VMI,Virginia Tech Hokies,VMI Keydets,73.0,3.0,True,0,0,0,,,,,False,Blacksburg,VA,,,,,,,,,,
-2026-09-05,401869129,2026-09-05T23:30Z,Louisiana Tech,Northwestern State,Louisiana Tech Bulldogs,Northwestern State Demons,80.0,6.0,True,0,0,0,,,,,False,Ruston,LA,,,,,,,,,,
-2026-09-05,401856637,2026-09-05T23:45Z,Florida,Florida Atlantic,Florida Gators,Florida Atlantic Owls,66.0,21.0,True,0,0,0,,,,,False,Gainesville,FL,,,,,,,,,,
-2026-09-05,401867866,2026-09-05T23:45Z,Middle Tennessee,Murray State,Middle Tennessee Blue Raiders,Murray State Racers,38.0,14.0,True,0,0,0,,,,,False,Murfreesboro,TN,,,,,,,,,,
-2026-09-05,401858427,2026-09-06T00:00Z,Maryland,Hampton,Maryland Terrapins,Hampton Pirates,62.0,0.0,True,0,0,0,,,,,False,College Park,MD,,,,,,,,,,
-2026-09-05,401858431,2026-09-06T00:00Z,Northwestern,South Dakota State,Northwestern Wildcats,South Dakota State Jackrabbits,34.0,18.0,True,0,0,0,,,,,False,Evanston,IL,,,,,,,,,,
-2026-09-05,401869142,2026-09-06T00:00Z,Louisiana,Lamar,Louisiana Ragin' Cajuns,Lamar Cardinals,38.0,7.0,True,0,0,0,,,,,False,Lafayette,LA,,,,,,,,,,
-2026-09-05,401870790,2026-09-06T01:00Z,New Mexico State,Mercyhurst,New Mexico State Aggies,Mercyhurst Lakers,51.0,14.0,True,0,0,0,,,,,False,Las Cruces,NM,,,,,,,,,,
-2026-09-05,401856773,2026-09-06T01:30Z,Arizona,Northern Arizona,Arizona Wildcats,Northern Arizona Lumberjacks,35.0,7.0,True,0,0,0,,,,,False,Tucson,AZ,,,,,,,,,,
-2026-09-05,401860879,2026-09-06T01:30Z,San Diego State,Portland State,San Diego State Aztecs,Portland State Vikings,53.0,20.0,True,0,0,0,,,,,False,San Diego,CA,,,,,,,,,,
-2026-09-05,401856774,2026-09-06T02:00Z,Arizona State,Morgan State,Arizona State Sun Devils,Morgan State Bears,70.0,7.0,True,0,0,0,,,,,False,Tempe,AZ,,,,,,,,,,
-2026-09-05,401864497,2026-09-06T02:00Z,Hawai'i,UNLV,Hawai'i Rainbow Warriors,UNLV Rebels,6.0,21.0,True,0,1,0,,,,,False,Honolulu,HI,,,,,,,,,,
-2026-09-05,401864498,2026-09-06T02:00Z,New Mexico,Central Michigan,New Mexico Lobos,Central Michigan Chippewas,38.0,7.0,True,0,0,0,,,,,False,Albuquerque,NM,,,,,,,,,,
-2026-09-05,401866411,2026-09-06T02:00Z,Sacramento State,Mississippi Valley State,Sacramento State Hornets,Mississippi Valley State Delta Devils,52.0,0.0,True,0,0,0,,,,,False,Sacramento,CA,,,,,,,,,,
-2026-09-05,401858210,2026-09-06T02:30Z,California,UCLA,California Golden Bears,UCLA Bruins,24.0,45.0,True,0,0,0,,,,,False,Berkeley,CA,,,,,,,,,,
-2026-09-05,401864432,2026-09-06T02:30Z,Nevada,Western Kentucky,Nevada Wolf Pack,Western Kentucky Hilltoppers,49.0,14.0,True,0,0,0,,,,,False,Reno,NV,,,,,,,,,,
-2026-09-04,401858206,2026-09-05T01:00Z,Stanford,Miami,Stanford Cardinal,Miami Hurricanes,6.0,45.0,True,0,1,0,,,,,False,Stanford,CA,,,,,,,,,,
-2026-09-04,401856664,2026-09-05T00:00Z,Oklahoma,UTEP,Oklahoma Sooners,UTEP Miners,51.0,0.0,True,0,0,0,,,,,False,Norman,OK,,,,,,,,,,
-2026-09-04,401858436,2026-09-05T01:00Z,USC,Fresno State,USC Trojans,Fresno State Bulldogs,39.0,0.0,True,0,0,0,,,,,False,Los Angeles,CA,,,,,,,,,,
-2026-09-04,401864495,2026-09-04T22:30Z,Eastern Michigan,San José State,Eastern Michigan Eagles,San José State Spartans,21.0,27.0,True,0,0,0,,,,,False,Ypsilanti,MI,,,,,,,,,,
-2026-09-04,401858435,2026-09-04T23:00Z,Purdue,Indiana State,Purdue Boilermakers,Indiana State Sycamores,44.0,19.0,True,0,0,0,,,,,False,West Lafayette,IN,,,,,,,,,,
-2026-09-04,401866623,2026-09-04T23:00Z,Georgia State,North Carolina A&T,Georgia State Panthers,North Carolina A&T Aggies,59.0,10.0,True,0,0,0,,,,,False,Atlanta,GA,,,,,,,,,,
-2026-09-04,401856769,2026-09-05T00:00Z,Kansas,Long Island University,Kansas Jayhawks,Long Island University Sharks,51.0,6.0,True,0,0,0,,,,,False,Lawrence,KS,,,,,,,,,,
-2026-09-04,401858429,2026-09-05T00:00Z,Michigan State,Toledo,Michigan State Spartans,Toledo Rockets,30.0,20.0,True,0,0,0,,,,,False,East Lansing,MI,,,,,,,,,,
-2026-09-03,401856768,2026-09-04T01:00Z,Utah,Idaho,Utah Utes,Idaho Vandals,66.0,14.0,True,0,0,0,,,,,False,Salt Lake City,UT,,,,,,,,,,
-2026-09-03,401856663,2026-09-04T00:00Z,Missouri,Arkansas-Pine Bluff,Missouri Tigers,Arkansas-Pine Bluff Golden Lions,54.0,14.0,True,0,0,0,,,,,False,Columbia,MO,,,,,,,,,,
-2026-09-03,401858423,2026-09-03T22:00Z,Rutgers,Massachusetts,Rutgers Scarlet Knights,Massachusetts Minutemen,21.0,37.0,True,0,0,0,,,,,False,Piscataway,NJ,,,,,,,,,,
-2026-09-03,401856767,2026-09-03T23:00Z,UCF,Bethune-Cookman,UCF Knights,Bethune-Cookman Wildcats,73.0,6.0,True,0,0,0,,,,,False,Orlando,FL,,,,,,,,,,
-2026-09-03,401858204,2026-09-03T23:00Z,Wake Forest,Akron,Wake Forest Demon Deacons,Akron Zips,38.0,16.0,True,0,0,0,,,,,False,Winston-Salem,NC,,,,,,,,,,
-2026-09-03,401864424,2026-09-03T23:00Z,Delaware,Merrimack,Delaware Blue Hens,Merrimack Warriors,42.0,7.0,True,0,0,0,,,,,False,Newark,DE,,,,,,,,,,
-2026-09-03,401864425,2026-09-03T23:00Z,Kennesaw State,West Georgia,Kennesaw State Owls,West Georgia Wolves,47.0,0.0,True,0,0,0,,,,,False,Kennesaw,GA,,,,,,,,,,
-2026-09-03,401866409,2026-09-03T23:00Z,Buffalo,UAlbany,Buffalo Bulls,UAlbany Great Danes,21.0,17.0,True,0,0,0,,,,,False,Buffalo,NY,,,,,,,,,,
-2026-09-03,401856776,2026-09-04T00:00Z,Georgia Tech,Colorado,Georgia Tech Yellow Jackets,Colorado Buffaloes,13.0,14.0,True,0,0,0,,,,,False,Atlanta,GA,,,,,,,,,,
-2026-09-03,401858422,2026-09-04T00:00Z,Minnesota,Eastern Illinois,Minnesota Golden Gophers,Eastern Illinois Panthers,59.0,7.0,True,0,0,0,,,,,False,Minneapolis,MN,,,,,,,,,,
-2026-09-03,401858424,2026-09-04T01:00Z,Illinois,UAB,Illinois Fighting Illini,UAB Blazers,42.0,23.0,True,0,0,0,,,,,False,Champaign,IL,,,,,,,,,,
-2026-08-29,401864494,2026-08-29T19:00Z,USC,San José State,USC Trojans,San José State Spartans,42.0,26.0,True,0,0,0,,,,,False,Los Angeles,CA,,,,,,,,,,
-2026-08-29,401856766,2026-08-29T16:00Z,TCU,North Carolina,TCU Horned Frogs,North Carolina Tar Heels,10.0,15.0,True,1,0,0,,,,,False,Dublin,,,,,,,,,,,
-2026-08-29,401858202,2026-08-29T19:30Z,Virginia,NC State,Virginia Cavaliers,NC State Wolfpack,34.0,8.0,True,0,1,0,,,,,False,Charlottesville,VA,,,,,,,,,,
-2026-08-29,401864577,2026-08-29T21:30Z,North Dakota State,Jacksonville State,North Dakota State Bison,Jacksonville State Gamecocks,33.0,7.0,True,0,0,0,,,,,True,Fargo,ND,,,,,,,,,,
-2026-08-29,401866408,2026-08-29T22:30Z,Eastern Michigan,Sacramento State,Eastern Michigan Eagles,Sacramento State Hornets,28.0,17.0,True,0,1,0,,,,,False,Ypsilanti,MI,,,,,,,,,,
-2026-08-29,401858201,2026-08-29T23:00Z,Stanford,Hawai'i,Stanford Cardinal,Hawai'i Rainbow Warriors,37.0,27.0,True,0,0,0,,,,,False,Stanford,CA,,,,,,,,,,
-2026-08-29,401864570,2026-08-29T23:00Z,Florida State,New Mexico State,Florida State Seminoles,New Mexico State Aggies,34.0,17.0,True,0,0,0,,,,,False,Tallahassee,FL,,,,,,,,,,
-2026-08-29,401862693,2026-08-30T02:00Z,UNLV,Memphis,UNLV Rebels,Memphis Tigers,21.0,27.0,True,0,0,0,,,,,True,Las Vegas,NV,,,,,,,,,,
+date,espn_id,start,home,away,home_name,away_name,home_score,away_score,completed,neutral,conference_game,playoff,espn_spread_home,espn_total,espn_home_ml,espn_away_ml,indoor,city,state,home_ml,away_ml,spread_home,spread_home_odds,spread_away_odds,total,over_odds,under_odds,best,source,line_source
+2026-10-14,401871054,2026-10-14T23:30Z,Missouri State,Kennesaw State,Missouri State Bears,Kennesaw State Owls,24.0,21.0,True,0,1,0,,,,,False,Springfield,MO,114.0,-135.0,2.5,-108.0,-112.0,52.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-14,401871068,2026-10-15T00:00Z,Sam Houston,Western Kentucky,Sam Houston Bearkats,Western Kentucky Hilltoppers,3.0,16.0,True,0,1,0,,,,,False,Huntsville,TX,-112.0,-108.0,1.5,-118.0,-102.0,53.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-13,401871067,2026-10-13T23:00Z,Middle Tennessee,Delaware,Middle Tennessee Blue Raiders,Delaware Blue Hens,33.0,30.0,True,0,1,0,,,,,False,Murfreesboro,TN,100.0,-120.0,1.5,-115.0,-105.0,49.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-13,401871053,2026-10-14T00:00Z,Jacksonville State,Florida International,Jacksonville State Gamecocks,Florida International Panthers,27.0,24.0,True,0,1,0,,,,,False,Jacksonville,AL,-142.0,120.0,-3.0,-105.0,-115.0,44.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-10-10,401856717,2026-10-10T19:30Z,Oklahoma,Texas,Oklahoma Sooners,Texas Longhorns,27.0,24.0,True,1,1,0,,,,,False,Dallas,TX,275.0,-345.0,7.5,-105.0,-115.0,40.5,-120.0,100.0,,,espn-pickcenter:DraftKings
+2026-10-10,401856712,2026-10-10T23:30Z,Alabama,Georgia,Alabama Crimson Tide,Georgia Bulldogs,17.0,20.0,True,0,1,0,,,,,False,Tuscaloosa,AL,-125.0,105.0,-2.5,-108.0,-112.0,51.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-10,401858257,2026-10-10T19:30Z,Notre Dame,Stanford,Notre Dame Fighting Irish,Stanford Cardinal,58.0,7.0,True,0,0,0,,,,,False,Notre Dame,IN,,,-40.5,-102.0,-118.0,55.5,-102.0,-118.0,,,espn-pickcenter:DraftKings
+2026-10-10,401858483,2026-10-10T20:15Z,Ohio State,Maryland,Ohio State Buckeyes,Maryland Terrapins,45.0,16.0,True,0,1,0,,,,,False,Columbus,OH,,,-31.5,-105.0,-115.0,56.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-10-10,401858481,2026-10-10T16:00Z,Nebraska,Indiana,Nebraska Cornhuskers,Indiana Hoosiers,17.0,20.0,True,0,1,0,,,,,False,Lincoln,NE,285.0,-360.0,9.5,-112.0,-108.0,48.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-10,401856718,2026-10-10T19:30Z,Vanderbilt,Ole Miss,Vanderbilt Commodores,Ole Miss Rebels,17.0,52.0,True,0,1,0,,,,,False,Nashville,TN,280.0,-355.0,9.5,-112.0,-108.0,54.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-10,401856715,2026-10-10T23:00Z,Kentucky,LSU,Kentucky Wildcats,LSU Tigers,35.0,34.0,True,0,1,0,,,,,False,Lexington,KY,285.0,-360.0,9.5,-110.0,-110.0,50.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-10,401856827,2026-10-11T00:00Z,Utah,Kansas,Utah Utes,Kansas Jayhawks,41.0,24.0,True,0,1,0,,,,,False,Salt Lake City,UT,-750.0,525.0,-15.5,-115.0,-105.0,49.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-10,401858484,2026-10-10T19:30Z,Oregon,UCLA,Oregon Ducks,UCLA Bruins,15.0,17.0,True,0,1,0,,,,,False,Eugene,OR,-410.0,320.0,-10.0,-108.0,-112.0,57.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-10,401856716,2026-10-10T16:00Z,Missouri,Texas A&M,Missouri Tigers,Texas A&M Aggies,27.0,6.0,True,0,1,0,,,,,False,Columbia,MO,-205.0,170.0,-4.5,-110.0,-110.0,50.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-10,401856713,2026-10-10T20:15Z,Arkansas,Tennessee,Arkansas Razorbacks,Tennessee Volunteers,17.0,24.0,True,0,1,0,,,,,False,Fayetteville,AR,425.0,-575.0,13.5,-105.0,-115.0,51.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-10-10,401856714,2026-10-10T16:45Z,Florida,South Carolina,Florida Gators,South Carolina Gamecocks,19.0,38.0,True,0,1,0,,,,,False,Gainesville,FL,-455.0,350.0,-10.5,-112.0,-108.0,59.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-10-10,401856824,2026-10-10T16:00Z,Oklahoma State,UCF,Oklahoma State Cowboys,UCF Knights,42.0,28.0,True,0,1,0,,,,,False,Stillwater,OK,-395.0,310.0,-10.5,-112.0,-108.0,53.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-10,401858485,2026-10-10T23:30Z,Penn State,USC,Penn State Nittany Lions,USC Trojans,23.0,31.0,True,0,1,0,,,,,False,University Park,PA,100.0,-120.0,1.5,-110.0,-110.0,54.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-10,401856825,2026-10-10T19:30Z,Kansas State,Houston,Kansas State Wildcats,Houston Cougars,16.0,35.0,True,0,1,0,,,,,False,Manhattan,KS,-142.0,120.0,-2.5,-115.0,-105.0,55.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-10-10,401860901,2026-10-11T02:30Z,Fresno State,Boise State,Fresno State Bulldogs,Boise State Broncos,31.0,38.0,True,0,1,0,,,,,False,Fresno,CA,250.0,-310.0,8.5,-110.0,-110.0,48.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-10-10,401858256,2026-10-10T16:00Z,Pittsburgh,North Carolina,Pittsburgh Panthers,North Carolina Tar Heels,17.0,21.0,True,0,1,0,,,,,False,Pittsburgh,PA,-175.0,145.0,-3.5,-108.0,-112.0,47.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-10-10,401856823,2026-10-10T16:00Z,West Virginia,Arizona,West Virginia Mountaineers,Arizona Wildcats,31.0,52.0,True,0,1,0,,,,,False,Morgantown,WV,145.0,-175.0,3.5,-115.0,-105.0,61.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-10-10,401858260,2026-10-10T16:00Z,NC State,Wake Forest,NC State Wolfpack,Wake Forest Demon Deacons,14.0,38.0,True,0,1,0,,,,,False,Raleigh,NC,150.0,-180.0,4.0,-108.0,-112.0,56.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-10,401862795,2026-10-10T16:00Z,Army,Tulane,Army Black Knights,Tulane Green Wave,20.0,17.0,True,0,1,0,,,,,False,West Point,NY,-205.0,170.0,-5.5,-105.0,-115.0,48.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-10-10,401866436,2026-10-10T16:00Z,Bowling Green,Sacramento State,Bowling Green Falcons,Sacramento State Hornets,38.0,10.0,True,0,1,0,,,,,False,Bowling Green,OH,-325.0,260.0,-9.5,-108.0,-112.0,43.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-10-10,401858482,2026-10-10T16:30Z,Northwestern,Ball State,Northwestern Wildcats,Ball State Cardinals,45.0,14.0,True,0,0,0,,,,,False,Evanston,IL,-100000.0,5000.0,-34.5,-110.0,-110.0,53.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-10-10,401862797,2026-10-10T17:00Z,East Carolina,Rice,East Carolina Pirates,Rice Owls,28.0,12.0,True,0,1,0,,,,,False,Greenville,NC,-380.0,300.0,-10.0,-108.0,-112.0,46.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-10,401869843,2026-10-10T17:00Z,App State,Old Dominion,App State Mountaineers,Old Dominion Monarchs,3.0,10.0,True,0,1,0,,,,,False,Boone,NC,-340.0,270.0,-8.5,-112.0,-108.0,45.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-10,401866440,2026-10-10T18:00Z,Massachusetts,Miami (OH),Massachusetts Minutemen,Miami (OH) RedHawks,19.0,20.0,True,0,1,0,,,,,False,Amherst,MA,185.0,-225.0,6.0,-108.0,-112.0,44.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-10,401858255,2026-10-10T19:30Z,Georgia Tech,Duke,Georgia Tech Yellow Jackets,Duke Blue Devils,28.0,25.0,True,0,1,0,,,,,False,Atlanta,GA,170.0,-205.0,4.5,-108.0,-112.0,45.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-10-10,401858259,2026-10-10T19:30Z,California,Virginia Tech,California Golden Bears,Virginia Tech Hokies,25.0,20.0,True,0,1,0,,,,,False,Berkeley,CA,340.0,-440.0,11.5,-112.0,-108.0,51.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-10,401858480,2026-10-10T19:30Z,Michigan State,Illinois,Michigan State Spartans,Illinois Fighting Illini,37.0,38.0,True,0,1,0,,,,,False,East Lansing,MI,120.0,-142.0,2.5,-105.0,-115.0,48.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-10-10,401862796,2026-10-10T19:30Z,North Texas,Charlotte,North Texas Mean Green,Charlotte 49ers,50.0,10.0,True,0,1,0,,,,,False,Denton,TX,-4500.0,1700.0,-27.5,-110.0,-110.0,58.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-10-10,401862799,2026-10-10T19:30Z,Navy,Tulsa,Navy Midshipmen,Tulsa Golden Hurricane,34.0,26.0,True,0,1,0,,,,,False,Annapolis,MD,-155.0,130.0,-3.0,-112.0,-108.0,47.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-10-10,401866435,2026-10-10T19:30Z,Akron,Eastern Michigan,Akron Zips,Eastern Michigan Eagles,23.0,25.0,True,0,1,0,,,,,False,Akron,OH,170.0,-205.0,4.5,-110.0,-110.0,51.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-10,401866437,2026-10-10T19:30Z,Toledo,Buffalo,Toledo Rockets,Buffalo Bulls,8.0,23.0,True,0,1,0,,,,,False,Toledo,OH,-1100.0,700.0,-18.5,-112.0,-108.0,54.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-10-10,401866438,2026-10-10T19:30Z,Ohio,Central Michigan,Ohio Bobcats,Central Michigan Chippewas,31.0,14.0,True,0,1,0,,,,,False,Athens,OH,-135.0,114.0,-2.5,-112.0,-108.0,45.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-10,401866439,2026-10-10T19:30Z,Western Michigan,Kent State,Western Michigan Broncos,Kent State Golden Flashes,38.0,7.0,True,0,1,0,,,,,False,Kalamazoo,MI,-575.0,425.0,-13.5,-115.0,-105.0,43.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-10-10,401861964,2026-10-10T19:45Z,Temple,UConn,Temple Owls,UConn Huskies,20.0,34.0,True,0,0,0,,,,,False,Philadelphia,PA,-180.0,150.0,-3.5,-112.0,-108.0,55.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-10,401860902,2026-10-10T22:00Z,Oregon State,San Diego State,Oregon State Beavers,San Diego State Aztecs,66.0,14.0,True,0,1,0,,,,,False,Corvallis,OR,-700.0,500.0,-14.5,-110.0,-110.0,52.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-10-10,401862798,2026-10-10T23:00Z,Memphis,UAB,Memphis Tigers,UAB Blazers,38.0,13.0,True,0,1,0,,,,,False,Memphis,TN,-700.0,500.0,-15.5,-112.0,-108.0,55.5,-102.0,-118.0,,,espn-pickcenter:DraftKings
+2026-10-10,401864517,2026-10-10T23:00Z,UTEP,Nevada,UTEP Miners,Nevada Wolf Pack,13.0,30.0,True,0,1,0,,,,,False,El Paso,TX,310.0,-395.0,10.0,-105.0,-115.0,48.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-10-10,401864518,2026-10-10T23:00Z,UNLV,North Dakota State,UNLV Rebels,North Dakota State Bison,13.0,7.0,True,0,1,0,,,,,True,Las Vegas,NV,120.0,-142.0,3.0,-120.0,100.0,47.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-10-10,401869943,2026-10-10T23:00Z,Marshall,Coastal Carolina,Marshall Thundering Herd,Coastal Carolina Chanticleers,21.0,27.0,True,0,1,0,,,,,False,Huntington,WV,-198.0,164.0,-4.5,-108.0,-112.0,57.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-10-10,401858258,2026-10-10T23:30Z,Virginia,Syracuse,Virginia Cavaliers,Syracuse Orange,28.0,25.0,True,0,1,0,,,,,False,Charlottesville,VA,-550.0,410.0,-14.0,-105.0,-115.0,49.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-10,401864516,2026-10-10T23:30Z,Northern Illinois,Air Force,Northern Illinois Huskies,Air Force Falcons,7.0,28.0,True,0,1,0,,,,,False,Dekalb,IL,220.0,-270.0,7.0,-118.0,-102.0,48.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-10-10,401869965,2026-10-10T23:30Z,Louisiana Tech,Louisiana,Louisiana Tech Bulldogs,Louisiana Ragin' Cajuns,32.0,31.0,True,0,1,0,,,,,False,Ruston,LA,-155.0,130.0,-3.0,-112.0,-108.0,48.5,-105.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-10,401858486,2026-10-11T00:00Z,Purdue,Minnesota,Purdue Boilermakers,Minnesota Golden Gophers,41.0,13.0,True,0,1,0,,,,,False,West Lafayette,IN,120.0,-142.0,2.5,-102.0,-118.0,48.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-10,401869949,2026-10-11T00:10Z,Georgia Southern,James Madison,Georgia Southern Eagles,James Madison Dukes,24.0,27.0,True,0,1,0,,,,,False,Statesboro,GA,230.0,-285.0,7.0,-108.0,-112.0,51.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-10,401856808,2026-10-11T02:30Z,Arizona State,Hawai'i,Arizona State Sun Devils,Hawai'i Rainbow Warriors,30.0,12.0,True,0,0,0,,,,,False,Tempe,AZ,-1650.0,950.0,-20.5,-112.0,-108.0,51.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-09,401856826,2026-10-10T02:30Z,BYU,Iowa State,BYU Cougars,Iowa State Cyclones,24.0,10.0,True,0,1,0,,,,,False,Provo,UT,-470.0,360.0,-11.5,-108.0,-112.0,46.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-09,401858487,2026-10-10T01:00Z,Washington,Iowa,Washington Huskies,Iowa Hawkeyes,24.0,41.0,True,0,1,0,,,,,False,Seattle,WA,-155.0,130.0,-3.0,-108.0,-112.0,41.5,-102.0,-118.0,,,espn-pickcenter:DraftKings
+2026-10-09,401858254,2026-10-09T23:00Z,Louisville,Florida State,Louisville Cardinals,Florida State Seminoles,44.0,20.0,True,0,1,0,,,,,False,Louisville,KY,-192.0,160.0,-4.0,-112.0,-108.0,60.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-09,401860922,2026-10-10T01:00Z,Utah State,Washington State,Utah State Aggies,Washington State Cougars,17.0,16.0,True,0,1,0,,,,,False,Logan,UT,-185.0,154.0,-4.0,-112.0,-108.0,44.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-10-09,401864519,2026-10-10T01:00Z,San José State,Wyoming,San José State Spartans,Wyoming Cowboys,13.0,16.0,True,0,1,0,,,,,False,San Jose,CA,-192.0,160.0,-4.5,-110.0,-110.0,42.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-08,401870766,2026-10-08T23:00Z,Liberty,Sam Houston,Liberty Flames,Sam Houston Bearkats,35.0,3.0,True,0,1,0,,,,,False,Lynchburg,VA,-575.0,425.0,-13.5,-110.0,-110.0,52.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-08,401871052,2026-10-08T23:00Z,Western Kentucky,Missouri State,Western Kentucky Hilltoppers,Missouri State Bears,34.0,13.0,True,0,1,0,,,,,False,Bowling Green,KY,-102.0,-118.0,1.5,-112.0,-108.0,56.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-08,401862794,2026-10-08T23:30Z,UTSA,South Florida,UTSA Roadrunners,South Florida Bulls,31.0,24.0,True,0,1,0,,,,,True,San Antonio,TX,-230.0,190.0,-5.5,-110.0,-110.0,49.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-08,401869933,2026-10-08T23:30Z,Arkansas State,South Alabama,Arkansas State Red Wolves,South Alabama Jaguars,49.0,56.0,True,0,1,0,,,,,False,Jonesboro,AR,-162.0,136.0,-3.0,-115.0,-105.0,60.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-07,401871051,2026-10-07T23:00Z,Kennesaw State,Jacksonville State,Kennesaw State Owls,Jacksonville State Gamecocks,26.0,27.0,True,0,1,0,,,,,False,Kennesaw,GA,124.0,-148.0,3.0,-115.0,-105.0,48.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-07,401871066,2026-10-08T00:04Z,Florida International,New Mexico State,Florida International Panthers,New Mexico State Aggies,22.0,3.0,True,0,1,0,,,,,False,Miami,FL,-265.0,215.0,-7.0,-108.0,-112.0,46.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-06,401871090,2026-10-07T00:00Z,Troy,Southern Miss,Troy Trojans,Southern Miss Golden Eagles,55.0,34.0,True,0,1,0,,,,,False,Troy,AL,-410.0,320.0,-9.5,-112.0,-108.0,51.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-03,401856705,2026-10-03T16:45Z,Georgia,Vanderbilt,Georgia Bulldogs,Vanderbilt Commodores,38.0,14.0,True,0,1,0,,,,,False,Athens,GA,-2800.0,1300.0,-25.5,-108.0,-112.0,49.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-03,401858250,2026-10-03T16:00Z,North Carolina,Notre Dame,North Carolina Tar Heels,Notre Dame Fighting Irish,26.0,37.0,True,0,0,0,,,,,False,Chapel Hill,NC,1000.0,-1800.0,21.0,-105.0,-115.0,46.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-10-03,401858249,2026-10-03T23:30Z,Clemson,Miami,Clemson Tigers,Miami Hurricanes,13.0,41.0,True,0,1,0,,,,,False,Clemson,SC,500.0,-700.0,14.0,-108.0,-112.0,49.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-10-03,401858473,2026-10-03T19:30Z,Iowa,Ohio State,Iowa Hawkeyes,Ohio State Buckeyes,14.0,31.0,True,0,1,0,,,,,False,Iowa City,IA,500.0,-700.0,14.5,-105.0,-115.0,46.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-03,401858477,2026-10-04T00:00Z,Rutgers,Indiana,Rutgers Scarlet Knights,Indiana Hoosiers,15.0,47.0,True,0,1,0,,,,,False,Piscataway,NJ,1200.0,-2400.0,24.5,-112.0,-108.0,56.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-10-03,401856707,2026-10-03T16:00Z,Mississippi State,Alabama,Mississippi State Bulldogs,Alabama Crimson Tide,23.0,56.0,True,0,1,0,,,,,False,Starkville,MS,170.0,-205.0,5.5,-108.0,-112.0,62.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-03,401856708,2026-10-03T19:50Z,Missouri,Florida,Missouri Tigers,Florida Gators,45.0,17.0,True,0,1,0,,,,,False,Columbia,MO,180.0,-218.0,5.5,-110.0,-110.0,57.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-03,401856818,2026-10-03T23:00Z,TCU,BYU,TCU Horned Frogs,BYU Cougars,10.0,17.0,True,0,1,0,,,,,False,Fort Worth,TX,185.0,-225.0,5.5,-112.0,-108.0,48.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-03,401856706,2026-10-03T23:45Z,LSU,McNeese,LSU Tigers,McNeese Cowboys,63.0,14.0,True,0,0,0,,,,,False,Baton Rouge,LA,,,-53.5,-115.0,-105.0,62.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-03,401856821,2026-10-03T23:30Z,Colorado,Texas Tech,Colorado Buffaloes,Texas Tech Red Raiders,7.0,29.0,True,0,1,0,,,,,False,Boulder,CO,440.0,-600.0,13.5,-105.0,-115.0,50.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-03,401856710,2026-10-03T19:30Z,Tennessee,Auburn,Tennessee Volunteers,Auburn Tigers,24.0,14.0,True,0,1,0,,,,,False,Knoxville,TN,-230.0,190.0,-6.0,-110.0,-110.0,54.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-10-03,401858478,2026-10-03T23:30Z,USC,Washington,USC Trojans,Washington Huskies,25.0,21.0,True,0,1,0,,,,,False,Los Angeles,CA,-305.0,245.0,-7.5,100.0,-120.0,58.5,-102.0,-118.0,,,espn-pickcenter:DraftKings
+2026-10-03,401856819,2026-10-03T16:00Z,Houston,UCF,Houston Cougars,UCF Knights,27.0,17.0,True,0,1,0,,,,,False,Houston,TX,-425.0,330.0,-10.5,-105.0,-115.0,50.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-03,401858246,2026-10-03T16:00Z,SMU,Boston College,SMU Mustangs,Boston College Eagles,25.0,16.0,True,0,1,0,,,,,False,Dallas,TX,-1650.0,950.0,-21.5,-105.0,-115.0,55.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-03,401860898,2026-10-03T23:30Z,Boise State,Utah State,Boise State Broncos,Utah State Aggies,37.0,18.0,True,0,1,0,,,,,False,Boise,ID,-1350.0,800.0,-19.5,-110.0,-110.0,50.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-10-03,401856709,2026-10-03T20:15Z,South Carolina,Kentucky,South Carolina Gamecocks,Kentucky Wildcats,34.0,35.0,True,0,1,0,,,,,False,Columbia,SC,-130.0,110.0,-2.5,-110.0,-110.0,52.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-03,401862787,2026-10-03T15:00Z,Charlotte,Memphis,Charlotte 49ers,Memphis Tigers,8.0,59.0,True,0,1,0,,,,,False,Charlotte,NC,750.0,-1200.0,18.5,-110.0,-110.0,52.5,-102.0,-118.0,,,espn-pickcenter:DraftKings
+2026-10-03,401856807,2026-10-03T16:00Z,Kansas,Middle Tennessee,Kansas Jayhawks,Middle Tennessee Blue Raiders,55.0,0.0,True,0,0,0,,,,,False,Lawrence,KS,-1800.0,1000.0,-21.5,-112.0,-108.0,51.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-10-03,401856822,2026-10-03T16:00Z,Iowa State,West Virginia,Iowa State Cyclones,West Virginia Mountaineers,45.0,42.0,True,0,1,0,,,,,False,Ames,IA,-155.0,130.0,-3.0,-110.0,-110.0,53.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-03,401858251,2026-10-03T16:00Z,Wake Forest,Stanford,Wake Forest Demon Deacons,Stanford Cardinal,57.0,3.0,True,0,1,0,,,,,False,Winston-Salem,NC,-650.0,470.0,-14.5,-112.0,-108.0,54.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-03,401858252,2026-10-03T16:00Z,UConn,Syracuse,UConn Huskies,Syracuse Orange,41.0,42.0,True,0,0,0,,,,,False,East Hartford,CT,215.0,-265.0,6.5,-105.0,-115.0,51.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-10-03,401858474,2026-10-03T16:00Z,Minnesota,Michigan,Minnesota Golden Gophers,Michigan Wolverines,20.0,14.0,True,0,1,0,,,,,False,Minneapolis,MN,190.0,-230.0,6.5,-115.0,-105.0,41.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-03,401862791,2026-10-03T16:00Z,Air Force,Navy,Air Force Falcons,Navy Midshipmen,14.0,9.0,True,0,0,0,,,,,False,USAF Academy,CO,-142.0,120.0,-2.5,-120.0,100.0,45.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-10-03,401858479,2026-10-03T16:30Z,Wisconsin,Michigan State,Wisconsin Badgers,Michigan State Spartans,31.0,3.0,True,0,1,0,,,,,False,Madison,WI,-355.0,280.0,-8.5,-108.0,-112.0,43.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-03,401866432,2026-10-03T17:00Z,Buffalo,Western Michigan,Buffalo Bulls,Western Michigan Broncos,17.0,20.0,True,0,1,0,,,,,False,Buffalo,NY,400.0,-535.0,13.5,-115.0,-105.0,46.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-03,401866431,2026-10-03T18:00Z,Ball State,Toledo,Ball State Cardinals,Toledo Rockets,24.0,39.0,True,0,1,0,,,,,False,Muncie,IN,750.0,-1200.0,20.5,-108.0,-112.0,52.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-03,401858247,2026-10-03T19:30Z,UNLV,California,UNLV Rebels,California Golden Bears,39.0,31.0,True,0,0,0,,,,,True,Las Vegas,NV,-115.0,-105.0,-1.5,-102.0,-118.0,51.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-03,401858248,2026-10-03T19:30Z,NC State,Louisville,NC State Wolfpack,Louisville Cardinals,31.0,28.0,True,0,1,0,,,,,False,Raleigh,NC,195.0,-238.0,5.5,-108.0,-112.0,56.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-03,401858253,2026-10-03T19:30Z,Florida State,Virginia,Florida State Seminoles,Virginia Cavaliers,38.0,7.0,True,0,1,0,,,,,False,Tallahassee,FL,-108.0,-112.0,1.5,-118.0,-102.0,51.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-03,401862793,2026-10-03T19:30Z,UAB,Samford,UAB Blazers,Samford Bulldogs,33.0,14.0,True,0,0,0,,,,,False,Birmingham,AL,-8000.0,2200.0,-30.5,-118.0,-102.0,54.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-03,401864515,2026-10-03T19:30Z,North Dakota State,Wyoming,North Dakota State Bison,Wyoming Cowboys,28.0,0.0,True,0,1,0,,,,,True,Fargo,ND,-950.0,625.0,-17.5,-110.0,-110.0,44.5,-102.0,-118.0,,,espn-pickcenter:DraftKings
+2026-10-03,401866430,2026-10-03T19:30Z,Central Michigan,Akron,Central Michigan Chippewas,Akron Zips,41.0,17.0,True,0,1,0,,,,,False,Mount Pleasant,MI,-278.0,225.0,-6.5,-118.0,-102.0,47.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-03,401866433,2026-10-03T19:30Z,Massachusetts,Eastern Michigan,Massachusetts Minutemen,Eastern Michigan Eagles,14.0,38.0,True,0,1,0,,,,,False,Amherst,MA,-218.0,180.0,-5.5,-110.0,-110.0,49.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-10-03,401866434,2026-10-03T19:30Z,Kent State,Ohio,Kent State Golden Flashes,Ohio Bobcats,10.0,13.0,True,0,1,0,,,,,False,Kent,OH,145.0,-175.0,3.5,-112.0,-108.0,50.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-03,401866477,2026-10-03T19:30Z,Miami (OH),Bowling Green,Miami (OH) RedHawks,Bowling Green Falcons,20.0,24.0,True,0,1,0,,,,,False,Oxford,OH,-470.0,360.0,-10.5,-110.0,-110.0,41.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-03,401869956,2026-10-03T19:30Z,Georgia State,Old Dominion,Georgia State Panthers,Old Dominion Monarchs,42.0,10.0,True,0,1,0,,,,,False,Atlanta,GA,-125.0,105.0,-1.5,-115.0,-105.0,51.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-03,401869962,2026-10-03T19:45Z,James Madison,Marshall,James Madison Dukes,Marshall Thundering Herd,45.0,17.0,True,0,1,0,,,,,False,Harrisonburg,VA,-750.0,525.0,-14.5,-112.0,-108.0,55.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-03,401858475,2026-10-03T20:00Z,Nebraska,Maryland,Nebraska Cornhuskers,Maryland Terrapins,48.0,23.0,True,0,1,0,,,,,False,Lincoln,NE,-700.0,500.0,-15.5,-108.0,-112.0,52.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-10-03,401864514,2026-10-03T20:00Z,New Mexico,UTEP,New Mexico Lobos,UTEP Miners,61.0,7.0,True,0,1,0,,,,,False,Albuquerque,NM,-3200.0,1400.0,-23.5,-115.0,-105.0,47.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-10-03,401858472,2026-10-03T20:15Z,Illinois,Purdue,Illinois Fighting Illini,Purdue Boilermakers,17.0,24.0,True,0,1,0,,,,,False,Champaign,IL,-360.0,285.0,-9.5,-112.0,-108.0,62.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-10-03,401860899,2026-10-03T22:00Z,Colorado State,Oregon State,Colorado State Rams,Oregon State Beavers,26.0,56.0,True,0,1,0,,,,,False,Fort Collins,CO,215.0,-265.0,7.0,-112.0,-108.0,60.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-03,401862790,2026-10-03T22:00Z,Florida Atlantic,Texas Southern,Florida Atlantic Owls,Texas Southern Tigers,66.0,10.0,True,0,0,0,,,,,False,Boca Raton,FL,,,-47.5,-105.0,-115.0,62.5,-130.0,110.0,,,espn-pickcenter:DraftKings
+2026-10-03,401856711,2026-10-03T23:00Z,Texas A&M,Arkansas,Texas A&M Aggies,Arkansas Razorbacks,34.0,7.0,True,0,1,0,,,,,False,College Station,TX,-600.0,440.0,-13.5,-112.0,-108.0,51.5,-102.0,-118.0,,,espn-pickcenter:DraftKings
+2026-10-03,401862788,2026-10-03T23:00Z,Rice,UTSA,Rice Owls,UTSA Roadrunners,14.0,16.0,True,0,1,0,,,,,False,Houston,TX,380.0,-500.0,11.5,-105.0,-115.0,56.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-10-03,401869942,2026-10-03T23:00Z,Coastal Carolina,Georgia Southern,Coastal Carolina Chanticleers,Georgia Southern Eagles,24.0,31.0,True,0,1,0,,,,,False,Conway,SC,120.0,-142.0,2.5,-102.0,-118.0,53.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-10-03,401871089,2026-10-03T23:00Z,South Alabama,UL Monroe,South Alabama Jaguars,UL Monroe Warhawks,52.0,35.0,True,0,1,0,,,,,False,Mobile,AL,-550.0,410.0,-12.5,-112.0,-108.0,57.5,-108.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-03,401862792,2026-10-03T23:30Z,South Florida,Temple,South Florida Bulls,Temple Owls,13.0,17.0,True,0,1,0,,,,,False,Tampa,FL,-218.0,180.0,-5.5,-108.0,-112.0,50.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-03,401869842,2026-10-03T23:30Z,Louisiana Tech,Army,Louisiana Tech Bulldogs,Army Black Knights,31.0,29.0,True,0,0,0,,,,,False,Ruston,LA,-110.0,-110.0,-1.5,100.0,-120.0,46.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-03,401869932,2026-10-04T00:00Z,Louisiana,Arkansas State,Louisiana Ragin' Cajuns,Arkansas State Red Wolves,23.0,20.0,True,0,1,0,,,,,False,Lafayette,LA,-205.0,170.0,-4.5,-115.0,-105.0,49.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-10-03,401860921,2026-10-04T01:30Z,Washington State,Fresno State,Washington State Cougars,Fresno State Bulldogs,6.0,26.0,True,0,1,0,,,,,False,Pullman,WA,-130.0,110.0,-2.5,-105.0,-115.0,44.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-03,401856817,2026-10-04T02:30Z,Arizona State,Baylor,Arizona State Sun Devils,Baylor Bears,19.0,55.0,True,0,1,0,,,,,False,Tempe,AZ,-166.0,140.0,-3.5,-105.0,-115.0,49.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-10-03,401860900,2026-10-04T02:30Z,San Diego State,Texas State,San Diego State Aztecs,Texas State Bobcats,31.0,29.0,True,0,1,0,,,,,False,San Diego,CA,280.0,-355.0,10.0,-115.0,-105.0,57.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-10-03,401856820,2026-10-04T03:00Z,Arizona,Cincinnati,Arizona Wildcats,Cincinnati Bearcats,34.0,7.0,True,0,1,0,,,,,False,Tucson,AZ,-265.0,215.0,-7.0,-105.0,-115.0,56.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-03,401864513,2026-10-04T03:59Z,Hawai'i,San José State,Hawai'i Rainbow Warriors,San José State Spartans,16.0,20.0,True,0,1,0,,,,,False,Honolulu,HI,-135.0,114.0,-2.5,-115.0,-105.0,51.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-02,401858245,2026-10-02T23:00Z,Virginia Tech,Pittsburgh,Virginia Tech Hokies,Pittsburgh Panthers,33.0,35.0,True,0,1,0,,,,,False,Blacksburg,VA,-115.0,-105.0,-1.5,-102.0,-118.0,53.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-02,401871050,2026-10-02T23:00Z,Delaware,Liberty,Delaware Blue Hens,Liberty Flames,14.0,30.0,True,0,1,0,,,,,False,Newark,DE,225.0,-278.0,7.0,-110.0,-110.0,51.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-10-02,401858476,2026-10-03T00:00Z,Northwestern,Penn State,Northwestern Wildcats,Penn State Nittany Lions,34.0,13.0,True,0,1,0,,,,,False,Evanston,IL,124.0,-148.0,3.0,-115.0,-105.0,46.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-10-01,401871049,2026-10-02T00:00Z,New Mexico State,Western Kentucky,New Mexico State Aggies,Western Kentucky Hilltoppers,34.0,13.0,True,0,1,0,,,,,False,Las Cruces,NM,-125.0,105.0,-1.5,-115.0,-105.0,55.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-10-01,401862786,2026-10-02T01:00Z,Tulsa,North Texas,Tulsa Golden Hurricane,North Texas Mean Green,44.0,45.0,True,0,1,0,,,,,False,Tulsa,OK,124.0,-148.0,3.0,-118.0,-102.0,56.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-26,401856704,2026-09-26T16:00Z,Tennessee,Texas,Tennessee Volunteers,Texas Longhorns,17.0,20.0,True,0,1,0,,,,,False,Knoxville,TN,170.0,-205.0,5.5,-115.0,-105.0,54.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-26,401856700,2026-09-26T19:30Z,Georgia,Oklahoma,Georgia Bulldogs,Oklahoma Sooners,41.0,13.0,True,0,1,0,,,,,False,Athens,GA,-520.0,390.0,-11.5,-108.0,-112.0,43.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-09-26,401858467,2026-09-26T18:00Z,Purdue,Notre Dame,Purdue Boilermakers,Notre Dame Fighting Irish,10.0,49.0,True,0,0,0,,,,,False,West Lafayette,IN,1700.0,-4500.0,27.5,-110.0,-110.0,57.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-26,401856699,2026-09-26T19:30Z,Florida,Ole Miss,Florida Gators,Ole Miss Rebels,52.0,28.0,True,0,1,0,,,,,False,Gainesville,FL,-175.0,145.0,-4.0,-112.0,-108.0,58.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-26,401858238,2026-09-26T22:30Z,Miami,Central Michigan,Miami Hurricanes,Central Michigan Chippewas,52.0,3.0,True,0,0,0,,,,,False,Miami Gardens,FL,,,-41.5,-105.0,-115.0,52.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-26,401858465,2026-09-26T16:00Z,Ohio State,Illinois,Ohio State Buckeyes,Illinois Fighting Illini,42.0,19.0,True,0,1,0,,,,,False,Columbus,OH,-4000.0,1600.0,-25.5,-112.0,-108.0,53.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-26,401856696,2026-09-26T23:10Z,Alabama,South Carolina,Alabama Crimson Tide,South Carolina Gamecocks,49.0,18.0,True,0,1,0,,,,,False,Tuscaloosa,AL,-520.0,390.0,-12.5,-110.0,-110.0,53.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-26,401856702,2026-09-26T23:30Z,LSU,Texas A&M,LSU Tigers,Texas A&M Aggies,35.0,6.0,True,0,1,0,,,,,False,Baton Rouge,LA,-375.0,295.0,-8.5,-108.0,-112.0,52.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-26,401856805,2026-09-26T16:00Z,Texas Tech,Sam Houston,Texas Tech Red Raiders,Sam Houston Bearkats,49.0,14.0,True,0,0,0,,,,,False,Lubbock,TX,,,-34.5,-112.0,-108.0,55.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-26,401858469,2026-09-26T23:30Z,USC,Oregon,USC Trojans,Oregon Ducks,27.0,41.0,True,0,1,0,,,,,False,Los Angeles,CA,154.0,-185.0,3.5,-110.0,-110.0,60.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-26,401858466,2026-09-26T21:00Z,Penn State,Wisconsin,Penn State Nittany Lions,Wisconsin Badgers,20.0,24.0,True,0,1,0,,,,,False,University Park,PA,-380.0,300.0,-9.5,-112.0,-108.0,43.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-26,401856816,2026-09-26T19:30Z,Iowa State,Utah,Iowa State Cyclones,Utah Utes,17.0,31.0,True,0,1,0,,,,,False,Ames,IA,260.0,-325.0,7.5,-112.0,-108.0,46.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-26,401858243,2026-09-26T16:00Z,Louisville,Wake Forest,Louisville Cardinals,Wake Forest Demon Deacons,27.0,30.0,True,0,1,0,,,,,False,Louisville,KY,-485.0,370.0,-11.5,-110.0,-110.0,57.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-26,401858463,2026-09-26T19:30Z,Michigan,Iowa,Michigan Wolverines,Iowa Hawkeyes,19.0,20.0,True,0,1,0,,,,,False,Ann Arbor,MI,-205.0,170.0,-4.5,-110.0,-110.0,39.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-26,401856703,2026-09-26T23:45Z,Mississippi State,Missouri,Mississippi State Bulldogs,Missouri Tigers,31.0,24.0,True,0,1,0,,,,,False,Starkville,MS,-175.0,145.0,-3.5,-112.0,-108.0,58.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-26,401858241,2026-09-27T01:00Z,SMU,Missouri State,SMU Mustangs,Missouri State Bears,34.0,24.0,True,0,0,0,,,,,False,Dallas,TX,-9000.0,2500.0,-30.5,-112.0,-108.0,60.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-26,401856806,2026-09-26T20:00Z,Georgia Southern,Houston,Georgia Southern Eagles,Houston Cougars,28.0,42.0,True,0,0,0,,,,,False,Statesboro,GA,625.0,-950.0,17.5,-112.0,-108.0,56.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-26,401856813,2026-09-26T16:00Z,Baylor,Colorado,Baylor Bears,Colorado Buffaloes,23.0,13.0,True,0,1,0,,,,,False,Waco,TX,-345.0,275.0,-8.5,-105.0,-115.0,54.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-26,401858236,2026-09-26T16:00Z,Pittsburgh,Bucknell,Pittsburgh Panthers,Bucknell Bison,59.0,0.0,True,0,0,0,,,,,False,Pittsburgh,PA,,,-54.5,-110.0,-110.0,63.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-26,401858242,2026-09-26T16:00Z,Boston College,Virginia Tech,Boston College Eagles,Virginia Tech Hokies,14.0,21.0,True,0,1,0,,,,,False,Chestnut Hill,MA,500.0,-700.0,14.5,-108.0,-112.0,45.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-26,401860893,2026-09-26T16:00Z,Toledo,San Diego State,Toledo Rockets,San Diego State Aztecs,41.0,16.0,True,0,0,0,,,,,False,Toledo,OH,-142.0,120.0,-2.5,-118.0,-102.0,50.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-26,401860896,2026-09-26T16:00Z,UTSA,Colorado State,UTSA Roadrunners,Colorado State Rams,59.0,45.0,True,0,0,0,,,,,True,San Antonio,TX,-675.0,490.0,-14.5,-105.0,-115.0,56.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-26,401864512,2026-09-26T16:00Z,Akron,UNLV,Akron Zips,UNLV Rebels,10.0,38.0,True,0,0,0,,,,,False,Akron,OH,410.0,-550.0,13.5,-112.0,-108.0,52.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-26,401866425,2026-09-26T16:00Z,Kent State,Ball State,Kent State Golden Flashes,Ball State Cardinals,26.0,13.0,True,0,1,0,,,,,False,Kent,OH,-142.0,120.0,-2.5,-115.0,-105.0,51.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-26,401864576,2026-09-26T16:45Z,Kentucky,South Alabama,Kentucky Wildcats,South Alabama Jaguars,45.0,21.0,True,0,0,0,,,,,False,Lexington,KY,-1600.0,900.0,-20.5,-115.0,-105.0,54.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-26,401866427,2026-09-26T17:00Z,Eastern Michigan,Lindenwood,Eastern Michigan Eagles,Lindenwood Lions,29.0,3.0,True,0,0,0,,,,,False,Ypsilanti,MI,-2400.0,1200.0,-24.5,-102.0,-118.0,53.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-26,401858462,2026-09-26T17:30Z,Maryland,UCLA,Maryland Terrapins,UCLA Bruins,3.0,54.0,True,0,1,0,,,,,False,College Park,MD,124.0,-148.0,2.5,-102.0,-118.0,55.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-26,401864511,2026-09-26T18:00Z,Georgia State,Northern Illinois,Georgia State Panthers,Northern Illinois Huskies,35.0,14.0,True,0,0,0,,,,,False,Atlanta,GA,-345.0,275.0,-8.5,-110.0,-110.0,56.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-26,401858237,2026-09-26T19:00Z,Florida State,Central Arkansas,Florida State Seminoles,Central Arkansas Bears,34.0,7.0,True,0,0,0,,,,,False,Tallahassee,FL,,,-45.5,-108.0,-112.0,62.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-09-26,401864510,2026-09-26T19:00Z,Wyoming,Hawai'i,Wyoming Cowboys,Hawai'i Rainbow Warriors,27.0,10.0,True,0,1,0,,,,,False,Laramie,WY,105.0,-125.0,2.5,-115.0,-105.0,44.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-26,401856815,2026-09-26T19:30Z,UCF,TCU,UCF Knights,TCU Horned Frogs,21.0,13.0,True,0,1,0,,,,,False,Orlando,FL,142.0,-170.0,3.5,-112.0,-108.0,48.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-26,401858244,2026-09-26T19:30Z,Duke,William & Mary,Duke Blue Devils,William & Mary Tribe,62.0,7.0,True,0,0,0,,,,,False,Durham,NC,,,-43.5,-110.0,-110.0,61.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-26,401860897,2026-09-26T19:30Z,Western Michigan,Boise State,Western Michigan Broncos,Boise State Broncos,7.0,32.0,True,0,0,0,,,,,False,Kalamazoo,MI,240.0,-298.0,8.5,-112.0,-108.0,50.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-26,401861970,2026-09-26T19:30Z,Miami (OH),UConn,Miami (OH) RedHawks,UConn Huskies,24.0,21.0,True,0,0,0,,,,,False,Oxford,OH,-142.0,120.0,-2.5,-115.0,-105.0,52.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-26,401864579,2026-09-26T19:30Z,New Mexico State,New Mexico,New Mexico State Aggies,New Mexico Lobos,18.0,42.0,True,0,0,0,,,,,False,Las Cruces,NM,350.0,-455.0,11.5,-110.0,-110.0,47.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-26,401866426,2026-09-26T19:30Z,Buffalo,Robert Morris,Buffalo Bulls,Robert Morris Colonials,31.0,28.0,True,0,0,0,,,,,False,Buffalo,NY,-3200.0,1400.0,-27.5,-118.0,-102.0,46.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-26,401866428,2026-09-26T19:30Z,Ohio,Stonehill,Ohio Bobcats,Stonehill Skyhawks,35.0,7.0,True,0,0,0,,,,,False,Athens,OH,-5000.0,1800.0,-32.5,-112.0,-108.0,53.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-26,401868188,2026-09-26T19:30Z,Marshall,Gardner-Webb,Marshall Thundering Herd,Gardner-Webb Runnin' Bulldogs,36.0,35.0,True,0,0,0,,,,,False,Huntington,WV,-2100.0,1100.0,-24.5,-115.0,-105.0,56.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-26,401862781,2026-09-26T20:00Z,East Carolina,North Carolina Central,East Carolina Pirates,North Carolina Central Eagles,42.0,9.0,True,0,0,0,,,,,False,Greenville,NC,-100000.0,5000.0,-37.5,-110.0,-110.0,58.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-26,401856698,2026-09-26T20:15Z,Auburn,Vanderbilt,Auburn Tigers,Vanderbilt Commodores,21.0,15.0,True,0,1,0,,,,,False,Auburn,AL,-395.0,310.0,-10.0,-108.0,-112.0,54.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-26,401858464,2026-09-26T21:00Z,Michigan State,Nebraska,Michigan State Spartans,Nebraska Cornhuskers,13.0,31.0,True,0,1,0,,,,,False,East Lansing,MI,185.0,-225.0,6.0,-112.0,-108.0,48.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-26,401862785,2026-09-26T21:00Z,Bowling Green,South Florida,Bowling Green Falcons,South Florida Bulls,6.0,14.0,True,0,0,0,,,,,False,Bowling Green,OH,675.0,-1050.0,17.5,-108.0,-112.0,48.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-26,401858239,2026-09-26T22:00Z,Virginia,Delaware,Virginia Cavaliers,Delaware Blue Hens,42.0,3.0,True,0,0,0,,,,,False,Charlottesville,VA,-1450.0,850.0,-19.5,-115.0,-105.0,52.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-26,401860892,2026-09-26T22:00Z,Texas State,Incarnate Word,Texas State Bobcats,Incarnate Word Cardinals,63.0,10.0,True,0,0,0,,,,,False,San Marcos,TX,-2800.0,1300.0,-30.5,-112.0,-108.0,66.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-26,401867909,2026-09-26T22:00Z,Florida International,Long Island University,Florida International Panthers,Long Island University Sharks,20.0,3.0,True,0,0,0,,,,,False,Miami,FL,-4500.0,1700.0,-37.5,-108.0,-112.0,54.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-26,401869961,2026-09-26T22:00Z,Old Dominion,James Madison,Old Dominion Monarchs,James Madison Dukes,20.0,46.0,True,0,1,0,,,,,False,Norfolk,VA,215.0,-265.0,7.0,-112.0,-108.0,44.5,-102.0,-118.0,,,espn-pickcenter:DraftKings
+2026-09-26,401862780,2026-09-26T22:30Z,Charlotte,Louisiana,Charlotte 49ers,Louisiana Ragin' Cajuns,7.0,34.0,True,0,0,0,,,,,False,Charlotte,NC,310.0,-395.0,9.5,-112.0,-108.0,49.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-26,401856814,2026-09-26T23:00Z,Cincinnati,Kansas State,Cincinnati Bearcats,Kansas State Wildcats,31.0,26.0,True,0,1,0,,,,,False,Cincinnati,OH,195.0,-238.0,6.0,-112.0,-108.0,55.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-26,401856881,2026-09-26T23:00Z,West Virginia,Oklahoma State,West Virginia Mountaineers,Oklahoma State Cowboys,24.0,41.0,True,0,1,0,,,,,False,Morgantown,WV,-125.0,105.0,-1.5,-112.0,-108.0,60.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-26,401862784,2026-09-26T23:00Z,Tulane,Southern Miss,Tulane Green Wave,Southern Miss Golden Eagles,24.0,21.0,True,0,0,0,,,,,False,New Orleans,LA,-1050.0,675.0,-17.5,-115.0,-105.0,52.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-26,401869931,2026-09-26T23:00Z,Arkansas State,Kennesaw State,Arkansas State Red Wolves,Kennesaw State Owls,17.0,14.0,True,0,0,0,,,,,False,Jonesboro,AR,-238.0,195.0,-6.5,-108.0,-112.0,53.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-26,401870745,2026-09-26T23:00Z,Western Kentucky,Mercyhurst,Western Kentucky Hilltoppers,Mercyhurst Lakers,52.0,7.0,True,0,0,0,,,,,False,Bowling Green,KY,,,-39.5,-108.0,-112.0,58.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-26,401871048,2026-09-26T23:00Z,Jacksonville State,Middle Tennessee,Jacksonville State Gamecocks,Middle Tennessee Blue Raiders,23.0,13.0,True,0,1,0,,,,,False,Jacksonville,AL,-285.0,230.0,-7.0,-115.0,-105.0,50.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-09-26,401856804,2026-09-26T23:30Z,Washington State,Arizona,Washington State Cougars,Arizona Wildcats,24.0,34.0,True,0,0,0,,,,,False,Pullman,WA,330.0,-425.0,11.5,-110.0,-110.0,47.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-26,401860894,2026-09-26T23:30Z,Utah State,Troy,Utah State Aggies,Troy Trojans,21.0,10.0,True,0,0,0,,,,,False,Logan,UT,-148.0,124.0,-3.0,-105.0,-115.0,47.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-26,401862783,2026-09-26T23:30Z,North Texas,Houston Christian,North Texas Mean Green,Houston Christian Huskies,63.0,14.0,True,0,0,0,,,,,False,Denton,TX,-100000.0,5000.0,-38.5,-105.0,-115.0,60.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-26,401864572,2026-09-26T23:30Z,NC State,App State,NC State Wolfpack,App State Mountaineers,41.0,31.0,True,0,0,0,,,,,False,Raleigh,NC,-535.0,400.0,-12.5,-112.0,-108.0,56.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-26,401856697,2026-09-27T00:00Z,Arkansas,Tulsa,Arkansas Razorbacks,Tulsa Golden Hurricane,34.0,6.0,True,0,0,0,,,,,False,Fayetteville,AR,-278.0,225.0,-7.0,-105.0,-115.0,51.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-26,401862782,2026-09-27T00:00Z,UL Monroe,Florida Atlantic,UL Monroe Warhawks,Florida Atlantic Owls,17.0,45.0,True,0,0,0,,,,,False,Monroe,LA,370.0,-485.0,11.5,-105.0,-115.0,58.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-26,401860895,2026-09-27T01:00Z,UTEP,Oregon State,UTEP Miners,Oregon State Beavers,7.0,33.0,True,0,0,0,,,,,False,El Paso,TX,350.0,-455.0,11.5,-115.0,-105.0,56.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-26,401866429,2026-09-27T01:00Z,Sacramento State,Massachusetts,Sacramento State Hornets,Massachusetts Minutemen,6.0,35.0,True,0,1,0,,,,,False,Sacramento,CA,180.0,-218.0,6.0,-110.0,-110.0,49.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-26,401860891,2026-09-27T02:00Z,Fresno State,Rice,Fresno State Bulldogs,Rice Owls,38.0,24.0,True,0,0,0,,,,,False,Fresno,CA,-500.0,380.0,-12.5,-108.0,-112.0,43.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-26,401858240,2026-09-27T02:30Z,Stanford,Georgia Tech,Stanford Cardinal,Georgia Tech Yellow Jackets,34.0,27.0,True,0,1,0,,,,,False,Stanford,CA,130.0,-155.0,3.0,-108.0,-112.0,48.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-26,401864509,2026-09-27T02:30Z,Nevada,Air Force,Nevada Wolf Pack,Air Force Falcons,33.0,36.0,True,0,1,0,,,,,False,Reno,NV,185.0,-225.0,4.5,-108.0,-112.0,50.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-26,401858470,2026-09-27T03:00Z,Washington,Minnesota,Washington Huskies,Minnesota Golden Gophers,24.0,27.0,True,0,1,0,,,,,False,Seattle,WA,-455.0,350.0,-12.5,-108.0,-112.0,44.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-25,401858461,2026-09-26T00:00Z,Indiana,Northwestern,Indiana Hoosiers,Northwestern Wildcats,29.0,23.0,True,0,1,0,,,,,False,Bloomington,IN,-1650.0,950.0,-20.5,-115.0,-105.0,49.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-25,401862779,2026-09-25T20:00Z,Temple,Army,Temple Owls,Army Black Knights,17.0,21.0,True,0,1,0,,,,,False,Philadelphia,PA,164.0,-198.0,4.0,-112.0,-108.0,48.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-25,401858468,2026-09-25T23:00Z,Rutgers,Howard,Rutgers Scarlet Knights,Howard Bison,58.0,7.0,True,0,0,0,,,,,False,Piscataway,NJ,,,-42.5,-102.0,-118.0,57.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-25,401862778,2026-09-25T23:00Z,UAB,Navy,UAB Blazers,Navy Midshipmen,24.0,20.0,True,0,1,0,,,,,False,Birmingham,AL,205.0,-250.0,6.5,-110.0,-110.0,50.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-25,401858234,2026-09-26T02:30Z,California,Clemson,California Golden Bears,Clemson Tigers,10.0,24.0,True,0,1,0,,,,,False,Berkeley,CA,120.0,-142.0,2.5,-105.0,-115.0,52.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-24,401869941,2026-09-24T23:30Z,Coastal Carolina,Liberty,Coastal Carolina Chanticleers,Liberty Flames,17.0,34.0,True,0,0,0,,,,,False,Conway,SC,120.0,-142.0,2.5,-105.0,-115.0,50.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-19,401856693,2026-09-20T00:00Z,Texas,UTSA,Texas Longhorns,UTSA Roadrunners,30.0,6.0,True,0,0,0,,,,,False,Austin,TX,-5000.0,1800.0,-29.5,-112.0,-108.0,58.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-19,401856686,2026-09-19T16:00Z,Arkansas,Georgia,Arkansas Razorbacks,Georgia Bulldogs,17.0,45.0,True,0,1,0,,,,,False,Fayetteville,AR,1300.0,-2800.0,24.5,-110.0,-110.0,54.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-19,401858453,2026-09-19T23:30Z,Notre Dame,Michigan State,Notre Dame Fighting Irish,Michigan State Spartans,27.0,10.0,True,0,0,0,,,,,False,Notre Dame,IN,-3600.0,1500.0,-28.5,-112.0,-108.0,51.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-19,401858449,2026-09-19T20:00Z,Indiana,Western Kentucky,Indiana Hoosiers,Western Kentucky Hilltoppers,38.0,0.0,True,0,0,0,,,,,False,Bloomington,IN,,,-44.5,-120.0,100.0,59.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-19,401858454,2026-09-19T16:00Z,Ohio State,Kent State,Ohio State Buckeyes,Kent State Golden Flashes,59.0,3.0,True,0,0,0,,,,,False,Columbus,OH,,,-52.5,-102.0,-118.0,58.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-19,401856688,2026-09-19T23:30Z,Ole Miss,LSU,Ole Miss Rebels,LSU Tigers,32.0,24.0,True,0,1,0,,,,,False,Oxford,MS,124.0,-148.0,3.0,-115.0,-105.0,58.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-19,401856694,2026-09-19T19:40Z,Texas A&M,Kentucky,Texas A&M Aggies,Kentucky Wildcats,21.0,31.0,True,0,1,0,,,,,False,College Station,TX,-850.0,575.0,-16.5,-115.0,-105.0,48.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-19,401856685,2026-09-19T21:15Z,Alabama,Florida State,Alabama Crimson Tide,Florida State Seminoles,50.0,36.0,True,0,0,0,,,,,False,Tuscaloosa,AL,-1350.0,800.0,-18.5,-112.0,-108.0,50.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-19,401856795,2026-09-20T00:15Z,Colorado State,BYU,Colorado State Rams,BYU Cougars,23.0,41.0,True,0,0,0,,,,,False,Fort Collins,CO,575.0,-850.0,17.5,-108.0,-112.0,54.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-19,401858457,2026-09-19T19:30Z,Rutgers,USC,Rutgers Scarlet Knights,USC Trojans,35.0,42.0,True,0,1,0,,,,,False,Piscataway,NJ,1100.0,-2100.0,21.0,-102.0,-118.0,59.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-19,401858456,2026-09-19T16:00Z,Penn State,Buffalo,Penn State Nittany Lions,Buffalo Bulls,55.0,13.0,True,0,0,0,,,,,False,University Park,PA,,,-39.5,-108.0,-112.0,48.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-19,401856692,2026-09-19T23:45Z,Tennessee,Kennesaw State,Tennessee Volunteers,Kennesaw State Owls,42.0,9.0,True,0,0,0,,,,,False,Knoxville,TN,-20000.0,3500.0,-35.5,-108.0,-112.0,60.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-19,401858230,2026-09-19T19:30Z,Louisville,SMU,Louisville Cardinals,SMU Mustangs,41.0,31.0,True,0,1,0,,,,,False,Louisville,KY,-155.0,130.0,-3.0,-110.0,-110.0,57.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-19,401856801,2026-09-19T19:30Z,Utah,Utah State,Utah Utes,Utah State Aggies,33.0,0.0,True,0,0,0,,,,,False,Salt Lake City,UT,-3600.0,1500.0,-26.5,-108.0,-112.0,55.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-19,401858471,2026-09-19T20:00Z,Iowa,Northern Iowa,Iowa Hawkeyes,Northern Iowa Panthers,55.0,0.0,True,0,0,0,,,,,False,Iowa City,IA,,,-37.5,-105.0,-115.0,48.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-19,401858450,2026-09-19T19:30Z,Michigan,UTEP,Michigan Wolverines,UTEP Miners,52.0,17.0,True,0,0,0,,,,,False,Ann Arbor,MI,,,-34.5,-105.0,-115.0,48.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-19,401856689,2026-09-19T23:00Z,Missouri,Troy,Missouri Tigers,Troy Trojans,27.0,17.0,True,0,0,0,,,,,False,Columbia,MO,-4500.0,1700.0,-26.5,-108.0,-112.0,49.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-19,401856690,2026-09-19T23:30Z,Oklahoma,New Mexico,Oklahoma Sooners,New Mexico Lobos,14.0,6.0,True,0,0,0,,,,,False,Norman,OK,-2100.0,1100.0,-21.5,-108.0,-112.0,45.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-19,401856802,2026-09-19T23:30Z,Virginia,West Virginia,Virginia Cavaliers,West Virginia Mountaineers,27.0,38.0,True,1,0,0,,,,,False,Charlotte,NC,-410.0,320.0,-10.5,-115.0,-105.0,51.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-19,401869940,2026-09-19T15:30Z,Delaware,Coastal Carolina,Delaware Blue Hens,Coastal Carolina Chanticleers,22.0,14.0,True,0,0,0,,,,,False,Newark,DE,-205.0,170.0,-4.5,-115.0,-105.0,56.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-19,401856792,2026-09-19T16:00Z,Kansas State,Tulane,Kansas State Wildcats,Tulane Green Wave,31.0,20.0,True,0,0,0,,,,,False,Manhattan,KS,-1450.0,850.0,-20.5,-108.0,-112.0,49.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-19,401856798,2026-09-19T16:00Z,Iowa State,Bowling Green,Iowa State Cyclones,Bowling Green Falcons,55.0,7.0,True,0,0,0,,,,,False,Ames,IA,-2100.0,1100.0,-22.5,-112.0,-108.0,43.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-19,401856812,2026-09-19T16:00Z,Kansas,Arizona State,Kansas Jayhawks,Arizona State Sun Devils,17.0,24.0,True,1,1,0,,,,,False,London,,180.0,-218.0,5.5,-110.0,-110.0,50.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-09-19,401858228,2026-09-19T16:00Z,Georgia Tech,Mercer,Georgia Tech Yellow Jackets,Mercer Bears,44.0,11.0,True,0,0,0,,,,,False,Atlanta,GA,,,-38.5,-115.0,-105.0,58.5,-102.0,-118.0,,,espn-pickcenter:DraftKings
+2026-09-19,401858229,2026-09-19T16:00Z,Clemson,North Carolina,Clemson Tigers,North Carolina Tar Heels,28.0,20.0,True,0,1,0,,,,,False,Clemson,SC,-148.0,124.0,-3.0,-105.0,-115.0,44.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-19,401858451,2026-09-19T16:00Z,Minnesota,Akron,Minnesota Golden Gophers,Akron Zips,41.0,7.0,True,0,0,0,,,,,False,Minneapolis,MN,-3200.0,1400.0,-22.5,-112.0,-108.0,48.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-19,401860889,2026-09-19T16:00Z,Texas State,North Texas,Texas State Bobcats,North Texas Mean Green,49.0,35.0,True,0,0,0,,,,,False,San Marcos,TX,-162.0,136.0,-3.0,-118.0,-102.0,62.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-19,401858460,2026-09-19T16:30Z,Wisconsin,Eastern Michigan,Wisconsin Badgers,Eastern Michigan Eagles,54.0,10.0,True,0,0,0,,,,,False,Madison,WI,-2400.0,1200.0,-23.5,-108.0,-112.0,43.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-09-19,401856695,2026-09-19T16:45Z,Vanderbilt,NC State,Vanderbilt Commodores,NC State Wolfpack,35.0,31.0,True,0,0,0,,,,,False,Nashville,TN,-155.0,130.0,-3.0,-108.0,-112.0,50.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-19,401864508,2026-09-19T17:00Z,Central Michigan,Wyoming,Central Michigan Chippewas,Wyoming Cowboys,24.0,10.0,True,0,0,0,,,,,False,Mount Pleasant,MI,-105.0,-115.0,1.5,-115.0,-105.0,39.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-19,401858227,2026-09-19T18:00Z,Boston College,Maine,Boston College Eagles,Maine Black Bears,22.0,16.0,True,0,0,0,,,,,False,Chestnut Hill,MA,,,-37.5,-115.0,-105.0,54.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-19,401858448,2026-09-19T18:00Z,Illinois,Southern Illinois,Illinois Fighting Illini,Southern Illinois Salukis,48.0,10.0,True,0,0,0,,,,,False,Champaign,IL,,,-34.5,-120.0,100.0,55.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-19,401862774,2026-09-19T19:00Z,Toledo,Temple,Toledo Rockets,Temple Owls,49.0,48.0,True,0,0,0,,,,,False,Toledo,OH,-198.0,164.0,-4.5,-110.0,-110.0,48.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-19,401856797,2026-09-19T19:30Z,Cincinnati,Miami (OH),Cincinnati Bearcats,Miami (OH) RedHawks,35.0,31.0,True,0,0,0,,,,,False,Cincinnati,OH,-650.0,470.0,-14.5,-108.0,-112.0,50.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-19,401858233,2026-09-19T19:30Z,California,Wagner,California Golden Bears,Wagner Seahawks,49.0,7.0,True,0,0,0,,,,,False,Berkeley,CA,,,-58.5,-110.0,-110.0,65.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-19,401860890,2026-09-19T19:30Z,Washington State,Duquesne,Washington State Cougars,Duquesne Dukes,48.0,7.0,True,0,0,0,,,,,False,Pullman,WA,,,-38.5,-105.0,-115.0,51.5,-120.0,100.0,,,espn-pickcenter:DraftKings
+2026-09-19,401866424,2026-09-19T19:30Z,Massachusetts,Stonehill,Massachusetts Minutemen,Stonehill Skyhawks,36.0,14.0,True,0,0,0,,,,,False,Amherst,MA,-20000.0,3500.0,-30.5,-120.0,100.0,50.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-09-19,401858231,2026-09-19T20:00Z,Duke,Stanford,Duke Blue Devils,Stanford Cardinal,35.0,7.0,True,0,1,0,,,,,False,Durham,NC,-375.0,295.0,-9.5,-112.0,-108.0,51.5,-102.0,-118.0,,,espn-pickcenter:DraftKings
+2026-09-19,401866422,2026-09-19T20:00Z,Liberty,Ball State,Liberty Flames,Ball State Cardinals,51.0,15.0,True,0,0,0,,,,,False,Lynchburg,VA,-650.0,470.0,-14.5,-108.0,-112.0,49.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-19,401867804,2026-09-19T20:00Z,Baylor,Louisiana Tech,Baylor Bears,Louisiana Tech Bulldogs,36.0,19.0,True,0,0,0,,,,,False,Waco,TX,-1350.0,800.0,-20.5,-108.0,-112.0,50.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-19,401868317,2026-09-19T20:30Z,UL Monroe,SE Louisiana,UL Monroe Warhawks,SE Louisiana Lions,35.0,38.0,True,0,0,0,,,,,False,Monroe,LA,,,-9.5,-118.0,-102.0,48.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-19,401856691,2026-09-19T21:35Z,South Carolina,Mississippi State,South Carolina Gamecocks,Mississippi State Bulldogs,34.0,41.0,True,0,1,0,,,,,False,Columbia,SC,-155.0,130.0,-3.0,-112.0,-108.0,59.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-19,401862710,2026-09-19T22:00Z,Old Dominion,East Carolina,Old Dominion Monarchs,East Carolina Pirates,17.0,20.0,True,0,0,0,,,,,False,Norfolk,VA,-130.0,110.0,-2.5,-110.0,-110.0,48.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-19,401862771,2026-09-19T22:00Z,Florida Atlantic,Florida International,Florida Atlantic Owls,Florida International Panthers,16.0,10.0,True,0,0,0,,,,,False,Boca Raton,FL,-218.0,180.0,-5.5,-105.0,-115.0,62.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-19,401871047,2026-09-19T22:30Z,Missouri State,Marshall,Missouri State Bears,Marshall Thundering Herd,24.0,30.0,True,0,0,0,,,,,False,Springfield,MO,160.0,-192.0,4.0,-110.0,-110.0,52.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-19,401856687,2026-09-19T23:00Z,Auburn,Florida,Auburn Tigers,Florida Gators,39.0,44.0,True,0,1,0,,,,,False,Auburn,AL,114.0,-135.0,2.5,-110.0,-110.0,53.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-19,401856800,2026-09-19T23:00Z,UCF,Georgia State,UCF Knights,Georgia State Panthers,44.0,30.0,True,0,0,0,,,,,False,Orlando,FL,-1050.0,675.0,-17.5,-102.0,-118.0,50.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-19,401856803,2026-09-19T23:00Z,Oklahoma State,Murray State,Oklahoma State Cowboys,Murray State Racers,59.0,0.0,True,0,0,0,,,,,False,Stillwater,OK,,,-56.5,-105.0,-115.0,70.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-19,401861963,2026-09-19T23:00Z,Southern Miss,UConn,Southern Miss Golden Eagles,UConn Huskies,20.0,48.0,True,0,0,0,,,,,False,Hattiesburg,MS,140.0,-166.0,3.5,-112.0,-108.0,54.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-19,401862772,2026-09-19T23:00Z,Memphis,UT Martin,Memphis Tigers,UT Martin Skyhawks,45.0,21.0,True,0,0,0,,,,,False,Memphis,TN,-3200.0,1400.0,-33.5,-110.0,-110.0,58.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-09-19,401862773,2026-09-19T23:00Z,Rice,Western Michigan,Rice Owls,Western Michigan Broncos,21.0,28.0,True,0,0,0,,,,,False,Houston,TX,280.0,-355.0,8.5,-112.0,-108.0,43.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-19,401862777,2026-09-19T23:00Z,South Florida,Delaware State,South Florida Bulls,Delaware State Hornets,59.0,17.0,True,0,0,0,,,,,False,Tampa,FL,,,-37.5,-105.0,-115.0,59.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-19,401864443,2026-09-19T23:00Z,Middle Tennessee,Nevada,Middle Tennessee Blue Raiders,Nevada Wolf Pack,27.0,20.0,True,0,0,0,,,,,False,Murfreesboro,TN,150.0,-180.0,3.5,-105.0,-115.0,50.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-19,401866423,2026-09-19T23:00Z,South Alabama,Ohio,South Alabama Jaguars,Ohio Bobcats,41.0,36.0,True,0,0,0,,,,,False,Mobile,AL,-270.0,220.0,-7.0,-105.0,-115.0,49.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-19,401869948,2026-09-19T23:00Z,Jacksonville State,Georgia Southern,Jacksonville State Gamecocks,Georgia Southern Eagles,31.0,27.0,True,0,0,0,,,,,False,Jacksonville,AL,-175.0,145.0,-3.5,-108.0,-112.0,51.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-19,401870764,2026-09-19T23:00Z,Sam Houston,Nicholls,Sam Houston Bearkats,Nicholls Colonels,59.0,0.0,True,0,0,0,,,,,False,Huntsville,TX,,,-21.0,-110.0,-110.0,50.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-19,401858452,2026-09-19T23:15Z,Nebraska,North Dakota,Nebraska Cornhuskers,North Dakota Fighting Hawks,34.0,7.0,True,0,0,0,,,,,False,Lincoln,NE,-2400.0,1200.0,-27.5,-108.0,-112.0,56.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-19,401858459,2026-09-19T23:15Z,Washington,Eastern Washington,Washington Huskies,Eastern Washington Eagles,48.0,16.0,True,0,0,0,,,,,False,Seattle,WA,,,-42.5,-110.0,-110.0,58.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-19,401856796,2026-09-19T23:30Z,Northwestern,Colorado,Northwestern Wildcats,Colorado Buffaloes,41.0,7.0,True,0,0,0,,,,,False,Evanston,IL,-175.0,145.0,-3.5,-110.0,-110.0,47.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-19,401858232,2026-09-19T23:30Z,Maryland,Virginia Tech,Maryland Terrapins,Virginia Tech Hokies,26.0,35.0,True,0,0,0,,,,,False,College Park,MD,114.0,-135.0,2.5,-108.0,-112.0,53.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-19,401856799,2026-09-20T00:00Z,TCU,Arkansas State,TCU Horned Frogs,Arkansas State Red Wolves,31.0,7.0,True,0,0,0,,,,,False,Fort Worth,TX,-1200.0,750.0,-18.5,-115.0,-105.0,56.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-19,401862775,2026-09-20T00:00Z,Tulsa,East Texas A&M,Tulsa Golden Hurricane,East Texas A&M Lions,42.0,0.0,True,0,0,0,,,,,False,Tulsa,OK,,,-41.5,-102.0,-118.0,55.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-19,401862776,2026-09-20T00:00Z,Louisiana,UAB,Louisiana Ragin' Cajuns,UAB Blazers,21.0,14.0,True,0,0,0,,,,,False,Lafayette,LA,-278.0,225.0,-7.0,-108.0,-112.0,55.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-19,401864574,2026-09-20T01:30Z,App State,Charlotte,App State Mountaineers,Charlotte 49ers,26.0,21.0,True,0,0,0,,,,,False,Boone,NC,-1000.0,650.0,-16.5,-108.0,-112.0,52.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-19,401860885,2026-09-20T02:00Z,Boise State,South Dakota,Boise State Broncos,South Dakota Coyotes,38.0,24.0,True,0,0,0,,,,,False,Boise,ID,-3200.0,1400.0,-28.5,-108.0,-112.0,61.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-19,401860887,2026-09-20T02:00Z,San Diego State,James Madison,San Diego State Aztecs,James Madison Dukes,13.0,26.0,True,0,0,0,,,,,False,San Diego,CA,-142.0,120.0,-3.0,-105.0,-115.0,46.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-19,401856793,2026-09-20T02:30Z,Arizona,Northern Illinois,Arizona Wildcats,Northern Illinois Huskies,42.0,17.0,True,0,0,0,,,,,False,Tucson,AZ,-6500.0,2000.0,-34.5,-110.0,-110.0,50.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-19,401864507,2026-09-20T02:30Z,Sacramento State,North Dakota State,Sacramento State Hornets,North Dakota State Bison,10.0,31.0,True,0,0,0,,,,,False,Sacramento,CA,1800.0,-5000.0,26.5,-105.0,-115.0,50.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-09-19,401858458,2026-09-20T03:00Z,UCLA,Purdue,UCLA Bruins,Purdue Boilermakers,52.0,38.0,True,0,1,0,,,,,False,Pasadena,CA,-575.0,425.0,-13.5,-115.0,-105.0,53.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-19,401860886,2026-09-20T03:00Z,Oregon State,Montana,Oregon State Beavers,Montana Grizzlies,52.0,17.0,True,0,0,0,,,,,False,Corvallis,OR,-850.0,575.0,-17.5,-105.0,-115.0,55.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-19,401860888,2026-09-20T03:00Z,San José State,Fresno State,San José State Spartans,Fresno State Bulldogs,10.0,26.0,True,0,0,0,,,,,False,San Jose,CA,160.0,-192.0,4.0,-108.0,-112.0,47.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-18,401858226,2026-09-18T23:30Z,Wake Forest,Miami,Wake Forest Demon Deacons,Miami Hurricanes,20.0,33.0,True,0,1,0,,,,,False,Winston-Salem,NC,900.0,-1600.0,20.5,-110.0,-110.0,55.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-18,401856811,2026-09-19T00:00Z,Texas Tech,Houston,Texas Tech Red Raiders,Houston Cougars,28.0,26.0,True,0,1,0,,,,,False,Lubbock,TX,-325.0,260.0,-7.5,-112.0,-108.0,52.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-18,401858455,2026-09-19T02:30Z,Oregon,Portland State,Oregon Ducks,Portland State Vikings,84.0,0.0,True,0,0,0,,,,,False,Eugene,OR,,,-58.5,-110.0,-110.0,71.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-17,401858225,2026-09-17T23:30Z,Pittsburgh,Syracuse,Pittsburgh Panthers,Syracuse Orange,27.0,13.0,True,0,1,0,,,,,False,Pittsburgh,PA,-425.0,330.0,-10.5,-112.0,-108.0,51.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856682,2026-09-12T23:30Z,Texas,Ohio State,Texas Longhorns,Ohio State Buckeyes,24.0,23.0,True,0,0,0,,,,,False,Austin,TX,-142.0,120.0,-2.5,-112.0,-108.0,50.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856673,2026-09-12T16:45Z,Georgia,Western Kentucky,Georgia Bulldogs,Western Kentucky Hilltoppers,70.0,20.0,True,0,0,0,,,,,False,Athens,GA,,,-40.5,-110.0,-110.0,55.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-12,401859184,2026-09-12T19:30Z,Notre Dame,Rice,Notre Dame Fighting Irish,Rice Owls,52.0,0.0,True,0,0,0,,,,,False,Notre Dame,IN,,,-44.5,-112.0,-108.0,54.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-12,401858439,2026-09-12T16:00Z,Indiana,Howard,Indiana Hoosiers,Howard Bison,55.0,0.0,True,0,0,0,,,,,False,Bloomington,IN,,,-57.5,-115.0,-105.0,67.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856782,2026-09-12T17:30Z,Oklahoma State,Oregon,Oklahoma State Cowboys,Oregon Ducks,39.0,31.0,True,0,0,0,,,,,False,Stillwater,OK,1200.0,-2400.0,24.5,-108.0,-112.0,55.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-12,401867796,2026-09-12T23:30Z,LSU,Louisiana Tech,LSU Tigers,Louisiana Tech Bulldogs,45.0,14.0,True,0,0,0,,,,,False,Baton Rouge,LA,-20000.0,3500.0,-34.5,-112.0,-108.0,54.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856676,2026-09-12T23:45Z,Ole Miss,Charlotte,Ole Miss Rebels,Charlotte 49ers,41.0,9.0,True,0,0,0,,,,,False,Oxford,MS,,,-44.5,-115.0,-105.0,59.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856683,2026-09-12T16:00Z,Texas A&M,Arizona State,Texas A&M Aggies,Arizona State Sun Devils,48.0,20.0,True,0,0,0,,,,,False,College Station,TX,-800.0,550.0,-15.5,-108.0,-112.0,51.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856679,2026-09-12T16:00Z,Michigan,Oklahoma,Michigan Wolverines,Oklahoma Sooners,17.0,10.0,True,0,0,0,,,,,False,Ann Arbor,MI,190.0,-230.0,5.5,-110.0,-110.0,43.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856674,2026-09-12T19:30Z,Kentucky,Alabama,Kentucky Wildcats,Alabama Crimson Tide,17.0,45.0,True,0,1,0,,,,,False,Lexington,KY,300.0,-380.0,9.5,-112.0,-108.0,47.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856783,2026-09-12T23:30Z,Oregon State,Texas Tech,Oregon State Beavers,Texas Tech Red Raiders,24.0,35.0,True,0,0,0,,,,,False,Corvallis,OR,1300.0,-2800.0,25.5,-110.0,-110.0,52.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-12,401858445,2026-09-13T03:00Z,USC,Louisiana,USC Trojans,Louisiana Ragin' Cajuns,49.0,30.0,True,0,0,0,,,,,False,Los Angeles,CA,-6500.0,2000.0,-30.5,-115.0,-105.0,58.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856810,2026-09-12T19:30Z,BYU,Arizona,BYU Cougars,Arizona Wildcats,28.0,17.0,True,0,1,0,,,,,False,Provo,UT,-258.0,210.0,-6.5,-112.0,-108.0,49.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-12,401858442,2026-09-12T16:00Z,Temple,Penn State,Temple Owls,Penn State Nittany Lions,9.0,27.0,True,0,0,0,,,,,False,Philadelphia,PA,1500.0,-3600.0,24.5,-118.0,-102.0,49.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-12,401858223,2026-09-12T20:00Z,SMU,UC Davis,SMU Mustangs,UC Davis Aggies,56.0,10.0,True,0,0,0,,,,,False,Dallas,TX,-3200.0,1400.0,-32.5,-108.0,-112.0,59.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856681,2026-09-12T23:00Z,Georgia Tech,Tennessee,Georgia Tech Yellow Jackets,Tennessee Volunteers,24.0,45.0,True,0,0,0,,,,,False,Atlanta,GA,370.0,-485.0,12.5,-112.0,-108.0,55.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-12,401858446,2026-09-12T19:30Z,Washington,Utah State,Washington Huskies,Utah State Aggies,16.0,14.0,True,0,0,0,,,,,False,Seattle,WA,-6500.0,2000.0,-28.5,-108.0,-112.0,55.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856670,2026-09-13T02:30Z,Utah,Arkansas,Utah Utes,Arkansas Razorbacks,43.0,10.0,True,0,0,0,,,,,False,Salt Lake City,UT,-625.0,455.0,-13.5,-120.0,100.0,55.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856788,2026-09-12T23:30Z,Iowa,Iowa State,Iowa Hawkeyes,Iowa State Cyclones,16.0,13.0,True,0,0,0,,,,,False,Iowa City,IA,-650.0,470.0,-14.0,-108.0,-112.0,42.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856787,2026-09-12T23:00Z,Houston,Southern,Houston Cougars,Southern Jaguars,77.0,6.0,True,0,0,0,,,,,False,Houston,TX,,,-51.5,-118.0,-102.0,61.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856781,2026-09-12T16:00Z,Kansas State,Washington State,Kansas State Wildcats,Washington State Cougars,34.0,7.0,True,0,0,0,,,,,False,Manhattan,KS,-1000.0,650.0,-17.5,-112.0,-108.0,48.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-12,401858218,2026-09-12T16:00Z,North Carolina,East Tennessee State,North Carolina Tar Heels,East Tennessee State Buccaneers,35.0,3.0,True,0,0,0,,,,,False,Chapel Hill,NC,-100000.0,5000.0,-36.5,-108.0,-112.0,55.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-12,401858221,2026-09-12T16:00Z,Virginia Tech,Old Dominion,Virginia Tech Hokies,Old Dominion Monarchs,44.0,21.0,True,0,0,0,,,,,False,Blacksburg,VA,-950.0,625.0,-17.5,-115.0,-105.0,47.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-12,401858224,2026-09-12T16:00Z,Purdue,Wake Forest,Purdue Boilermakers,Wake Forest Demon Deacons,36.0,38.0,True,0,0,0,,,,,False,West Lafayette,IN,120.0,-142.0,2.5,-102.0,-118.0,51.5,-102.0,-118.0,,,espn-pickcenter:DraftKings
+2026-09-12,401862702,2026-09-12T16:00Z,Army,South Florida,Army Black Knights,South Florida Bulls,24.0,28.0,True,0,1,0,,,,,False,West Point,NY,-166.0,140.0,-3.0,-118.0,-102.0,45.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-12,401864571,2026-09-12T16:00Z,East Carolina,App State,East Carolina Pirates,App State Mountaineers,24.0,27.0,True,0,0,0,,,,,False,Greenville,NC,-250.0,205.0,-6.5,-108.0,-112.0,55.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-12,401866416,2026-09-12T16:00Z,Kent State,Wofford,Kent State Golden Flashes,Wofford Terriers,36.0,15.0,True,0,0,0,,,,,False,Kent,OH,-455.0,350.0,-10.0,-110.0,-110.0,45.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-12,401867929,2026-09-12T16:00Z,James Madison,Wagner,James Madison Dukes,Wagner Seahawks,87.0,3.0,True,0,0,0,,,,,False,Harrisonburg,VA,,,-46.5,-112.0,-108.0,56.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-12,401868187,2026-09-12T16:00Z,Liberty,Gardner-Webb,Liberty Flames,Gardner-Webb Runnin' Bulldogs,24.0,23.0,True,0,0,0,,,,,False,Lynchburg,VA,-3200.0,1400.0,-28.5,-110.0,-110.0,55.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856791,2026-09-12T17:00Z,West Virginia,UT Martin,West Virginia Mountaineers,UT Martin Skyhawks,52.0,7.0,True,0,0,0,,,,,False,Morgantown,WV,,,-41.5,-108.0,-112.0,57.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-12,401866415,2026-09-12T17:00Z,Central Michigan,Colgate,Central Michigan Chippewas,Colgate Raiders,13.0,10.0,True,0,0,0,,,,,False,Mount Pleasant,MI,-1600.0,900.0,-18.5,-108.0,-112.0,48.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-12,401866417,2026-09-12T17:00Z,Miami (OH),Holy Cross,Miami (OH) RedHawks,Holy Cross Crusaders,45.0,7.0,True,0,0,0,,,,,False,Oxford,OH,-6500.0,2000.0,-30.5,-112.0,-108.0,46.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-12,401866413,2026-09-12T18:00Z,Ball State,Stony Brook,Ball State Cardinals,Stony Brook Seawolves,41.0,17.0,True,0,0,0,,,,,False,Muncie,IN,-600.0,440.0,-13.5,-115.0,-105.0,52.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856677,2026-09-12T19:30Z,Minnesota,Mississippi State,Minnesota Golden Gophers,Mississippi State Bulldogs,13.0,38.0,True,0,0,0,,,,,False,Minneapolis,MN,-110.0,-110.0,1.5,-118.0,-102.0,53.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856785,2026-09-12T19:30Z,Colorado,Weber State,Colorado Buffaloes,Weber State Wildcats,52.0,21.0,True,0,0,0,,,,,False,Boulder,CO,-8000.0,2200.0,-38.5,-112.0,-108.0,57.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856790,2026-09-12T19:30Z,Pittsburgh,UCF,Pittsburgh Panthers,UCF Knights,12.0,7.0,True,0,0,0,,,,,False,Pittsburgh,PA,-298.0,240.0,-7.5,-108.0,-112.0,55.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-12,401858216,2026-09-12T19:30Z,Syracuse,California,Syracuse Orange,California Golden Bears,18.0,21.0,True,0,1,0,,,,,True,Syracuse,NY,-198.0,164.0,-4.0,-112.0,-108.0,56.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-12,401858217,2026-09-12T19:30Z,Illinois,Duke,Illinois Fighting Illini,Duke Blue Devils,27.0,31.0,True,0,0,0,,,,,False,Champaign,IL,-250.0,205.0,-6.0,-115.0,-105.0,51.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-12,401858440,2026-09-12T19:30Z,Michigan State,Eastern Michigan,Michigan State Spartans,Eastern Michigan Eagles,35.0,7.0,True,0,0,0,,,,,False,East Lansing,MI,-850.0,575.0,-17.5,-108.0,-112.0,49.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-12,401858444,2026-09-12T19:30Z,UConn,Maryland,UConn Huskies,Maryland Terrapins,14.0,38.0,True,0,0,0,,,,,False,East Hartford,CT,350.0,-455.0,11.5,-112.0,-108.0,52.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-12,401860884,2026-09-12T19:30Z,Texas State,UTSA,Texas State Bobcats,UTSA Roadrunners,26.0,31.0,True,0,0,0,,,,,False,San Marcos,TX,-122.0,102.0,-1.5,-112.0,-108.0,65.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-12,401862708,2026-09-12T19:30Z,UAB,UL Monroe,UAB Blazers,UL Monroe Warhawks,26.0,20.0,True,0,0,0,,,,,False,Birmingham,AL,-375.0,295.0,-9.5,-112.0,-108.0,53.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-12,401866412,2026-09-12T19:30Z,Akron,Robert Morris,Akron Zips,Robert Morris Colonials,45.0,10.0,True,0,0,0,,,,,False,Akron,OH,-2800.0,1300.0,-26.5,-115.0,-105.0,45.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-12,401866419,2026-09-12T19:30Z,Toledo,Central Connecticut,Toledo Rockets,Central Connecticut Blue Devils,63.0,10.0,True,0,0,0,,,,,False,Toledo,OH,-50000.0,4000.0,-36.5,-120.0,100.0,52.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-12,401866420,2026-09-12T19:30Z,Massachusetts,Sacred Heart,Massachusetts Minutemen,Sacred Heart Pioneers,37.0,10.0,True,0,0,0,,,,,False,Amherst,MA,-2400.0,1200.0,-23.5,-112.0,-108.0,53.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-12,401862705,2026-09-12T19:45Z,North Texas,UNLV,North Texas Mean Green,UNLV Rebels,44.0,6.0,True,0,0,0,,,,,False,Denton,TX,124.0,-148.0,3.0,-120.0,100.0,58.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-12,401864506,2026-09-12T20:00Z,Wyoming,Northern Colorado,Wyoming Cowboys,Northern Colorado Bears,21.0,13.0,True,0,0,0,,,,,False,Laramie,WY,-1800.0,1000.0,-23.5,-108.0,-112.0,44.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-12,401865252,2026-09-12T20:00Z,New Mexico,Mercyhurst,New Mexico Lobos,Mercyhurst Lakers,70.0,7.0,True,0,0,0,,,,,False,Albuquerque,NM,,,-42.5,-112.0,-108.0,54.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-12,401868326,2026-09-12T20:00Z,Troy,Alabama State,Troy Trojans,Alabama State Hornets,34.0,17.0,True,0,0,0,,,,,False,Troy,AL,-2100.0,1100.0,-23.5,-118.0,-102.0,52.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856684,2026-09-12T20:15Z,Vanderbilt,Delaware,Vanderbilt Commodores,Delaware Blue Hens,35.0,26.0,True,0,0,0,,,,,False,Nashville,TN,-1350.0,800.0,-20.5,-115.0,-105.0,54.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856672,2026-09-12T21:30Z,Florida,Campbell,Florida Gators,Campbell Fighting Camels,52.0,3.0,True,0,0,0,,,,,False,Gainesville,FL,,,-51.5,-110.0,-110.0,66.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-12,401860881,2026-09-12T22:00Z,Boise State,Memphis,Boise State Broncos,Memphis Tigers,38.0,20.0,True,0,0,0,,,,,False,Boise,ID,-360.0,285.0,-9.5,-108.0,-112.0,54.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-09-12,401866414,2026-09-12T22:00Z,Florida International,Buffalo,Florida International Panthers,Buffalo Bulls,33.0,20.0,True,0,0,0,,,,,False,Miami,FL,-345.0,275.0,-8.5,-105.0,-105.0,47.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-12,401866418,2026-09-12T22:00Z,Ohio,Jacksonville State,Ohio Bobcats,Jacksonville State Gamecocks,29.0,27.0,True,0,0,0,,,,,False,Athens,OH,-125.0,105.0,-1.5,-112.0,-108.0,48.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-12,401866421,2026-09-12T22:30Z,Western Michigan,Monmouth,Western Michigan Broncos,Monmouth Hawks,49.0,14.0,True,0,0,0,,,,,False,Kalamazoo,MI,-5000.0,1800.0,-29.5,-110.0,-110.0,54.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856680,2026-09-12T23:00Z,South Carolina,Towson,South Carolina Gamecocks,Towson Tigers,45.0,9.0,True,0,0,0,,,,,False,Columbia,SC,,,-44.5,-112.0,-108.0,57.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856786,2026-09-12T23:00Z,Cincinnati,Western Carolina,Cincinnati Bearcats,Western Carolina Catamounts,62.0,10.0,True,0,0,0,,,,,False,Cincinnati,OH,,,-36.5,-108.0,-112.0,61.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-12,401858441,2026-09-12T23:00Z,Nebraska,Bowling Green,Nebraska Cornhuskers,Bowling Green Falcons,56.0,7.0,True,0,0,0,,,,,False,Lincoln,NE,-9000.0,2500.0,-30.5,-115.0,-105.0,48.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-12,401860882,2026-09-12T23:00Z,Colorado State,Southern Utah,Colorado State Rams,Southern Utah Thunderbirds,58.0,24.0,True,0,0,0,,,,,False,Fort Collins,CO,-1350.0,800.0,-19.5,-112.0,-108.0,57.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-12,401862707,2026-09-12T23:00Z,Sam Houston,Tulsa,Sam Houston Bearkats,Tulsa Golden Hurricane,17.0,23.0,True,0,0,0,,,,,False,Huntsville,TX,360.0,-470.0,12.5,-112.0,-108.0,51.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-09-12,401864503,2026-09-12T23:00Z,Northern Illinois,Illinois State,Northern Illinois Huskies,Illinois State Redbirds,24.0,28.0,True,0,0,0,,,,,False,Dekalb,IL,124.0,-148.0,2.5,100.0,-120.0,47.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-12,401864575,2026-09-12T23:00Z,Tulane,South Alabama,Tulane Green Wave,South Alabama Jaguars,28.0,24.0,True,0,0,0,,,,,False,New Orleans,LA,-360.0,285.0,-9.5,-112.0,-108.0,48.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-12,401868241,2026-09-12T23:00Z,Arkansas State,West Georgia,Arkansas State Red Wolves,West Georgia Wolves,52.0,7.0,True,0,0,0,,,,,False,Jonesboro,AR,-10000.0,3000.0,-31.5,-112.0,-108.0,56.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-12,401869955,2026-09-12T23:00Z,Kennesaw State,Georgia State,Kennesaw State Owls,Georgia State Panthers,17.0,31.0,True,0,0,0,,,,,False,Kennesaw,GA,-325.0,260.0,-7.5,-105.0,-115.0,55.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-12,401871045,2026-09-12T23:00Z,Marshall,Middle Tennessee,Marshall Thundering Herd,Middle Tennessee Blue Raiders,28.0,26.0,True,0,0,0,,,,,False,Huntington,WV,-455.0,350.0,-11.5,-112.0,-108.0,56.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-12,401871046,2026-09-12T23:00Z,Missouri State,Lindenwood,Missouri State Bears,Lindenwood Lions,48.0,14.0,True,0,0,0,,,,,False,Springfield,MO,-900.0,600.0,-16.5,-112.0,-108.0,53.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-12,401858443,2026-09-12T23:15Z,UCLA,San Diego State,UCLA Bruins,San Diego State Aztecs,28.0,10.0,True,0,0,0,,,,,False,Pasadena,CA,-535.0,400.0,-13.5,-108.0,-112.0,53.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-12,401858447,2026-09-12T23:15Z,Wisconsin,Western Illinois,Wisconsin Badgers,Western Illinois Leathernecks,36.0,9.0,True,0,0,0,,,,,False,Madison,WI,,,-43.5,-112.0,-108.0,53.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-12,401862703,2026-09-12T23:30Z,Florida Atlantic,Navy,Florida Atlantic Owls,Navy Midshipmen,38.0,30.0,True,0,1,0,,,,,False,Boca Raton,FL,170.0,-205.0,4.5,-108.0,-112.0,59.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-12,401868008,2026-09-12T23:30Z,Coastal Carolina,Fordham,Coastal Carolina Chanticleers,Fordham Rams,45.0,7.0,True,0,0,0,,,,,False,Conway,SC,-100000.0,5000.0,-36.5,-112.0,-108.0,54.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856789,2026-09-13T00:00Z,TCU,Grambling,TCU Horned Frogs,Grambling Tigers,63.0,7.0,True,0,0,0,,,,,False,Fort Worth,TX,,,-44.5,-115.0,-105.0,56.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856784,2026-09-13T00:08Z,Baylor,Prairie View A&M,Baylor Bears,Prairie View A&M Panthers,44.0,3.0,True,0,0,0,,,,,False,Waco,TX,,,-37.5,-112.0,-108.0,55.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-12,401856671,2026-09-13T00:50Z,Auburn,Southern Miss,Auburn Tigers,Southern Miss Golden Eagles,43.0,8.0,True,0,0,0,,,,,False,Auburn,AL,-9000.0,2500.0,-32.5,-102.0,-118.0,56.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-12,401864504,2026-09-13T01:00Z,San José State,Cal Poly,San José State Spartans,Cal Poly Mustangs,30.0,20.0,True,0,0,0,,,,,False,San Jose,CA,-2100.0,1100.0,-21.5,-110.0,-110.0,58.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-12,401864505,2026-09-13T01:00Z,UTEP,Texas Southern,UTEP Miners,Texas Southern Tigers,51.0,10.0,True,0,0,0,,,,,False,El Paso,TX,-4500.0,1700.0,-27.5,-108.0,-112.0,53.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-12,401858219,2026-09-13T01:30Z,Clemson,Georgia Southern,Clemson Tigers,Georgia Southern Eagles,22.0,7.0,True,0,0,0,,,,,False,Clemson,SC,-1450.0,850.0,-20.5,-105.0,-115.0,54.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-12,401864502,2026-09-13T02:00Z,Air Force,North Dakota State,Air Force Falcons,North Dakota State Bison,32.0,38.0,True,0,1,0,,,,,False,USAF Academy,CO,102.0,-122.0,1.5,-105.0,-115.0,48.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-12,401860883,2026-09-13T02:30Z,Fresno State,Sacramento State,Fresno State Bulldogs,Sacramento State Hornets,49.0,3.0,True,0,0,0,,,,,False,Fresno,CA,-950.0,625.0,-17.5,-110.0,-110.0,43.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-12,401864500,2026-09-13T02:30Z,Nevada,Montana State,Nevada Wolf Pack,Montana State Bobcats,7.0,20.0,True,0,0,0,,,,,False,Reno,NV,180.0,-218.0,4.5,-105.0,-115.0,51.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-12,401864578,2026-09-13T03:59Z,Hawai'i,New Mexico State,Hawai'i Rainbow Warriors,New Mexico State Aggies,29.0,19.0,True,0,0,0,,,,,False,Honolulu,HI,-340.0,270.0,-7.5,-115.0,-105.0,50.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-11,401856678,2026-09-12T00:00Z,Kansas,Missouri,Kansas Jayhawks,Missouri Tigers,21.0,38.0,True,0,0,0,,,,,False,Lawrence,KS,164.0,-198.0,4.0,-110.0,-110.0,51.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-11,401858215,2026-09-11T23:00Z,Louisville,Villanova,Louisville Cardinals,Villanova Wildcats,59.0,13.0,True,0,0,0,,,,,False,Louisville,KY,,,-39.5,-112.0,-108.0,56.5,-122.0,102.0,,,espn-pickcenter:DraftKings
+2026-09-11,401858220,2026-09-11T23:00Z,Virginia,Norfolk State,Virginia Cavaliers,Norfolk State Spartans,59.0,3.0,True,0,0,0,,,,,False,Charlottesville,VA,,,-47.5,-112.0,-108.0,56.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-11,401858222,2026-09-11T23:00Z,NC State,Richmond,NC State Wolfpack,Richmond Spiders,73.0,0.0,True,0,0,0,,,,,False,Raleigh,NC,-6500.0,2000.0,-33.5,-112.0,-108.0,50.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-11,401858214,2026-09-11T23:30Z,Boston College,Rutgers,Boston College Eagles,Rutgers Scarlet Knights,28.0,21.0,True,0,0,0,,,,,False,Chestnut Hill,MA,-148.0,124.0,-3.0,-102.0,-118.0,53.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-10,401858213,2026-09-11T00:00Z,Miami,Florida A&M,Miami Hurricanes,Florida A&M Rattlers,77.0,7.0,True,0,0,0,,,,,False,Miami Gardens,FL,,,-59.5,-110.0,-110.0,66.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-07,401858212,2026-09-07T23:30Z,Florida State,SMU,Florida State Seminoles,SMU Mustangs,24.0,27.0,True,0,1,0,,,,,False,Tallahassee,FL,130.0,-155.0,3.0,-105.0,-115.0,52.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-06,401858438,2026-09-06T23:30Z,Notre Dame,Wisconsin,Notre Dame Fighting Irish,Wisconsin Badgers,41.0,13.0,True,1,0,0,,,,,False,Green Bay,WI,-1800.0,1000.0,-21.0,-115.0,-105.0,45.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-06,401856661,2026-09-06T23:30Z,Ole Miss,Louisville,Ole Miss Rebels,Louisville Cardinals,41.0,38.0,True,1,0,0,,,,,False,Nashville,TN,-245.0,200.0,-6.5,-112.0,-108.0,54.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-06,401858437,2026-09-06T20:00Z,Washington,Washington State,Washington Huskies,Washington State Cougars,24.0,10.0,True,0,0,0,,,,,False,Seattle,WA,-2800.0,1300.0,-23.5,-118.0,-120.0,51.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-05,401858432,2026-09-05T16:30Z,Ohio State,Ball State,Ohio State Buckeyes,Ball State Cardinals,56.0,3.0,True,0,0,0,,,,,False,Columbus,OH,,,-50.5,-108.0,-112.0,55.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-05,401858433,2026-09-05T19:30Z,Oregon,Boise State,Oregon Ducks,Boise State Broncos,34.0,27.0,True,0,0,0,,,,,False,Eugene,OR,-2800.0,1300.0,-24.5,-115.0,-105.0,53.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-05,401856658,2026-09-05T19:00Z,Georgia,Tennessee State,Georgia Bulldogs,Tennessee State Tigers,63.0,3.0,True,0,0,0,,,,,False,Athens,GA,,,-49.5,-108.0,-112.0,55.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-05,401856667,2026-09-05T19:30Z,Texas,Texas State,Texas Longhorns,Texas State Bobcats,59.0,7.0,True,0,0,0,,,,,False,Austin,TX,-8000.0,2200.0,-29.5,-112.0,-108.0,61.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-05,401858425,2026-09-05T16:00Z,Indiana,North Texas,Indiana Hoosiers,North Texas Mean Green,52.0,16.0,True,0,0,0,,,,,False,Bloomington,IN,,,-39.5,-110.0,-110.0,57.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-05,401856668,2026-09-05T23:00Z,Texas A&M,Missouri State,Texas A&M Aggies,Missouri State Bears,50.0,0.0,True,0,0,0,,,,,False,College Station,TX,,,-38.5,-112.0,-108.0,53.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-05,401856660,2026-09-06T01:40Z,LSU,Clemson,LSU Tigers,Clemson Tigers,51.0,10.0,True,0,0,0,,,,,False,Baton Rouge,LA,-410.0,320.0,-10.0,-112.0,-108.0,48.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-05,401856770,2026-09-05T23:00Z,Texas Tech,Abilene Christian,Texas Tech Red Raiders,Abilene Christian Wildcats,33.0,10.0,True,0,0,0,,,,,False,Lubbock,TX,,,-45.5,-112.0,-108.0,61.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-05,401856634,2026-09-05T16:00Z,Alabama,East Carolina,Alabama Crimson Tide,East Carolina Pirates,48.0,10.0,True,0,0,0,,,,,False,Tuscaloosa,AL,-6500.0,2000.0,-28.5,100.0,-120.0,52.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-05,401856775,2026-09-06T00:00Z,BYU,Utah Tech,BYU Cougars,Utah Tech Trailblazers,63.0,7.0,True,0,0,0,,,,,False,Provo,UT,,,-50.5,-115.0,-105.0,61.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-05,401858428,2026-09-05T23:30Z,Michigan,Western Michigan,Michigan Wolverines,Western Michigan Broncos,13.0,12.0,True,0,0,0,,,,,False,Ann Arbor,MI,-8000.0,2200.0,-27.5,-115.0,-105.0,50.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-05,401858434,2026-09-05T19:30Z,Penn State,Marshall,Penn State Nittany Lions,Marshall Thundering Herd,45.0,0.0,True,0,0,0,,,,,False,University Park,PA,-2100.0,1100.0,-23.5,-108.0,-112.0,53.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-05,401856666,2026-09-05T19:30Z,Tennessee,Furman,Tennessee Volunteers,Furman Paladins,56.0,9.0,True,0,0,0,,,,,False,Knoxville,TN,,,-49.5,-105.0,-115.0,66.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-05,401858426,2026-09-05T20:15Z,Iowa,Northern Illinois,Iowa Hawkeyes,Northern Illinois Huskies,40.0,0.0,True,0,0,0,,,,,False,Iowa City,IA,-10000.0,3000.0,-31.5,-105.0,-115.0,44.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-05,401856778,2026-09-05T16:00Z,Houston,Oregon State,Houston Cougars,Oregon State Beavers,33.0,20.0,True,0,0,0,,,,,False,Houston,TX,-1450.0,850.0,-21.0,-105.0,-115.0,50.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-05,401856780,2026-09-05T16:00Z,West Virginia,Coastal Carolina,West Virginia Mountaineers,Coastal Carolina Chanticleers,31.0,24.0,True,0,0,0,,,,,False,Morgantown,WV,-1800.0,1000.0,-21.0,-115.0,-105.0,54.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-05,401858208,2026-09-05T16:00Z,Syracuse,New Hampshire,Syracuse Orange,New Hampshire Wildcats,66.0,3.0,True,0,0,0,,,,,True,Syracuse,NY,-100000.0,5000.0,-35.5,-108.0,-112.0,56.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-05,401858430,2026-09-05T16:00Z,Nebraska,Ohio,Nebraska Cornhuskers,Ohio Bobcats,49.0,21.0,True,0,0,0,,,,,False,Lincoln,NE,-2100.0,1100.0,-23.5,-118.0,-102.0,47.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-05,401861962,2026-09-05T16:00Z,UConn,Lafayette,UConn Huskies,Lafayette Leopards,56.0,7.0,True,0,0,0,,,,,False,East Hartford,CT,-1800.0,1000.0,-21.5,-105.0,-115.0,51.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-09-05,401862701,2026-09-05T16:00Z,Army,Bryant,Army Black Knights,Bryant Bulldogs,59.0,3.0,True,0,0,0,,,,,False,West Point,NY,,,-37.5,-112.0,-108.0,51.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-05,401866410,2026-09-05T16:00Z,Bowling Green,Tarleton State,Bowling Green Falcons,Tarleton State Texans,13.0,20.0,True,0,0,0,,,,,False,Bowling Green,OH,-125.0,105.0,-1.5,-112.0,-108.0,49.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-05,401869960,2026-09-05T16:00Z,James Madison,Liberty,James Madison Dukes,Liberty Flames,20.0,13.0,True,0,0,0,,,,,False,Harrisonburg,VA,-225.0,185.0,-6.0,-110.0,-110.0,50.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-09-05,401858207,2026-09-05T16:30Z,Pittsburgh,Miami (OH),Pittsburgh Panthers,Miami (OH) RedHawks,59.0,14.0,True,0,0,0,,,,,False,Pittsburgh,PA,-850.0,575.0,-16.5,-110.0,-110.0,47.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-05,401856665,2026-09-05T16:45Z,South Carolina,Kent State,South Carolina Gamecocks,Kent State Golden Flashes,57.0,0.0,True,0,0,0,,,,,False,Columbia,SC,-50000.0,4000.0,-35.5,-102.0,-118.0,52.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-05,401856659,2026-09-05T17:00Z,Kentucky,Youngstown State,Kentucky Wildcats,Youngstown State Penguins,45.0,13.0,True,0,0,0,,,,,False,Lexington,KY,-2100.0,1100.0,-22.5,-110.0,-110.0,61.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-05,401856779,2026-09-05T17:00Z,Iowa State,Southeast Missouri State,Iowa State Cyclones,Southeast Missouri State Redhawks,38.0,10.0,True,0,0,0,,,,,False,Ames,IA,-9000.0,2500.0,-29.5,-118.0,-102.0,52.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-05,401864496,2026-09-05T17:00Z,Air Force,Duquesne,Air Force Falcons,Duquesne Dukes,34.0,0.0,True,0,0,0,,,,,False,USAF Academy,CO,-4000.0,1600.0,-31.5,-110.0,-110.0,55.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-05,401862698,2026-09-05T18:00Z,Temple,Rhode Island,Temple Owls,Rhode Island Rams,38.0,14.0,True,0,0,0,,,,,False,Philadelphia,PA,-675.0,490.0,-14.5,-110.0,-110.0,51.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-05,401856636,2026-09-05T19:30Z,Auburn,Baylor,Auburn Tigers,Baylor Bears,17.0,16.0,True,1,0,0,,,,,True,Atlanta,GA,-258.0,210.0,-6.5,-115.0,-105.0,58.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-05,401856777,2026-09-05T19:30Z,Cincinnati,Boston College,Cincinnati Bearcats,Boston College Eagles,34.0,15.0,True,0,0,0,,,,,False,Cincinnati,OH,-285.0,230.0,-7.0,-108.0,-112.0,51.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-05,401858209,2026-09-05T19:30Z,Duke,Tulane,Duke Blue Devils,Tulane Green Wave,17.0,3.0,True,0,0,0,,,,,False,Durham,NC,-380.0,300.0,-9.5,-110.0,-110.0,51.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-05,401862694,2026-09-05T19:30Z,Charlotte,The Citadel,Charlotte 49ers,The Citadel Bulldogs,41.0,43.0,True,0,0,0,,,,,False,Charlotte,NC,-1650.0,950.0,-20.5,-108.0,-112.0,49.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-05,401862696,2026-09-05T19:30Z,Navy,Towson,Navy Midshipmen,Towson Tigers,42.0,15.0,True,0,0,0,,,,,False,Annapolis,MD,-100000.0,5000.0,-31.5,-112.0,-108.0,50.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-05,401862700,2026-09-05T19:30Z,UTSA,UT Rio Grande Valley,UTSA Roadrunners,UT Rio Grande Valley Vaqueros,45.0,16.0,True,0,0,0,,,,,True,San Antonio,TX,-6500.0,2000.0,-28.5,-102.0,-118.0,59.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-05,401864499,2026-09-05T19:30Z,North Dakota State,Fordham,North Dakota State Bison,Fordham Rams,38.0,0.0,True,0,0,0,,,,,True,Fargo,ND,,,-41.5,-105.0,-115.0,54.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-05,401866627,2026-09-05T19:30Z,App State,Maine,App State Mountaineers,Maine Black Bears,55.0,3.0,True,0,0,0,,,,,False,Boone,NC,-1450.0,850.0,-21.0,-108.0,-112.0,53.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-05,401856772,2026-09-05T19:45Z,Tulsa,Oklahoma State,Tulsa Golden Hurricane,Oklahoma State Cowboys,24.0,10.0,True,0,0,0,,,,,False,Tulsa,OK,390.0,-520.0,13.5,-112.0,-115.0,57.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-09-05,401856635,2026-09-05T20:15Z,Arkansas,North Alabama,Arkansas Razorbacks,North Alabama Lions,31.0,14.0,True,0,0,0,,,,,False,Fayetteville,AR,,,-40.5,-115.0,-105.0,63.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-05,401868356,2026-09-05T21:00Z,Southern Miss,Alcorn State,Southern Miss Golden Eagles,Alcorn State Braves,49.0,3.0,True,0,0,0,,,,,False,Hattiesburg,MS,-1600.0,900.0,-20.5,-105.0,-115.0,51.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-05,401860878,2026-09-05T22:00Z,Colorado State,Wyoming,Colorado State Rams,Wyoming Cowboys,35.0,13.0,True,0,0,0,,,,,False,Fort Collins,CO,-130.0,110.0,-2.5,-108.0,-112.0,45.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-05,401867973,2026-09-05T22:00Z,Old Dominion,Norfolk State,Old Dominion Monarchs,Norfolk State Spartans,31.0,10.0,True,0,0,0,,,,,False,Norfolk,VA,,,-41.5,-112.0,-108.0,52.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-05,401856669,2026-09-05T23:00Z,Vanderbilt,Austin Peay,Vanderbilt Commodores,Austin Peay Governors,28.0,9.0,True,0,0,0,,,,,False,Nashville,TN,-6500.0,2000.0,-29.5,-108.0,-112.0,57.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-09-05,401856771,2026-09-05T23:00Z,Kansas State,Nicholls,Kansas State Wildcats,Nicholls Colonels,71.0,3.0,True,0,0,0,,,,,False,Manhattan,KS,,,-41.5,-110.0,-110.0,55.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-05,401860880,2026-09-05T23:00Z,Utah State,Idaho State,Utah State Aggies,Idaho State Bengals,17.0,29.0,True,0,0,0,,,,,False,Logan,UT,-675.0,490.0,-15.5,-110.0,-110.0,59.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-05,401862695,2026-09-05T23:00Z,Memphis,Arkansas State,Memphis Tigers,Arkansas State Red Wolves,42.0,24.0,True,0,0,0,,,,,False,Memphis,TN,-395.0,310.0,-10.5,-108.0,-112.0,52.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-05,401862697,2026-09-05T23:00Z,Rice,Houston Christian,Rice Owls,Houston Christian Huskies,31.0,3.0,True,0,0,0,,,,,False,Houston,TX,-2400.0,1200.0,-22.5,-115.0,-105.0,47.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-05,401862699,2026-09-05T23:00Z,South Florida,Florida International,South Florida Bulls,Florida International Panthers,19.0,9.0,True,0,0,0,,,,,False,Tampa,FL,-650.0,470.0,-14.5,-105.0,-115.0,53.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-05,401868140,2026-09-05T23:00Z,Jacksonville State,Eastern Kentucky,Jacksonville State Gamecocks,Eastern Kentucky Colonels,49.0,7.0,True,0,0,0,,,,,False,Jacksonville,AL,-2100.0,1100.0,-22.5,-112.0,-108.0,51.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-09-05,401868170,2026-09-05T23:00Z,Georgia Southern,Charleston Southern,Georgia Southern Eagles,Charleston Southern Buccaneers,31.0,0.0,True,0,0,0,,,,,False,Statesboro,GA,-5000.0,1800.0,-28.5,-108.0,-112.0,51.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-05,401868316,2026-09-05T23:00Z,South Alabama,SE Louisiana,South Alabama Jaguars,SE Louisiana Lions,39.0,14.0,True,0,0,0,,,,,False,Mobile,AL,-575.0,425.0,-13.5,-112.0,-108.0,53.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-05,401870763,2026-09-05T23:00Z,Troy,Sam Houston,Troy Trojans,Sam Houston Bearkats,24.0,21.0,True,0,0,0,,,,,False,Troy,AL,-800.0,550.0,-15.5,-115.0,-105.0,52.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-09-05,401856662,2026-09-05T23:30Z,Mississippi State,UL Monroe,Mississippi State Bulldogs,UL Monroe Warhawks,62.0,13.0,True,0,0,0,,,,,False,Starkville,MS,-4000.0,1600.0,-28.5,-105.0,-115.0,54.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-05,401858211,2026-09-05T23:30Z,Virginia Tech,VMI,Virginia Tech Hokies,VMI Keydets,73.0,3.0,True,0,0,0,,,,,False,Blacksburg,VA,,,-54.5,-108.0,-112.0,60.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-05,401869129,2026-09-05T23:30Z,Louisiana Tech,Northwestern State,Louisiana Tech Bulldogs,Northwestern State Demons,80.0,6.0,True,0,0,0,,,,,False,Ruston,LA,,,-44.5,-115.0,-105.0,56.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-05,401856637,2026-09-05T23:45Z,Florida,Florida Atlantic,Florida Gators,Florida Atlantic Owls,66.0,21.0,True,0,0,0,,,,,False,Gainesville,FL,-2400.0,1200.0,-26.5,-108.0,-112.0,59.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-05,401867866,2026-09-05T23:45Z,Middle Tennessee,Murray State,Middle Tennessee Blue Raiders,Murray State Racers,38.0,14.0,True,0,0,0,,,,,False,Murfreesboro,TN,-1800.0,1000.0,-22.5,-110.0,-110.0,55.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-05,401858427,2026-09-06T00:00Z,Maryland,Hampton,Maryland Terrapins,Hampton Pirates,62.0,0.0,True,0,0,0,,,,,False,College Park,MD,,,-45.5,-115.0,-105.0,56.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-05,401858431,2026-09-06T00:00Z,Northwestern,South Dakota State,Northwestern Wildcats,South Dakota State Jackrabbits,34.0,18.0,True,0,0,0,,,,,False,Evanston,IL,-535.0,400.0,-14.0,100.0,-120.0,49.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-05,401869142,2026-09-06T00:00Z,Louisiana,Lamar,Louisiana Ragin' Cajuns,Lamar Cardinals,38.0,7.0,True,0,0,0,,,,,False,Lafayette,LA,-1200.0,750.0,-20.5,-110.0,-110.0,48.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-05,401870790,2026-09-06T01:00Z,New Mexico State,Mercyhurst,New Mexico State Aggies,Mercyhurst Lakers,51.0,14.0,True,0,0,0,,,,,False,Las Cruces,NM,-8000.0,2200.0,-29.5,-110.0,-110.0,52.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-05,401856773,2026-09-06T01:30Z,Arizona,Northern Arizona,Arizona Wildcats,Northern Arizona Lumberjacks,35.0,7.0,True,0,0,0,,,,,False,Tucson,AZ,-8000.0,2200.0,-33.5,-112.0,-108.0,59.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-05,401860879,2026-09-06T01:30Z,San Diego State,Portland State,San Diego State Aztecs,Portland State Vikings,53.0,20.0,True,0,0,0,,,,,False,San Diego,CA,,,-38.5,-105.0,-115.0,61.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-05,401856774,2026-09-06T02:00Z,Arizona State,Morgan State,Arizona State Sun Devils,Morgan State Bears,70.0,7.0,True,0,0,0,,,,,False,Tempe,AZ,,,-43.5,-115.0,-105.0,52.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-05,401864497,2026-09-06T02:00Z,Hawai'i,UNLV,Hawai'i Rainbow Warriors,UNLV Rebels,6.0,21.0,True,0,1,0,,,,,False,Honolulu,HI,105.0,-125.0,2.5,-115.0,-105.0,55.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-05,401864498,2026-09-06T02:00Z,New Mexico,Central Michigan,New Mexico Lobos,Central Michigan Chippewas,38.0,7.0,True,0,0,0,,,,,False,Albuquerque,NM,-470.0,360.0,-11.5,-105.0,-115.0,47.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-05,401866411,2026-09-06T02:00Z,Sacramento State,Mississippi Valley State,Sacramento State Hornets,Mississippi Valley State Delta Devils,52.0,0.0,True,0,0,0,,,,,False,Sacramento,CA,,,-38.5,-102.0,-118.0,56.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-05,401858210,2026-09-06T02:30Z,California,UCLA,California Golden Bears,UCLA Bruins,24.0,45.0,True,0,0,0,,,,,False,Berkeley,CA,120.0,-142.0,2.5,-105.0,-115.0,53.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-05,401864432,2026-09-06T02:30Z,Nevada,Western Kentucky,Nevada Wolf Pack,Western Kentucky Hilltoppers,49.0,14.0,True,0,0,0,,,,,False,Reno,NV,-108.0,-112.0,1.5,-118.0,-102.0,51.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-04,401858206,2026-09-05T01:00Z,Stanford,Miami,Stanford Cardinal,Miami Hurricanes,6.0,45.0,True,0,1,0,,,,,False,Stanford,CA,1600.0,-4000.0,24.5,-112.0,-108.0,46.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-04,401856664,2026-09-05T00:00Z,Oklahoma,UTEP,Oklahoma Sooners,UTEP Miners,51.0,0.0,True,0,0,0,,,,,False,Norman,OK,,,-40.5,-110.0,-110.0,51.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-04,401858436,2026-09-05T01:00Z,USC,Fresno State,USC Trojans,Fresno State Bulldogs,39.0,0.0,True,0,0,0,,,,,False,Los Angeles,CA,-2100.0,1100.0,-21.5,-112.0,-108.0,51.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-04,401864495,2026-09-04T22:30Z,Eastern Michigan,San José State,Eastern Michigan Eagles,San José State Spartans,21.0,27.0,True,0,0,0,,,,,False,Ypsilanti,MI,-115.0,-105.0,-1.5,-108.0,-112.0,54.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-09-04,401858435,2026-09-04T23:00Z,Purdue,Indiana State,Purdue Boilermakers,Indiana State Sycamores,44.0,19.0,True,0,0,0,,,,,False,West Lafayette,IN,,,-35.5,-102.0,-118.0,55.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-09-04,401866623,2026-09-04T23:00Z,Georgia State,North Carolina A&T,Georgia State Panthers,North Carolina A&T Aggies,59.0,10.0,True,0,0,0,,,,,False,Atlanta,GA,-4000.0,1600.0,-28.5,-105.0,-115.0,58.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-04,401856769,2026-09-05T00:00Z,Kansas,Long Island University,Kansas Jayhawks,Long Island University Sharks,51.0,6.0,True,0,0,0,,,,,False,Lawrence,KS,,,-44.5,-115.0,-105.0,57.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-04,401858429,2026-09-05T00:00Z,Michigan State,Toledo,Michigan State Spartans,Toledo Rockets,30.0,20.0,True,0,0,0,,,,,False,East Lansing,MI,-395.0,310.0,-10.0,-110.0,-110.0,48.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-03,401856768,2026-09-04T01:00Z,Utah,Idaho,Utah Utes,Idaho Vandals,66.0,14.0,True,0,0,0,,,,,False,Salt Lake City,UT,-100000.0,5000.0,-38.5,-102.0,-118.0,60.5,-118.0,-102.0,,,espn-pickcenter:DraftKings
+2026-09-03,401856663,2026-09-04T00:00Z,Missouri,Arkansas-Pine Bluff,Missouri Tigers,Arkansas-Pine Bluff Golden Lions,54.0,14.0,True,0,0,0,,,,,False,Columbia,MO,,,-55.5,-125.0,105.0,62.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-09-03,401858423,2026-09-03T22:00Z,Rutgers,Massachusetts,Rutgers Scarlet Knights,Massachusetts Minutemen,21.0,37.0,True,0,0,0,,,,,False,Piscataway,NJ,-8000.0,2200.0,-29.5,-110.0,-110.0,55.5,-102.0,-118.0,,,espn-pickcenter:DraftKings
+2026-09-03,401856767,2026-09-03T23:00Z,UCF,Bethune-Cookman,UCF Knights,Bethune-Cookman Wildcats,73.0,6.0,True,0,0,0,,,,,False,Orlando,FL,,,-43.5,-110.0,-110.0,58.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-09-03,401858204,2026-09-03T23:00Z,Wake Forest,Akron,Wake Forest Demon Deacons,Akron Zips,38.0,16.0,True,0,0,0,,,,,False,Winston-Salem,NC,-3600.0,1500.0,-27.5,-115.0,-105.0,50.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-03,401864424,2026-09-03T23:00Z,Delaware,Merrimack,Delaware Blue Hens,Merrimack Warriors,42.0,7.0,True,0,0,0,,,,,False,Newark,DE,-6500.0,2000.0,-31.5,-112.0,-108.0,56.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-03,401864425,2026-09-03T23:00Z,Kennesaw State,West Georgia,Kennesaw State Owls,West Georgia Wolves,47.0,0.0,True,0,0,0,,,,,False,Kennesaw,GA,-4000.0,1600.0,-22.5,-112.0,-108.0,50.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-09-03,401866409,2026-09-03T23:00Z,Buffalo,UAlbany,Buffalo Bulls,UAlbany Great Danes,21.0,17.0,True,0,0,0,,,,,False,Buffalo,NY,-1050.0,675.0,-18.5,-108.0,-112.0,47.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-03,401856776,2026-09-04T00:00Z,Georgia Tech,Colorado,Georgia Tech Yellow Jackets,Colorado Buffaloes,13.0,14.0,True,0,0,0,,,,,False,Atlanta,GA,-238.0,195.0,-6.5,-110.0,-110.0,53.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-09-03,401858422,2026-09-04T00:00Z,Minnesota,Eastern Illinois,Minnesota Golden Gophers,Eastern Illinois Panthers,59.0,7.0,True,0,0,0,,,,,False,Minneapolis,MN,,,-42.5,-115.0,-105.0,52.5,-110.0,-110.0,,,espn-pickcenter:DraftKings
+2026-09-03,401858424,2026-09-04T01:00Z,Illinois,UAB,Illinois Fighting Illini,UAB Blazers,42.0,23.0,True,0,0,0,,,,,False,Champaign,IL,-3600.0,1500.0,-25.5,-108.0,-112.0,53.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-08-29,401864494,2026-08-29T19:00Z,USC,San José State,USC Trojans,San José State Spartans,42.0,26.0,True,0,0,0,,,,,False,Los Angeles,CA,-100000.0,5000.0,-37.5,-110.0,-110.0,61.5,-105.0,-115.0,,,espn-pickcenter:DraftKings
+2026-08-29,401856766,2026-08-29T16:00Z,TCU,North Carolina,TCU Horned Frogs,North Carolina Tar Heels,10.0,15.0,True,1,0,0,,,,,False,Dublin,,-305.0,245.0,-7.5,-102.0,-118.0,46.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-08-29,401858202,2026-08-29T19:30Z,Virginia,NC State,Virginia Cavaliers,NC State Wolfpack,34.0,8.0,True,0,1,0,,,,,False,Charlottesville,VA,-175.0,145.0,-4.0,-108.0,-112.0,50.5,-115.0,-105.0,,,espn-pickcenter:DraftKings
+2026-08-29,401864577,2026-08-29T21:30Z,North Dakota State,Jacksonville State,North Dakota State Bison,Jacksonville State Gamecocks,33.0,7.0,True,0,0,0,,,,,True,Fargo,ND,-285.0,230.0,-6.5,-120.0,100.0,46.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-08-29,401866408,2026-08-29T22:30Z,Eastern Michigan,Sacramento State,Eastern Michigan Eagles,Sacramento State Hornets,28.0,17.0,True,0,1,0,,,,,False,Ypsilanti,MI,-355.0,280.0,-9.5,-108.0,-112.0,52.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-08-29,401858201,2026-08-29T23:00Z,Stanford,Hawai'i,Stanford Cardinal,Hawai'i Rainbow Warriors,37.0,27.0,True,0,0,0,,,,,False,Stanford,CA,-205.0,170.0,-4.5,-110.0,-110.0,48.5,-108.0,-112.0,,,espn-pickcenter:DraftKings
+2026-08-29,401864570,2026-08-29T23:00Z,Florida State,New Mexico State,Florida State Seminoles,New Mexico State Aggies,34.0,17.0,True,0,0,0,,,,,False,Tallahassee,FL,-8000.0,2200.0,-30.5,-118.0,-102.0,53.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
+2026-08-29,401862693,2026-08-30T02:00Z,UNLV,Memphis,UNLV Rebels,Memphis Tigers,21.0,27.0,True,0,0,0,,,,,True,Las Vegas,NV,-192.0,160.0,-4.5,-115.0,-105.0,55.5,-112.0,-108.0,,,espn-pickcenter:DraftKings
