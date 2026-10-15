@@ -25,6 +25,8 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 import numpy as np
+
+from backtest.core import decimal_to_american, fmt_american
 import pandas as pd
 
 warnings.filterwarnings("ignore")
@@ -129,7 +131,7 @@ def render(date, legs, props, tickets, replay, grades=None) -> str:
                 pnl = ticket_pnl(t, grades)
                 total += pnl
                 res = f" {pnl:+.2f}u |"
-            out.append(f"| {' + '.join(L['pick'] for L in t['legs'])} | {t['dec']:.2f}x | {t['stake']}u |{res}")
+            out.append(f"| {' + '.join(L['pick'] for L in t['legs'])} | {fmt_american(decimal_to_american(t['dec']))} | {t['stake']}u |{res}")
     if replay:
         out += ["", f"**Night total: {total:+.2f}u**"]
     if not legs and not props:

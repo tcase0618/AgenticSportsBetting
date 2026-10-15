@@ -23,6 +23,8 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 import numpy as np
+
+from backtest.core import decimal_to_american, fmt_american
 import pandas as pd
 import requests
 
@@ -303,7 +305,7 @@ def live_card() -> str:
     if tickets:
         lines += ["", "## Parlays (one book, different games)", "", "| Legs | Payout | Stake |", "|---|---|---|"]
         for t in tickets:
-            lines.append(f"| {' + '.join(L['pick'] for L in t['legs'])} | {t['dec']:.2f}x | {t['stake']}u |")
+            lines.append(f"| {' + '.join(L['pick'] for L in t['legs'])} | {fmt_american(decimal_to_american(t['dec']))} | {t['stake']}u |")
     try:
         props = live_nba_props(today)
         if len(props):

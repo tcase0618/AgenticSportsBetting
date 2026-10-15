@@ -22,6 +22,24 @@ def american_to_decimal(odds):
     return np.where(o > 0, 1 + o / 100.0, 1 + 100.0 / np.abs(o))
 
 
+def decimal_to_american(dec):
+    """Decimal odds -> American (+150 / -120). Scalar or array."""
+    d = np.asarray(dec, dtype=float)
+    return np.where(d >= 2.0, (d - 1) * 100.0, -100.0 / (d - 1))
+
+
+def prob_to_american(p):
+    """Price-as-probability (Polymarket/Kalshi share price, 0-1) -> American odds you actually get."""
+    p = np.clip(np.asarray(p, dtype=float), 1e-6, 1 - 1e-6)
+    return decimal_to_american(1.0 / p)
+
+
+def fmt_american(x) -> str:
+    """+150 / -120 display; rounds to whole cents like a sportsbook."""
+    v = float(x)
+    return f"{int(round(v)):+d}"
+
+
 def american_to_prob(odds):
     """Raw (vigged) implied probability."""
     o = np.asarray(odds, dtype=float)

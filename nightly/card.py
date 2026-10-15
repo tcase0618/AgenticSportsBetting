@@ -18,6 +18,8 @@ import warnings
 from pathlib import Path
 
 import numpy as np
+
+from backtest.core import decimal_to_american, fmt_american
 import pandas as pd
 
 warnings.filterwarnings("ignore")
@@ -197,7 +199,7 @@ def ticket_pnl(t, grades):
 
 # ------------------------------------------------------------------ card
 def fmt_price(p):
-    return f"{int(p):+d}"
+    return fmt_american(p)
 
 
 def make_card(date: pd.Timestamp, replay: bool, sports=None) -> tuple[str, pd.DataFrame]:
@@ -249,7 +251,7 @@ def make_card(date: pd.Timestamp, replay: bool, sports=None) -> tuple[str, pd.Da
                 res = f" {pnl:+.2f}u |"
                 rows.append(dict(kind=t["type"], tier="parlay", sport="multi", bet=" + ".join(L["pick"] for L in t["legs"]),
                                  price=t["dec"], stake=t["stake"], pnl=pnl))
-            lines.append(f"| {t['type']} | {' + '.join(L['pick'] for L in t['legs'])} | {t['dec']:.2f}x | {t['stake']}u |{res}")
+            lines.append(f"| {t['type']} | {' + '.join(L['pick'] for L in t['legs'])} | {fmt_american(decimal_to_american(t['dec']))} | {t['stake']}u |{res}")
     if not legs and not props:
         lines += ["", "_No qualifying bets tonight. Passing is a position._"]
     R = pd.DataFrame(rows)
