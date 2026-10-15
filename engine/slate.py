@@ -99,8 +99,9 @@ def game_legs(sport: str, g: pd.Series) -> list[dict]:
     if g.get("total") == g.get("total") and g.get("total") is not None:
         po, pu = _fair(g.get("over_odds"), g.get("under_odds"))
         t = float(g.total)
-        add("total", "over", f"OVER {t:g}", "over_odds", po, t)
-        add("total", "under", f"UNDER {t:g}", "under_odds", pu, t)
+        short = f"{str(g.away_name).split()[-1]}/{str(g.home_name).split()[-1]}"
+        add("total", "over", f"{short} OVER {t:g}", "over_odds", po, t)
+        add("total", "under", f"{short} UNDER {t:g}", "under_odds", pu, t)
     fav_home = (g.get("home_ml") or 0) < (g.get("away_ml") or 0)
     for L in legs:
         L["fav"] = (L["side"] == "home") == fav_home if L["kind"] in ("ml", "spread") else None
@@ -233,8 +234,8 @@ def compatible(legs: tuple) -> bool:
     if len(kinds) != len(set(kinds)):
         return False                                   # one ML, one spread, one total max
     sides = {L["kind"]: L["side"] for L in legs if L["kind"] in ("ml", "spread")}
-    if "ml" in sides and "spread" in sides and sides["ml"] != sides["spread"]:
-        return False                                   # contradictory side bets
+    if "ml" in sides and "spread" in sides:
+        return False                                   # ML + spread on one game: redundant or contradictory
     players = [L.get("player") for L in legs if L["kind"] == "prop"]
     if len(players) != len(set(players)) or len(players) > 2:
         return False
