@@ -938,5 +938,273 @@
         "record": "130-88-4"
       }
     }
+  },
+  "nba": {
+    "sport": "nba",
+    "name": "Load-Management Overs",
+    "rule": "Final quarter of the NBA season (incl. playoffs): bet the OVER when the closing total has dropped 1.5+ points from the opening total.",
+    "why": "Late-season totals get bet down on rest/injury news (stars sitting, tanking, slowed playoff pace), but replacement-level rotations defend worse and the drop overshoots. Moderate-low confidence: the market moves are only recorded through 2022 and again in 2026, so 2023-25 can't be tested.",
+    "key": [
+      "tot",
+      "late_season+total_down",
+      "game",
+      "over",
+      "all"
+    ],
+    "split": 2019,
+    "all": {
+      "n": 459,
+      "wins": 258,
+      "losses": 196,
+      "pushes": 5,
+      "win_pct": 0.5682819383259912,
+      "units": 38.54545454545456,
+      "roi": 0.08397702515349578,
+      "z": 1.9109262560229385,
+      "p": 0.028007029185221133,
+      "ci_lo": -0.0021565808828828137,
+      "ci_hi": 0.17011063118987438,
+      "max_dd": 13.090909090909104,
+      "seasons": 11,
+      "pos_seasons": 8,
+      "pct_pos_seasons": 0.7272727272727273
+    },
+    "train": {
+      "n": 296,
+      "wins": 168,
+      "losses": 125,
+      "pushes": 3,
+      "win_pct": 0.5733788395904437,
+      "units": 27.727272727272737,
+      "roi": 0.0936732186732187,
+      "z": 1.7125677216770303,
+      "p": 0.0433960479098941,
+      "ci_lo": -0.013533933648745541,
+      "ci_hi": 0.20088037099518297,
+      "max_dd": 8.63636363636363
+    },
+    "holdout": {
+      "n": 163,
+      "wins": 90,
+      "losses": 71,
+      "pushes": 2,
+      "win_pct": 0.5590062111801242,
+      "units": 10.818181818181825,
+      "roi": 0.06636921360847746,
+      "z": 0.8966862123161232,
+      "p": 0.1849431899310478,
+      "ci_lo": -0.0787023363784597,
+      "ci_hi": 0.21144076359541464,
+      "max_dd": 13.09090909090909
+    },
+    "recent": {
+      "n": 119,
+      "wins": 63,
+      "losses": 54,
+      "pushes": 2,
+      "win_pct": 0.5384615384615384,
+      "units": 3.272727272727278,
+      "roi": 0.027501909854851073,
+      "z": 0.31657262154594873,
+      "p": 0.3757839564412886,
+      "ci_lo": -0.1427710058896467,
+      "ci_hi": 0.19777482559934884,
+      "max_dd": 13.09090909090909
+    },
+    "recent_seasons": [
+      2021,
+      2022,
+      2026
+    ],
+    "by_season": {
+      "2012": {
+        "bets": 20,
+        "units": -2.82,
+        "roi": -0.1409,
+        "record": "9-11-0"
+      },
+      "2013": {
+        "bets": 34,
+        "units": 1.36,
+        "roi": 0.0401,
+        "record": "18-15-1"
+      },
+      "2014": {
+        "bets": 39,
+        "units": 10.64,
+        "roi": 0.2727,
+        "record": "26-13-0"
+      },
+      "2015": {
+        "bets": 50,
+        "units": 8.27,
+        "roi": 0.1655,
+        "record": "30-19-1"
+      },
+      "2016": {
+        "bets": 35,
+        "units": -0.64,
+        "roi": -0.0182,
+        "record": "18-17-0"
+      },
+      "2017": {
+        "bets": 77,
+        "units": 6.09,
+        "roi": 0.0791,
+        "record": "43-33-1"
+      },
+      "2018": {
+        "bets": 41,
+        "units": 4.82,
+        "roi": 0.1175,
+        "record": "24-17-0"
+      },
+      "2019": {
+        "bets": 44,
+        "units": 7.55,
+        "roi": 0.1715,
+        "record": "27-17-0"
+      },
+      "2021": {
+        "bets": 41,
+        "units": 0.09,
+        "roi": 0.0022,
+        "record": "21-19-1"
+      },
+      "2022": {
+        "bets": 50,
+        "units": -8.91,
+        "roi": -0.1782,
+        "record": "21-28-1"
+      },
+      "2026": {
+        "bets": 28,
+        "units": 12.09,
+        "roi": 0.4318,
+        "record": "21-7-0"
+      }
+    }
+  },
+  "ncaam": {
+    "sport": "ncaam",
+    "name": "Blowout Believers",
+    "rule": "Regular season: bet the HOME team's moneyline when its previous game was a blowout win (won by roughly 13+ points) and its opponent's was not.",
+    "why": "College hoops blowouts expose real talent and depth gaps, but the market regresses them like noise. LOW CONFIDENCE: NCAAM was among the most efficient markets tested (6,180 systems, nothing passed the strict gate). This is the steadiest two-period lean, not a proven edge.",
+    "key": [
+      "ml",
+      "prev_blowout_win",
+      "home",
+      "on",
+      "reg"
+    ],
+    "split": 2020,
+    "all": {
+      "n": 3896,
+      "wins": 3004,
+      "losses": 892,
+      "pushes": 0,
+      "win_pct": 0.771047227926078,
+      "units": 80.2068874224585,
+      "roi": 0.02058698342465567,
+      "z": 1.8448293413433836,
+      "p": 0.032531183888622306,
+      "ci_lo": -0.0012852226423523232,
+      "ci_hi": 0.04245918949166366,
+      "max_dd": 23.86111620489053,
+      "seasons": 7,
+      "pos_seasons": 6,
+      "pct_pos_seasons": 0.8571428571428571
+    },
+    "train": {
+      "n": 684,
+      "wins": 535,
+      "losses": 149,
+      "pushes": 0,
+      "win_pct": 0.7821637426900585,
+      "units": 9.681705960019235,
+      "roi": 0.014154540877221103,
+      "z": 0.5620317187964888,
+      "p": 0.28704720421967755,
+      "ci_lo": -0.03520726414467489,
+      "ci_hi": 0.0635163458991171,
+      "max_dd": 15.070723730203714
+    },
+    "holdout": {
+      "n": 3212,
+      "wins": 2469,
+      "losses": 743,
+      "pushes": 0,
+      "win_pct": 0.7686799501867995,
+      "units": 70.52518146243926,
+      "roi": 0.021956781277222684,
+      "z": 1.7665110855178523,
+      "p": 0.038655071714731114,
+      "ci_lo": -0.0024049629858996016,
+      "ci_hi": 0.04631852554034497,
+      "max_dd": 23.861116204890397
+    },
+    "recent": {
+      "n": 1979,
+      "wins": 1514,
+      "losses": 465,
+      "pushes": 0,
+      "win_pct": 0.7650328448711471,
+      "units": 56.48374003498422,
+      "roi": 0.028541556359264388,
+      "z": 1.7345498796653909,
+      "p": 0.04141028178562008,
+      "ci_lo": -0.0037097216927393824,
+      "ci_hi": 0.06079283441126816,
+      "max_dd": 18.89038011989573
+    },
+    "recent_seasons": [
+      2022,
+      2023,
+      2026
+    ],
+    "by_season": {
+      "2018": {
+        "bets": 459,
+        "units": 6.49,
+        "roi": 0.0141,
+        "record": "363-96-0"
+      },
+      "2019": {
+        "bets": 225,
+        "units": 3.19,
+        "roi": 0.0142,
+        "record": "172-53-0"
+      },
+      "2020": {
+        "bets": 686,
+        "units": 24.9,
+        "roi": 0.0363,
+        "record": "548-138-0"
+      },
+      "2021": {
+        "bets": 547,
+        "units": -10.86,
+        "roi": -0.0199,
+        "record": "407-140-0"
+      },
+      "2022": {
+        "bets": 715,
+        "units": 19.8,
+        "roi": 0.0277,
+        "record": "559-156-0"
+      },
+      "2023": {
+        "bets": 698,
+        "units": 30.44,
+        "roi": 0.0436,
+        "record": "540-158-0"
+      },
+      "2026": {
+        "bets": 566,
+        "units": 6.24,
+        "roi": 0.011,
+        "record": "415-151-0"
+      }
+    }
   }
 }

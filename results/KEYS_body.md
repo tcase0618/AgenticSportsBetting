@@ -201,3 +201,67 @@ Profitable seasons: **9/16** · Max drawdown: **40.4u** · 95% CI on ROI: -0.8% 
 </details>
 
 **Runners-up that also survived holdout:** Fade a 5+ point moneyline steam move (2021-25 only, +4.8% on 1,352 bets). Excluded because the 2021+ 'closing' prices failed an integrity check
+
+
+## Load-Management Overs  (NBA)
+**Rule:** Final quarter of the NBA season (incl. playoffs): bet the OVER when the closing total has dropped 1.5+ points from the opening total.
+**Why it works:** Late-season totals get bet down on rest/injury news (stars sitting, tanking, slowed playoff pace), but replacement-level rotations defend worse and the drop overshoots. Moderate-low confidence: the market moves are only recorded through 2022 and again in 2026, so 2023-25 can't be tested.
+
+| Sample | Bets | W-L-P | Win% | ROI | Units | z | p (one-sided) |
+|---|---|---|---|---|---|---|---|
+| All seasons | 459 | 258-196-5 | 56.8% | +8.4% | +38.5 | 1.91 | 0.0280 |
+| Discovery (<2019) | 296 | 168-125-3 | 57.3% | +9.4% | +27.7 | 1.71 | 0.0434 |
+| Holdout (2019+) | 163 | 90-71-2 | 55.9% | +6.6% | +10.8 | 0.90 | 0.1849 |
+| Last 3 seasons (2021-2026) | 119 | 63-54-2 | 53.8% | +2.8% | +3.3 | 0.32 | 0.3758 |
+
+Profitable seasons: **8/11** · Max drawdown: **13.1u** · 95% CI on ROI: -0.2% to +17.0%
+
+<details><summary>Season by season</summary>
+
+| Season | Bets | Record | Units | ROI |
+|---|---|---|---|---|
+| 2012 | 20 | 9-11-0 | -2.82 | -14.1% |
+| 2013 | 34 | 18-15-1 | +1.36 | +4.0% |
+| 2014 | 39 | 26-13-0 | +10.64 | +27.3% |
+| 2015 | 50 | 30-19-1 | +8.27 | +16.6% |
+| 2016 | 35 | 18-17-0 | -0.64 | -1.8% |
+| 2017 | 77 | 43-33-1 | +6.09 | +7.9% |
+| 2018 | 41 | 24-17-0 | +4.82 | +11.8% |
+| 2019 | 44 | 27-17-0 | +7.55 | +17.2% |
+| 2021 | 41 | 21-19-1 | +0.09 | +0.2% |
+| 2022 | 50 | 21-28-1 | -8.91 | -17.8% |
+| 2026 | 28 | 21-7-0 | +12.09 | +43.2% |
+
+</details>
+
+**Runners-up that also survived holdout:** Overs when both teams' last game went way over AND the total is rising (+13.8% on 471 bets, holdout +19.5%). It narrowly missed the pre-registered discovery cutoff (p=0.064), so it stays a runner-up rather than being promoted after seeing holdout; Road favorite after an upset loss as a favorite, ATS (544 bets, +9.2%)
+
+
+## Blowout Believers  (NCAAM)
+**Rule:** Regular season: bet the HOME team's moneyline when its previous game was a blowout win (won by roughly 13+ points) and its opponent's was not.
+**Why it works:** College hoops blowouts expose real talent and depth gaps, but the market regresses them like noise. LOW CONFIDENCE: NCAAM was among the most efficient markets tested (6,180 systems, nothing passed the strict gate). This is the steadiest two-period lean, not a proven edge.
+
+| Sample | Bets | W-L-P | Win% | ROI | Units | z | p (one-sided) |
+|---|---|---|---|---|---|---|---|
+| All seasons | 3896 | 3004-892-0 | 77.1% | +2.1% | +80.2 | 1.84 | 0.0325 |
+| Discovery (<2020) | 684 | 535-149-0 | 78.2% | +1.4% | +9.7 | 0.56 | 0.2870 |
+| Holdout (2020+) | 3212 | 2469-743-0 | 76.9% | +2.2% | +70.5 | 1.77 | 0.0387 |
+| Last 3 seasons (2022-2026) | 1979 | 1514-465-0 | 76.5% | +2.9% | +56.5 | 1.73 | 0.0414 |
+
+Profitable seasons: **6/7** · Max drawdown: **23.9u** · 95% CI on ROI: -0.1% to +4.2%
+
+<details><summary>Season by season</summary>
+
+| Season | Bets | Record | Units | ROI |
+|---|---|---|---|---|
+| 2018 | 459 | 363-96-0 | +6.49 | +1.4% |
+| 2019 | 225 | 172-53-0 | +3.19 | +1.4% |
+| 2020 | 686 | 548-138-0 | +24.90 | +3.6% |
+| 2021 | 547 | 407-140-0 | -10.86 | -2.0% |
+| 2022 | 715 | 559-156-0 | +19.80 | +2.8% |
+| 2023 | 698 | 540-158-0 | +30.44 | +4.4% |
+| 2026 | 566 | 415-151-0 | +6.24 | +1.1% |
+
+</details>
+
+**Runners-up that also survived holdout:** Neutral-site UNDERS (6,970 games): the under hits ~52.4%. That breaks even at -110 but returns about +2.5% at reduced-juice (-105) books. Neutral-site OVERS lose 9.4%, the clearest structural bias in college basketball
