@@ -1,0 +1,33 @@
+name: Nightly bet card
+
+on:
+  schedule:
+    - cron: "47 15 * * *"   # 11:47 AM ET (15:47 UTC, EDT) every day; lines are posted, games haven't started
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  card:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pandas numpy scipy scikit-learn requests pyarrow openpyxl
+      - name: Refresh NBA box scores
+        run: python -m nightly.refresh_box || echo "box refresh failed; props will use stale projections"
+      - name: Build tonight's card
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python -m nightly.card --live
+      - name: Commit card + line history
+        run: |
+          git config user.name "nightly-card-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add results/cards data/live data/processed/nba_player_box.csv.gz || true
+          git commit -m "Nightly card $(date -u +%F)" || echo "nothing to commit"
+          git push

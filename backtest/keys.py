@@ -78,10 +78,10 @@ KEYS = {
     "nba": dict(
         name="Load-Management Overs",
         key=("tot", "late_season+total_down", "game", "over", "all"),
-        rule="Final quarter of the NBA season (incl. playoffs): bet the OVER when the closing total has dropped "
-             "1.5+ points from the opening total.",
+        rule="Home team's 78th+ game of the season (the last few regular-season games and the playoffs): "
+             "bet the OVER when the closing total has dropped 1.5+ points from the opening total.",
         why="Late-season totals get bet down on rest/injury news (stars sitting, tanking, slowed playoff pace), "
-            "but replacement-level rotations defend worse and the drop overshoots. Moderate-low confidence: "
+            "but replacement-level rotations defend worse and the drop overshoots. ~60% of qualifying games are playoff games. Moderate-low confidence: "
             "the market moves are only recorded through 2022 and again in 2026, so 2023-25 can't be tested.",
         runners_up=[
             "Overs when both teams' last game went way over AND the total is rising (+13.8% on 471 bets, "

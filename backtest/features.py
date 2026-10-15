@@ -18,7 +18,7 @@ import pandas as pd
 from .core import no_vig_probs, DEFAULT_JUICE
 
 
-def standardize(df: pd.DataFrame) -> pd.DataFrame:
+def standardize(df: pd.DataFrame, keep_upcoming: bool = False) -> pd.DataFrame:
     df = df.copy()
     df["date"] = pd.to_datetime(df["date"])
     for c in ["spread_home_odds", "spread_away_odds", "over_odds", "under_odds"]:
@@ -37,7 +37,8 @@ def standardize(df: pd.DataFrame) -> pd.DataFrame:
     for c in ["home_ml", "away_ml"]:
         bad = df[c].abs() < 100
         df.loc[bad, c] = np.nan
-    df = df.dropna(subset=["home_score", "away_score"])
+    if not keep_upcoming:
+        df = df.dropna(subset=["home_score", "away_score"])
     df = df.sort_values(["date", "home"]).reset_index(drop=True)
     df["gid"] = np.arange(len(df))
 
@@ -151,6 +152,8 @@ def elo(g: pd.DataFrame, k=20.0, hfa=55.0, revert=0.25, mov=True) -> pd.DataFram
         if mov:
             d = abs(row.margin)
             mult = np.log(d + 1) * 2.2 / ((rh + adv - ra if res == 1 else ra - rh - adv) * 0.001 + 2.2)
+        if np.isnan(row.margin):  # upcoming game: record pre-game ratings, no update
+            continue
         delta = k * mult * (res - exp_h)
         r[row.home], r[row.away] = rh + delta, ra - delta
     g = g.copy()
@@ -160,9 +163,9 @@ def elo(g: pd.DataFrame, k=20.0, hfa=55.0, revert=0.25, mov=True) -> pd.DataFram
     return g
 
 
-def build(df: pd.DataFrame, elo_params: dict | None = None) -> pd.DataFrame:
+def build(df: pd.DataFrame, elo_params: dict | None = None, keep_upcoming: bool = False) -> pd.DataFrame:
     """Full pipeline -> one row per game with home_* / away_* pre-game features."""
-    g = standardize(df)
+    g = standardize(df, keep_upcoming)
     g = elo(g, **(elo_params or {}))
     L = team_features(long_table(g))
     feat_cols = ["rest", "first_of_season", "prev_margin", "prev_ats", "prev_home", "prev_ou",

@@ -184,6 +184,9 @@ def roles(S: float) -> dict:
     }
 
 
+# late-season game-number thresholds (= 75% of the median season length incl. playoffs, 2008-2025)
+LATE_GP = {"nba": 78, "nhl": 78, "mlb": 133, "ncaam": 29, "nfl": 14, "ncaaf": 9}
+
 PHASES = {
     "all": lambda g: pd.Series(True, g.index),
     "reg": lambda g: g["playoff"] == 0,
@@ -196,7 +199,8 @@ PHASES = {
 
 
 # --------------------------------------------------------------- generation
-def side_strategies(g, pnl, S, sport, markets=("ats", "ml")):
+def side_strategies(g, pnl, S, sport, markets=("ats", "ml"), only=None):
+    """only=(condition, role) restricts generation to one cell (fast path for ledgers)."""
     vh, va = team_view(g, "h"), team_view(g, "a")
     conds, rls = team_conditions(S, sport), roles(S)
     ch = {k: f(vh).fillna(False).astype(bool) for k, f in conds.items()}
@@ -205,9 +209,13 @@ def side_strategies(g, pnl, S, sport, markets=("ats", "ml")):
     ra = {k: f(va).fillna(False).astype(bool) for k, f in rls.items()}
     out = {}
     for cname in conds:
+        if only and cname != only[0]:
+            continue
         exclusive_h = ch[cname] & (~ca[cname] if cname != "any" else True)
         exclusive_a = ca[cname] & (~ch[cname] if cname != "any" else True)
         for rname in rls:
+            if only and rname != only[1]:
+                continue
             if cname == "any" and rname == "any":
                 continue
             mh = exclusive_h & rh[rname]
@@ -247,7 +255,8 @@ def total_filters(g: pd.DataFrame, S: float, sport: str, total_q: dict) -> dict:
         "big_spread": g["spread_home"].abs() >= 1.0 * S,
         "pickem": g["spread_home"].abs() <= 0.15 * S,
         "early_season": (g["h_gp"] < 4) & (g["a_gp"] < 4),
-        "late_season": (g["h_gp"] >= 0.75 * g.groupby("season")["h_gp"].transform("max")),
+        # fixed, known-in-advance threshold (team's Nth game of the season incl. playoffs)
+        "late_season": g["h_gp"] >= LATE_GP.get(sport, 0.75 * g.groupby("season")["h_gp"].transform("max")),
         "prev_both_over_big": (g["h_prev_ou"] >= 0.8 * S) & (g["a_prev_ou"] >= 0.8 * S),
         "prev_both_under_big": (g["h_prev_ou"] <= -0.8 * S) & (g["a_prev_ou"] <= -0.8 * S),
         "playoff": g["playoff"] == 1,
@@ -283,12 +292,14 @@ def total_filters(g: pd.DataFrame, S: float, sport: str, total_q: dict) -> dict:
     return {k: v.fillna(False).astype(bool) for k, v in f.items()}
 
 
-def total_strategies(g, pnl, S, sport, total_q):
+def total_strategies(g, pnl, S, sport, total_q, only=None):
     filt = total_filters(g, S, sport, total_q)
     names = list(filt)
     out = {}
     combos = [(a,) for a in names] + [
         (a, b) for a, b in itertools.combinations(names, 2) if a != "all" and b != "all"]
+    if only:
+        combos = [tuple(only.split("+"))]
     for combo in combos:
         m = filt[combo[0]].copy()
         for c in combo[1:]:
@@ -300,3 +311,30 @@ def total_strategies(g, pnl, S, sport, total_q):
             if len(s):
                 out[("tot", "+".join(combo), "game", "over" if side == "o" else "under", "all")] = s
     return out
+
+
+# --------------------------------------------------------------- live qualification
+def side_masks(g, S, sport, cond, role, direction="on", phase="all"):
+    """Which games qualify for a side strategy, and which side to bet.
+    Returns (bet_home, bet_away) boolean Series. Uses only pre-game columns, so it
+    works for unplayed games (no result needed)."""
+    vh, va = team_view(g, "h"), team_view(g, "a")
+    cf, rf = team_conditions(S, sport)[cond], roles(S)[role]
+    ch, ca = cf(vh).fillna(False).astype(bool), cf(va).fillna(False).astype(bool)
+    if cond != "any":
+        ch, ca = ch & ~ca, ca & ~ch
+    mh = ch & rf(vh).fillna(False).astype(bool)
+    ma = ca & rf(va).fillna(False).astype(bool)
+    if cond == "any":
+        ma = ma & ~mh
+    ph = PHASES[phase](g).fillna(False).astype(bool)
+    mh, ma = mh & ph, ma & ph
+    return (mh, ma) if direction == "on" else (ma, mh)
+
+
+def total_mask(g, S, sport, total_q, combo):
+    f = total_filters(g, S, sport, total_q)
+    m = pd.Series(True, g.index)
+    for c in combo.split("+"):
+        m &= f[c]
+    return m & g["total"].notna()
