@@ -29,6 +29,7 @@ MARKETS = ["receiving_yards", "receptions", "rushing_yards", "passing_yards", "c
 OPP_EXP = 0.5                 # partial opponent adjustment (fixed a priori)
 EV_GRID = [0.0, 0.02, 0.04, 0.06, 0.08, 0.10, 0.15]
 W_GRID = [0.25, 0.5, 0.75, 1.0]
+STARTER_SHARE = 0.96   # mean starter share of team attempts, 2006-2015
 
 
 def _ewsum(df, col, key="player_id"):
@@ -46,6 +47,13 @@ def player_frame() -> pd.DataFrame:
     team = w.groupby(["game_id", "team"])[["attempts", "carries", "targets"]].sum().add_prefix("team_").reset_index()
     w = w.merge(team, on=["game_id", "team"], how="left")
     w = w[w.position.isin(["QB", "RB", "WR", "TE"])].copy()
+    # listed starting QB (nflverse games table, known at kickoff): QB props are conditional on starting
+    g = pd.read_csv(ROOT / "data" / "raw" / "nfl_games.csv", usecols=["game_id", "home_qb_id", "away_qb_id"])
+    st = pd.concat([g[["game_id", "home_qb_id"]].set_axis(["game_id", "player_id"], axis=1),
+                    g[["game_id", "away_qb_id"]].set_axis(["game_id", "player_id"], axis=1)]).dropna()
+    st["qb_start"] = 1
+    w = w.merge(st.drop_duplicates(), on=["game_id", "player_id"], how="left")
+    w["qb_start"] = w["qb_start"].fillna(0)
     w["gameday"] = pd.to_datetime(w["gameday"])
     w = w.sort_values(["player_id", "gameday", "game_id"]).reset_index(drop=True)
     cols = ["targets", "receptions", "receiving_yards", "carries", "rushing_yards", "attempts", "completions",
@@ -100,7 +108,8 @@ def raw_projection(w: pd.DataFrame) -> pd.DataFrame:
     w["raw_receptions"] = tg * w["cr"] * a_cr
     w["raw_receiving_yards"] = tg * w["ypt"] * a_ypt
     w["raw_rushing_yards"] = w["car_share"].fillna(0) * w["p_rush_att"] * w["ypc"] * adj("ypc")
-    att = w["att_share"].fillna(0) * w["p_pass_att"]
+    # starting QB: share of team attempts a starter takes (pre-2016 constant), not his backup history
+    att = np.where(w["qb_start"].eq(1), STARTER_SHARE, w["att_share"].fillna(0)) * w["p_pass_att"]
     w["raw_passing_yards"] = att * w["ypa"] * adj("ypa")
     w["raw_completions"] = att * w["cmp"] * adj("cmp")
     return w
@@ -112,7 +121,7 @@ def eligible(w: pd.DataFrame, market: str) -> pd.Series:
         return base & w.position.isin(["WR", "TE", "RB"]) & (w["tgt_share"] >= 0.05)
     if market == "rushing_yards":
         return base & w.position.isin(["RB", "QB"]) & (w["car_share"] >= 0.08)
-    return base & w.position.eq("QB") & (w["att_share"] >= 0.6)
+    return base & w.position.eq("QB") & w["qb_start"].eq(1)
 
 
 class Dist:
@@ -248,7 +257,8 @@ def run():
             continue
         wgt, ev = best[0], best[1]
         b = betting(test.assign(p=wgt * test.model_p_over + (1 - wgt) * test.mkt_p_over), "p", ev)
-        out.append(f"BLEND {lab}: w={wgt}, ev>={ev} (cal ROI {best[2]:+.1%}, n={best[3]}) -> TEST {fmt(b)}")
+        flag = "" if best[2] > 0 else "  [no config profitable on calibration -> rule says NO BETS; test shown for transparency]"
+        out.append(f"BLEND {lab}: w={wgt}, ev>={ev} (cal ROI {best[2]:+.1%}, n={best[3]}) -> TEST {fmt(b)}{flag}")
         for (m, sd), x in b.groupby(["market", "side"]):
             out.append(f"    test {m} {sd}: {fmt(x)}")
     return p, B, out
