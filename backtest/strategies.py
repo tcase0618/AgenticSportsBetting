@@ -67,7 +67,7 @@ def team_view(g: pd.DataFrame, side: str) -> pd.DataFrame:
         v["ml_move"] = v["p_mkt"] - (po_h if side == "h" else po_a)
     else:
         v["ml_move"] = np.nan
-    for c in ("st_starts", "st_wvm10", "st_ra5", "st_backup"):
+    for c in ("st_starts", "st_wvm10", "st_ra5", "st_backup", "power"):
         if c not in v:
             v[c], v["o_" + c] = np.nan, np.nan
     return v
