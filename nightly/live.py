@@ -301,6 +301,8 @@ def nfl_wind(slate: pd.DataFrame) -> pd.Series:
 def today_slate(sport: str, day: datetime | None = None, board: pd.DataFrame | None = None) -> pd.DataFrame:
     now = day or datetime.now()
     g = espn_games(sport, now)
+    if g.empty or "completed" not in g:
+        return pd.DataFrame()
     g = g[~g.completed]
     if g.empty:
         return g

@@ -1,0 +1,3 @@
+date,espn_id,start,home,away,home_name,away_name,home_score,away_score,completed,neutral,conference_game,playoff,espn_spread_home,espn_total,espn_home_ml,espn_away_ml,indoor,city,state,home_ml,away_ml,spread_home,spread_home_odds,spread_away_odds,total,over_odds,under_odds,best,source,season
+2026-10-16,401908026,2026-10-16T22:00Z,CLE,TB,Cleveland Guardians,Tampa Bay Rays,,,False,0,1,1,,,,,False,Cleveland,Ohio,,,,,,,,,,,2026
+2026-10-16,401908034,2026-10-17T01:00Z,LAD,MIL,Los Angeles Dodgers,Milwaukee Brewers,,,False,0,1,1,,,,,False,Los Angeles,California,,,,,,,,,,,2026

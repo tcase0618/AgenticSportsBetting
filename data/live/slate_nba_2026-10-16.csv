@@ -1,0 +1,13 @@
+date,espn_id,start,home,away,home_name,away_name,home_score,away_score,completed,neutral,conference_game,playoff,espn_spread_home,espn_total,espn_home_ml,espn_away_ml,indoor,city,state,home_ml,away_ml,spread_home,spread_home_odds,spread_away_odds,total,over_odds,under_odds,best,source,season
+2026-10-16,401898406,2026-10-16T23:00Z,Orlando Magic,Miami Heat,Orlando Magic,Miami Heat,,,False,0,0,0,,,,,True,Orlando,FL,,,,,,,,,,,2027
+2026-10-16,401898407,2026-10-16T23:00Z,Philadelphia 76ers,Boston Celtics,Philadelphia 76ers,Boston Celtics,,,False,0,0,0,,,,,True,Philadelphia,PA,,,,,,,,,,,2027
+2026-10-16,401908946,2026-10-16T23:00Z,Detroit Pistons,Toronto Raptors,Detroit Pistons,Toronto Raptors,,,False,0,0,0,,,,,True,Detroit,MI,,,,,,,,,,,2027
+2026-10-16,401914126,2026-10-16T23:00Z,Indiana Pacers,Milwaukee Bucks,Indiana Pacers,Milwaukee Bucks,,,False,0,0,0,,,,,True,Indianapolis,IN,,,,,,,,,,,2027
+2026-10-16,401898408,2026-10-17T00:00Z,Dallas Mavericks,Atlanta Hawks,Dallas Mavericks,Atlanta Hawks,,,False,0,0,0,,,,,True,Dallas,TX,,,,,,,,,,,2027
+2026-10-16,401898843,2026-10-17T00:00Z,San Antonio Spurs,Sacramento Kings,San Antonio Spurs,Sacramento Kings,,,False,0,0,0,,,,,True,San Antonio,TX,,,,,,,,,,,2027
+2026-10-16,401901822,2026-10-17T00:00Z,Memphis Grizzlies,Charlotte Hornets,Memphis Grizzlies,Charlotte Hornets,,,False,0,0,0,,,,,True,Memphis,TN,,,,,,,,,,,2027
+2026-10-16,401906509,2026-10-17T00:00Z,New Orleans Pelicans,Washington Wizards,New Orleans Pelicans,Washington Wizards,,,False,0,0,0,,,,,True,New Orleans,LA,,,,,,,,,,,2027
+2026-10-16,401908943,2026-10-17T00:00Z,Chicago Bulls,Minnesota Timberwolves,Chicago Bulls,Minnesota Timberwolves,,,False,0,0,0,,,,,True,Chicago,IL,,,,,,,,,,,2027
+2026-10-16,401898409,2026-10-17T02:00Z,Golden State Warriors,Portland Trail Blazers,Golden State Warriors,Portland Trail Blazers,,,False,0,0,0,,,,,True,San Francisco,CA,,,,,,,,,,,2027
+2026-10-16,401908948,2026-10-17T02:00Z,Phoenix Suns,Utah Jazz,Phoenix Suns,Utah Jazz,,,False,0,0,0,,,,,True,Phoenix,AZ,,,,,,,,,,,2027
+2026-10-16,401898719,2026-10-17T02:30Z,Los Angeles Lakers,Denver Nuggets,Los Angeles Lakers,Denver Nuggets,,,False,0,0,0,,,,,True,Los Angeles,CA,,,,,,,,,,,2027

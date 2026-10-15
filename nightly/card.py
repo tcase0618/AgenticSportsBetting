@@ -96,7 +96,8 @@ def team_legs(sport: str, date: pd.Timestamp, history: pd.DataFrame | None = Non
                 pick = f"{r['home'] if home_side else r['away']} ML"
             legs.append(dict(sport=sport, strategy=name, tier=tier, event=f"{r['away']} @ {r['home']}",
                              market=mkt, pick=pick, price=float(price) if pd.notna(price) else -110.0,
-                             _home=r["home"], _away=r["away"], _home_side=home_side, _line=r.get("spread_home"),
+                             _home=r["home"], _away=r["away"], _home_name=r.get("home_name"), _away_name=r.get("away_name"),
+                             _home_side=home_side, _line=r.get("spread_home"),
                              _total=r.get("total")))
     # attach truth for replay grading
     for L in legs:

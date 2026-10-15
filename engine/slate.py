@@ -57,6 +57,14 @@ def _strategy_roi():
 
 
 # ------------------------------------------------------------------ legs
+def _local_day(ts) -> str:
+    try:
+        t = pd.Timestamp(ts)
+        t = t.tz_localize("UTC") if t.tzinfo is None else t
+        return str(t.tz_convert("America/New_York").date())
+    except Exception:
+        return ""
+
 def _fair(a, b):
     if a is None or b is None or a != a or b != b:
         return np.nan, np.nan
@@ -76,7 +84,8 @@ def game_legs(sport: str, g: pd.Series) -> list[dict]:
         if price is None or price != price or fair_p != fair_p:
             return
         legs.append(dict(sport=sport, event=ev, game_key=ev, kind=kind, side=side, pick=label, line=line,
-                         price=float(price), book=src, p_fair=fair_p, p=fair_p, edge_src=""))
+                         price=float(price), book=src, p_fair=fair_p, p=fair_p, edge_src="",
+                         home=g.home_name, away=g.away_name, day=_local_day(g.get("commence"))))
     ph, pa = _fair(g.get("home_ml"), g.get("away_ml"))
     add("ml", "home", f"{g.home_name} ML", "home_ml", ph)
     add("ml", "away", f"{g.away_name} ML", "away_ml", pa)
@@ -99,10 +108,16 @@ def game_legs(sport: str, g: pd.Series) -> list[dict]:
 
 def apply_strategy_edges(legs: list[dict], key_legs: list[dict]):
     """Mark legs a validated strategy fires on: p = (1 + ROI/2) / fair decimal (shrunk)."""
+    from nightly.live import norm_name
     roi = _strategy_roi()
     for k in key_legs:
+        hs = {norm_name(x) for x in (k.get("_home"), k.get("_home_name")) if isinstance(x, str)}
+        as_ = {norm_name(x) for x in (k.get("_away"), k.get("_away_name")) if isinstance(x, str)}
         for L in legs:
-            same_game = (k.get("_home") and k["_home"] in L["event"]) or k["event"] == L["event"]
+            if L["sport"] == "ufc":
+                same_game = k["event"] == L["event"]
+            else:   # exact team identity on BOTH sides (no substring matches)
+                same_game = norm_name(L.get("home", "")) in hs and norm_name(L.get("away", "")) in as_
             if not same_game:
                 continue
             kind = {"ml": "ml", "ats": "spread", "tot": "total"}.get(k["market"])
@@ -148,7 +163,7 @@ def prop_legs_nba(board: pd.DataFrame) -> list[dict]:
         if pr and len(pr) > 2:
             team_home = pr[2]
         for side, price, p, pf in (("over", r.over_odds, p_over, po), ("under", r.under_odds, 1 - p_over, pu)):
-            legs.append(dict(sport="nba", event=ev, game_key=ev, kind="prop", side=side,
+            legs.append(dict(sport="nba", event=ev, game_key=ev, kind="prop", side=side, day=_local_day(r.commence),
                              pick=f"{r.player} {side.upper()} {r.line:g} pts", line=float(r.line), price=float(price),
                              book="FanDuel", p_fair=pf, p=p, edge_src="props model" if pr else "",
                              player=r.player, team_home=team_home))
@@ -268,43 +283,51 @@ PLAYBOOK = {
 }
 
 
-def cross_game(legs_all: list[dict], max_legs=20, weekend=None) -> dict:
-    """Day's tickets per the backtested playbook. Edge legs = legs a validated strategy fired on, one per game,
-    ordered like the backtest's 'best' (tier first, then shortest price). Exact pricing: product of prices."""
+def cross_game_day(legs_day: list[dict], day: str, max_legs=20) -> dict:
+    """One calendar day's tickets per the backtested playbook. Exact pricing (product of prices)."""
     from backtest.parlay import TIER_OF
-    weekend = (datetime.now().weekday() >= 5) if weekend is None else weekend
+    weekend = pd.Timestamp(day).weekday() >= 5 if day else False
     per_game = {}
-    for L in legs_all:
+    for L in legs_day:
         e = L["p"] * american_to_decimal(L["price"]) - 1
         key = L["game_key"]
-        if key not in per_game or (e, L["p"]) > (per_game[key][0], per_game[key][1]["p"]):
+        if key not in per_game or (bool(L["edge_src"]), e) > (bool(per_game[key][1]["edge_src"]), per_game[key][0]):
             per_game[key] = (e, L)
-    ranked = sorted(per_game.values(), key=lambda x: (x[0], x[1]["p"]), reverse=True)
 
     def ticket(sel, stake=None, note=""):
         dec = float(np.prod([american_to_decimal(L["price"]) for _, L in sel]))
         p = float(np.prod([L["p"] for _, L in sel]))
-        return dict(n_legs=len(sel), legs=" + ".join(f"{L['pick']} ({fmt_american(L['price'])})" for _, L in sel),
+        return dict(day=day, n_legs=len(sel), legs=" + ".join(f"{L['pick']} ({fmt_american(L['price'])})" for _, L in sel),
                     odds=fmt_american(decimal_to_american(dec)), hit_prob=p, ev=p * dec - 1,
                     one_in=round(1 / max(p, 1e-12)), stake=stake, note=note)
-    edge = [(e, L) for e, L in ranked if L["edge_src"] and TIER_OF.get(L["edge_src"], "C") in ("A", "B")]
-    edge.sort(key=lambda x: (TIER_OF.get(x[1]["edge_src"], "C"), -american_to_decimal(x[1]["price"]) * -1))
+    edge = [(e, L) for e, L in per_game.values() if L["edge_src"] and TIER_OF.get(L["edge_src"], "C") in ("A", "B")]
     edge.sort(key=lambda x: (TIER_OF.get(x[1]["edge_src"], "C"), american_to_decimal(x[1]["price"])))
     plan = []
     for kind, stake, note in PLAYBOOK["weekend" if weekend else "weekday"]:
         if kind == "best3" and len(edge) >= 3:
             plan.append(dict(type="Best 3", **ticket(edge[:3], stake, note)))
         elif kind == "best3" and len(edge) == 2:
-            plan.append(dict(type="Best 2", **ticket(edge, stake, "Only 2 edge legs today: 2-leg parlay (hit 46%, ROI +12%)")))
+            plan.append(dict(type="Best 2", **ticket(edge, stake, "Only 2 edge legs: 2-leg parlay (hit 46%, ROI +12%)")))
         elif kind == "all" and len(edge) >= 4:
             plan.append(dict(type="All edge legs", **ticket(edge, stake, note)))
         elif kind == "rr2" and len(edge) >= 3:
             for a, b in itertools.combinations(edge, 2):
                 plan.append(dict(type="RR2", **ticket([a, b], stake, note)))
-    return dict(plan=plan, edge_legs=edge,
-                every_game=ticket(ranked, 0, "No edge on most legs: backtest -82% (NFL Sundays). Shown for fun.")
-                if len(ranked) >= 2 else None,
-                moonshot=ticket(ranked[:max_legs], 0.1, "Lottery: tiny stake only") if len(ranked) >= max_legs else None)
+    # moonshot: the 20 MOST LIKELY legs on different games that are not negative-EV (no longshot chasing)
+    safe = sorted([x for x in per_game.values() if x[0] >= -0.005 and x[1]["price"] >= -600], key=lambda x: -x[1]["p"])
+    moon = ticket(safe[:max_legs], 0.1, "Lottery: 20 most-likely non-negative-EV legs. Tiny stake only.") \
+        if len(safe) >= max_legs else None
+    every = []
+    for sp in sorted({L["sport"] for _, L in per_game.values()}):
+        g = sorted([x for x in per_game.values() if x[1]["sport"] == sp], key=lambda x: -x[1]["p"])
+        if 2 <= len(g) <= 16:
+            every.append(dict(type=f"Every {sp.upper()} game", **ticket(g, 0, "Backtest: NFL every-game Sunday parlay -82% ROI. For fun only.")))
+    return dict(plan=plan, edge_legs=edge, moonshot=moon, every_game=every)
+
+
+def cross_game(legs_all: list[dict]) -> dict:
+    days = sorted({L.get("day", "") for L in legs_all if L.get("day")})
+    return {d: cross_game_day([L for L in legs_all if L.get("day") == d], d) for d in days}
 
 
 # ------------------------------------------------------------------ build
@@ -361,8 +384,10 @@ def to_excel(res: dict) -> Path:
         top.to_excel(xw, sheet_name="Top SGPs", index=False)
         S.to_excel(xw, sheet_name="All SGPs", index=False)
         L.to_excel(xw, sheet_name="All Legs", index=False)
-        X = pd.DataFrame(res["cross"].get("plan", []) + [dict(type=k, **v) for k, v in res["cross"].items()
-                                                         if isinstance(v, dict)])
+        rows = []
+        for day, X in res["cross"].items():
+            rows += X.get("plan", []) + X.get("every_game", []) + ([dict(type="Moonshot", **X["moonshot"])] if X.get("moonshot") else [])
+        X = pd.DataFrame(rows)
         X.to_excel(xw, sheet_name="Cross-game Parlays", index=False)
     return f
 
@@ -396,21 +421,23 @@ def render(res: dict, per_sport=2) -> str:
                        f"**{s.bet_if_fanduel_at_least}** | {s.edge_sources} |")
         if S.empty:
             out += ["| – | – | No SGP contains a validated edge leg tonight | – | – | – | – |"]
-    X = res["cross"]
-    out += ["", "## Tonight's parlay playbook (exact prices, backtested structure)", ""]
-    if X.get("plan"):
-        out += ["| Ticket | Legs | Odds | Hit prob | Stake | Why |", "|---|---|---|---|---|---|"]
-        for t in X["plan"]:
-            out.append(f"| **{t['type']}** | {t['legs']} | **{t['odds']}** | {t['hit_prob']*100:.1f}% | {t['stake']}u | {t['note']} |")
-    else:
-        out += [f"Only {len(X.get('edge_legs', []))} top/second-tier edge leg(s) tonight: bet them as singles. No parlay forced.", ""]
-    if X.get("every_game"):
-        t = X["every_game"]
-        out += [f"Every-game parlay ({t['n_legs']} legs): **{t['odds']}**: 1 in {t['one_in']:,}, EV {t['ev']*100:+.1f}%", ""]
-    if X.get("moonshot"):
-        t = X["moonshot"]
-        out += [f"🚀 20-leg moonshot: **{t['odds']}**: true hit chance 1 in {t['one_in']:,}, EV {t['ev']*100:+.1f}%. "
-                f"Lottery stake only (≤0.1u).", f"> {t['legs']}", ""]
+    for day, X in res["cross"].items():
+        wkend = pd.Timestamp(day).weekday() >= 5
+        out += ["", f"## {pd.Timestamp(day):%A %b %d}: parlay playbook ({'WEEKEND' if wkend else 'weekday'} rules, exact prices)", ""]
+        plan = X.get("plan", [])
+        if plan:
+            out += ["| Ticket | Legs | Odds | Hit prob | Stake | Why |", "|---|---|---|---|---|---|"]
+            rr = [t for t in plan if t["type"] == "RR2"]
+            for t in [t for t in plan if t["type"] != "RR2"] + rr[:10]:
+                out.append(f"| **{t['type']}** | {t['legs']} | **{t['odds']}** | {t['hit_prob']*100:.1f}% | {t['stake']}u | {t['note']} |")
+            if len(rr) > 10:
+                out.append(f"| … | {len(rr) - 10} more round-robin tickets in the Excel file | | | | |")
+        else:
+            out += [f"{len(X.get('edge_legs', []))} top/second-tier edge leg(s): bet as singles, no parlay forced."]
+        if X.get("moonshot"):
+            t = X["moonshot"]
+            out += ["", f"🚀 20-leg moonshot: **{t['odds']}**: true hit chance 1 in {t['one_in']:,} "
+                    f"(model EV {t['ev']*100:+.1f}%). {t['stake']}u max.", f"> {t['legs']}"]
     if res["notes"]:
         out += ["", "_Feed notes: " + "; ".join(res["notes"]) + "_"]
     return "\n".join(out)
