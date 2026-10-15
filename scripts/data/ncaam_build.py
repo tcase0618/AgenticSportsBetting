@@ -129,11 +129,26 @@ def main():
     g['playoff'] = (g.season_type == 3).astype(int)  # NCAA tournament / NIT / other postseason
     g['home_score'] = g.home_score.astype(int)
     g['away_score'] = g.away_score.astype(int)
+    # conferences (season-specific) from hoopR schedules: conference id -> short name
+    sch = []
+    for f in sorted(glob.glob(os.path.join(RAW, 'espn_schedules', 'mbb_schedule_*.parquet'))):
+        x = pd.read_parquet(f, columns=['game_id', 'season', 'home_conference_id', 'away_conference_id',
+                                        'groups_id', 'groups_short_name'])
+        sch.append(x)
+    sch = pd.concat(sch)
+    cm = sch.dropna(subset=['groups_id', 'groups_short_name'])
+    cm = cm.assign(cid=pd.to_numeric(cm.groups_id, errors='coerce')).groupby('cid').groups_short_name.agg(
+        lambda v: v.value_counts().index[0])
+    sch['home_conference'] = pd.to_numeric(sch.home_conference_id, errors='coerce').map(cm)
+    sch['away_conference'] = pd.to_numeric(sch.away_conference_id, errors='coerce').map(cm)
+    sch['game_id'] = pd.to_numeric(sch.game_id, errors='coerce')
+    g = g.merge(sch.drop_duplicates('game_id')[['game_id', 'home_conference', 'away_conference']],
+                on='game_id', how='left')
     g['espn_game_id'] = g.game_id
     g['espn_home_id'] = g.home_id
     g['espn_away_id'] = g.away_id
     cols = ['date', 'season', 'home', 'away', 'home_score', 'away_score', 'neutral', 'spread_home', 'total',
-            'home_ml', 'away_ml', 'spread_open_home', 'total_open', 'playoff', 'notes', 'spread_home_src',
+            'home_ml', 'away_ml', 'spread_open_home', 'total_open', 'playoff', 'home_conference', 'away_conference', 'notes', 'spread_home_src',
             'total_src', 'ml_src', 'tr_home_ml', 'tr_away_ml', 'espn_game_id', 'espn_home_id', 'espn_away_id']
     for c in cols:
         if c not in g:

@@ -75,4 +75,19 @@ KEYS = {
             "the 2021+ 'closing' prices failed an integrity check",
         ],
     ),
+    "nba": dict(
+        name="Load-Management Overs",
+        key=("tot", "late_season+total_down", "game", "over", "all"),
+        rule="Final quarter of the NBA season (incl. playoffs): bet the OVER when the closing total has dropped "
+             "1.5+ points from the opening total.",
+        why="Late-season totals get bet down on rest/injury news (stars sitting, tanking, slowed playoff pace), "
+            "but replacement-level rotations defend worse and the drop overshoots. Moderate-low confidence: "
+            "the market moves are only recorded through 2022 and again in 2026, so 2023-25 can't be tested.",
+        runners_up=[
+            "Overs when both teams' last game went way over AND the total is rising (+13.8% on 471 bets, "
+            "holdout +19.5%). It narrowly missed the pre-registered discovery cutoff (p=0.064), so it stays a "
+            "runner-up rather than being promoted after seeing holdout",
+            "Road favorite after an upset loss as a favorite, ATS (544 bets, +9.2%)",
+        ],
+    ),
 }
