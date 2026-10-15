@@ -127,7 +127,7 @@ def main(cache=None):
     p["p_blend_script_nm"] = 0.75 * p.p_mkt + 0.25 * p.p_script_nm
     p["p_sel_ll"] = (1 - best_ll.w_mod - best_ll.w_script) * p.p_mkt + best_ll.w_mod * p.p_mod + best_ll.w_script * p.p_script
     p["p_sel_roi"] = (1 - best_roi.w_mod - best_roi.w_script) * p.p_mkt + best_roi.w_mod * p.p_mod + best_roi.w_script * p.p_script
-    S2 = scores(p, ["p_blend", "p_blend_script", "p_blend_script_nm", "p_sel_ll", "p_sel_roi"])
+    S2 = scores(p, ["p_blend_script", "p_blend_script_nm", "p_sel_ll", "p_sel_roi"])
     S = pd.concat([S, S2])
     roi_cols = ["p_mkt", "p_mod", "p_script", "p_script_nm", "p_blend", "p_blend_script", "p_blend_script_nm",
                 "p_sel_ll", "p_sel_roi"]

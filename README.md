@@ -5,6 +5,20 @@ A leak-free, out-of-sample backtest that searches thousands of betting systems a
 price, and keeps only systems that survive validation on seasons they never saw.
 
 **→ The seven chosen strategies with full stats: [`results/KEYS.md`](results/KEYS.md)**
+**→ The daily super engine (strategies + props + parlays + auditor): [`results/SUPER_ENGINE.md`](results/SUPER_ENGINE.md)**
+
+## Daily use
+
+```bash
+python -m engine.super card --date 2025-12-06 --replay   # rebuild any past night from only what was known that morning, then grade it
+export ODDS_API_KEY=...                                   # free key: the-odds-api.com
+python -m engine.super card     # morning: tonight's graded card (strategies, NBA props, parlays) -> journal
+python -m engine.super close    # before games: closing lines -> CLV
+python -m engine.super settle   # next morning: results -> learner / calibration update
+python -m engine.super status   # strategy states (ACTIVE / WATCH / RETIRED), journal P&L, CLV
+```
+GitHub Actions (`.github/workflows/nightly-card.yml`) runs this loop daily and commits each card to `results/cards/`.
+Add `ODDS_API_KEY` under repo Settings → Secrets → Actions.
 
 ## Data (≈280,000 games and fights, all real closing lines)
 
@@ -36,7 +50,7 @@ mirrors of those sources. `scripts/data/*_build.py` rebuilds each file from its 
 5. **Key selection** (`backtest/keys.py`): among survivors, prefer out-of-sample strength, sample size,
    season-to-season consistency and a real causal mechanism over raw ROI.
 
-## Run it
+## Research pipeline
 
 ```bash
 pip install pandas numpy scikit-learn scipy openpyxl

@@ -1,33 +1,45 @@
-name: Nightly bet card
+name: Super engine daily loop
 
 on:
   schedule:
-    - cron: "47 15 * * *"   # 11:47 AM ET (15:47 UTC, EDT) every day; lines are posted, games haven't started
-  workflow_dispatch: {}
+    - cron: "47 15 * * *"   # 11:47 AM ET (EDT): settle yesterday -> learn -> build + journal today's card
+    - cron: "33 22 * * *"   # 6:33 PM ET (EDT): capture closing lines for open bets -> CLV (before results)
+  workflow_dispatch:
+    inputs:
+      step:
+        description: "card | close | settle"
+        default: "card"
 
 permissions:
   contents: write
 
 jobs:
-  card:
+  loop:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - run: pip install pandas numpy scipy scikit-learn requests pyarrow openpyxl
-      - name: Refresh NBA box scores
-        run: python -m nightly.refresh_box || echo "box refresh failed; props will use stale projections"
-      - name: Build tonight's card
+      - name: Morning - refresh box scores, settle, build card
+        if: github.event.schedule == '47 15 * * *' || (github.event_name == 'workflow_dispatch' && inputs.step != 'close')
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
-        run: python -m nightly.card --live
-      - name: Commit card + line history
         run: |
-          git config user.name "nightly-card-bot"
+          python -m nightly.refresh_box || echo "box refresh failed"
+          python -m engine.super settle || echo "settle failed"
+          python -m engine.super card
+      - name: Evening - closing lines / CLV
+        if: github.event.schedule == '33 22 * * *' || (github.event_name == 'workflow_dispatch' && inputs.step == 'close')
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python -m engine.super close
+      - name: Commit card, journal, line history
+        run: |
+          git config user.name "super-engine-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add results/cards data/live data/processed/nba_player_box.csv.gz || true
-          git commit -m "Nightly card $(date -u +%F)" || echo "nothing to commit"
+          git add results/cards data/live data/journal data/processed/nba_player_box.csv.gz || true
+          git commit -m "Super engine $(date -u +%F-%H%M)" || echo "nothing to commit"
           git push
