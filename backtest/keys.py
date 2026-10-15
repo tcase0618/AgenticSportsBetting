@@ -90,4 +90,18 @@ KEYS = {
             "Road favorite after an upset loss as a favorite, ATS (544 bets, +9.2%)",
         ],
     ),
+    "ncaam": dict(
+        name="Blowout Believers",
+        key=("ml", "prev_blowout_win", "home", "on", "reg"),
+        rule="Regular season: bet the HOME team's moneyline when its previous game was a blowout win "
+             "(won by roughly 13+ points) and its opponent's was not.",
+        why="College hoops blowouts expose real talent and depth gaps, but the market regresses them like "
+            "noise. LOW CONFIDENCE: NCAAM was among the most efficient markets tested (6,180 systems, nothing "
+            "passed the strict gate). This is the steadiest two-period lean, not a proven edge.",
+        runners_up=[
+            "Neutral-site UNDERS (6,970 games): the under hits ~52.4%. That breaks even at -110 but returns "
+            "about +2.5% at reduced-juice (-105) books. Neutral-site OVERS lose 9.4%, the clearest structural "
+            "bias in college basketball",
+        ],
+    ),
 }
