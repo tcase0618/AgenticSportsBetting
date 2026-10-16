@@ -183,7 +183,9 @@ def make_cfg(feats=FEATS, use_goalie=True, use_rls=True, q_game=0.0003, prior_va
 def team_shots_script(res: pd.DataFrame, g: pd.DataFrame, tb: pd.DataFrame) -> pd.DataFrame:
     """Scripted shots per side = league + own shots-for pace + opp shots-against pace, plus an online RLS on the
     scripted goals (coupling shots to the goal script). Learned only from earlier games."""
-    x = res.merge(g[["game_id", "nhl_id", "home_sf_abs", "away_sf_abs", "home_sa_abs", "away_sa_abs", "lg_sf"]], on="game_id")
+    cols = ["game_id"] + [c for c in ("nhl_id", "home_sf_abs", "away_sf_abs", "home_sa_abs", "away_sa_abs", "lg_sf")
+                          if c not in res.columns]
+    x = res.merge(g[cols], on="game_id")
     act = tb.set_index(["nhl_id", "team"]).sf.to_dict()
     rls = RLS(3, lam=0.9995, p0=0.5, noise=40.0)
     out = []
@@ -218,31 +220,37 @@ def player_layer(res: pd.DataFrame, shots: pd.DataFrame, bp: pd.DataFrame) -> pd
         lk[(r.nhl_id, r.home)] = (r.shots_home, r.mu_home)
         lk[(r.nhl_id, r.away)] = (r.shots_away, r.mu_away)
     sk = sk[[k in lk for k in zip(sk.nhl_id, sk.team)]].sort_values(["date", "nhl_id"])
-    prior_sog = {"D": 0.065, "C": 0.095, "L": 0.095, "R": 0.095}
-    prior_pts = {"D": 0.25, "C": 0.45, "L": 0.42, "R": 0.42}
+    prior_sog = {"D": 0.040, "C": 0.065, "L": 0.065, "R": 0.065}
+    prior_pts = {"D": 0.11, "C": 0.17, "L": 0.17, "R": 0.17}
     st = {}
     dec = 0.95
-    disp = [0.15]
+    disp = 0.15
+    ppg_lg = 2.7                                   # skater points per team goal (learned online)
     out = []
-    for r in sk.itertuples(index=False):
-        tsh, tgl = lk[(r.nhl_id, r.team)]
-        a = st.get(r.player_id)
-        if a is None:
-            a = dict(s=0.0, ts=0.0, p=0.0, tg=0.0, n=0)
-            st[r.player_id] = a
-        ps, pp = prior_sog.get(r.pos, 0.09), prior_pts.get(r.pos, 0.4)
-        share = (a["s"] + ps * 60) / (a["ts"] + 60)
-        pshare = (a["p"] + pp * 8) / (a["tg"] + 8)
-        mu_sog = share * tsh
-        mu_pts = pshare * tgl
-        out.append((r.nhl_id, r.date, r.player, r.player_id, r.team, r.pos, share, mu_sog, 1 / disp[0], r.sog,
-                    pshare, mu_pts, r.points, r.goals, a["n"], tsh, tgl))
-        # learn
-        if r.toi_s is not None and r.toi_s == r.toi_s and r.toi_s > 0:
-            a["s"] = dec * a["s"] + r.sog; a["ts"] = dec * a["ts"] + r.team_sog
-            a["p"] = dec * a["p"] + r.points; a["tg"] = dec * a["tg"] + r.team_goals
-            a["n"] += 1
-            disp[0] = float(np.clip(0.999 * disp[0] + 0.001 * (((r.sog - mu_sog) ** 2 - mu_sog) / max(mu_sog ** 2, 0.05)), 0.01, 1.0))
+    for (nid, team), grp in sk.groupby(["nhl_id", "team"], sort=False):
+        tsh, tgl = lk[(nid, team)]
+        raw_s, raw_p = [], []
+        for r in grp.itertuples(index=False):
+            a = st.setdefault(r.player_id, dict(s=0.0, ts=0.0, p=0.0, tg=0.0, n=0))
+            ps, pp = prior_sog.get(r.pos, 0.06), prior_pts.get(r.pos, 0.15)
+            raw_s.append((a["s"] + ps * 60) / (a["ts"] + 60))
+            raw_p.append((a["p"] + pp * 15) / (a["tg"] + 15))
+        # lineup is known: shares of the dressed skaters sum to 1 (shots) / to league points-per-goal (points)
+        ns, npt = sum(raw_s), sum(raw_p)
+        for r, rs, rp in zip(grp.itertuples(index=False), raw_s, raw_p):
+            a = st[r.player_id]
+            share, pshare = rs / ns, rp / npt * ppg_lg
+            mu_sog, mu_pts = share * tsh, pshare * tgl
+            out.append((r.nhl_id, r.date, r.player, r.player_id, r.team, r.pos, share, mu_sog, 1 / disp, r.sog,
+                        pshare, mu_pts, r.points, r.goals, a["n"], tsh, tgl))
+            if r.toi_s is not None and r.toi_s == r.toi_s and r.toi_s > 0:
+                a["s"] = dec * a["s"] + r.sog; a["ts"] = dec * a["ts"] + r.team_sog
+                a["p"] = dec * a["p"] + r.points; a["tg"] = dec * a["tg"] + r.team_goals
+                a["n"] += 1
+                disp = float(np.clip(0.999 * disp + 0.001 * (((r.sog - mu_sog) ** 2 - mu_sog) / max(mu_sog ** 2, 0.05)), 0.01, 1.0))
+        tg_ = grp.team_goals.iloc[0]
+        if tg_ > 0:
+            ppg_lg = 0.995 * ppg_lg + 0.005 * grp.points.sum() / tg_
     p = pd.DataFrame(out, columns=["nhl_id", "date", "player", "player_id", "team", "pos", "share_of_team", "mu_sog",
                                    "nb_r", "sog", "share_pts", "mu_pts", "points", "goals", "n_prior", "team_shots_script",
                                    "team_goals_script"])

@@ -416,7 +416,8 @@ def write_report(full, g, tune, best, abl, kp, km, kres, secs):
     att = pd.DataFrame(att_rows).set_index("bucket")
     # variance decomposition: share of script-vs-market disagreement explained by components
     y = x.dropna(subset=["p_home_mkt"])
-    comp_var = {c: np.var(y[f"{c}_home_eff"] - y[f"{c}_away_eff"]) for c in ("sp", "park") if f"{c}_home_eff" in y}
+    comp_var = {"sp (home-minus-away runs)": np.var(y.sp_home_eff - y.sp_away_eff),
+                "park (total runs)": np.var(y.park_home_eff + y.park_away_eff)}
     # final RLS coefficients are not stored; report correlation of rls term with residual
     bets = {f"script edge>3% ({lab})": bet_sim(full[(full.season >= a) & (full.season <= b)], "p_home_script", 0.03)
             for lab, a, b in (("2016-20", 2016, 2020), ("2021+", 2021, 2026))}
@@ -465,7 +466,7 @@ def write_report(full, g, tune, best, abl, kp, km, kres, secs):
         "",
         "## Error attribution (2021+)",
         md_table(att), "",
-        "Spread of learned component effects on the home-minus-away run expectation (variance, runs^2): "
+        "Spread of learned component effects (variance, runs^2): "
         + ", ".join(f"{k}: {v:.3f}" for k, v in comp_var.items()),
         "",
         "## Does anything beat the closing line?",
