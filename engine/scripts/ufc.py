@@ -468,6 +468,11 @@ def main():
     u = u.drop_duplicates("ri")
     u["date"] = pd.to_datetime(u.date)
     u["season"] = u.date.dt.year
+    # corner (assigned pre-fight): +1 if the attacking side is the red corner (fighter_a when corner == red/blue).
+    # greco's own side order is NOT used (ufcstats lists the winner first).
+    ci = FEATS.index("corner")
+    red1 = np.where(u.corner == "red/blue", np.where(u.a_is_1, 1.0, -1.0), 0.0)
+    X1[u.ri.values, ci] = red1; X2[u.ri.values, ci] = -red1
 
     def oriented(P6, a_is_1):     # greco side-1/2 -> A/B
         P6 = np.asarray(P6)
