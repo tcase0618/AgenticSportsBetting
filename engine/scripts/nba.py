@@ -2,10 +2,12 @@
 NBA adapter for the script-then-learn engine (see SPEC.md).
 
     python -m engine.scripts.nba            -> results/scripts/nba_games.parquet, nba_players.parquet,
-                                               nba_learning.md (+ nba_*.csv tables)
+                                               nba_learning.md (+ nba_props_*.csv tables)   (~4-5 min)
+    python -m engine.scripts.nba report     -> rewrite nba_learning.md from the cached last run
 
 Layers (all strictly sequential; a game's script only uses games on EARLIER dates):
-  1. CORE   engine.scripts.base.ScriptEngine Kalman team off/def ratings.  We drive it date-by-date: every game
+  1. CORE   engine.scripts.base.ScriptEngine Kalman team off/def ratings (via FastEngine: identical maths, O(1)
+            window sums for the noise/rho update; verified equal to 1e-13).  We drive it date-by-date: every game
             of date D is scripted before any game of date D is learned (stricter than base.run).
   2. ENRICH possession-based team tendencies from the player box (shifted EWMAs -> only earlier games):
             pace, ORtg/DRtg, 3PA rate (off/allowed), opp 3P% allowed, FT rate, OREB%, TOV%; schedule (rest, b2b,
@@ -679,7 +681,7 @@ def ml_logloss(df):
     pm = devig(x.home_ml.values, x.away_ml.values, "odds_ratio")[0]
     ps = norm.cdf(x.margin / x.sd_margin)
     pb = norm.cdf(x.margin_b / x.sd_margin)
-    f = lambda q: -np.mean(y * np.log(np.clip(q, 1e-4, 1 - 1e-4)) + (1 - y) * np.log(1 - np.clip(q, 1e-4, 1 - 1e-4)))
+    f = lambda q, y: -np.mean(y * np.log(np.clip(q, 1e-4, 1 - 1e-4)) + (1 - y) * np.log(1 - np.clip(q, 1e-4, 1 - 1e-4)))
     return x.assign(_y=y, _pm=pm, _ps=ps, _pb=pb), f
 
 
@@ -815,7 +817,10 @@ def main():
     P[pcols].to_parquet(OUT / "nba_players.parquet", index=False)
     print(f"players written {len(P)} ({time.time() - T0:.0f}s)")
     PE = props_eval(P)
-
+    import pickle
+    (ROOT / "data" / "raw" / "scripts").mkdir(parents=True, exist_ok=True)
+    pickle.dump((G, ABL, pd.DataFrame(tune_rows), pd.DataFrame(rls_rows), core_kw, LAM, RIDGE, coefs, P, PE, ALPHA),
+                open(ROOT / "data" / "raw" / "scripts" / "_nba_report_inputs.pkl", "wb"))
     write_report(G, ABL, pd.DataFrame(tune_rows), pd.DataFrame(rls_rows), core_kw, LAM, RIDGE, coefs, P, PE, ALPHA)
     print(f"done ({time.time() - T0:.0f}s)")
 
@@ -838,8 +843,8 @@ def write_report(G, ABL, TUNE, RLSG, core_kw, LAM, RIDGE, coefs, P, PE, ALPHA):
                                   total_market=("err_total_mkt", lambda x: x.abs().mean()),
                                   w_mkt_margin=("w_mkt_margin", "last"), w_mkt_total=("w_mkt_total", "last")).reset_index()
     X, f = ml_logloss(d)
-    llr = X.groupby("season").apply(lambda x: pd.Series({"ml_ll_script": f(x._ps.values), "ml_ll_blend": f(x._pb.values),
-                                                         "ml_ll_market": f(x._pm)})).reset_index()
+    llr = X.groupby("season").apply(lambda x: pd.Series({"ml_ll_script": f(x._ps.values, x._y.values), "ml_ll_blend": f(x._pb.values, x._y.values),
+                                                         "ml_ll_market": f(x._pm.values, x._y.values)})).reset_index()
     lc = lc.merge(llr, on="season", how="left")
     r21 = dm[dm.season >= REPORT]
     L.append("# NBA script-then-learn: learning report\n")
@@ -887,6 +892,30 @@ def write_report(G, ABL, TUNE, RLSG, core_kw, LAM, RIDGE, coefs, P, PE, ALPHA):
         n2, r2 = ats_roi(*arr(r21), bt) if bt else (0, np.nan)
         rows.append(dict(bet=nm, thr=bt, roi_2016_20=best_roi, n_2021p=n2, roi_2021p=r2))
     L.append("\n**Betting the closing number at −110** (edge threshold picked on 2016-20 with n≥300, reported on 2021+):\n")
+    L.append(md_table(pd.DataFrame(rows)))
+    # betting the OPENER (script is pre-game; openers exist 2016-22 and most of 2026)
+    rows = []
+    for nm, pc, kind in (("spread @open: script", "margin", "m"), ("total @open: script", "total", "t")):
+        def arr(x):
+            o_ = -x.spread_open_home.values if kind == "m" else x.total_open.values
+            c_ = -x.spread_home.values if kind == "m" else x.total_line.values
+            act = (x.home_score - x.away_score).values if kind == "m" else (x.home_score + x.away_score).values
+            return x[pc].values, o_, act, c_
+        trO = tr.dropna(subset=["spread_open_home", "total_open"])
+        rpO = r21.dropna(subset=["spread_open_home", "total_open"])
+        bt, best_roi = None, -9
+        for thr in (1, 2, 3, 4, 6):
+            pr_, o_, act, _ = arr(trO)
+            n_, r_ = ats_roi(pr_, o_, act, thr)
+            if n_ >= 300 and r_ > best_roi:
+                bt, best_roi = thr, r_
+        pr_, o_, act, c_ = arr(rpO)
+        n2, r2 = ats_roi(pr_, o_, act, bt)
+        sel = np.abs(pr_ - o_) >= bt
+        clv = float(np.mean(np.sign(pr_ - o_)[sel] * (c_ - o_)[sel]))
+        rows.append(dict(bet=nm, thr=bt, roi_2016_20=best_roi, n_2021p=n2, roi_2021p=r2, mean_clv_pts=clv))
+    L.append("\n**Betting the OPENING number at −110** with the same rule. Openers exist for 2016-22 and 81% of 2026. "
+             "`mean_clv_pts` is the average line move in the bet's favour from open to close:\n")
     L.append(md_table(pd.DataFrame(rows)))
     L.append("\n## Learning curve (per season, MAE in points; ML log loss)\n")
     L.append(md_table(lc))
@@ -948,7 +977,8 @@ def write_report(G, ABL, TUNE, RLSG, core_kw, LAM, RIDGE, coefs, P, PE, ALPHA):
                       .set_axis(["config", "margin 2016-20", "margin 2021+", "total 2016-20", "total 2021+"], axis=1)))
     mk = ABL[ABL.period == "2021+"].iloc[0]
     L.append(f"\nClosing line on the same 2021+ games: margin {mk.mae_margin_mkt:.3f}, total {mk.mae_total_mkt:.3f}.\n")
-    L.append("Core tuning grid (2016-20):\n\n" + md_table(TUNE) + "\n\nRLS grid (2016-20):\n\n" + md_table(RLSG))
+    L.append("Core tuning grid (2016-20):\n\n" + md_table(TUNE) + "\n\nRLS grid (2016-20):\n\n" +
+             md_table(RLSG.astype({"lam": str, "ridge": str})))
     # players
     L.append("\n## Player script\n")
     pr = P[P.season >= REPORT]
@@ -966,11 +996,12 @@ def write_report(G, ABL, TUNE, RLSG, core_kw, LAM, RIDGE, coefs, P, PE, ALPHA):
              "part of the chain carries: team-script error, then minutes error, and the rest is usage/efficiency.\n")
     L.append(md_table(pd.DataFrame(rows)))
     bl = pr[pr.stat == "pts"].copy()
-    bl["bp_bin"] = pd.qcut(bl.blowout_p, 4)
-    bt = bl.groupby("bp_bin", observed=True).apply(lambda x: pd.Series({
+    bl["bp_bin"] = pd.qcut(bl.blowout_p, 4, labels=["bp Q1 (low)", "Q2", "Q3", "Q4 (high)"])
+    bl["role"] = np.where(bl.tier.isin(["S34+", "S28-34"]), "starter 28+ min", np.where(bl.tier.str.startswith("S"), "other starter", "bench"))
+    bt = bl.groupby(["role", "bp_bin"], observed=True).apply(lambda x: pd.Series({
         "n": len(x), "pred_min_ratio": (x.min_exp / x.min_e).mean(), "actual_min_ratio": (x.minutes / x.min_e).mean()})).reset_index()
-    L.append("\n**Blowout minutes model, 34+ min starters and others pooled** (pts rows, 2021+): predicted vs actual "
-             "minutes relative to the EWMA, by quartile of scripted blowout probability:\n")
+    L.append("\n**Blowout minutes model** (pts rows, 2021+): predicted vs actual minutes relative to the player's EWMA, "
+             "by role and by quartile of scripted P(|margin|≥15):\n")
     L.append(md_table(bt.astype({"bp_bin": str})))
     # props
     L.append("\n## Points props vs real lines (2024-25 = choose, 2025-26 = report)\n")
@@ -998,4 +1029,9 @@ def write_report(G, ABL, TUNE, RLSG, core_kw, LAM, RIDGE, coefs, P, PE, ALPHA):
 CONCLUSION_PLACEHOLDER = "<!-- conclusions -->"
 
 if __name__ == "__main__":
-    main()
+    import pickle
+    import sys
+    if len(sys.argv) > 1 and sys.argv[1] == "report":          # re-write the report from the last run's outputs
+        write_report(*pickle.load(open(ROOT / "data" / "raw" / "scripts" / "_nba_report_inputs.pkl", "rb")))
+    else:
+        main()

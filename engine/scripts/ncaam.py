@@ -277,9 +277,9 @@ def run_layers(d, groups=tuple(GROUPS), lam=0.9997, ridge=30.0, bg_window=1500, 
 
 
 def score(o, d, seasons, market_only=True):
-    sel = d.season.isin(seasons).values
+    sel = d.season.isin(seasons).to_numpy().copy()
     if market_only:
-        sel &= np.isfinite(d.spread_home.values) & np.isfinite(d.total.values)
+        sel = sel & np.isfinite(d.spread_home.values) & np.isfinite(d.total.values)
     am = (d.home_score - d.away_score).values[sel]; at = (d.home_score + d.away_score).values[sel]
     return dict(mae_margin=mae(o.margin.values[sel] - am), mae_total=mae(o.total.values[sel] - at),
                 mae_margin_mkt=mae(-d.spread_home.values[sel] - am), mae_total_mkt=mae(d.total.values[sel] - at),
@@ -292,8 +292,8 @@ def main():
     g = load_games()
     print(f"games {len(g)}")
     tune = range(START, TUNE_END + 1); rep = range(REPORT, 2027)
-    grid = [dict(q_game=qg, carry=ca) for qg, ca in ((0.05, 0.6), (0.15, 0.6), (0.15, 0.8), (0.3, 0.8), (0.15, 0.9),
-                                                     (0.3, 0.9))]
+    grid = [dict(q_game=qg, carry=ca) for qg, ca in ((0.05, 0.6), (0.15, 0.8), (0.3, 0.9), (0.6, 0.9),
+                                                     (1.0, 0.9), (0.3, 0.97), (0.6, 0.97), (1.0, 0.97))]
     best, TUNE = None, []
     import os, pickle
     cache = os.environ.get("NCAAM_CORE_CACHE")
@@ -426,8 +426,8 @@ def write_report(G, ABL, TUNE, RG, core_kw, LAM, RIDGE, coefs):
                                   total_market=("err_total_mkt", lambda x: x.abs().mean()),
                                   w_mkt_m=("w_mkt_margin", "last"), w_mkt_t=("w_mkt_total", "last")).reset_index()
     X, f = ml_logloss(d)
-    llr = X.groupby("season").apply(lambda x: pd.Series({"ml_ll_script": f(x._ps.values), "ml_ll_blend": f(x._pb.values),
-                                                         "ml_ll_market": f(x._pm)})).reset_index()
+    llr = X.groupby("season").apply(lambda x: pd.Series({"ml_ll_script": f(x._ps.values, x._y.values), "ml_ll_blend": f(x._pb.values, x._y.values),
+                                                         "ml_ll_market": f(x._pm.values, x._y.values)})).reset_index()
     L.append("\n## Learning curve\n\nAll games (script only):\n")
     L.append(md_table(lc))
     L.append("\nGames with closing lines (`_l` = script on the same games):\n")
