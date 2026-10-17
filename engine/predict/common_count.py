@@ -917,7 +917,9 @@ def render_report(cfg, d, P, sel_tab, win_kind, sc_tab, score_kind, season_tab, 
     L.append(f"Evaluation fixed at {cfg.hist_from}+ seasons (season refits; for season S the model sees only seasons < S, restricted "
              f"to the last k seasons, or all seasons with exponential recency weights 0.5^(age/half-life)). Data start 2016, so "
              f"'last 6' and 'all' differ only by the 2016 season for {cfg.hist_from}. High-confidence tier = pick probability ≥{cfg.hi_tier:.0%}.\n")
-    L.append(f"Columns without a prefix = the chosen model (**{win_kind}**, score model {score_kind}); `lr_full_*` = the all-feature "
+    L.append((f"Columns without a prefix = the chosen model (**{win_kind}**, score model {score_kind}); " if win_kind not in ("market", "script") else
+              f"The chosen win model (**{win_kind}**) has no parameters to train, so unprefixed win columns repeat the all-feature logistic; "
+              f"score columns are the {score_kind} score model. ") + "`lr_full_*` = the all-feature "
              "logistic, which has many more parameters and is the better test of whether more data helps.\n")
     L.append(md(hist, ".4f"))
     L.append("\n" + history_verdict(hist, f"MAE_{cfg.unit}_per_side") + "\n")
