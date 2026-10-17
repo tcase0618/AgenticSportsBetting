@@ -1,0 +1,657 @@
+{
+"rho": {
+"nfl|side-total|<=3": {
+"rho": -0.0511,
+"n": 1009
+},
+"nfl|ml-total|<=3": {
+"rho": -0.0086,
+"n": 1051
+},
+"nfl|side-total|3.5-7": {
+"rho": -0.0092,
+"n": 1258
+},
+"nfl|ml-total|3.5-7": {
+"rho": 0.0062,
+"n": 1276
+},
+"nfl|side-total|7.5-14": {
+"rho": 0.0227,
+"n": 437
+},
+"nfl|ml-total|7.5-14": {
+"rho": 0.0268,
+"n": 446
+},
+"nfl|side-prop|receptions": {
+"rho": -0.0093,
+"n": 3312
+},
+"nfl|side-prop|receiving_yards": {
+"rho": -0.0003,
+"n": 5161
+},
+"nfl|ml-prop|receptions": {
+"rho": -0.0225,
+"n": 3390
+},
+"nfl|ml-prop|receiving_yards": {
+"rho": 0.0144,
+"n": 5300
+},
+"nfl|total-prop|receptions": {
+"rho": 0.1231,
+"n": 3361
+},
+"nfl|total-prop|receiving_yards": {
+"rho": 0.1116,
+"n": 5259
+},
+"nfl|pp-op|receptions|receptions": {
+"rho": 0.0252,
+"n": 952
+},
+"nfl|pp-tm|receptions|receptions": {
+"rho": 0.0478,
+"n": 716
+},
+"nfl|pp-tm|receiving_yards|receptions": {
+"rho": -0.0085,
+"n": 2344
+},
+"nfl|pp-op|receiving_yards|receptions": {
+"rho": -0.003,
+"n": 2362
+},
+"nfl|pp-tm|receiving_yards|receiving_yards": {
+"rho": -0.0034,
+"n": 2083
+},
+"nfl|side-prop|rushing_yards": {
+"rho": 0.2268,
+"n": 1943
+},
+"nfl|ml-prop|rushing_yards": {
+"rho": 0.2218,
+"n": 1991
+},
+"nfl|total-prop|rushing_yards": {
+"rho": 0.0562,
+"n": 1977
+},
+"nfl|pp-op|receptions|rushing_yards": {
+"rho": -0.0101,
+"n": 894
+},
+"nfl|pp-tm|receptions|rushing_yards": {
+"rho": 0.033,
+"n": 770
+},
+"nfl|side-prop|passing_yards": {
+"rho": 0.0608,
+"n": 468
+},
+"nfl|ml-prop|passing_yards": {
+"rho": 0.0531,
+"n": 483
+},
+"nfl|total-prop|passing_yards": {
+"rho": 0.2566,
+"n": 479
+},
+"nfl|pp-op|passing_yards|rushing_yards": {
+"rho": 0.0222,
+"n": 127
+},
+"nfl|pp-tm|receiving_yards|rushing_yards": {
+"rho": -0.0561,
+"n": 1370
+},
+"nfl|pp-op|passing_yards|receptions": {
+"rho": -0.0335,
+"n": 211
+},
+"nfl|pp-op|passing_yards|receiving_yards": {
+"rho": -0.0281,
+"n": 257
+},
+"nfl|pp-op|rushing_yards|rushing_yards": {
+"rho": -0.0166,
+"n": 311
+},
+"nfl|pp-op|receiving_yards|rushing_yards": {
+"rho": -0.0393,
+"n": 1493
+},
+"nfl|pp-op|receiving_yards|receiving_yards": {
+"rho": 0.0101,
+"n": 1732
+},
+"nfl|pp-tm|passing_yards|receiving_yards": {
+"rho": 0.1683,
+"n": 453
+},
+"nfl|pp-tm|passing_yards|rushing_yards": {
+"rho": -0.0181,
+"n": 119
+},
+"nfl|pp-tm|rushing_yards|rushing_yards": {
+"rho": 0.0861,
+"n": 289
+},
+"nfl|pp-tm|passing_yards|receptions": {
+"rho": 0.2253,
+"n": 256
+},
+"nfl|pp-op|passing_yards|passing_yards": {
+"rho": -0.0059,
+"n": 13
+},
+"nfl|side-total|14.5+": {
+"rho": -0.0074,
+"n": 42
+},
+"nfl|ml-total|14.5+": {
+"rho": 0.0149,
+"n": 43
+},
+"nba|side-total|3.5-7": {
+"rho": 0.0107,
+"n": 5969
+},
+"nba|ml-total|3.5-7": {
+"rho": 0.0226,
+"n": 6062
+},
+"nba|side-total|7.5-14": {
+"rho": -0.0054,
+"n": 3852
+},
+"nba|ml-total|7.5-14": {
+"rho": 0.0112,
+"n": 3904
+},
+"nba|side-total|<=3": {
+"rho": -0.0114,
+"n": 3508
+},
+"nba|ml-total|<=3": {
+"rho": 0.0041,
+"n": 3567
+},
+"nba|side-prop|ast": {
+"rho": 0.1503,
+"n": 11552
+},
+"nba|side-prop|reb": {
+"rho": 0.0691,
+"n": 11306
+},
+"nba|ml-prop|ast": {
+"rho": 0.1547,
+"n": 11738
+},
+"nba|ml-prop|reb": {
+"rho": 0.0926,
+"n": 11492
+},
+"nba|total-prop|ast": {
+"rho": 0.1397,
+"n": 11580
+},
+"nba|total-prop|reb": {
+"rho": -0.0591,
+"n": 11341
+},
+"nba|pp-tm|ast|reb": {
+"rho": 0.0156,
+"n": 4031
+},
+"nba|pp-tm|ast|ast": {
+"rho": 0.0419,
+"n": 2335
+},
+"nba|side-prop|pts": {
+"rho": 0.1346,
+"n": 17758
+},
+"nba|ml-prop|pts": {
+"rho": 0.1483,
+"n": 18009
+},
+"nba|total-prop|pts": {
+"rho": 0.1692,
+"n": 17856
+},
+"nba|pp-op|ast|pts": {
+"rho": 0.0012,
+"n": 3322
+},
+"nba|pp-tm|ast|pts": {
+"rho": 0.1052,
+"n": 3204
+},
+"nba|pp-op|pts|pts": {
+"rho": 0.021,
+"n": 8394
+},
+"nba|pp-tm|pts|pts": {
+"rho": -0.0182,
+"n": 8540
+},
+"nba|pp-op|pts|reb": {
+"rho": -0.0764,
+"n": 3202
+},
+"nba|side-prop|fg3m": {
+"rho": 0.1519,
+"n": 14569
+},
+"nba|ml-prop|fg3m": {
+"rho": 0.1451,
+"n": 14782
+},
+"nba|total-prop|fg3m": {
+"rho": 0.1575,
+"n": 14612
+},
+"nba|pp-tm|ast|fg3m": {
+"rho": 0.1099,
+"n": 5425
+},
+"nba|pp-tm|fg3m|pts": {
+"rho": -0.02,
+"n": 3248
+},
+"nba|side-total|14.5+": {
+"rho": -0.0143,
+"n": 400
+},
+"nba|ml-total|14.5+": {
+"rho": 0.0324,
+"n": 405
+},
+"nba|pp-op|fg3m|fg3m": {
+"rho": 0.0005,
+"n": 3406
+},
+"nba|pp-op|fg3m|reb": {
+"rho": -0.0169,
+"n": 5562
+},
+"nba|pp-op|fg3m|pts": {
+"rho": 0.0232,
+"n": 4100
+},
+"nba|pp-tm|fg3m|reb": {
+"rho": -0.009,
+"n": 4867
+},
+"nba|pp-op|ast|reb": {
+"rho": 0.0161,
+"n": 4171
+},
+"nba|pp-tm|reb|reb": {
+"rho": 0.0221,
+"n": 2580
+},
+"nba|pp-tm|pts|reb": {
+"rho": 0.0445,
+"n": 3041
+},
+"nba|pp-tm|fg3m|fg3m": {
+"rho": -0.0089,
+"n": 4286
+},
+"nba|pp-op|reb|reb": {
+"rho": 0.023,
+"n": 2209
+},
+"nba|pp-op|ast|fg3m": {
+"rho": 0.0165,
+"n": 5744
+},
+"nba|pp-op|ast|ast": {
+"rho": -0.0061,
+"n": 2315
+},
+"ncaaf|side-total|3.5-7": {
+"rho": 0.0059,
+"n": 2094
+},
+"ncaaf|ml-total|3.5-7": {
+"rho": 0.0697,
+"n": 1974
+},
+"ncaaf|side-total|7.5-14": {
+"rho": 0.0369,
+"n": 1879
+},
+"ncaaf|ml-total|7.5-14": {
+"rho": -0.0011,
+"n": 1730
+},
+"ncaaf|side-total|14.5+": {
+"rho": 0.285,
+"n": 2960
+},
+"ncaaf|ml-total|14.5+": {
+"rho": 0.0733,
+"n": 2250
+},
+"ncaaf|ml-total|<=3": {
+"rho": 0.0156,
+"n": 1278
+},
+"ncaaf|side-total|<=3": {
+"rho": 0.0342,
+"n": 1365
+},
+"ncaam|side-total|7.5-14": {
+"rho": -0.0597,
+"n": 10953
+},
+"ncaam|side-total|<=3": {
+"rho": 0.0104,
+"n": 10433
+},
+"ncaam|side-total|3.5-7": {
+"rho": -0.0341,
+"n": 15162
+},
+"ncaam|side-total|14.5+": {
+"rho": 0.0683,
+"n": 4976
+},
+"ncaam|ml-total|7.5-14": {
+"rho": -0.0763,
+"n": 7882
+},
+"ncaam|ml-total|3.5-7": {
+"rho": -0.0315,
+"n": 11116
+},
+"ncaam|ml-total|14.5+": {
+"rho": 0.0798,
+"n": 3330
+},
+"ncaam|ml-total|<=3": {
+"rho": 0.0052,
+"n": 7698
+},
+"nhl|ml-total|p.6-.7": {
+"rho": 0.0326,
+"n": 3807
+},
+"nhl|ml-total|p<.6": {
+"rho": -0.0106,
+"n": 7236
+},
+"nhl|ml-total|p>.7": {
+"rho": 0.0421,
+"n": 931
+},
+"nhl|ml-prop|points": {
+"rho": 0.3952,
+"n": 28042
+},
+"nhl|total-prop|points": {
+"rho": 0.3696,
+"n": 26355
+},
+"nhl|pp-op|points|points": {
+"rho": -0.0287,
+"n": 9614
+},
+"nhl|pp-tm|points|points": {
+"rho": 0.3282,
+"n": 16475
+},
+"nhl|ml-prop|sog": {
+"rho": -0.0008,
+"n": 19442
+},
+"nhl|total-prop|sog": {
+"rho": 0.0769,
+"n": 18069
+},
+"nhl|pp-tm|sog|sog": {
+"rho": 0.0647,
+"n": 6925
+},
+"nhl|pp-tm|points|sog": {
+"rho": 0.0292,
+"n": 15982
+},
+"nhl|pp-op|points|sog": {
+"rho": 0.0269,
+"n": 15966
+},
+"nhl|pp-op|sog|sog": {
+"rho": 0.0115,
+"n": 6264
+},
+"mlb|ml-total|p<.6": {
+"rho": 0.0071,
+"n": 13371
+},
+"mlb|ml-total|p.6-.7": {
+"rho": 0.041,
+"n": 6931
+},
+"mlb|ml-total|p>.7": {
+"rho": 0.0228,
+"n": 1298
+},
+"mlb|ml-prop|strikeouts": {
+"rho": 0.188,
+"n": 39034
+},
+"mlb|total-prop|strikeouts": {
+"rho": -0.1935,
+"n": 37527
+},
+"mlb|pp-op|strikeouts|strikeouts": {
+"rho": 0.0326,
+"n": 17744
+}
+},
+"cal": {
+"nfl": [
+-0.3129807589433716,
+1.1519088739831027,
+-0.20891779962614337
+],
+"nba": [
+-0.34461303346138755,
+1.0461822102289464,
+-0.07328204647229866
+],
+"ncaaf": [
+-0.2472865902210351,
+1.139531348380411,
+0.0
+],
+"ncaam": [
+-0.2823243148214633,
+1.0607212755331803,
+0.0
+],
+"nhl": [
+-0.076800448813389,
+0.9841462816028205,
+0.044818396250010675
+],
+"mlb": [
+-0.2041437669077833,
+1.0378244893540705,
+-0.012965222597459273
+],
+"ufc": [
+-0.24409243640288397,
+1.226885265790009,
+0.0
+]
+},
+"comb": {
+"nfl": [
+-0.0449466672601751,
+0.5239490491697156,
+0.5126435561938603,
+-0.1110216253900928
+],
+"nba": [
+-0.028257894416265916,
+0.5982021225039156,
+0.48213591262686595,
+0.005200175053233629
+],
+"ncaaf": [
+-0.0241753593216554,
+0.5463315737119206,
+0.5999770290884909,
+0.0
+],
+"ncaam": [
+-0.05849585450196297,
+0.49212399879653623,
+0.5907353961616392,
+0.0
+],
+"nhl": [
+0.01835784327257071,
+0.49703937629573597,
+0.38757220611619525,
+0.04760398196440821
+],
+"mlb": [
+-0.001232982524396747,
+0.5288408354029785,
+0.48472568862490834,
+0.02124519990291058
+],
+"ufc": [
+-0.006517340622833595,
+0.5389867905732791,
+0.6053087496310114,
+0.0
+]
+},
+"beta": {
+"nfl": {
+"passing_yards": 0.32928840820738053,
+"receiving_yards": 0.12904287616970755,
+"receptions": 0.042362578324583844,
+"rushing_yards": 0.23030962584881115
+},
+"nba": {
+"ast": 0.19183322151071097,
+"fg3m": 0.19912155536867998,
+"pts": 0.23232960020858545,
+"reb": 0.011235599728640409
+},
+"ncaaf": {},
+"ncaam": {},
+"nhl": {
+"points": 0.4321411839852373,
+"sog": 0.02982581245438359
+},
+"mlb": {
+"strikeouts": -0.28459278254303283
+}
+},
+"proxy_rate": {
+"nfl": {
+"passing_yards|hi": 0.4842,
+"receiving_yards|2.5": 0.5,
+"receiving_yards|3.5": 0.4878,
+"receiving_yards|4.5": 0.5,
+"receiving_yards|5.5": 0.5455,
+"receiving_yards|6.5": 0.5208,
+"receiving_yards|7.5": 0.5,
+"receiving_yards|8.5": 0.5294,
+"receiving_yards|9.5": 0.5238,
+"receiving_yards|hi": 0.3996,
+"receptions|0.5": 0.5094,
+"receptions|1.5": 0.5461,
+"receptions|2.5": 0.4435,
+"receptions|3.5": 0.3977,
+"receptions|4.5": 0.401,
+"receptions|5.5": 0.3733,
+"receptions|6.5": 0.3828,
+"receptions|7.5": 0.3256,
+"receptions|8.5": 0.3357,
+"receptions|9.5": 0.4727,
+"receptions|hi": 0.4878,
+"rushing_yards|9.5": 0.5,
+"rushing_yards|hi": 0.4056
+},
+"nba": {
+"ast|0.5": 0.5238,
+"ast|1.5": 0.6073,
+"ast|2.5": 0.4545,
+"ast|3.5": 0.4338,
+"ast|4.5": 0.4378,
+"ast|5.5": 0.4398,
+"ast|6.5": 0.4212,
+"ast|7.5": 0.3948,
+"ast|8.5": 0.4068,
+"ast|9.5": 0.411,
+"ast|hi": 0.3761,
+"fg3m|0.5": 0.6652,
+"fg3m|1.5": 0.4537,
+"fg3m|2.5": 0.3834,
+"fg3m|3.5": 0.3394,
+"fg3m|4.5": 0.3078,
+"fg3m|5.5": 0.3462,
+"fg3m|6.5": 0.3333,
+"fg3m|7.5": 0.4762,
+"pts|3.5": 0.4878,
+"pts|4.5": 0.5849,
+"pts|5.5": 0.5814,
+"pts|6.5": 0.5824,
+"pts|7.5": 0.5709,
+"pts|8.5": 0.5297,
+"pts|9.5": 0.5097,
+"pts|hi": 0.4536,
+"reb|1.5": 0.5614,
+"reb|2.5": 0.614,
+"reb|3.5": 0.4899,
+"reb|4.5": 0.4363,
+"reb|5.5": 0.4245,
+"reb|6.5": 0.4178,
+"reb|7.5": 0.4204,
+"reb|8.5": 0.4251,
+"reb|9.5": 0.4518,
+"reb|hi": 0.4177
+},
+"ncaaf": {},
+"ncaam": {},
+"nhl": {
+"points|0.5": 0.4313,
+"points|1.5": 0.2313,
+"points|2.5": 0.1629,
+"sog|0.5": 0.6943,
+"sog|1.5": 0.5839,
+"sog|2.5": 0.403,
+"sog|3.5": 0.3336,
+"sog|4.5": 0.2917,
+"sog|5.5": 0.2796,
+"sog|6.5": 0.3871
+},
+"mlb": {
+"strikeouts|0.5": 0.5556,
+"strikeouts|1.5": 0.5727,
+"strikeouts|2.5": 0.618,
+"strikeouts|3.5": 0.5462,
+"strikeouts|4.5": 0.4837,
+"strikeouts|5.5": 0.434,
+"strikeouts|6.5": 0.4058,
+"strikeouts|7.5": 0.3814,
+"strikeouts|8.5": 0.3629,
+"strikeouts|9.5": 0.4231,
+"strikeouts|hi": 0.2969
+}
+}
+}
