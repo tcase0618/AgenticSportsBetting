@@ -1,0 +1,961 @@
+"""
+Live cross-venue arbitrage / middle / +EV scanner (hunter "arb_scanner").
+
+Venues (all free, key-less, pre-game quotes only; every venue is optional - a failing feed is logged and skipped):
+  Pinnacle      guest.api.arcadia.pinnacle.com   sharp book, main + alternate spreads/totals, ML
+  FanDuel       sbapi.<state>.sportsbook.fanduel.com (nightly.providers.fanduel_board)
+  BetRivers     Kambi offering API (rsiuspa)      main spread/ML/total
+  Bovada        bovada.lv coupon API              main + alternate lines
+  ActionNetwork api.actionnetwork.com/web/v2 scoreboard -> DraftKings, BetMGM, bet365, Caesars, Fanatics,
+                HardRock, theScore, Bally (each its own venue; quotes may lag the book by minutes)
+  Polymarket    Gamma (all ML/spread/total lines) priced at best ask + taker fee from feeSchedule;
+                CLOB /book used to verify depth on every flagged leg
+  Kalshi        trade-api/v2 GAME/SPREAD/TOTAL series priced at yes/no ask + taker fee
+                0.07*mult*P*(1-P) per contract (rounded up per order); orderbook used to verify depth
+  ESPN          scoreboard = master event list (today+tomorrow, ET) + DraftKings fallback + settlement
+
+Signals (per event / market / exact line; sides mapped by team identity, never by listing position):
+  arb     best price per side from two different venues, sum(1/dec) < 1 after fees (exchange legs re-priced
+          from the live order book at the stake size)
+  middle  spread/total gap between venues covering >= 1 integer outcome, sum(1/dec) <= MIDDLE_MAX_COST
+  ev      a venue's price beats the de-vigged (engine.devig odds_ratio) consensus of >= 2 OTHER venues
+          quoting both sides of the same line by >= EV_MIN
+
+  python -m engine.edge_hunt.arb_scanner scan            # one scan, appends results/edge_hunt/arb_log.csv
+  python -m engine.edge_hunt.arb_scanner loop 6 300      # 6 scans, 300 s apart
+  python -m engine.edge_hunt.arb_scanner settle          # grade logged signals from ESPN finals
+"""
+from __future__ import annotations
+
+import json
+import math
+import os
+import re
+import sys
+import time
+from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime, timedelta, timezone
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+import requests
+
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+from engine.devig import devig  # noqa: E402
+
+OUT = ROOT / "results" / "edge_hunt"
+LOG = OUT / "arb_log.csv"
+SCANS = OUT / "arb_scans.csv"
+QUOTES = OUT / "arb_quotes"
+SETTLED = OUT / "arb_settled.csv"
+
+SPORTS = ["nfl", "ncaaf", "nba", "ncaam", "mlb", "nhl", "ufc"]
+EV_MIN = 0.02
+MIN_CONSENSUS = 2
+MIDDLE_MAX_COST = 1.03
+STAKE_USD = 100.0          # stake used to re-price exchange legs from the book
+PM_MAX_SPREAD = 0.05
+HEAD = {"User-Agent": "Mozilla/5.0", "Accept": "application/json"}
+ET = "America/New_York"
+
+ESPN_PATH = {"nfl": "football/nfl", "ncaaf": "football/college-football", "nba": "basketball/nba",
+             "ncaam": "basketball/mens-college-basketball", "mlb": "baseball/mlb", "nhl": "hockey/nhl",
+             "ufc": "mma/ufc"}
+ESPN_GROUPS = {"ncaaf": [80, 81], "ncaam": [50]}
+PIN_LEAGUE = {"nfl": 889, "ncaaf": 880, "nba": 487, "ncaam": 493, "mlb": 246, "nhl": 1456, "ufc": 1624}
+KAMBI_PATH = {"nfl": "american_football/nfl", "ncaaf": "american_football/ncaaf", "nba": "basketball/nba",
+              "ncaam": "basketball/ncaab", "mlb": "baseball/mlb", "nhl": "ice_hockey/nhl", "ufc": "ufc_mma/ufc"}
+BOV_PATH = {"nfl": "football/nfl", "ncaaf": "football/college-football", "nba": "basketball/nba",
+            "ncaam": "basketball/college-basketball", "mlb": "baseball/mlb", "nhl": "hockey/nhl", "ufc": "ufc-mma"}
+AN_LEAGUE = {"nfl": "nfl", "ncaaf": "ncaaf", "nba": "nba", "ncaam": "ncaab", "mlb": "mlb", "nhl": "nhl"}
+AN_BOOKS = {68: "DraftKings", 75: "BetMGM", 79: "bet365", 123: "Caesars", 2988: "Fanatics", 2724: "HardRock",
+            4620: "theScore", 4693: "BallyBet"}
+PM_SERIES = {"nba": 10345, "nfl": 12185, "ncaaf": 12756, "nhl": 10346, "mlb": 3, "ufc": 38, "ncaam": 10470}
+KALSHI = "https://api.elections.kalshi.com/trade-api/v2"
+KX_SERIES = {"nfl": "KXNFL", "ncaaf": "KXNCAAF", "nba": "KXNBA", "ncaam": "KXNCAAMB", "mlb": "KXMLB", "nhl": "KXNHL"}
+EXCHANGES = {"Polymarket", "Kalshi"}
+
+
+# ------------------------------------------------------------------ odds helpers
+def am2dec(a):
+    a = float(a)
+    return 1 + a / 100 if a > 0 else 1 + 100 / abs(a)
+
+
+def dec2am(d):
+    return (d - 1) * 100 if d >= 2 else -100 / (d - 1)
+
+
+def pm_fee(p, fs):
+    fs = fs or {}
+    rate, ex = float(fs.get("rate", 0) or 0), float(fs.get("exponent", 1) or 1)
+    return p * rate * (p * (1 - p)) ** ex
+
+
+def kx_fee(p, mult=1.0, contracts=100):
+    """Kalshi taker fee per contract: ceil(0.07*mult*C*P*(1-P)) cents per order / C."""
+    return math.ceil(0.07 * mult * contracts * p * (1 - p) * 100 - 1e-9) / 100 / contracts
+
+
+def _get(url, params=None, tries=2, timeout=25):
+    last = None
+    for i in range(tries):
+        try:
+            r = requests.get(url, params=params, headers=HEAD, timeout=timeout)
+            if r.status_code == 200:
+                return r.json()
+            last = f"HTTP {r.status_code}"
+            if r.status_code in (400, 401, 403, 404, 451):
+                break
+        except (requests.RequestException, ValueError) as e:
+            last = str(e)[:120]
+        time.sleep(1 + i)
+    raise RuntimeError(f"{url.split('?')[0]}: {last}")
+
+
+def _q(venue, sport, start, teams, market, sel, line, am, size=np.nan, ref=None, alt=False):
+    """One quote. sel: team name (ml/spread) or 'over'/'under'; line: points for sel (spread) or total."""
+    if am is None or (isinstance(am, float) and np.isnan(am)):
+        return None
+    return dict(venue=venue, sport=sport, start=pd.Timestamp(start).tz_convert("UTC") if pd.Timestamp(start).tzinfo
+                else pd.Timestamp(start).tz_localize("UTC"), t1=teams[0], t2=teams[1], market=market, sel=sel,
+                line=None if line is None else float(line), am=float(am), dec=am2dec(am), size=size, ref=ref, alt=alt)
+
+
+# ------------------------------------------------------------------ name matching
+NAME_FIX = {"louisianamonroe": "ulmonroe", "ulm": "ulmonroe", "louisianalafayette": "louisiana",
+            "miamifl": "miami", "miamiflorida": "miami", "southernmiss": "southernmississippi",
+            "appstate": "appalachianstate", "uconn": "connecticut", "umass": "massachusetts"}
+
+
+def norm(s):
+    import unicodedata
+    s = unicodedata.normalize("NFKD", str(s)).encode("ascii", "ignore").decode()
+    s = re.sub(r"\(#?\d+\)", "", s)                       # '(11) Utah', 'Utah (#11)'
+    s = s.lower().replace("&", "and").replace("'", "")
+    s = re.sub(r"\bst\.?$", "state", s.strip())
+    s = re.sub(r"\buniv(ersity)?\b", "", s)
+    s = re.sub(r"[^a-z0-9]", "", s)
+    return NAME_FIX.get(s, s)
+
+
+class Teams:
+    """Alias index of the ESPN teams playing in the scan window, per sport."""
+
+    def __init__(self, events: pd.DataFrame):
+        self.events = events
+        self.alias = {}
+        for _, e in events.iterrows():
+            for side in ("home", "away"):
+                for a in e[f"{side}_aliases"]:
+                    self.alias.setdefault((e.sport, norm(a)), set()).add((e.espn_id, side))
+
+    def resolve(self, sport, name, cand_ids):
+        n = norm(name)
+        hit = {x for x in self.alias.get((sport, n), set()) if x[0] in cand_ids}
+        if hit:
+            return hit
+        # fuzzy: venue name is a suffix/substring of the ESPN display name ('Texans'), or ends with the
+        # ESPN nickname ('JAC Jaguars'); accepted only when exactly one team qualifies
+        out = set()
+        if len(n) < 4:
+            return out
+        ev = self.events[self.events.espn_id.isin(cand_ids)]
+        last = lambda x: norm(str(x).split()[-1]) if str(x).split() else ""
+        for _, e in ev.iterrows():
+            for side in ("home", "away"):
+                full, nick, loc = norm(e[f"{side}_name"]), norm(e[f"{side}_nick"]), norm(e[f"{side}_loc"])
+                if sport == "ufc":   # fighters: same surname (first names vary: Timmy/Timothy)
+                    if last(name) and last(name) == last(e[f"{side}_name"]):
+                        out.add((e.espn_id, side))
+                    continue
+                if full.endswith(n) or full.startswith(n) or n in full or (len(nick) >= 4 and n.endswith(nick)) \
+                        or (len(loc) >= 4 and n.startswith(loc) and n.endswith(last(e[f"{side}_name"]))):
+                    out.add((e.espn_id, side))
+        return out if len(out) == 1 else set()
+
+    def match(self, sport, t1, t2, start, tol_h=4.0, date_only=False):
+        ev = self.events[self.events.sport == sport]
+        if date_only:
+            d = pd.Timestamp(start).date()
+            ev = ev[ev.date_et == d]
+        else:
+            ev = ev[(ev.start - pd.Timestamp(start)).abs() <= pd.Timedelta(hours=tol_h)]
+        ids = set(ev.espn_id)
+        if not ids:
+            return None
+        a, b = self.resolve(sport, t1, ids), self.resolve(sport, t2, ids)
+        for (ia, sa) in a:
+            for (ib, sb) in b:
+                if ia == ib and sa != sb:
+                    return ia, {t1: sa, t2: sb}
+        return None
+
+
+# ------------------------------------------------------------------ ESPN master list
+def espn_events(sport, days) -> list:
+    rows = []
+    for day in days:
+        for grp in ESPN_GROUPS.get(sport, [None]):
+            p = {"dates": day.strftime("%Y%m%d"), "limit": 500}
+            if grp:
+                p["groups"] = grp
+            try:
+                js = _get(f"https://site.api.espn.com/apis/site/v2/sports/{ESPN_PATH[sport]}/scoreboard", p)
+            except Exception:
+                continue
+            for ev in js.get("events", []):
+                comps = ev.get("competitions", [])
+                for c in comps:
+                    cs = c.get("competitors", [])
+                    if len(cs) != 2:
+                        continue
+                    if sport == "ufc":
+                        h, a = cs[0], cs[1]
+                        ent = lambda t: t.get("athlete", {})
+                    else:
+                        d = {t.get("homeAway"): t for t in cs}
+                        if set(d) != {"home", "away"}:
+                            continue
+                        h, a = d["home"], d["away"]
+                        ent = lambda t: t.get("team", {})
+                    st = (c.get("status") or ev.get("status") or {}).get("type", {})
+                    row = dict(sport=sport, espn_id=str(c.get("id") if sport == "ufc" else ev["id"]),
+                               card_id=str(ev["id"]), start=pd.Timestamp(c.get("date") or ev["date"]),
+                               state=st.get("state"), completed=bool(st.get("completed")))
+                    for side, t in (("home", h), ("away", a)):
+                        e = ent(t)
+                        disp = e.get("displayName") or e.get("fullName") or ""
+                        nick = e.get("name") or (e.get("lastName") if sport == "ufc" else "") or ""
+                        loc = e.get("location") or ""
+                        abbr = e.get("abbreviation") or ""
+                        al = {disp, e.get("shortDisplayName") or "", loc, nick if sport != "ufc" else disp, abbr,
+                              f"{loc} {nick}", f"{abbr} {nick}"}
+                        if sport == "ufc":
+                            al |= {e.get("fullName", ""), e.get("shortName", "")}
+                        row.update({f"{side}_name": disp, f"{side}_nick": nick, f"{side}_loc": loc,
+                                    f"{side}_abbr": abbr, f"{side}_aliases": [x for x in al if x and x.strip()]})
+                    # DraftKings via ESPN (fallback venue)
+                    o = (c.get("odds") or [{}])[0] if c.get("odds") else {}
+                    row["espn_odds"] = o
+                    rows.append(row)
+    return rows
+
+
+def espn_dk_quotes(E: pd.DataFrame) -> list:
+    out = []
+    for _, e in E.iterrows():
+        o = e.espn_odds or {}
+        if (o.get("provider") or {}).get("name") != "DraftKings":
+            continue
+        teams = (e.home_name, e.away_name)
+        try:
+            ml = o.get("moneyline") or {}
+            for side, nm in (("home", e.home_name), ("away", e.away_name)):
+                v = ((ml.get(side) or {}).get("close") or {}).get("odds")
+                if v not in (None, "", "OFF"):
+                    out.append(_q("DraftKings(ESPN)", e.sport, e.start, teams, "ml", nm, None, float(str(v).replace("EVEN", "100"))))
+                ps = ((o.get("pointSpread") or {}).get(side) or {}).get("close") or {}
+                if ps.get("line") and ps.get("odds"):
+                    out.append(_q("DraftKings(ESPN)", e.sport, e.start, teams, "spread", nm, float(ps["line"]),
+                                  float(str(ps["odds"]).replace("EVEN", "100"))))
+            for side in ("over", "under"):
+                t = ((o.get("total") or {}).get(side) or {}).get("close") or {}
+                if t.get("line") and t.get("odds"):
+                    out.append(_q("DraftKings(ESPN)", e.sport, e.start, teams, "total", side, float(t["line"][1:]),
+                                  float(str(t["odds"]).replace("EVEN", "100"))))
+        except Exception:
+            continue
+    return [x for x in out if x]
+
+
+# ------------------------------------------------------------------ venues
+def pinnacle(sport):
+    L = PIN_LEAGUE[sport]
+    base = f"https://guest.api.arcadia.pinnacle.com/0.1/leagues/{L}"
+    mu, mk = _get(f"{base}/matchups"), _get(f"{base}/markets/straight")
+    M = {}
+    for m in mu:
+        if m.get("type") != "matchup" or m.get("isLive") or m.get("parentId") or m.get("units", "Regular") != "Regular":
+            continue
+        P = {p["alignment"]: p["name"] for p in m.get("participants", [])}
+        if set(P) >= {"home", "away"}:
+            M[m["id"]] = (P["home"], P["away"], m["startTime"])
+        elif sport == "ufc" and len(m.get("participants", [])) == 2:
+            ps = m["participants"]
+            M[m["id"]] = (ps[0]["name"], ps[1]["name"], m["startTime"])
+    out = []
+    for k in mk:
+        if k.get("matchupId") not in M or k.get("period") != 0 or k.get("status") != "open":
+            continue
+        h, a, st = M[k["matchupId"]]
+        lim = next((x["amount"] for x in k.get("limits", []) if x.get("type") == "maxRiskStake"), np.nan)
+        alt = bool(k.get("isAlternate"))
+        for p in k.get("prices", []):
+            d = p.get("designation")
+            nm = h if d == "home" else a if d == "away" else d
+            if k["type"] == "moneyline" and d in ("home", "away"):
+                out.append(_q("Pinnacle", sport, st, (h, a), "ml", nm, None, p["price"], lim))
+            elif k["type"] == "spread" and d in ("home", "away"):
+                out.append(_q("Pinnacle", sport, st, (h, a), "spread", nm, p["points"], p["price"], lim, alt=alt))
+            elif k["type"] == "total" and d in ("over", "under"):
+                out.append(_q("Pinnacle", sport, st, (h, a), "total", d, p["points"], p["price"], lim, alt=alt))
+    return [x for x in out if x]
+
+
+def fanduel(sport):
+    from nightly.providers import fanduel_board
+    b = fanduel_board(sport)
+    out = []
+    for _, r in b.iterrows():
+        t = (r.home_name, r.away_name)
+        g = lambda c: r.get(c) if c in r and pd.notna(r.get(c)) else None
+        out += [_q("FanDuel", sport, r.commence, t, "ml", r.home_name, None, g("home_ml")),
+                _q("FanDuel", sport, r.commence, t, "ml", r.away_name, None, g("away_ml"))]
+        if g("spread_home") is not None:
+            out += [_q("FanDuel", sport, r.commence, t, "spread", r.home_name, g("spread_home"), g("spread_home_odds")),
+                    _q("FanDuel", sport, r.commence, t, "spread", r.away_name, -g("spread_home"), g("spread_away_odds"))]
+        if g("total") is not None:
+            out += [_q("FanDuel", sport, r.commence, t, "total", "over", g("total"), g("over_odds")),
+                    _q("FanDuel", sport, r.commence, t, "total", "under", g("total"), g("under_odds"))]
+    return [x for x in out if x]
+
+
+def kambi(sport):
+    js = _get(f"https://eu-offering-api.kambicdn.com/offering/v2018/rsiuspa/listView/{KAMBI_PATH[sport]}/all/all/matches.json",
+              {"lang": "en_US", "market": "US", "useCombined": "true"})
+    out = []
+    for e in js.get("events", []):
+        ev = e["event"]
+        if ev.get("state") != "NOT_STARTED":
+            continue
+        h, a = ev.get("homeName"), ev.get("awayName")
+        t = (h, a)
+        for b in e.get("betOffers", []):
+            lab = b.get("criterion", {}).get("label", "")
+            typ = b.get("betOfferType", {}).get("name", "")
+            if "Overtime" not in lab and lab not in ("Moneyline", "Point Spread", "Total Points", "Total Goals",
+                                                      "Total Runs", "Puck Line", "Run Line", "Handicap"):
+                pass
+            for o in b.get("outcomes", []):
+                if o.get("status") != "OPEN" or not o.get("oddsAmerican"):
+                    continue
+                am = float(o["oddsAmerican"])
+                if typ == "Match" and "Moneyline" in lab:
+                    out.append(_q("BetRivers", sport, ev["start"], t, "ml", o.get("participant"), None, am))
+                elif typ == "Handicap":
+                    out.append(_q("BetRivers", sport, ev["start"], t, "spread", o.get("participant"), o["line"] / 1000, am))
+                elif typ == "Over/Under":
+                    out.append(_q("BetRivers", sport, ev["start"], t, "total", o.get("label", "").lower(), o["line"] / 1000, am))
+    return [x for x in out if x]
+
+
+def bovada(sport):
+    js = _get(f"https://www.bovada.lv/services/sports/event/v2/events/A/description/{BOV_PATH[sport]}",
+              {"marketFilterId": "def", "preMatchOnly": "true", "lang": "en"})
+    out, now = [], pd.Timestamp.now(tz="UTC")
+    for grp in js:
+        for e in grp.get("events", []):
+            st = pd.Timestamp(e["startTime"], unit="ms", tz="UTC")
+            if e.get("live") or st <= now:
+                continue
+            C = e.get("competitors", [])
+            if len(C) != 2:
+                continue
+            h = next((c["name"] for c in C if c.get("home")), C[0]["name"])
+            a = next((c["name"] for c in C if c["name"] != h), C[1]["name"])
+            for dg in e.get("displayGroups", []):
+                for m in dg.get("markets", []):
+                    per = m.get("period", {})
+                    if not per.get("main") or per.get("live"):
+                        continue
+                    d = m.get("description", "")
+                    for o in m.get("outcomes", []):
+                        pr = o.get("price", {})
+                        if o.get("status") not in (None, "O") or not pr.get("american"):
+                            continue
+                        am = 100.0 if pr["american"] == "EVEN" else float(pr["american"])
+                        nm = o.get("description", "")
+                        if d in ("Moneyline", "Fight Winner") and "Draw" not in nm:
+                            out.append(_q("Bovada", sport, st, (h, a), "ml", nm, None, am))
+                        elif d in ("Point Spread", "Spread", "Runline", "Puck Line", "Run Line") and pr.get("handicap"):
+                            out.append(_q("Bovada", sport, st, (h, a), "spread", nm, float(pr["handicap"]), am,
+                                          alt=dg.get("description") != "Game Lines"))
+                        elif d in ("Total",) and pr.get("handicap") and nm.lower() in ("over", "under"):
+                            out.append(_q("Bovada", sport, st, (h, a), "total", nm.lower(), float(pr["handicap"]), am,
+                                          alt=dg.get("description") != "Game Lines"))
+    return [x for x in out if x]
+
+
+def actionnetwork(sport, days):
+    if sport not in AN_LEAGUE:
+        return []
+    out = []
+    for day in days:
+        js = _get(f"https://api.actionnetwork.com/web/v2/scoreboard/{AN_LEAGUE[sport]}",
+                  {"period": "game", "date": day.strftime("%Y%m%d"), "bookIds": ",".join(map(str, AN_BOOKS))})
+        for g in js.get("games", []):
+            if g.get("status") not in ("scheduled",):
+                continue
+            T = {t["id"]: t["full_name"] for t in g.get("teams", [])}
+            h, a = T.get(g["home_team_id"]), T.get(g["away_team_id"])
+            if not h or not a:
+                continue
+            for bid, mk in (g.get("markets") or {}).items():
+                venue = AN_BOOKS.get(int(bid))
+                if not venue:
+                    continue
+                ev = mk.get("event", {})
+                for o in ev.get("moneyline", []):
+                    if not o.get("is_live") and o.get("odds"):
+                        out.append(_q(venue, sport, g["start_time"], (h, a), "ml", h if o["side"] == "home" else a, None, o["odds"]))
+                for o in ev.get("spread", []):
+                    if not o.get("is_live") and o.get("odds") and o.get("value") is not None:
+                        out.append(_q(venue, sport, g["start_time"], (h, a), "spread", h if o["side"] == "home" else a,
+                                      o["value"], o["odds"]))
+                for o in ev.get("total", []):
+                    if not o.get("is_live") and o.get("odds") and o.get("value") is not None:
+                        out.append(_q(venue, sport, g["start_time"], (h, a), "total", o["side"], o["value"], o["odds"]))
+    return [x for x in out if x]
+
+
+def _pm_side_prices(m):
+    """(ask token0, ask token1) from Gamma's top of book; NaN if the book is thin."""
+    ask, bid = m.get("bestAsk"), m.get("bestBid")
+    if not ask or not bid or float(ask) - float(bid) > PM_MAX_SPREAD:
+        return np.nan, np.nan
+    return float(ask), 1 - float(bid)
+
+
+def polymarket(sport):
+    sid = PM_SERIES.get(sport)
+    now = pd.Timestamp.now(tz="UTC")
+    evs, off = [], 0
+    while off < 1000:
+        page = _get("https://gamma-api.polymarket.com/events",
+                    {"series_id": sid, "active": "true", "closed": "false", "limit": 200, "offset": off,
+                     "end_date_min": (now - pd.Timedelta(hours=6)).strftime("%Y-%m-%dT%H:%M:%SZ")})
+        evs += page
+        if len(page) < 200:
+            break
+        off += 200
+    out = []
+    for e in evs:
+        if not e.get("gameId") and sport != "ufc":
+            continue
+        mk = [m for m in e.get("markets", []) if m.get("active") and not m.get("closed") and m.get("acceptingOrders")]
+        mls = [m for m in mk if m.get("sportsMarketType") == "moneyline"]
+        if not mls:
+            continue
+        st = mls[0].get("gameStartTime") or e.get("startTime") or e.get("endDate")
+        try:
+            st = pd.Timestamp(st)
+            st = st.tz_localize("UTC") if st.tzinfo is None else st.tz_convert("UTC")
+        except Exception:
+            continue
+        if st <= now + pd.Timedelta(minutes=2) or st > now + pd.Timedelta(days=3):
+            continue
+        teams = json.loads(mls[0]["outcomes"])
+        if len(teams) != 2:
+            continue
+        T = (teams[1], teams[0])                     # Polymarket titles are "Away vs. Home"
+        for m in mk:
+            smt = m.get("sportsMarketType")
+            outs = json.loads(m["outcomes"])
+            toks = json.loads(m.get("clobTokenIds") or "[]")
+            if len(outs) != 2 or len(toks) != 2:
+                continue
+            p0, p1 = _pm_side_prices(m)
+            fs = m.get("feeSchedule")
+            for p, o, tok in ((p0, outs[0], toks[0]), (p1, outs[1], toks[1])):
+                if not (0 < p < 1):
+                    continue
+                c = p + pm_fee(p, fs)
+                if c >= 1:
+                    continue
+                am = dec2am(1 / c)
+                ref = json.dumps(dict(token=tok, fs=fs, p=p))
+                if smt == "moneyline":
+                    out.append(_q("Polymarket", sport, st, T, "ml", o, None, am, ref=ref))
+                elif smt == "spreads" and m.get("line") is not None:
+                    ln = float(m["line"])                # line applies to outcome[0]
+                    out.append(_q("Polymarket", sport, st, T, "spread", o, ln if o == outs[0] else -ln, am, ref=ref))
+                elif smt == "totals" and m.get("line") is not None and o.lower() in ("over", "under"):
+                    out.append(_q("Polymarket", sport, st, T, "total", o.lower(), float(m["line"]), am, ref=ref))
+    return [x for x in out if x]
+
+
+def _kx_pages(series, max_pages=8):
+    ms, cur = [], None
+    for _ in range(max_pages):
+        p = {"series_ticker": series, "status": "open", "limit": 1000}
+        if cur:
+            p["cursor"] = cur
+        js = _get(f"{KALSHI}/markets", p)
+        ms += js.get("markets", [])
+        cur = js.get("cursor")
+        if not cur or not js.get("markets"):
+            break
+    return ms
+
+
+def _kx_date(ev_ticker):
+    m = re.search(r"-(\d{2})([A-Z]{3})(\d{2})", ev_ticker)
+    if not m:
+        return None
+    return datetime.strptime(f"20{m.group(1)}{m.group(2)}{m.group(3)}", "%Y%b%d").date()
+
+
+def kalshi(sport, days, series_meta):
+    pre = KX_SERIES.get(sport)
+    if not pre:
+        return []
+    dset = {d.date() for d in days}
+    titles = {}
+    try:
+        for s in ("GAME",):
+            cur = None
+            for _ in range(5):
+                p = {"series_ticker": pre + s, "status": "open", "limit": 200}
+                if cur:
+                    p["cursor"] = cur
+                js = _get(f"{KALSHI}/events", p)
+                for e in js.get("events", []):
+                    titles[e["event_ticker"].split("-", 1)[1]] = e.get("title", "")
+                cur = js.get("cursor")
+                if not cur:
+                    break
+    except Exception:
+        pass
+    out = []
+    games = {}
+    for kind in ("GAME", "SPREAD", "TOTAL"):
+        mult = float(series_meta.get(pre + kind, {}).get("fee_multiplier") or 1)
+        for m in _kx_pages(pre + kind):
+            d = _kx_date(m["event_ticker"])
+            if d not in dset or m.get("status") != "active":
+                continue
+            key = m["event_ticker"].split("-", 1)[1]
+            games.setdefault(key, {"date": d})
+            ya, na = float(m.get("yes_ask_dollars") or 0), float(m.get("no_ask_dollars") or 0)
+            ys = float(m.get("yes_ask_size_fp") or 0)
+            meta = dict(ticker=m["ticker"], mult=mult)
+            if kind == "GAME":
+                games[key].setdefault("teams", []).append((m["ticker"].rsplit("-", 1)[1], m.get("yes_sub_title"), ya, na, ys, meta))
+            elif kind == "SPREAD":
+                tm = re.match(r"(.+?) wins by over ([\d.]+)", m.get("yes_sub_title") or m.get("title") or "")
+                if tm:
+                    games[key].setdefault("spreads", []).append((tm.group(1), float(tm.group(2)), ya, na, ys, meta))
+            else:
+                if m.get("floor_strike") is not None and "over" in (m.get("title") or "").lower():
+                    games[key].setdefault("totals", []).append((float(m["floor_strike"]), ya, na, ys, meta))
+    for key, g in games.items():
+        tm = g.get("teams", [])
+        if len(tm) != 2:
+            continue
+        title = titles.get(key, "")
+        # map code -> best name: "HOU Texans vs JAC Jaguars" -> {'HOU': 'HOU Texans'}
+        names = {}
+        for code, sub, *_ in tm:
+            seg = next((s.strip() for s in re.split(r"\s+(?:vs\.?|at|@)\s+", title) if s.strip().startswith(code + " ")), None)
+            names[code] = seg or sub
+        t = (names[tm[0][0]], names[tm[1][0]])
+        sub2name = {sub: names[code] for code, sub, *_ in tm}
+        start = pd.Timestamp(datetime.combine(g["date"], datetime.min.time())).tz_localize(ET)
+        cost = lambda p, mult: p + kx_fee(p, mult) if 0 < p < 1 else np.nan
+        for i, (code, sub, ya, na, ys, meta) in enumerate(tm):
+            other = tm[1 - i]
+            # buy team: YES on its market, or NO on the opponent's market
+            for p, how, sz in ((ya, "yes", ys), (other[3], "no_opp", np.nan)):
+                c = cost(p, meta["mult"])
+                if c == c and c < 1:
+                    ref = json.dumps(dict(ticker=meta["ticker"] if how == "yes" else other[5]["ticker"],
+                                          side="yes" if how == "yes" else "no", mult=meta["mult"], p=p))
+                    out.append(_q("Kalshi", sport, start, t, "ml", names[code], None, dec2am(1 / c), sz * p, ref))
+        for (who, ln, ya, na, ys, meta) in g.get("spreads", []):
+            nm = sub2name.get(who)
+            if nm is None:
+                continue
+            opp = t[1] if nm == t[0] else t[0]
+            for sel, line, p, side in ((nm, -ln, ya, "yes"), (opp, ln, na, "no")):
+                c = cost(p, meta["mult"])
+                if c == c and c < 1:
+                    out.append(_q("Kalshi", sport, start, t, "spread", sel, line, dec2am(1 / c),
+                                  ys * p if side == "yes" else np.nan,
+                                  json.dumps(dict(ticker=meta["ticker"], side=side, mult=meta["mult"], p=p))))
+        for (ln, ya, na, ys, meta) in g.get("totals", []):
+            for sel, p, side in (("over", ya, "yes"), ("under", na, "no")):
+                c = cost(p, meta["mult"])
+                if c == c and c < 1:
+                    out.append(_q("Kalshi", sport, start, t, "total", sel, ln, dec2am(1 / c),
+                                  ys * p if side == "yes" else np.nan,
+                                  json.dumps(dict(ticker=meta["ticker"], side=side, mult=meta["mult"], p=p))))
+    return [x for x in out if x]
+
+
+# ------------------------------------------------------------------ depth checks for exchange legs
+def exchange_fill(venue, ref, stake=STAKE_USD):
+    """Re-price an exchange leg from the live book. Returns (all-in decimal odds for `stake`, $ fillable at
+    the quoted top price incl. fee, top price) or (nan, 0, nan)."""
+    try:
+        r = json.loads(ref)
+        if venue == "Polymarket":
+            bk = _get("https://clob.polymarket.com/book", {"token_id": r["token"]})
+            asks = sorted(((float(a["price"]), float(a["size"])) for a in bk.get("asks", [])))
+            fee = lambda p: p + pm_fee(p, r.get("fs"))
+        else:
+            bk = _get(f"{KALSHI}/markets/{r['ticker']}/orderbook")["orderbook_fp"]
+            opp = bk.get("no_dollars" if r["side"] == "yes" else "yes_dollars") or []
+            asks = sorted(((round(1 - float(p), 4), float(s)) for p, s in opp))
+            fee = lambda p: p + kx_fee(p, r.get("mult", 1))
+        if not asks:
+            return np.nan, 0.0, np.nan
+        top = asks[0][0]
+        top_usd = sum(p * s for p, s in asks if p <= top + 1e-9)
+        spent, shares = 0.0, 0.0
+        for p, s in asks:
+            take = min(s, (stake - spent) / fee(p))
+            spent += take * fee(p)
+            shares += take
+            if spent >= stake - 1e-6:
+                break
+        if spent < stake - 1e-6:
+            return np.nan, top_usd, top
+        return shares / spent, top_usd, top
+    except Exception:
+        return np.nan, 0.0, np.nan
+
+
+# ------------------------------------------------------------------ scan
+def gather(sports=SPORTS, now=None):
+    now = now or pd.Timestamp.now(tz="UTC")
+    d0 = now.tz_convert(ET).normalize().tz_localize(None)
+    days = [d0, d0 + pd.Timedelta(days=1)]
+    errors, status = [], {}
+    with ThreadPoolExecutor(16) as ex:
+        ev_f = {s: ex.submit(espn_events, s, days) for s in sports}
+        try:
+            smeta = {x["ticker"]: x for x in _get(f"{KALSHI}/series", {"category": "Sports"}).get("series", [])}
+        except Exception as e:
+            smeta = {}
+            errors.append(f"kalshi series: {e}")
+        jobs = {}
+        for s in sports:
+            jobs[("Pinnacle", s)] = ex.submit(pinnacle, s)
+            jobs[("FanDuel", s)] = ex.submit(fanduel, s) if s != "ncaam" or True else None
+            jobs[("BetRivers", s)] = ex.submit(kambi, s)
+            jobs[("Bovada", s)] = ex.submit(bovada, s)
+            jobs[("ActionNetwork", s)] = ex.submit(actionnetwork, s, days)
+            jobs[("Polymarket", s)] = ex.submit(polymarket, s)
+            jobs[("Kalshi", s)] = ex.submit(kalshi, s, days, smeta)
+        E = []
+        for s, f in ev_f.items():
+            try:
+                E += f.result()
+            except Exception as e:
+                errors.append(f"espn {s}: {e}")
+        Q = []
+        for (v, s), f in jobs.items():
+            try:
+                r = f.result()
+                Q += r
+                status[f"{v}:{s}"] = len(r)
+            except Exception as e:
+                status[f"{v}:{s}"] = -1
+                errors.append(f"{v} {s}: {str(e)[:100]}")
+    E = pd.DataFrame(E)
+    if E.empty:
+        return E, pd.DataFrame(), status, errors
+    E["start"] = pd.to_datetime(E.start, utc=True)
+    E["date_et"] = E.start.dt.tz_convert(ET).dt.date
+    E = E.drop_duplicates("espn_id")
+    E = E[(E.state == "pre") & (E.start > now + pd.Timedelta(minutes=5))].reset_index(drop=True)
+    Q += espn_dk_quotes(E)
+    return E, pd.DataFrame(Q), status, errors
+
+
+def normalize(E, Q):
+    """Attach espn_id / side / home-perspective line to each quote; drop anything unmatched."""
+    if E.empty or Q.empty:
+        return pd.DataFrame()
+    T = Teams(E)
+    cache, rows = {}, []
+    for r in Q.itertuples():
+        k = (r.sport, r.t1, r.t2, r.start, r.venue == "Kalshi")
+        if k not in cache:
+            cache[k] = T.match(r.sport, r.t1, r.t2, r.start.tz_convert(ET) if r.venue == "Kalshi" else r.start,
+                               tol_h=8.0 if r.sport == "ufc" else 4.0, date_only=(r.venue == "Kalshi"))
+        m = cache[k]
+        if not m:
+            continue
+        eid, sides = m
+        d = r._asdict()
+        d.pop("Index")
+        if r.market == "total":
+            side, hline = r.sel, r.line
+        else:
+            side = sides.get(r.sel)
+            if side is None:   # sel spelled differently from t1/t2 (e.g. Kambi participant)
+                cand = T.resolve(r.sport, r.sel, {eid})
+                side = next(iter(cand))[1] if len(cand) == 1 else None
+            if side is None:
+                continue
+            hline = None if r.market == "ml" else (r.line if side == "home" else -r.line)
+        d.update(espn_id=eid, side=side, hline=hline)
+        rows.append(d)
+    N = pd.DataFrame(rows)
+    if N.empty:
+        return N
+    # DraftKings via ESPN only when ActionNetwork DraftKings is absent for that event
+    has_dk = set(N.loc[N.venue == "DraftKings", "espn_id"])
+    N = N[~((N.venue == "DraftKings(ESPN)") & N.espn_id.isin(has_dk))]
+    # keep best price per venue/event/market/line/side (Kalshi YES vs NO-of-opponent, dup listings)
+    N = N.sort_values("dec", ascending=False).drop_duplicates(["venue", "espn_id", "market", "hline", "side"])
+    ev = E.set_index("espn_id")
+    N["event"] = N.espn_id.map(lambda i: f"{ev.at[i, 'away_name']} @ {ev.at[i, 'home_name']}")
+    N["commence"] = N.espn_id.map(lambda i: ev.at[i, "start"])
+    N["hkey"] = N.hline.fillna(-9999.0)
+    return N.reset_index(drop=True)
+
+
+SIDES = {"ml": ("home", "away"), "spread": ("home", "away"), "total": ("over", "under")}
+
+
+def consensus_fair(N):
+    """Per (event, market, hkey, venue) with both sides: odds_ratio de-vigged prob of side A."""
+    rows = []
+    for (eid, mkt, hk, v), g in N.groupby(["espn_id", "market", "hkey", "venue"]):
+        a, b = SIDES[mkt]
+        s = g.set_index("side")
+        if a in s.index and b in s.index:
+            oa, ob = s.at[a, "am"], s.at[b, "am"]
+            if 1 / am2dec(oa) + 1 / am2dec(ob) < 0.99:     # crossed/broken two-sided quote
+                continue
+            pa, _ = devig(oa, ob, "odds_ratio")
+            rows.append(dict(espn_id=eid, market=mkt, hkey=hk, venue=v, pa=float(pa)))
+    return pd.DataFrame(rows)
+
+
+def find_signals(N, verify=True):
+    sig = []
+    if N.empty:
+        return sig
+    F = consensus_fair(N)
+    # ---- arbs (same line, two different venues)
+    for (eid, mkt, hk), g in N.groupby(["espn_id", "market", "hkey"]):
+        a, b = SIDES[mkt]
+        A, B = g[g.side == a].sort_values("dec", ascending=False), g[g.side == b].sort_values("dec", ascending=False)
+        if A.empty or B.empty:
+            continue
+        for _, x in A.head(3).iterrows():
+            for _, y in B.head(3).iterrows():
+                if x.venue == y.venue:
+                    continue
+                s = 1 / x.dec + 1 / y.dec
+                if s < 1:
+                    sig.append(dict(kind="arb", legs=[x, y], cost=s, margin=1 - s))
+    # ---- middles (different lines, different venues)
+    for (eid, mkt), g in N[N.market != "ml"].groupby(["espn_id", "market"]):
+        a, b = SIDES[mkt]
+        A = g[g.side == a].sort_values("dec", ascending=False).drop_duplicates("hkey")
+        B = g[g.side == b].sort_values("dec", ascending=False).drop_duplicates("hkey")
+        for _, x in A.iterrows():
+            for _, y in B.iterrows():
+                if x.venue == y.venue:
+                    continue
+                if mkt == "spread":       # home at hx, away at hy: both win if -hx < margin < -hy
+                    lo, hi = -x.hkey, -y.hkey
+                else:                     # over at tx, under at ty: both win if tx < total < ty
+                    lo, hi = x.hkey, y.hkey
+                if hi <= lo:
+                    continue
+                ints = [k for k in range(math.floor(lo) + 1, math.ceil(hi)) if lo < k < hi]
+                s = 1 / x.dec + 1 / y.dec
+                if ints and s <= MIDDLE_MAX_COST:
+                    sig.append(dict(kind="middle", legs=[x, y], cost=s, margin=1 - s, gap=hi - lo, ints=ints))
+    # ---- +EV vs de-vigged consensus of the OTHER venues at the exact same line
+    if not F.empty:
+        for r in N.itertuples():
+            f = F[(F.espn_id == r.espn_id) & (F.market == r.market) & (F.hkey == r.hkey) & (F.venue != r.venue)]
+            if r.venue.startswith("DraftKings"):
+                f = f[~f.venue.str.startswith("DraftKings")]
+            if len(f) < MIN_CONSENSUS:
+                continue
+            pa = float(np.mean(f.pa))
+            p = pa if r.side == SIDES[r.market][0] else 1 - pa
+            ev = p * r.dec - 1
+            if ev >= EV_MIN:
+                sig.append(dict(kind="ev", legs=[pd.Series(r._asdict())], fair_p=p, ev=ev, n_cons=len(f),
+                                cons_venues=",".join(sorted(f.venue)), pin=bool((f.venue == "Pinnacle").any())))
+    # ---- verify exchange legs on the live book
+    if verify:
+        cache = {}
+        for s in sig:
+            for L in s["legs"]:
+                if L["venue"] in EXCHANGES and L.get("ref"):
+                    if L["ref"] not in cache:
+                        cache[L["ref"]] = exchange_fill(L["venue"], L["ref"])
+                    d, usd, top = cache[L["ref"]]
+                    L["book_dec"], L["book_usd"] = d, usd
+            decs = [L.get("book_dec", L["dec"]) if L["venue"] in EXCHANGES else L["dec"] for L in s["legs"]]
+            s["verified"] = all(d == d for d in decs)
+            if s["kind"] in ("arb", "middle"):
+                s["cost_book"] = sum(1 / d for d in decs) if s["verified"] else np.nan
+            else:
+                s["ev_book"] = s["fair_p"] * decs[0] - 1 if s["verified"] else np.nan
+    return sig
+
+
+def _fmt_leg(L):
+    ln = "" if L["market"] == "ml" else (f" {L['line']:+g}" if L["market"] == "spread" else f" {L['line']:g}")
+    who = L["sel"] if L["market"] != "total" else L["sel"].upper()
+    return f"{who}{ln} {L['am']:+.0f} @{L['venue']}"
+
+
+def to_rows(sig, scan_ts):
+    rows = []
+    for s in sig:
+        L0 = s["legs"][0]
+        base = dict(scan_ts=scan_ts, kind=s["kind"], sport=L0["sport"], espn_id=L0["espn_id"], event=L0["event"],
+                    commence=pd.Timestamp(L0["commence"]).isoformat(), market=L0["market"])
+        if s["kind"] == "ev":
+            rows.append(dict(base, hline=L0["hline"], side=L0["side"], sel=L0["sel"], line=L0["line"], venue=L0["venue"],
+                             odds=round(L0["am"], 1), dec=round(L0["dec"], 4), fair_p=round(s["fair_p"], 4),
+                             edge=round(s["ev"], 4), edge_book=round(s.get("ev_book", np.nan), 4),
+                             n_cons=s["n_cons"], cons_venues=s["cons_venues"], pin_in_cons=s["pin"], alt=L0["alt"],
+                             size_usd=L0.get("book_usd", L0.get("size")), verified=s.get("verified"),
+                             legs=_fmt_leg(L0)))
+        else:
+            rows.append(dict(base, hline=L0["hline"], side=f"{s['legs'][0]['side']}/{s['legs'][1]['side']}",
+                             venue="+".join(L["venue"] for L in s["legs"]), edge=round(s["margin"], 4),
+                             edge_book=round(1 - s.get("cost_book", np.nan), 4), verified=s.get("verified"),
+                             gap=s.get("gap"), size_usd=min([L.get("book_usd", L.get("size")) or np.inf
+                                                             for L in s["legs"]] + [np.inf]),
+                             legs=" | ".join(_fmt_leg(L) for L in s["legs"])))
+    return pd.DataFrame(rows)
+
+
+def scan(sports=SPORTS, save=True, quiet=False):
+    t0 = time.time()
+    now = pd.Timestamp.now(tz="UTC")
+    ts = now.strftime("%Y-%m-%dT%H:%M:%SZ")
+    E, Q, status, errors = gather(sports, now)
+    N = normalize(E, Q)
+    sig = find_signals(N)
+    R = to_rows(sig, ts)
+    venues = sorted(N.venue.unique()) if len(N) else []
+    summ = dict(scan_ts=ts, n_events=len(E), n_quotes_raw=len(Q), n_quotes_matched=len(N),
+                n_events_2plus_venues=int((N.groupby("espn_id").venue.nunique() >= 2).sum()) if len(N) else 0,
+                venues="|".join(f"{v}:{(N.venue == v).sum()}" for v in venues),
+                n_arb=int((R.kind == "arb").sum()) if len(R) else 0,
+                n_arb_verified=int(((R.kind == "arb") & (R.edge_book > 0)).sum()) if len(R) else 0,
+                n_middle=int((R.kind == "middle").sum()) if len(R) else 0,
+                n_ev=int((R.kind == "ev").sum()) if len(R) else 0, secs=round(time.time() - t0, 1),
+                errors=" ; ".join(errors)[:2000], feed_status=json.dumps(status))
+    if save:
+        OUT.mkdir(parents=True, exist_ok=True)
+        QUOTES.mkdir(parents=True, exist_ok=True)
+        if len(R):
+            R.to_csv(LOG, mode="a", header=not LOG.exists(), index=False)
+        pd.DataFrame([summ]).to_csv(SCANS, mode="a", header=not SCANS.exists(), index=False)
+        if len(N):
+            N.drop(columns=["ref"]).to_csv(QUOTES / f"quotes_{now:%Y%m%dT%H%M%S}.csv.gz", index=False)
+    if not quiet:
+        print(f"[{ts}] events={len(E)} quotes={len(Q)} matched={len(N)} venues: {summ['venues']}")
+        if errors:
+            print("  feed errors:", "; ".join(errors)[:600])
+        for k in ("arb", "middle", "ev"):
+            if len(R) and (R.kind == k).any():
+                X = R[R.kind == k].sort_values("edge", ascending=False)
+                print(f"  {k.upper()} x{len(X)}")
+                for _, x in X.head(25).iterrows():
+                    extra = f" fair={x.fair_p:.3f} n={x.n_cons} book_edge={x.edge_book}" if k == "ev" else \
+                        f" book_margin={x.edge_book} size=${x.size_usd}"
+                    print(f"    {x.sport} {x.event} {x.market}: {x.legs}  edge={x.edge:+.3f}{extra}")
+    return E, N, R, summ
+
+
+# ------------------------------------------------------------------ settlement
+def _finals(sport, espn_ids):
+    out = {}
+    for eid in espn_ids:
+        try:
+            js = _get(f"https://site.api.espn.com/apis/site/v2/sports/{ESPN_PATH[sport]}/summary", {"event": eid})
+            c = js["header"]["competitions"][0]
+            if not c.get("status", {}).get("type", {}).get("completed"):
+                continue
+            d = {t["homeAway"]: t for t in c["competitors"]}
+            if sport == "ufc":
+                continue
+            out[eid] = (float(d["home"]["score"]), float(d["away"]["score"]))
+        except Exception:
+            continue
+    return out
+
+
+def grade(market, side, hline, hs, as_):
+    """+1 win, -1 loss, 0 push for one leg."""
+    if market == "ml":
+        if hs == as_:
+            return 0
+        return 1 if (hs > as_) == (side == "home") else -1
+    if market == "spread":
+        m = (hs - as_) + hline            # home margin with home line
+        v = m if side == "home" else -m
+    else:
+        v = (hs + as_ - hline) if side == "over" else (hline - hs - as_)
+    return 0 if abs(v) < 1e-9 else (1 if v > 0 else -1)
+
+
+def settle(first_only=True):
+    """Grade every logged +EV signal from ESPN finals; 1u flat stake at the logged (and book-verified) price.
+    first_only: keep the first time each (event, market, line, side, venue) signal appeared (forward test)."""
+    if not LOG.exists():
+        print("no log")
+        return pd.DataFrame()
+    L = pd.read_csv(LOG, dtype={"espn_id": str})
+    L = L[L.kind == "ev"].copy()
+    if first_only:
+        L = L.sort_values("scan_ts").drop_duplicates(["espn_id", "market", "hline", "side", "venue"])
+    fin = {}
+    for sp, g in L.groupby("sport"):
+        fin.update(_finals(sp, g.espn_id.unique()))
+    res = []
+    for r in L.itertuples():
+        if r.espn_id not in fin:
+            res.append(np.nan)
+            continue
+        hs, as_ = fin[r.espn_id]
+        res.append(grade(r.market, r.side, r.hline if r.market != "ml" else None, hs, as_))
+    L["result"] = res
+    L["profit"] = np.where(L.result == 1, L.dec - 1, np.where(L.result == -1, -1.0, np.where(L.result == 0, 0.0, np.nan)))
+    L["clv_note"] = ""
+    S = L.dropna(subset=["result"])
+    L.to_csv(SETTLED, index=False)
+    if len(S):
+        n, pnl = len(S), S.profit.sum()
+        sd = S.profit.std(ddof=1) if n > 1 else np.nan
+        z = pnl / (sd * math.sqrt(n)) if sd and sd == sd else np.nan
+        print(f"settled +EV signals: n={n} units={pnl:+.2f} ROI={pnl / n:+.3%} z={z:.2f} "
+              f"(expected ROI from fair_p {S.edge.mean():+.3%}); pending={L.result.isna().sum()}")
+        for k, g in S.groupby("sport"):
+            print(f"  {k}: n={len(g)} ROI={g.profit.mean():+.3%}")
+    else:
+        print(f"nothing settled yet; pending={len(L)}")
+    return L
+
+
+if __name__ == "__main__":
+    cmd = sys.argv[1] if len(sys.argv) > 1 else "scan"
+    if cmd == "scan":
+        scan()
+    elif cmd == "loop":
+        n, gap = int(sys.argv[2]), int(sys.argv[3])
+        for i in range(n):
+            scan()
+            if i < n - 1:
+                time.sleep(gap)
+    elif cmd == "settle":
+        settle()

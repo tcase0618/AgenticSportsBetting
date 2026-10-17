@@ -1,7 +1,4 @@
 date,espn_id,start,home,away,home_name,away_name,home_score,away_score,completed,neutral,conference_game,playoff,espn_spread_home,espn_total,espn_home_ml,espn_away_ml,indoor,city,state,home_ml,away_ml,spread_home,spread_home_odds,spread_away_odds,total,over_odds,under_odds,best,source,season
-2026-10-17,401892519,2026-10-17T17:00Z,WSH,NJD,Washington Capitals,New Jersey Devils,,,False,0,0,0,,,,,True,Washington,DC,,,,,,,,,,,2027
-2026-10-17,401892520,2026-10-17T19:30Z,WPG,CAR,Winnipeg Jets,Carolina Hurricanes,,,False,0,0,0,,,,,True,Winnipeg,MB,,,,,,,,,,,2027
-2026-10-17,401892521,2026-10-17T20:00Z,TBL,VAN,Tampa Bay Lightning,Vancouver Canucks,,,False,0,0,0,,,,,True,Tampa,FL,,,,,,,,,,,2027
 2026-10-17,401892522,2026-10-17T22:00Z,FLA,SEA,Florida Panthers,Seattle Kraken,,,False,0,0,0,,,,,True,Sunrise,FL,,,,,,,,,,,2027
 2026-10-17,401892523,2026-10-17T23:00Z,TOR,NYI,Toronto Maple Leafs,New York Islanders,,,False,0,0,0,,,,,True,Toronto,ON,,,,,,,,,,,2027
 2026-10-17,401892524,2026-10-17T23:00Z,MTL,BUF,Montreal Canadiens,Buffalo Sabres,,,False,0,0,0,,,,,True,Montreal,QC,,,,,,,,,,,2027
@@ -9,7 +6,7 @@ date,espn_id,start,home,away,home_name,away_name,home_score,away_score,completed
 2026-10-17,401892526,2026-10-17T23:00Z,PHI,OTT,Philadelphia Flyers,Ottawa Senators,,,False,0,0,0,,,,,True,Philadelphia,PA,,,,,,,,,,,2027
 2026-10-17,401892527,2026-10-17T23:00Z,CBJ,NYR,Columbus Blue Jackets,New York Rangers,,,False,0,0,0,,,,,True,Columbus,OH,,,,,,,,,,,2027
 2026-10-17,401892528,2026-10-17T23:00Z,CHI,DAL,Chicago Blackhawks,Dallas Stars,,,False,0,0,0,,,,,True,Chicago,IL,,,,,,,,,,,2027
-2026-10-17,401892529,2026-10-18T00:00Z,NSH,STL,Nashville Predators,St. Louis Blues,,,False,0,0,0,,,,,True,Nashville,TN,,,,,,,,,,,2027
-2026-10-17,401892530,2026-10-18T01:00Z,LAK,BOS,Los Angeles Kings,Boston Bruins,,,False,0,0,0,,,,,True,Los Angeles,CA,,,,,,,,,,,2027
-2026-10-17,401892531,2026-10-18T02:00Z,UTA,EDM,Utah Mammoth,Edmonton Oilers,,,False,0,0,0,,,,,True,Salt Lake City,UT,,,,,,,,,,,2027
-2026-10-17,401892532,2026-10-18T02:00Z,VGK,PIT,Vegas Golden Knights,Pittsburgh Penguins,,,False,0,0,0,,,,,True,Las Vegas,NV,,,,,,,,,,,2027
+2026-10-17,401892529,2026-10-18T00:00Z,NSH,STL,Nashville Predators,St. Louis Blues,,,False,0,0,0,1.5,5.5,,,True,Nashville,TN,-110.0,-110.0,-1.5,205.0,-260.0,5.5,-140.0,114.0,"{""home_ml"": [-103, ""Polymarket""], ""away_ml"": [-107, ""Polymarket""], ""spread_home"": [205, ""FanDuel""], ""spread_away"": [-260, ""FanDuel""], ""over"": [-140, ""FanDuel""], ""under"": [114, ""FanDuel""]}",FanDuel,2027
+2026-10-17,401892530,2026-10-18T01:00Z,LAK,BOS,Los Angeles Kings,Boston Bruins,,,False,0,0,0,-1.5,5.5,,,True,Los Angeles,CA,-134.0,114.0,-1.5,172.0,-215.0,5.5,-128.0,104.0,"{""home_ml"": [-131, ""Polymarket""], ""away_ml"": [120, ""Polymarket""], ""spread_home"": [191, ""Polymarket""], ""spread_away"": [-210, ""Polymarket""], ""over"": [-116, ""Polymarket""], ""under"": [104, ""FanDuel""]}",FanDuel,2027
+2026-10-17,401892531,2026-10-18T02:00Z,UTA,EDM,Utah Mammoth,Edmonton Oilers,,,False,0,0,0,-1.5,6.5,,,True,Salt Lake City,UT,-140.0,116.0,-1.5,168.0,-210.0,6.5,-118.0,-104.0,"{""home_ml"": [-136, ""Polymarket""], ""away_ml"": [125, ""Polymarket""], ""spread_home"": [183, ""Polymarket""], ""spread_away"": [-201, ""Polymarket""], ""over"": [-111, ""Polymarket""], ""under"": [102, ""Polymarket""]}",FanDuel,2027
+2026-10-17,401892532,2026-10-18T02:00Z,VGK,PIT,Vegas Golden Knights,Pittsburgh Penguins,,,False,0,0,0,-1.5,6.5,,,True,Las Vegas,NV,-210.0,172.0,-1.5,106.0,-130.0,6.5,-128.0,104.0,"{""home_ml"": [-210, ""Polymarket""], ""away_ml"": [191, ""Polymarket""], ""spread_home"": [120, ""Polymarket""], ""spread_away"": [-130, ""FanDuel""], ""over"": [-121, ""Polymarket""], ""under"": [110, ""Polymarket""]}",FanDuel,2027
