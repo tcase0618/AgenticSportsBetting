@@ -3,3 +3,4 @@ logs/
 __pycache__/
 *.pyc
 results/scripts/nba_players.parquet
+results/props_script/nba_legs.parquet
