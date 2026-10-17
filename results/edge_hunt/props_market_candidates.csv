@@ -544,3 +544,4 @@ T4,UFC method props model vs market,EV>=0.05,962,-0.12557530958180244,-1.9187096
 T4,UFC method props model vs market,EV>=0.1,580,-0.18590811910717864,-2.0668231648066544,,,,
 T4,UFC method props model vs market,EV>=0.2,184,-0.2292934782608696,-1.1782204329426407,,,,
 T4,UFC method props model vs market,EV>=0.3,65,-0.29692307692307696,-0.8445530855051476,,,,
+T4,"UFC prior lead (fixed, pre-registered)",model>=mkt+0.05 all methods any price,1132,-0.07382328751522066,-1.5686003322187374,True,509.0,0.2855045695867426,2.9317573491445623

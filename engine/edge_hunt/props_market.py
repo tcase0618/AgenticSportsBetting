@@ -536,7 +536,9 @@ def main():
     print("UFC..."); x, pr = ufc_tests()
     # pre-registered prior rules evaluated once on the lockbox (count in the multiple-testing family)
     Bd, Bl = pick(Qp[Qp.disc], 0.04, max_odds=200), pick(Qp[~Qp.disc], 0.04, max_odds=200)
-    add_fixed("T2", "NBA prior rule (fixed, pre-registered)", "w_model=0.25 ev>=0.04 odds<=+200 main+alt", Bd, Bl,
+    nba_fam = [r for r in LOCK if r["family"] == "NBA pts LOO consensus line-shop"]
+    if not (nba_fam and nba_fam[0]["config"].startswith("w_model=0.25 ev>=0.04 scope=all")):
+        add_fixed("T2", "NBA prior rule (fixed, pre-registered)", "w_model=0.25 ev>=0.04 odds<=+200 main+alt", Bd, Bl,
               pd.concat([Bd, Bl]), "M", "date", "same as NBA LOO family")
     add_fixed("T4", "UFC prior lead (fixed, pre-registered)", "model>=mkt+0.05 all methods any price",
               pr[pr.season <= 2022], pr[pr.season >= 2023], pr, "Y", "date", "same as UFC family")
@@ -604,7 +606,40 @@ def write_md(V, C, prior, PR, by_season):
           "\n## UFC prior lead re-derived ('model >= market + 5 pts', all methods, posted price)\n",
           PR.to_markdown(index=False, floatfmt=".4f"), "\nBy season:\n", by_season.to_markdown(),
           ]
+    L += ["\n## Bottom line and caveats\n", NOTES]
     (OUT / "props_market.md").write_text("\n".join(L) + "\n")
+
+
+NOTES = """
+**No TRUE edge.** Nothing clears the protocol (multiple-testing significance on the lockbox + discovery-positive +
+stable + n >= 100). Closest calls, all to be treated as *forward-test only*, not bets:
+
+* **NFL alt ladders vs props_script model** (+10.8% on 350 lockbox bets, clustered z 1.80, BH q 0.14): the lockbox is
+  only 2 NFL weeks (33 games), discovery z was 1.05 and the config is the best of 36 tried. On ALL alt-ladder over
+  quotes the model is *under*-confident by ~2-4 pts in every probability bin and the book's vigged price has the
+  better Brier (0.1911 vs 0.1939) -- the model is not sharper than the ladder; selection picks up noise.
+* **NBA GBM model, unders with EV >= 12%** (+5.5%, n 1,659, clustered p 0.018, BH q 0.12): fails BH/Bonferroni.
+* **Prior NBA rule 25% model / 75% LOO consensus, EV >= 4%**: re-verified on the protocol date split it is +3.7%
+  (disc, n 2,618) and +3.2% (lockbox, n 2,281, z 1.30-1.41, p 0.08-0.10). The previous "+3.9% on 3,059 in 2025-26"
+  is reproduced exactly with the season split, but it is not significant at the protocol's bar, and only 7/14
+  months are positive. The discovery search over 84 configs independently picked the same rule. Live it needs
+  multi-book quotes (ODDS_API_KEY / The Odds API); FanDuel alone cannot form a leave-one-out consensus.
+* **UFC 'model >= market + 5 pts'** (prior untested lead): discovery (<=2022) is NEGATIVE (-7.4%, n 1,132);
+  2023+ is +28.6% (n 509, p 0.002) but 2026 alone contributes +54u on 33 bets, only 5/9 seasons are positive, the
+  rule was found on a 2021+ report (not blind), and the method-prop overround in the source drops from ~1.22 to
+  ~1.14 in 2025-26 (odds source/book mix changed), so the late-sample profit is partly a price-source artefact.
+  Re-deriving the threshold on <=2022 only picks `DEC, +3 pts` -> lockbox +6.7% (z 0.98). FALSE.
+* **DFS pick'em** (PrizePicks/Underdog/Pick6 at -122/leg): ~2.9k DFS legs have a same-scrape sportsbook
+  consensus but only 121 clear the chosen EV bar; disc -0.9% (n 90), lockbox +17% on 31 (noise). The dataset's dfs_*_odds column is a flat -137 placeholder.
+* **NHL / MLB** 2026 real lines: model-vs-price and DK-vs-FD stale-book both negative on the lockbox.
+
+Data notes: (1) In nfl_props_alt the FanDuel integer, over-only lines are milestones "L+" (their price equals
+DraftKings' L-0.5 rung); the file labels actual == L as "push" -- here they are settled as wins. (2) NFL quotes are
+the last pre-kick scrape per book/line; LOO consensus uses only quotes from the SAME scrape (no look-ahead).
+(3) NBA quotes are one scrape ~12 h before tip. (4) NHL prices are "best price across books" (not one book).
+(5) NFL/NBA ladder probabilities are interpolated from the 4-point milestone grid (probit-linear in k), lines
+outside the grid +/-25% (NFL) / +/-3 pts (NBA) are dropped.
+"""
 
 
 # ------------------------------------------------------------------ live scan
