@@ -1,5 +1,5 @@
 # NFL script-driven props + 3/5/7-leg parlays (walk-forward, report 2021+)
-Code: `engine/props_script/nfl.py` (+ `common_hoops_football.py`). Runtime 16.9 min. Distributional LightGBM P(stat >= k) refit each season on the prior 4 seasons (script + tendencies), online calibrator per stat x threshold x probability bin, date by date. 2017-2020 fit/choose, 2021-2026 reported (2026 = weeks 1-5).
+Code: `engine/props_script/nfl.py` (+ `common_hoops_football.py`). Runtime 5.0 min. Distributional LightGBM P(stat >= k) refit each season on the prior 4 seasons (script + tendencies), online calibrator per stat x threshold x probability bin, date by date. 2017-2020 fit/choose, 2021-2026 reported (2026 = weeks 1-5).
 
 ## (a) Real lines: hit rate by model confidence (side = higher calibrated prob)
 One line per player-game-market (latest snapshot, sportsbook line closest to even odds, half-points). 2017-18 = completions only (propbets.football); 2026 = weeks 1-5, all five markets. Lines never used for training; the online calibrator (per market) learns from them date by date. **Small samples.**
@@ -8,54 +8,54 @@ One line per player-game-market (latest snapshot, sportsbook line closest to eve
 
 | tier | n | pred | hit | se |
 |---|---|---|---|---|
-| 0.50-0.53 | 102 | 0.513 | 0.510 | 0.049 |
-| 0.53-0.56 | 76 | 0.545 | 0.539 | 0.057 |
-| 0.56-0.60 | 57 | 0.577 | 0.456 | 0.066 |
-| 0.60-0.65 | 63 | 0.623 | 0.556 | 0.063 |
-| 0.65-1.00 | 84 | 0.738 | 0.512 | 0.055 |
-| >= 0.53 | 280 | 0.627 | 0.518 | 0.030 |
-| >= 0.56 | 204 | 0.658 | 0.510 | 0.035 |
-| >= 0.60 | 147 | 0.689 | 0.531 | 0.041 |
-| >= 0.65 | 84 | 0.738 | 0.512 | 0.055 |
+| 0.50-0.53 | 66 | 0.516 | 0.576 | 0.061 |
+| 0.53-0.56 | 85 | 0.544 | 0.588 | 0.053 |
+| 0.56-0.60 | 57 | 0.579 | 0.544 | 0.066 |
+| 0.60-0.65 | 77 | 0.626 | 0.545 | 0.057 |
+| 0.65-1.00 | 97 | 0.723 | 0.505 | 0.051 |
+| >= 0.53 | 316 | 0.625 | 0.544 | 0.028 |
+| >= 0.56 | 231 | 0.655 | 0.528 | 0.033 |
+| >= 0.60 | 174 | 0.680 | 0.523 | 0.038 |
+| >= 0.65 | 97 | 0.723 | 0.505 | 0.051 |
 
 **Season 2018** (n = 322)
 
 | tier | n | pred | hit | se |
 |---|---|---|---|---|
-| 0.50-0.53 | 92 | 0.514 | 0.554 | 0.052 |
-| 0.53-0.56 | 53 | 0.545 | 0.509 | 0.069 |
-| 0.56-0.60 | 50 | 0.576 | 0.520 | 0.071 |
-| 0.60-0.65 | 69 | 0.623 | 0.580 | 0.059 |
-| 0.65-1.00 | 58 | 0.727 | 0.638 | 0.063 |
-| >= 0.53 | 230 | 0.621 | 0.565 | 0.033 |
-| >= 0.56 | 177 | 0.644 | 0.582 | 0.037 |
-| >= 0.60 | 127 | 0.670 | 0.606 | 0.043 |
-| >= 0.65 | 58 | 0.727 | 0.638 | 0.063 |
+| 0.50-0.53 | 12 | 0.520 | 0.500 | 0.144 |
+| 0.53-0.56 | 62 | 0.549 | 0.629 | 0.061 |
+| 0.56-0.60 | 156 | 0.578 | 0.571 | 0.040 |
+| 0.60-0.65 | 47 | 0.614 | 0.511 | 0.073 |
+| 0.65-1.00 | 45 | 0.719 | 0.644 | 0.071 |
+| >= 0.53 | 310 | 0.598 | 0.584 | 0.028 |
+| >= 0.56 | 248 | 0.610 | 0.573 | 0.031 |
+| >= 0.60 | 92 | 0.665 | 0.576 | 0.052 |
+| >= 0.65 | 45 | 0.719 | 0.644 | 0.071 |
 
 **Season 2026** (n = 1,847)
 
 | tier | n | pred | hit | se |
 |---|---|---|---|---|
-| 0.50-0.53 | 448 | 0.515 | 0.522 | 0.024 |
-| 0.53-0.56 | 326 | 0.544 | 0.534 | 0.028 |
-| 0.56-0.60 | 315 | 0.580 | 0.486 | 0.028 |
-| 0.60-0.65 | 337 | 0.624 | 0.558 | 0.027 |
-| 0.65-1.00 | 421 | 0.723 | 0.570 | 0.024 |
-| >= 0.53 | 1399 | 0.625 | 0.540 | 0.013 |
-| >= 0.56 | 1073 | 0.650 | 0.541 | 0.015 |
-| >= 0.60 | 758 | 0.679 | 0.565 | 0.018 |
-| >= 0.65 | 421 | 0.723 | 0.570 | 0.024 |
+| 0.50-0.53 | 311 | 0.513 | 0.514 | 0.028 |
+| 0.53-0.56 | 270 | 0.545 | 0.511 | 0.030 |
+| 0.56-0.60 | 463 | 0.580 | 0.529 | 0.023 |
+| 0.60-0.65 | 364 | 0.623 | 0.558 | 0.026 |
+| 0.65-1.00 | 439 | 0.718 | 0.569 | 0.024 |
+| >= 0.53 | 1536 | 0.623 | 0.544 | 0.013 |
+| >= 0.56 | 1266 | 0.640 | 0.551 | 0.014 |
+| >= 0.60 | 803 | 0.675 | 0.564 | 0.017 |
+| >= 0.65 | 439 | 0.718 | 0.569 | 0.024 |
 
 2026 by market (all picks; p >= 0.58):
 
 | market | n | hit | n>=0.58 | hit>=0.58 |
 |---|---|---|---|---|
-| passing_yards | 87 | 0.471 | 36 | 0.500 |
-| receiving_yards | 950 | 0.540 | 464 | 0.534 |
-| receptions | 519 | 0.543 | 268 | 0.571 |
-| rushing_yards | 291 | 0.526 | 148 | 0.547 |
+| passing_yards | 87 | 0.471 | 33 | 0.455 |
+| receiving_yards | 950 | 0.546 | 503 | 0.557 |
+| receptions | 519 | 0.539 | 330 | 0.576 |
+| rushing_yards | 291 | 0.536 | 165 | 0.552 |
 
-Log loss on 2026 rows with both prices (n=1732): model-cal 0.7110, de-vigged market 0.6901.
+Log loss on 2026 rows with both prices (n=1732): model-cal 0.7086, de-vigged market 0.6901.
 
 ## (b) Milestones, 2021-2026: realized hit rate by confidence tier vs naive base rates
 `group_base` = hit rate of the same stat x threshold x position in prior seasons; `player_naive` = the player's own trailing (EWM, hl 6 games) frequency of reaching k.
@@ -101,9 +101,9 @@ Predicted = Gaussian-copula joint (correlations from prior seasons' residuals). 
 | 1 top-N cross-game | 3 | 331 | 0.833 | 0.832 | 0.831 | 0.021 | -1454 |
 | 1 top-N cross-game | 5 | 331 | 0.681 | 0.678 | 0.680 | 0.026 | -470 |
 | 1 top-N cross-game | 7 | 331 | 0.526 | 0.520 | 0.535 | 0.027 | -196 |
-| 1R top-N real lines | 3 | 16 | 0.505 | 0.500 | 0.250 | 0.108 | +559 |
-| 1R top-N real lines | 5 | 16 | 0.288 | 0.281 | 0.062 | 0.061 | +2069 |
-| 1R top-N real lines | 7 | 16 | 0.159 | 0.156 | 0.000 | 0.000 | +7645 |
+| 1R top-N real lines | 3 | 16 | 0.481 | 0.476 | 0.250 | 0.108 | +556 |
+| 1R top-N real lines | 5 | 16 | 0.261 | 0.255 | 0.000 | 0.000 | +2107 |
+| 1R top-N real lines | 7 | 16 | 0.137 | 0.134 | 0.000 | 0.000 | +7533 |
 | 2 same-game script stack | 3 | 331 | 0.820 | 0.818 | 0.825 | 0.021 | -1223 |
 | 2 same-game script stack | 5 | 331 | 0.637 | 0.631 | 0.647 | 0.026 | -348 |
 | 2 same-game script stack | 7 | 331 | 0.445 | 0.428 | 0.471 | 0.027 | -134 |
@@ -131,12 +131,62 @@ Predicted = Gaussian-copula joint (correlations from prior seasons' residuals). 
 | script features only (LGBM) | 0.4025 | 0.0019 | 14638 | 0.8759 | -0.0247 | 5493 | 0.9214 | 0.6918 |
 | script parametric (no LGBM) | 0.4020 | 0.0075 | 14127 | 0.8804 | -0.0255 | 4606 | 0.9292 | 0.6828 |
 
+**Tendency evidence (2021-2026):** mean script residual z = (actual - mu)/sd by bucket and stat.
+
+| tendency | bucket | n | passing_yards | receiving_yards | receptions | rushing_yards |
+|---|---|---|---|---|---|---|
+| teammates out prev game: vacated target share | (-0.011, 0.0] | 37983 | 0.073 | -0.005 | -0.009 | -0.041 |
+| teammates out prev game: vacated target share | (0.0, 0.15] | 10164 | 0.078 | -0.022 | -0.012 | 0.062 |
+| teammates out prev game: vacated target share | (0.15, 0.3] | 11812 | 0.078 | 0.058 | 0.070 | 0.019 |
+| teammates out prev game: vacated target share | (0.3, 5.0] | 5262 | 0.108 | 0.023 | 0.042 | -0.085 |
+| teammates out prev game: vacated carry share | (-0.011, 0.0] | 42777 | 0.069 | -0.002 | -0.002 | -0.037 |
+| teammates out prev game: vacated carry share | (0.0, 0.3] | 12742 | 0.067 | 0.025 | 0.025 | -0.024 |
+| teammates out prev game: vacated carry share | (0.3, 0.6] | 7663 | 0.115 | 0.015 | 0.041 | 0.055 |
+| teammates out prev game: vacated carry share | (0.6, 5.0] | 1950 |  | 0.011 | 0.015 | 0.187 |
+| player returning from absence | (-0.501, 0.5] | 55366 | 0.045 | 0.033 | 0.035 | 0.008 |
+| player returning from absence | (0.5, 1.5] | 9855 | 0.521 | -0.138 | -0.132 | -0.164 |
+| QB changed vs previous game | (-0.501, 0.5] | 56522 | -0.015 | 0.010 | 0.008 | -0.015 |
+| QB changed vs previous game | (0.5, 1.5] | 8699 | 0.704 | -0.019 | 0.014 | -0.032 |
+| home | (-0.501, 0.5] | 32573 | 0.038 | -0.011 | -0.006 | -0.010 |
+| home | (0.5, 1.5] | 32648 | 0.118 | 0.023 | 0.024 | -0.024 |
+| rest days | (-0.001, 6.0] | 9967 | 0.144 | 0.018 | 0.030 | -0.002 |
+| rest days | (6.0, 7.0] | 41818 | 0.076 | 0.004 | 0.009 | -0.018 |
+| rest days | (7.0, 30.0] | 13436 | 0.034 | 0.001 | -0.006 | -0.025 |
+| opp defence vs position (prior z allowed) | (-9.001, -0.2] | 3162 | 0.096 | 0.013 | -0.023 | 0.043 |
+| opp defence vs position (prior z allowed) | (-0.2, -0.05] | 16718 | 0.161 | 0.024 | 0.013 | -0.019 |
+| opp defence vs position (prior z allowed) | (-0.05, 0.05] | 18742 | 0.123 | 0.006 | 0.004 | -0.026 |
+| opp defence vs position (prior z allowed) | (0.05, 0.2] | 18638 | 0.085 | -0.009 | 0.012 | -0.005 |
+| opp defence vs position (prior z allowed) | (0.2, 9.0] | 7961 | -0.034 | 0.001 | 0.018 | -0.052 |
+| recent form (EWM z, hl 2) | (-9.001, -0.4] | 10352 | 0.049 | -0.031 | -0.082 | -0.173 |
+| recent form (EWM z, hl 2) | (-0.4, -0.1] | 18447 | -0.056 | 0.007 | -0.024 | -0.063 |
+| recent form (EWM z, hl 2) | (-0.1, 0.1] | 11442 | -0.108 | 0.011 | 0.023 | -0.015 |
+| recent form (EWM z, hl 2) | (0.1, 0.4] | 12170 | -0.065 | 0.030 | 0.051 | 0.053 |
+| recent form (EWM z, hl 2) | (0.4, 30.0] | 11457 | 0.532 | 0.014 | 0.085 | 0.134 |
+| player long-run bias (EWM z, hl 20) | (-9.001, -0.2] | 7702 | -0.041 | 0.026 | -0.042 | -0.116 |
+| player long-run bias (EWM z, hl 20) | (-0.2, -0.05] | 12673 | -0.097 | -0.007 | -0.030 | -0.096 |
+| player long-run bias (EWM z, hl 20) | (-0.05, 0.05] | 12690 | -0.015 | 0.012 | -0.001 | -0.043 |
+| player long-run bias (EWM z, hl 20) | (0.05, 0.2] | 16171 | -0.010 | 0.002 | 0.001 | 0.007 |
+| player long-run bias (EWM z, hl 20) | (0.2, 30.0] | 14632 | 0.355 | 0.014 | 0.087 | 0.076 |
+| snap share last game | (-0.001, 0.4] | 24572 |  | -0.055 | -0.046 | -0.081 |
+| snap share last game | (0.4, 0.6] | 12642 |  | 0.043 | 0.054 | 0.038 |
+| snap share last game | (0.6, 0.8] | 12760 |  | 0.050 | 0.054 | 0.130 |
+| snap share last game | (0.8, 1.01] | 13068 | -0.019 | 0.076 | 0.062 | 0.136 |
+| wind (mph, outdoors) | (-1.001, 5.0] | 32254 | 0.119 | 0.020 | 0.014 | -0.015 |
+| wind (mph, outdoors) | (5.0, 10.0] | 15142 | 0.056 | -0.005 | 0.005 | -0.024 |
+| wind (mph, outdoors) | (10.0, 15.0] | 8097 | 0.055 | -0.009 | 0.014 | -0.022 |
+| wind (mph, outdoors) | (15.0, 80.0] | 2879 |  | -0.052 | -0.044 | -0.024 |
+| script team margin | (-40.001, -7.0] | 8032 | 0.120 | -0.024 | 0.017 | -0.018 |
+| script team margin | (-7.0, -3.0] | 10867 | 0.131 | 0.002 | 0.004 | -0.025 |
+| script team margin | (-3.0, 3.0] | 27192 | 0.060 | -0.009 | -0.000 | -0.023 |
+| script team margin | (3.0, 7.0] | 10841 | 0.083 | 0.040 | 0.014 | -0.014 |
+| script team margin | (7.0, 40.0] | 8289 | 0.020 | 0.045 | 0.030 | 0.009 |
+
 ## (e) Learning curve by season
 
 | season | n_legs | ll_script_param | ll_lgbm | ll_calibrated | ece_param | ece_lgbm | ece_cal | hit>=0.75 | pred>=0.75 | line_n | line_hit |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 2017 | 43472 | 0.4454 | 0.4381 | 0.4356 | 0.0410 | 0.0293 | 0.0170 | 0.8082 | 0.8563 | 382 | 0.5157 |
-| 2018 | 42332 | 0.4497 | 0.4348 | 0.4363 | 0.0356 | 0.0156 | 0.0187 | 0.8658 | 0.8404 | 322 | 0.5621 |
+| 2017 | 43472 | 0.4454 | 0.4381 | 0.4356 | 0.0410 | 0.0293 | 0.0170 | 0.8082 | 0.8563 | 382 | 0.5497 |
+| 2018 | 42332 | 0.4497 | 0.4348 | 0.4363 | 0.0356 | 0.0156 | 0.0187 | 0.8658 | 0.8404 | 322 | 0.5807 |
 | 2019 | 42184 | 0.4477 | 0.4297 | 0.4295 | 0.0384 | 0.0063 | 0.0068 | 0.8469 | 0.8458 | 0 |  |
 | 2020 | 44050 | 0.4491 | 0.4317 | 0.4312 | 0.0368 | 0.0075 | 0.0048 | 0.8456 | 0.8421 | 0 |  |
 | 2021 | 45848 | 0.4496 | 0.4318 | 0.4313 | 0.0387 | 0.0103 | 0.0058 | 0.8415 | 0.8480 | 0 |  |
@@ -144,7 +194,7 @@ Predicted = Gaussian-copula joint (correlations from prior seasons' residuals). 
 | 2023 | 45572 | 0.4299 | 0.4134 | 0.4131 | 0.0353 | 0.0082 | 0.0065 | 0.8526 | 0.8462 | 0 |  |
 | 2024 | 50900 | 0.3923 | 0.3763 | 0.3762 | 0.0286 | 0.0071 | 0.0085 | 0.8539 | 0.8475 | 0 |  |
 | 2025 | 52590 | 0.3747 | 0.3579 | 0.3577 | 0.0330 | 0.0074 | 0.0046 | 0.8464 | 0.8466 | 0 |  |
-| 2026 | 14480 | 0.3829 | 0.3650 | 0.3653 | 0.0322 | 0.0136 | 0.0145 | 0.8593 | 0.8462 | 1847 | 0.5355 |
+| 2026 | 14480 | 0.3829 | 0.3650 | 0.3653 | 0.0322 | 0.0136 | 0.0145 | 0.8593 | 0.8462 | 1847 | 0.5393 |
 
 Top features (gain share, 2026 model):
 
