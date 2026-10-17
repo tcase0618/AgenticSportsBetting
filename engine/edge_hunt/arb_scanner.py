@@ -37,6 +37,8 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+import warnings
+
 import numpy as np
 import pandas as pd
 import requests
@@ -44,6 +46,8 @@ import requests
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from engine.devig import devig  # noqa: E402
+
+warnings.filterwarnings("ignore", category=RuntimeWarning)
 
 OUT = ROOT / "results" / "edge_hunt"
 LOG = OUT / "arb_log.csv"
@@ -717,10 +721,47 @@ def normalize(E, Q):
     N["event"] = N.espn_id.map(lambda i: f"{ev.at[i, 'away_name']} @ {ev.at[i, 'home_name']}")
     N["commence"] = N.espn_id.map(lambda i: ev.at[i, "start"])
     N["hkey"] = N.hline.fillna(-9999.0)
-    return N.reset_index(drop=True)
+    N, bad = stale_filter(N.reset_index(drop=True))
+    N.attrs["stale"] = bad
+    return N
 
 
 SIDES = {"ml": ("home", "away"), "spread": ("home", "away"), "total": ("over", "under")}
+
+
+def stale_filter(N, ml_tol=0.08, line_tol=3.0):
+    """Drop every quote of a (venue, event) whose main price/line is off the cross-venue median by more than
+    ml_tol de-vigged probability or line_tol points: such gaps are stale/mis-posted feeds (e.g. a book that
+    has not moved since the open), not bettable arbs."""
+    bad = {}
+    for mkt in ("ml", "spread", "total"):
+        a, b = SIDES[mkt]
+        rows = []
+        X = N[(N.market == mkt) & (~N.alt.astype(bool))]
+        for (eid, v), g in X.groupby(["espn_id", "venue"]):
+            P = g.pivot_table(index="hkey", columns="side", values="dec", aggfunc="max")
+            if a not in P or b not in P:
+                continue
+            P = P.dropna()
+            if P.empty:
+                continue
+            if mkt == "ml":
+                rows.append((eid, v, float(1 / P[a].iloc[0] / (1 / P[a].iloc[0] + 1 / P[b].iloc[0]))))
+            else:
+                k = (P[a] - P[b]).abs().idxmin()          # most balanced line = venue's main line
+                rows.append((eid, v, float(k)))
+        R = pd.DataFrame(rows, columns=["espn_id", "venue", "x"])
+        if R.empty:
+            continue
+        R["med"] = R.groupby("espn_id").x.transform("median")
+        R["n"] = R.groupby("espn_id").x.transform("size")
+        tol = ml_tol if mkt == "ml" else line_tol
+        for r in R[(R.n >= 3) & ((R.x - R.med).abs() > tol)].itertuples():
+            bad[(r.espn_id, r.venue)] = f"{mkt} {r.x:.3g} vs median {r.med:.3g}"
+    if bad:
+        keep = [(e, v) not in bad for e, v in zip(N.espn_id, N.venue)]
+        N = N[keep].reset_index(drop=True)
+    return N, bad
 
 
 def consensus_fair(N):
@@ -773,6 +814,8 @@ def find_signals(N, verify=True):
                     continue
                 ints = [k for k in range(math.floor(lo) + 1, math.ceil(hi)) if lo < k < hi]
                 s = 1 / x.dec + 1 / y.dec
+                if not (1.3 <= x.dec <= 4.0 and 1.3 <= y.dec <= 4.0):   # skip lottery-ticket alt lines
+                    continue
                 if ints and s <= MIDDLE_MAX_COST:
                     sig.append(dict(kind="middle", legs=[x, y], cost=s, margin=1 - s, gap=hi - lo, ints=ints))
     # ---- +EV vs de-vigged consensus of the OTHER venues at the exact same line
@@ -814,6 +857,13 @@ def _fmt_leg(L):
     return f"{who}{ln} {L['am']:+.0f} @{L['venue']}"
 
 
+def _min_size(legs):
+    """$ executable at the quoted price = smallest known depth/limit across legs (sportsbook limits unknown)."""
+    v = [L.get("book_usd", L.get("size")) for L in legs]
+    v = [float(x) for x in v if x is not None and x == x]
+    return min(v) if v else np.nan
+
+
 def to_rows(sig, scan_ts):
     rows = []
     for s in sig:
@@ -831,8 +881,7 @@ def to_rows(sig, scan_ts):
             rows.append(dict(base, hline=L0["hline"], side=f"{s['legs'][0]['side']}/{s['legs'][1]['side']}",
                              venue="+".join(L["venue"] for L in s["legs"]), edge=round(s["margin"], 4),
                              edge_book=round(1 - s.get("cost_book", np.nan), 4), verified=s.get("verified"),
-                             gap=s.get("gap"), size_usd=min([L.get("book_usd", L.get("size")) or np.inf
-                                                             for L in s["legs"]] + [np.inf]),
+                             gap=s.get("gap"), size_usd=_min_size(s["legs"]),
                              legs=" | ".join(_fmt_leg(L) for L in s["legs"])))
     return pd.DataFrame(rows)
 
@@ -853,7 +902,9 @@ def scan(sports=SPORTS, save=True, quiet=False):
                 n_arb_verified=int(((R.kind == "arb") & (R.edge_book > 0)).sum()) if len(R) else 0,
                 n_middle=int((R.kind == "middle").sum()) if len(R) else 0,
                 n_ev=int((R.kind == "ev").sum()) if len(R) else 0, secs=round(time.time() - t0, 1),
-                errors=" ; ".join(errors)[:2000], feed_status=json.dumps(status))
+                errors=" ; ".join(errors)[:2000], feed_status=json.dumps(status),
+                stale_dropped=json.dumps({f"{v}|{e}": why for (e, v), why in N.attrs.get("stale", {}).items()})
+                if len(N) else "{}")
     if save:
         OUT.mkdir(parents=True, exist_ok=True)
         QUOTES.mkdir(parents=True, exist_ok=True)
@@ -947,6 +998,192 @@ def settle(first_only=True):
     return L
 
 
+
+# ------------------------------------------------------------------ historical: Polymarket vs sportsbook close
+PMH_CACHE = OUT / "arb_scanner_pm_history.csv"
+PMH_SERIES = {"nba": 10345, "nhl": 10346, "ncaam": 10470, "nfl": 12185, "ncaaf": 12756}
+
+
+def pm_closed_games(sport, max_pages=80):
+    out, off = [], 0
+    for _ in range(max_pages):
+        try:
+            page = _get("https://gamma-api.polymarket.com/events", {"series_id": PMH_SERIES[sport], "closed": "true",
+                                                                    "limit": 100, "offset": off})
+        except Exception:
+            break
+        if not page:
+            break
+        for e in page:
+            if not e.get("gameId"):
+                continue
+            ml = [m for m in e.get("markets", []) if m.get("sportsMarketType") == "moneyline"]
+            if not ml:
+                continue
+            m = ml[0]
+            try:
+                outs, toks = json.loads(m["outcomes"]), json.loads(m["clobTokenIds"])
+                fin = json.loads(m.get("outcomePrices") or "[]")
+            except Exception:
+                continue
+            if len(outs) != 2 or len(toks) != 2:
+                continue
+            out.append(dict(sport=sport, title=e.get("title"), away=outs[0], home=outs[1], token_away=toks[0],
+                            start=m.get("gameStartTime") or e.get("startTime"), fee=json.dumps(m.get("feeSchedule")),
+                            final_away=float(fin[0]) if fin else np.nan, volume=float(m.get("volumeNum") or 0)))
+        off += 100
+    return out
+
+
+def _pm_hist_price(tok, start):
+    """Last traded/marked price of token in the 3h before start, and at T-60m (CLOB prices-history)."""
+    t = int(pd.Timestamp(start).timestamp())
+    try:
+        h = _get("https://clob.polymarket.com/prices-history",
+                 {"market": tok, "startTs": t - 3 * 3600, "endTs": t, "fidelity": 5}).get("history", [])
+    except Exception:
+        return np.nan, np.nan, 0
+    h = [(x["t"], x["p"]) for x in h if x["t"] <= t]
+    if not h:
+        return np.nan, np.nan, 0
+    p_close = h[-1][1]
+    p60 = next((p for tt, p in reversed(h) if tt <= t - 3600), np.nan)
+    return p_close, p60, len(h)
+
+
+def pm_history(sports=("nba", "nhl", "ncaam", "nfl", "ncaaf"), refresh=False):
+    if PMH_CACHE.exists() and not refresh:
+        return pd.read_csv(PMH_CACHE)
+    G = []
+    with ThreadPoolExecutor(5) as ex:
+        for r in ex.map(pm_closed_games, sports):
+            G += r
+    G = pd.DataFrame(G)
+    G["start"] = pd.to_datetime(G.start, utc=True, errors="coerce")
+    G = G.dropna(subset=["start"])
+    with ThreadPoolExecutor(12) as ex:
+        res = list(ex.map(lambda r: _pm_hist_price(r[0], r[1]), zip(G.token_away, G.start)))
+    G["pm_away_close"], G["pm_away_60"], G["n_hist"] = zip(*res)
+    G.to_csv(PMH_CACHE, index=False)
+    return G
+
+
+def _book_games(sport):
+    if sport == "nfl":
+        from backtest import run_team as rt
+        B = rt.load("nfl")
+    else:
+        B = pd.read_csv(ROOT / "data" / "processed" / f"{sport}.csv", low_memory=False)
+    B["date"] = pd.to_datetime(B.date)
+    live = ROOT / "data" / "live" / f"{sport}.csv"
+    names = {}
+    if live.exists():
+        L = pd.read_csv(live, low_memory=False)
+        for a, b in zip(L.get("home", []), L.get("home_name", [])):
+            names[a] = b
+        L["date"] = pd.to_datetime(L.date)
+        L = L[L.date > B.date.max()]
+        if "home_ml" in L:
+            B = pd.concat([B, L], ignore_index=True)
+    B["home_full"] = B.home.map(lambda x: names.get(x, x))
+    B["away_full"] = B.away.map(lambda x: names.get(x, x))
+    return B.dropna(subset=["home_ml", "away_ml", "home_score", "away_score"])
+
+
+def pm_join(G, sport):
+    B = _book_games(sport)
+    B = B[B.date >= G.start.min().tz_localize(None).normalize() - pd.Timedelta(days=1)]
+    G = G[G.sport == sport].copy()
+    G["date"] = G.start.dt.tz_convert(ET).dt.tz_localize(None).dt.normalize()
+    rows = []
+    idx = {d: g for d, g in B.groupby("date")}
+    for r in G.itertuples():
+        cand = idx.get(r.date)
+        if cand is None:
+            continue
+        hit = None
+        for b in cand.itertuples():
+            hf, af = norm(b.home_full), norm(b.away_full)
+            hp, ap = norm(r.home), norm(r.away)
+            ok = lambda full, short: bool(short) and (full == short or full.endswith(short) or full.startswith(short))
+            if ok(hf, hp) and ok(af, ap):
+                hit = (b, False)
+                break
+            if ok(hf, ap) and ok(af, hp):
+                hit = (b, True)
+                break
+        if hit is None:
+            continue
+        b, flip = hit
+        p_away = r.pm_away_close if not flip else 1 - r.pm_away_close
+        rows.append(dict(sport=sport, date=r.date, home=b.home, away=b.away, home_ml=b.home_ml, away_ml=b.away_ml,
+                         home_score=b.home_score, away_score=b.away_score, pm_home=1 - p_away,
+                         pm_home_60=(1 - r.pm_away_60) if not flip else r.pm_away_60, fee=r.fee, volume=r.volume,
+                         pm_final_home=(1 - r.final_away) if not flip else r.final_away))
+    return pd.DataFrame(rows)
+
+
+def pm_backtest(refresh=False):
+    """Protocol test: does Polymarket's pre-game price diverging from the sportsbook close predict results?
+    Candidates (all logged): side = the one Polymarket rates higher than the de-vigged book close by >= thr;
+    bet A) at the sportsbook closing price (real price), B) at Polymarket (history price + 1c + taker fee;
+    approximate - history is last trade, not the ask). Discovery = first 60% of dates, lockbox = last 40%."""
+    from scipy.stats import norm as N
+    G = pm_history(refresh=refresh)
+    G["start"] = pd.to_datetime(G.start, utc=True)
+    J = pd.concat([pm_join(G, s) for s in G.sport.unique()], ignore_index=True)
+    J = J[(J.pm_home > 0.02) & (J.pm_home < 0.98) & (J.home_score != J.away_score)]
+    J = J[(1 / am2dec_v(J.home_ml) + 1 / am2dec_v(J.away_ml)).between(1.0, 1.12)]
+    J["p_book"], _ = devig(J.home_ml.values, J.away_ml.values, "odds_ratio")
+    J["d"] = J.pm_home - J.p_book
+    J["y"] = (J.home_score > J.away_score).astype(int)
+    J = J.sort_values("date").reset_index(drop=True)
+    cut = J.date.quantile(0.6)
+    J["lockbox"] = J.date > cut
+    fs = lambda f: json.loads(f) if isinstance(f, str) and f not in ("null", "") else {}
+    cands = []
+    for sport in ["ALL"] + sorted(J.sport.unique()):
+        for thr in (0.02, 0.03, 0.05, 0.08):
+            for venue in ("book", "pm"):
+                cands.append((sport, thr, venue))
+    rows, bets_all = [], {}
+    for sport, thr, venue in cands:
+        X = J if sport == "ALL" else J[J.sport == sport]
+        X = X[X.d.abs() >= thr].copy()
+        home = X.d > 0 if venue == "book" else X.d < 0      # pm venue: buy on PM the side PM rates LOWER
+        X["home_side"] = home
+        if venue == "book":
+            X["dec"] = np.where(home, am2dec_v(X.home_ml), am2dec_v(X.away_ml))
+        else:
+            p = np.where(home, X.pm_home, 1 - X.pm_home) + 0.01
+            fee = np.array([pm_fee(pp, fs(f)) for pp, f in zip(p, X.fee)])
+            X["dec"] = 1 / (p + fee)
+        X["win"] = np.where(home, X.y == 1, X.y == 0)
+        X["pnl"] = np.where(X.win, X.dec - 1, -1.0)
+        bets_all[(sport, thr, venue)] = X
+        for samp, M in (("discovery", ~X.lockbox), ("lockbox", X.lockbox)):
+            Z = X[M]
+            n = len(Z)
+            if n == 0:
+                rows.append(dict(sport=sport, thr=thr, venue=venue, sample=samp, n=0))
+                continue
+            roi = Z.pnl.mean()
+            sd = Z.pnl.std(ddof=1) if n > 1 else np.nan
+            z = roi / (sd / math.sqrt(n)) if sd and sd == sd and sd > 0 else np.nan
+            eq = Z.pnl.cumsum()
+            rows.append(dict(sport=sport, thr=thr, venue=venue, sample=samp, n=n, roi=roi, units=Z.pnl.sum(), z=z,
+                             p=1 - N.cdf(z) if z == z else np.nan, maxdd=float((eq.cummax() - eq).max()),
+                             months_pos=float((Z.groupby(Z.date.dt.to_period("M")).pnl.sum() > 0).mean())))
+    R = pd.DataFrame(rows)
+    R.to_csv(OUT / "arb_scanner_candidates.csv", index=False)
+    J.to_csv(OUT / "arb_scanner_pm_joined.csv", index=False)
+    return J, R, bets_all
+
+
+def am2dec_v(a):
+    a = np.asarray(a, float)
+    return np.where(a > 0, 1 + a / 100, 1 + 100 / np.abs(a))
+
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "scan"
     if cmd == "scan":
@@ -959,3 +1196,8 @@ if __name__ == "__main__":
                 time.sleep(gap)
     elif cmd == "settle":
         settle()
+    elif cmd == "pmhist":
+        J, R, _ = pm_backtest(refresh="refresh" in sys.argv)
+        pd.set_option("display.width", 220)
+        print(f"joined games: {len(J)} by sport {J.groupby('sport').size().to_dict()}  dates {J.date.min()} .. {J.date.max()}")
+        print(R.round(4).to_string())
