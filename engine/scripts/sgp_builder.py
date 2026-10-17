@@ -476,10 +476,16 @@ def build_sgps(script_row, player_rows: pd.DataFrame | None = None, lines: dict 
 
 if __name__ == "__main__":      # smoke test on the last NBA game in the script file
     gm = pd.read_parquet(ROOT / "results/scripts/nba_games.parquet").iloc[-1]
-    pl = pd.read_parquet(ROOT / "results/scripts/nba_players.parquet", filters=[("game_id", "==", gm["game_id"])])
+    allp = pd.read_parquet(ROOT / "results/scripts/nba_players.parquet",
+                           columns=["game_id", "date", "player_id", "player", "team", "stat", "mu", "sd", "share_of_team", "min_exp", "actual"])
+    pl = allp[allp.game_id == gm["game_id"]]
     pl = pl[pl.min_exp >= 24].assign(team_is_home=lambda d: d.team == gm["home"])
     pl["beta"] = np.where(pl.stat == "pts", np.clip(pl.share_of_team * gm["sd_home"] / pl.sd, 0, 0.9), np.nan)
-    pl["trail_avg"] = pl.mu.round(0)           # demo only: the backtest uses real trailing averages
-    for s in build_sgps(gm, pl, sport="nba")[:5]:
+    prior = allp[(allp.date < gm["date"]) & allp.player_id.isin(pl.player_id)].sort_values("date")
+    trail = prior.groupby(["player_id", "stat"]).actual.apply(lambda s: s.tail(10).mean() if len(s) >= 5 else np.nan)
+    pl = pl.merge(trail.rename("trail_avg").reset_index(), on=["player_id", "stat"], how="left")   # market proxy, prior games only
+    lines = dict(spread_home=gm["spread_home"], total_line=gm["total_line"], home_ml=gm["home_ml"], away_ml=gm["away_ml"])
+    print(gm["away"], "@", gm["home"], gm["date"].date())
+    for s in build_sgps(gm, pl, lines, sport="nba")[:5]:
         print(s["legs"], f"script {s['p_script']:.3f} cal {s['p_script_cal']:.3f} mkt {s['p_market_fair']:.3f}",
               s["fair_american"], "bet if FD >=", s["bet_if_fanduel_at_least"])

@@ -443,7 +443,9 @@ def _ll(p, y):
 
 
 def _ece(p, y, bins=10):
-    if len(p) < bins * 5:
+    ok = np.isfinite(p) & np.isfinite(y)
+    p, y = p[ok], y[ok]
+    if len(p) < bins * 5 or np.ptp(p) <= 0:
         return np.nan
     q = pd.qcut(p, bins, labels=False, duplicates="drop")
     d = pd.DataFrame(dict(p=p, y=y, q=q)).groupby("q").agg(p=("p", "mean"), y=("y", "mean"), n=("p", "size"))
@@ -459,7 +461,8 @@ def learning_curves(df: pd.DataFrame) -> pd.DataFrame:
     for (sp, s, kind), x in d.groupby(["sport", "season", "lineset"]):
         r = dict(sport=sp, season=s, lineset=kind, n=len(x), hit=x.y.mean())
         for p in PROBS:
-            r[f"ll_{p}"] = _ll(x[p].values, x.y.values)
+            v = x[p].notna().values
+            r[f"ll_{p}"] = _ll(x[p].values[v], x.y.values[v])
             r[f"ece_{p}"] = _ece(x[p].values, x.y.values)
             r[f"mean_{p}"] = x[p].mean()
         out.append(r)
@@ -546,6 +549,34 @@ def main(sports):
         df[c] = df[c].astype("float32")
     df.to_parquet(RS / "sgp_candidates.parquet", index=False)
     (RS / "sgp_state.json").write_text(json.dumps(state, indent=0))
+    print(f"simulation done in {(time.time()-t0)/60:.1f} min")
+    return evaluate(df)
+
+
+def corr_vs_indep(df: pd.DataFrame) -> pd.DataFrame:
+    """Holdout 2021+: does the learned-correlation joint (p_mkt) beat the independent product (p_indep)?
+    Same de-vigged marginals in both, so the difference is only the correlation model. UFC excluded (its
+    market joint is the real method-prop price, not a copula)."""
+    d = df[(df.season > TRAIN_END) & df.y.notna() & (df.sport != "ufc")]
+    out = []
+    for (sp, ls), x in list(d.groupby(["sport", "lineset"])) + [(("all", "all"), d)]:
+        r = dict(sport=sp, lineset=ls, n=len(x), hit=x.y.mean(), mean_p_corr=x.p_mkt.mean(), mean_p_indep=x.p_indep.mean(),
+                 ll_corr=_ll(x.p_mkt.values, x.y.values), ll_indep=_ll(x.p_indep.values, x.y.values))
+        r["d_ll"] = r["ll_corr"] - r["ll_indep"]
+        # paired z of per-SGP log-loss differences, clustered crudely by game (one SGP per game)
+        g = x.groupby("game_id").head(1)
+        lc = -(g.y * np.log(g.p_mkt.clip(1e-4)) + (1 - g.y) * np.log((1 - g.p_mkt).clip(1e-4)))
+        li = -(g.y * np.log(g.p_indep.clip(1e-4)) + (1 - g.y) * np.log((1 - g.p_indep).clip(1e-4)))
+        dd = (lc - li).values
+        r["z_one_per_game"] = dd.mean() / (dd.std(ddof=1) / math.sqrt(len(dd))) if len(dd) > 2 and dd.std() > 0 else np.nan
+        out.append(r)
+    return pd.DataFrame(out)
+
+
+def evaluate(df: pd.DataFrame | None = None):
+    t0 = time.time()
+    if df is None:
+        df = pd.read_parquet(RS / "sgp_candidates.parquet")
     lc = learning_curves(df)
     lc.to_csv(RS / "sgp_learning_curves.csv", index=False)
     res = []
@@ -558,11 +589,16 @@ def main(sports):
                      label="NBA real points props: choose 2025, report 2026")
     E = pd.DataFrame(res)
     E.to_csv(RS / "sgp_edge.csv", index=False)
+    CI = corr_vs_indep(df)
+    CI.to_csv(RS / "sgp_corr_vs_indep.csv", index=False)
     print(E.round(3).to_string())
-    print(f"done in {(time.time()-t0)/60:.1f} min")
+    print(CI.round(4).to_string())
+    print(f"evaluation done in {(time.time()-t0)/60:.1f} min")
     return df, lc, E
 
 
 if __name__ == "__main__":
-    sp = sys.argv[1:] or ["nfl", "nba", "ncaaf", "ncaam", "nhl", "mlb", "ufc"]
-    main(sp)
+    if sys.argv[1:] == ["--eval"]:          # re-score the saved candidates without re-simulating
+        evaluate()
+    else:
+        main(sys.argv[1:] or ["nfl", "nba", "ncaaf", "ncaam", "nhl", "mlb", "ufc"])
