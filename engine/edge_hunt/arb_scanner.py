@@ -78,8 +78,17 @@ AN_BOOKS = {68: "DraftKings", 75: "BetMGM", 79: "bet365", 123: "Caesars", 2988: 
             4620: "theScore", 4693: "BallyBet"}
 PM_SERIES = {"nba": 10345, "nfl": 12185, "ncaaf": 12756, "nhl": 10346, "mlb": 3, "ufc": 38, "ncaam": 10470}
 KALSHI = "https://api.elections.kalshi.com/trade-api/v2"
+KX_PROPS = {"nfl": {"KXNFLRECYDS": "receiving_yards", "KXNFLRSHYDS": "rushing_yards", "KXNFLPASSYDS": "passing_yards",
+                    "KXNFLREC": "receptions", "KXNFLPASSTDS": "passing_touchdowns",
+                    "KXNFLPASSCOMP": "passing_completions", "KXNFLPASSATT": "passing_attempts"}}
 KX_SERIES = {"nfl": "KXNFL", "ncaaf": "KXNCAAF", "nba": "KXNBA", "ncaam": "KXNCAAMB", "mlb": "KXMLB", "nhl": "KXNHL"}
 EXCHANGES = {"Polymarket", "Kalshi"}
+# Pinnacle special description suffix -> Polymarket sportsMarketType (player props, O/U)
+PROP_STATS = {"Total Receptions": "receptions", "Total Receiving Yards": "receiving_yards",
+              "Total Rushing Yards": "rushing_yards", "Total Passing Yards": "passing_yards",
+              "Total Touchdown Passes": "passing_touchdowns", "Total Pass Attempts": "passing_attempts",
+              "Total Pass Completions": "passing_completions", "Total Points": "points",
+              "Total Rebounds": "rebounds", "Total Assists": "assists"}
 
 
 # ------------------------------------------------------------------ odds helpers
@@ -291,6 +300,27 @@ def pinnacle(sport):
             ps = m["participants"]
             M[m["id"]] = (ps[0]["name"], ps[1]["name"], m["startTime"])
     out = []
+    # player props: 'special' matchups whose parent is a game matchup
+    PP = {}
+    for m in mu:
+        sp = m.get("special") or {}
+        if m.get("type") == "special" and sp.get("category") == "Player Props" and m.get("parentId") in M:
+            d = sp.get("description", "")
+            key = next((k_ for k_ in PROP_STATS if d.endswith(" " + k_)), None)
+            if key:
+                ids = {p["id"]: p["name"].lower() for p in m.get("participants", [])}
+                PP[m["id"]] = (M[m["parentId"]], PROP_STATS[key], d[: -len(key)].strip(), ids)
+    for k in mk:
+        if k.get("matchupId") in PP and k.get("type") == "total" and k.get("period") == 0 and k.get("status", "open") == "open":
+            (h, a, st), stat, pl, ids = PP[k["matchupId"]]
+            lim = next((x["amount"] for x in k.get("limits", []) if x.get("type") == "maxRiskStake"), np.nan)
+            for p in k.get("prices", []):
+                ou = ids.get(p.get("participantId"))
+                if ou in ("over", "under"):
+                    q = _q("Pinnacle", sport, st, (h, a), f"prop:{stat}:{norm(pl)}", ou, p["points"], p["price"], lim)
+                    if q:
+                        q["player"] = pl
+                        out.append(q)
     for k in mk:
         if k.get("matchupId") not in M or k.get("period") != 0 or k.get("status") != "open":
             continue
@@ -488,6 +518,12 @@ def polymarket(sport):
                     out.append(_q("Polymarket", sport, st, T, "spread", o, ln if o == outs[0] else -ln, am, ref=ref))
                 elif smt == "totals" and m.get("line") is not None and o.lower() in ("over", "under"):
                     out.append(_q("Polymarket", sport, st, T, "total", o.lower(), float(m["line"]), am, ref=ref))
+                elif smt in PROP_STATS.values() and m.get("line") is not None and o.lower() in ("over", "under"):
+                    pl = (m.get("question") or "").split(":")[0].strip()
+                    q = _q("Polymarket", sport, st, T, f"prop:{smt}:{norm(pl)}", o.lower(), float(m["line"]), am, ref=ref)
+                    if q:
+                        q["player"] = pl
+                        out.append(q)
     return [x for x in out if x]
 
 
@@ -555,6 +591,22 @@ def kalshi(sport, days, series_meta):
             else:
                 if m.get("floor_strike") is not None and "over" in (m.get("title") or "").lower():
                     games[key].setdefault("totals", []).append((float(m["floor_strike"]), ya, na, ys, meta))
+    for ser, stat in KX_PROPS.get(sport, {}).items():
+        mult = float(series_meta.get(ser, {}).get("fee_multiplier") or 1)
+        try:
+            pm = _kx_pages(ser)
+        except Exception:
+            continue
+        for m in pm:
+            d = _kx_date(m["event_ticker"])
+            if d not in dset or m.get("status") != "active" or m.get("floor_strike") is None:
+                continue
+            key = m["event_ticker"].split("-", 1)[1]
+            pl = (m.get("title") or "").split(":")[0].strip()
+            ya, na = float(m.get("yes_ask_dollars") or 0), float(m.get("no_ask_dollars") or 0)
+            games.setdefault(key, {"date": d}).setdefault("props", []).append(
+                (stat, pl, float(m["floor_strike"]), ya, na, float(m.get("yes_ask_size_fp") or 0),
+                 dict(ticker=m["ticker"], mult=mult)))
     for key, g in games.items():
         tm = g.get("teams", [])
         if len(tm) != 2:
@@ -589,6 +641,16 @@ def kalshi(sport, days, series_meta):
                     out.append(_q("Kalshi", sport, start, t, "spread", sel, line, dec2am(1 / c),
                                   ys * p if side == "yes" else np.nan,
                                   json.dumps(dict(ticker=meta["ticker"], side=side, mult=meta["mult"], p=p))))
+        for (stat, pl, ln, ya, na, ys, meta) in g.get("props", []):
+            for sel, p, side in (("over", ya, "yes"), ("under", na, "no")):
+                c = cost(p, meta["mult"])
+                if c == c and c < 1:
+                    q = _q("Kalshi", sport, start, t, f"prop:{stat}:{norm(pl)}", sel, ln, dec2am(1 / c),
+                           ys * p if side == "yes" else np.nan,
+                           json.dumps(dict(ticker=meta["ticker"], side=side, mult=meta["mult"], p=p)))
+                    if q:
+                        q["player"] = pl
+                        out.append(q)
         for (ln, ya, na, ys, meta) in g.get("totals", []):
             for sel, p, side in (("over", ya, "yes"), ("under", na, "no")):
                 c = cost(p, meta["mult"])
@@ -697,7 +759,7 @@ def normalize(E, Q):
         eid, sides = m
         d = r._asdict()
         d.pop("Index")
-        if r.market == "total":
+        if r.market == "total" or r.market.startswith("prop:"):
             side, hline = r.sel, r.line
         else:
             side = sides.get(r.sel)
@@ -729,13 +791,17 @@ def normalize(E, Q):
 SIDES = {"ml": ("home", "away"), "spread": ("home", "away"), "total": ("over", "under")}
 
 
+def sides(mkt):
+    return SIDES.get(mkt, ("over", "under"))
+
+
 def stale_filter(N, ml_tol=0.08, line_tol=3.0):
     """Drop every quote of a (venue, event) whose main price/line is off the cross-venue median by more than
     ml_tol de-vigged probability or line_tol points: such gaps are stale/mis-posted feeds (e.g. a book that
     has not moved since the open), not bettable arbs."""
     bad = {}
     for mkt in ("ml", "spread", "total"):
-        a, b = SIDES[mkt]
+        a, b = sides(mkt)
         rows = []
         X = N[(N.market == mkt) & (~N.alt.astype(bool))]
         for (eid, v), g in X.groupby(["espn_id", "venue"]):
@@ -768,7 +834,7 @@ def consensus_fair(N):
     """Per (event, market, hkey, venue) with both sides: odds_ratio de-vigged prob of side A."""
     rows = []
     for (eid, mkt, hk, v), g in N.groupby(["espn_id", "market", "hkey", "venue"]):
-        a, b = SIDES[mkt]
+        a, b = sides(mkt)
         s = g.set_index("side")
         if a in s.index and b in s.index:
             oa, ob = s.at[a, "am"], s.at[b, "am"]
@@ -786,7 +852,7 @@ def find_signals(N, verify=True):
     F = consensus_fair(N)
     # ---- arbs (same line, two different venues)
     for (eid, mkt, hk), g in N.groupby(["espn_id", "market", "hkey"]):
-        a, b = SIDES[mkt]
+        a, b = sides(mkt)
         A, B = g[g.side == a].sort_values("dec", ascending=False), g[g.side == b].sort_values("dec", ascending=False)
         if A.empty or B.empty:
             continue
@@ -799,7 +865,7 @@ def find_signals(N, verify=True):
                     sig.append(dict(kind="arb", legs=[x, y], cost=s, margin=1 - s))
     # ---- middles (different lines, different venues)
     for (eid, mkt), g in N[N.market != "ml"].groupby(["espn_id", "market"]):
-        a, b = SIDES[mkt]
+        a, b = sides(mkt)
         A = g[g.side == a].sort_values("dec", ascending=False).drop_duplicates("hkey")
         B = g[g.side == b].sort_values("dec", ascending=False).drop_duplicates("hkey")
         for _, x in A.iterrows():
@@ -820,14 +886,19 @@ def find_signals(N, verify=True):
                     sig.append(dict(kind="middle", legs=[x, y], cost=s, margin=1 - s, gap=hi - lo, ints=ints))
     # ---- +EV vs de-vigged consensus of the OTHER venues at the exact same line
     if not F.empty:
+        FI = {k: g for k, g in F.groupby(["espn_id", "market", "hkey"])}
         for r in N.itertuples():
-            f = F[(F.espn_id == r.espn_id) & (F.market == r.market) & (F.hkey == r.hkey) & (F.venue != r.venue)]
+            f = FI.get((r.espn_id, r.market, r.hkey))
+            if f is None:
+                continue
+            f = f[f.venue != r.venue]
             if r.venue.startswith("DraftKings"):
                 f = f[~f.venue.str.startswith("DraftKings")]
-            if len(f) < MIN_CONSENSUS:
+            need = 1 if r.market.startswith("prop:") and (f.venue == "Pinnacle").any() else MIN_CONSENSUS
+            if len(f) < need:
                 continue
             pa = float(np.mean(f.pa))
-            p = pa if r.side == SIDES[r.market][0] else 1 - pa
+            p = pa if r.side == sides(r.market)[0] else 1 - pa
             ev = p * r.dec - 1
             if ev >= EV_MIN:
                 sig.append(dict(kind="ev", legs=[pd.Series(r._asdict())], fair_p=p, ev=ev, n_cons=len(f),
@@ -852,6 +923,10 @@ def find_signals(N, verify=True):
 
 
 def _fmt_leg(L):
+    if str(L["market"]).startswith("prop:"):
+        _, stat, pl = L["market"].split(":", 2)
+        name = L.get("player") if isinstance(L.get("player"), str) else pl
+        return f"{name} {stat} {L['sel'].upper()} {L['line']:g} {L['am']:+.0f} @{L['venue']}"
     ln = "" if L["market"] == "ml" else (f" {L['line']:+g}" if L["market"] == "spread" else f" {L['line']:g}")
     who = L["sel"] if L["market"] != "total" else L["sel"].upper()
     return f"{who}{ln} {L['am']:+.0f} @{L['venue']}"
@@ -946,6 +1021,36 @@ def _finals(sport, espn_ids):
     return out
 
 
+PROP_BOX = {"passing_yards": ("passing", "YDS"), "passing_touchdowns": ("passing", "TD"),
+            "passing_completions": ("passing", "C/ATT", 0), "passing_attempts": ("passing", "C/ATT", 1),
+            "rushing_yards": ("rushing", "YDS"), "receptions": ("receiving", "REC"),
+            "receiving_yards": ("receiving", "YDS"), "points": ("", "PTS"), "rebounds": ("", "REB"),
+            "assists": ("", "AST")}
+
+
+def _player_box(sport, eid):
+    """{(norm(player), stat): value} from the ESPN summary box score of a completed game."""
+    js = _get(f"https://site.api.espn.com/apis/site/v2/sports/{ESPN_PATH[sport]}/summary", {"event": eid})
+    out = {}
+    for team in (js.get("boxscore") or {}).get("players", []):
+        for cat in team.get("statistics", []):
+            labels = cat.get("labels") or cat.get("keys") or []
+            for a in cat.get("athletes", []):
+                nm = norm((a.get("athlete") or {}).get("displayName", ""))
+                for stat, spec in PROP_BOX.items():
+                    if spec[0] and spec[0] != cat.get("name"):
+                        continue
+                    if spec[1] not in labels:
+                        continue
+                    v = a.get("stats", [])[labels.index(spec[1])]
+                    try:
+                        v = float(str(v).split("/")[spec[2]]) if len(spec) == 3 else float(v)
+                    except Exception:
+                        continue
+                    out[(nm, stat)] = v
+    return out
+
+
 def grade(market, side, hline, hs, as_):
     """+1 win, -1 loss, 0 push for one leg."""
     if market == "ml":
@@ -973,12 +1078,26 @@ def settle(first_only=True):
     fin = {}
     for sp, g in L.groupby("sport"):
         fin.update(_finals(sp, g.espn_id.unique()))
-    res = []
+    res, boxes = [], {}
     for r in L.itertuples():
         if r.espn_id not in fin:
             res.append(np.nan)
             continue
         hs, as_ = fin[r.espn_id]
+        if str(r.market).startswith("prop:"):
+            _, stat, pl = r.market.split(":", 2)
+            if r.espn_id not in boxes:
+                try:
+                    boxes[r.espn_id] = _player_box(r.sport, r.espn_id)
+                except Exception:
+                    boxes[r.espn_id] = {}
+            v = boxes[r.espn_id].get((pl, stat))
+            if v is None:   # player did not record the stat line (DNP -> void at most books)
+                res.append(np.nan)
+                continue
+            d = (v - r.hline) if r.side == "over" else (r.hline - v)
+            res.append(0 if d == 0 else (1 if d > 0 else -1))
+            continue
         res.append(grade(r.market, r.side, r.hline if r.market != "ml" else None, hs, as_))
     L["result"] = res
     L["profit"] = np.where(L.result == 1, L.dec - 1, np.where(L.result == -1, -1.0, np.where(L.result == 0, 0.0, np.nan)))
@@ -1004,7 +1123,7 @@ PMH_CACHE = OUT / "arb_scanner_pm_history.csv"
 PMH_SERIES = {"nba": 10345, "nhl": 10346, "ncaam": 10470, "nfl": 12185, "ncaaf": 12756}
 
 
-def pm_closed_games(sport, max_pages=80):
+def pm_closed_games(sport, max_pages=250):
     out, off = [], 0
     for _ in range(max_pages):
         try:
@@ -1085,6 +1204,17 @@ def _book_games(sport):
         L = L[L.date > B.date.max()]
         if "home_ml" in L:
             B = pd.concat([B, L], ignore_index=True)
+    if sport in ("nfl", "nhl", "mlb"):          # dataset abbreviations -> ESPN display names
+        from nightly.live import ABBR
+        try:
+            js = _get(f"https://site.api.espn.com/apis/site/v2/sports/{ESPN_PATH[sport]}/teams", {"limit": 100})
+            for t in js["sports"][0]["leagues"][0]["teams"]:
+                t = t["team"]
+                names[ABBR.get(sport, {}).get(t["abbreviation"], t["abbreviation"])] = t["displayName"]
+        except Exception:
+            pass
+        names.update({"ARI": names.get("ARI", "Arizona Coyotes") if sport == "nhl" else names.get("ARI", "ARI"),
+                      "LA": "Los Angeles Rams" if sport == "nfl" else names.get("LA", "LA")})
     B["home_full"] = B.home.map(lambda x: names.get(x, x))
     B["away_full"] = B.away.map(lambda x: names.get(x, x))
     return B.dropna(subset=["home_ml", "away_ml", "home_score", "away_score"])
@@ -1105,7 +1235,8 @@ def pm_join(G, sport):
         for b in cand.itertuples():
             hf, af = norm(b.home_full), norm(b.away_full)
             hp, ap = norm(r.home), norm(r.away)
-            ok = lambda full, short: bool(short) and (full == short or full.endswith(short) or full.startswith(short))
+            ok = lambda full, short: bool(short) and bool(full) and (
+                full == short or full.endswith(short) or full.startswith(short) or short.startswith(full))
             if ok(hf, hp) and ok(af, ap):
                 hit = (b, False)
                 break
@@ -1133,7 +1264,8 @@ def pm_backtest(refresh=False):
     G["start"] = pd.to_datetime(G.start, utc=True)
     J = pd.concat([pm_join(G, s) for s in G.sport.unique()], ignore_index=True)
     J = J[(J.pm_home > 0.02) & (J.pm_home < 0.98) & (J.home_score != J.away_score)]
-    J = J[(1 / am2dec_v(J.home_ml) + 1 / am2dec_v(J.away_ml)).between(1.0, 1.12)]
+    ov = 1 / am2dec_v(J.home_ml) + 1 / am2dec_v(J.away_ml)
+    J = J[(ov >= 1.0) & (ov <= 1.12)]
     J["p_book"], _ = devig(J.home_ml.values, J.away_ml.values, "odds_ratio")
     J["d"] = J.pm_home - J.p_book
     J["y"] = (J.home_score > J.away_score).astype(int)
