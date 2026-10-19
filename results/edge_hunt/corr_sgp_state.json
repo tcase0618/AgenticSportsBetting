@@ -1,0 +1,186 @@
+{
+ "nba|nba_ptsO_gameO": {
+  "config": "scope=line20 model=none",
+  "rho": 0.22915592512995314,
+  "verdict": false,
+  "rho_prior": 0.1692,
+  "lift": 1.1528981034079056,
+  "be_vig": 0.0
+ },
+ "nba|nba_ptsO_cover": {
+  "config": "scope=top1 model=agree",
+  "rho": 0.21233521856461263,
+  "verdict": false,
+  "rho_prior": 0.1346,
+  "lift": 1.1421986133524595,
+  "be_vig": 0.0
+ },
+ "nba|nba_ptsO_ML": {
+  "config": "scope=top1 model=agree",
+  "rho": 0.1733634673499636,
+  "verdict": false,
+  "rho_prior": 0.1483,
+  "lift": 1.1144590099784777,
+  "be_vig": 0.0
+ },
+ "nba|nba_ptsU_gameU": {
+  "config": "scope=line25 model=agree",
+  "rho": 0.27927090569914975,
+  "verdict": false,
+  "rho_prior": 0.1692,
+  "lift": 1.1699434578020644,
+  "be_vig": 2.8305625031306514
+ },
+ "nba|nba_ptsU_oppcover": {
+  "config": "scope=line25 model=agree",
+  "rho": 0.09834304943083225,
+  "verdict": false,
+  "rho_prior": 0.1346,
+  "lift": 1.0602016101859522,
+  "be_vig": 0.0
+ },
+ "nba|nba_ptsO_cover_gameO": {
+  "config": "scope=top1 model=agree",
+  "rho": NaN,
+  "verdict": false,
+  "rho_prior": null,
+  "lift": 1.212608511713269,
+  "be_vig": 1.0590698080735983
+ },
+ "nba|ctrl_nba_ptsO_gameU": {
+  "config": "scope=all model=agree",
+  "rho": -0.14452432750772454,
+  "verdict": false,
+  "rho_prior": -0.1692,
+  "lift": 0.9074909266876361,
+  "be_vig": 0.0
+ },
+ "nba|ctrl_nba_ptsO_oppcover": {
+  "config": "scope=all model=agree",
+  "rho": -0.16621389133738373,
+  "verdict": false,
+  "rho_prior": -0.1346,
+  "lift": 0.8957572992700731,
+  "be_vig": 0.0
+ },
+ "nba|nba_2topO_gameO": {
+  "config": "scope=top1 model=none",
+  "rho": NaN,
+  "verdict": false,
+  "rho_prior": null,
+  "lift": 1.2960438735626107,
+  "be_vig": 0.60849934113818
+ },
+ "nba|nba_2topU_gameU": {
+  "config": "scope=top1 model=agree",
+  "rho": NaN,
+  "verdict": false,
+  "rho_prior": null,
+  "lift": 1.3221892964325752,
+  "be_vig": 2.4463991406829644
+ },
+ "nfl|nfl_QBpyO_RECydsO": {
+  "config": "scope=top1 model=none",
+  "rho": 0.6665965050673095,
+  "verdict": false,
+  "rho_prior": 0.1683,
+  "lift": 1.3783482142857142,
+  "be_vig": 11.047433712822707
+ },
+ "nfl|nfl_QBpyU_RECydsU": {
+  "config": "scope=top1 model=none",
+  "rho": 0.6465953640238236,
+  "verdict": false,
+  "rho_prior": 0.1683,
+  "lift": 1.5263157894736843,
+  "be_vig": 3.085043962503775
+ },
+ "nfl|nfl_QBpyO_RECrecO": {
+  "config": "scope=top1 model=none",
+  "rho": 0.6808945316995503,
+  "verdict": false,
+  "rho_prior": 0.2253,
+  "lift": 1.436865021770682,
+  "be_vig": 7.360715430293974
+ },
+ "nfl|nfl_QBpyO_RECydsO_gameO": {
+  "config": "scope=top1 model=none",
+  "rho": NaN,
+  "verdict": false,
+  "rho_prior": null,
+  "lift": 1.5388609871031744,
+  "be_vig": 8.591519346796783
+ },
+ "nfl|nfl_RBrushO_cover": {
+  "config": "scope=top1 model=none",
+  "rho": 0.3963462787854496,
+  "verdict": false,
+  "rho_prior": 0.2268,
+  "lift": 1.2816901408450703,
+  "be_vig": 1.510076278307193
+ },
+ "nfl|nfl_RBrushO_ML": {
+  "config": "scope=all model=none",
+  "rho": 0.4603761184733684,
+  "verdict": false,
+  "rho_prior": 0.2218,
+  "lift": 1.3375443262411346,
+  "be_vig": 3.3645050595070503
+ },
+ "nfl|nfl_RBrushU_oppcover": {
+  "config": "scope=all model=none",
+  "rho": 0.43405297398908244,
+  "verdict": true,
+  "rho_prior": 0.2268,
+  "lift": 1.2520321072952652,
+  "be_vig": 5.936067531191802
+ },
+ "nfl|nfl_RECydsO_gameO": {
+  "config": "scope=top1 model=none",
+  "rho": 0.20012904396858178,
+  "verdict": false,
+  "rho_prior": 0.1116,
+  "lift": 1.125,
+  "be_vig": 1.1321474537300036
+ },
+ "nfl|nfl_QBpyO_gameO": {
+  "config": "scope=top1 model=none",
+  "rho": 0.3965665156466912,
+  "verdict": false,
+  "rho_prior": 0.2566,
+  "lift": 1.20679012345679,
+  "be_vig": 8.158910384872065
+ },
+ "nfl|nfl_QBcmpO_gameO": {
+  "config": "scope=all model=none",
+  "rho": 0.13592369577349928,
+  "verdict": false,
+  "rho_prior": null,
+  "lift": 1.1006337786913327,
+  "be_vig": 0.0
+ },
+ "nfl|nfl_RBrushO_cover_gameO": {
+  "config": "scope=all model=agree",
+  "rho": NaN,
+  "verdict": false,
+  "rho_prior": null,
+  "lift": 1.7241379310344829,
+  "be_vig": 10.129191724846077
+ },
+ "nfl|ctrl_nfl_RBrushO_oppcover": {
+  "config": "scope=top1 model=none",
+  "rho": -0.3963462787854496,
+  "verdict": false,
+  "rho_prior": -0.2268,
+  "lift": 0.7222222222222222,
+  "be_vig": 0.0
+ },
+ "nfl|ctrl_nfl_RECydsO_gameU": {
+  "config": "scope=all model=agree",
+  "rho": -0.15109952885127315,
+  "verdict": false,
+  "rho_prior": -0.1116,
+  "lift": 0.9186114013700218,
+  "be_vig": 0.0
+ }
+}
