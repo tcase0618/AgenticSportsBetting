@@ -2,28 +2,41 @@
 Live cross-venue arbitrage / middle / +EV scanner (hunter "arb_scanner").
 
 Venues (all free, key-less, pre-game quotes only; every venue is optional - a failing feed is logged and skipped):
-  Pinnacle      guest.api.arcadia.pinnacle.com   sharp book, main + alternate spreads/totals, ML
-  FanDuel       sbapi.<state>.sportsbook.fanduel.com (nightly.providers.fanduel_board)
+  Pinnacle      guest.api.arcadia.pinnacle.com   sharp book: ML, main + alt spreads/totals, team totals, 1H
+                (basketball/football), player props, max-risk limits
+  FanDuel       sbapi.<state>.sportsbook.fanduel.com (nightly.providers.fanduel_board), main lines
   BetRivers     Kambi offering API (rsiuspa)      main spread/ML/total
   Bovada        bovada.lv coupon API              main + alternate lines
   ActionNetwork api.actionnetwork.com/web/v2 scoreboard -> DraftKings, BetMGM, bet365, Caesars, Fanatics,
-                HardRock, theScore, Bally (each its own venue; quotes may lag the book by minutes)
-  Polymarket    Gamma (all ML/spread/total lines) priced at best ask + taker fee from feeSchedule;
-                CLOB /book used to verify depth on every flagged leg
-  Kalshi        trade-api/v2 GAME/SPREAD/TOTAL series priced at yes/no ask + taker fee
-                0.07*mult*P*(1-P) per contract (rounded up per order); orderbook used to verify depth
+                HardRock, theScore, Bally (each its own venue): main lines + team totals + line_status.
+                An aggregator: quotes can lag or freeze (see quote_history.py)
+  Polymarket    Gamma (ML/spread/total/1H/props) at best ask + taker fee; CLOB /books for depth, /book to re-price
+  Kalshi        trade-api/v2 GAME/SPREAD/TOTAL/1HSPREAD/1HTOTAL/TEAMTOTAL + player-prop ladders (NFL/NBA/NHL)
+                at yes/no ask + taker fee; orderbook used to re-price every flagged leg
   ESPN          scoreboard = master event list (today+tomorrow, ET) + DraftKings fallback + settlement
 
-Signals (per event / market / exact line; sides mapped by team identity, never by listing position):
-  arb     best price per side from two different venues, sum(1/dec) < 1 after fees (exchange legs re-priced
-          from the live order book at the stake size)
-  middle  spread/total gap between venues covering >= 1 integer outcome, sum(1/dec) <= MIDDLE_MAX_COST
-  ev      a venue's price beats the de-vigged (engine.devig odds_ratio) consensus of >= 2 OTHER venues
-          quoting both sides of the same line by >= EV_MIN
+Pipeline per scan
+  1. fetch + match every quote to an ESPN event, sides by team identity (never listing order)
+  2. off-market filter (a venue's whole event far from the cross-venue median; tighter for Action Network books)
+  3. quote history (results/edge_hunt/quote_history.sqlite, 48h): STALE = price frozen >= 60 min while the
+     cross-venue median moved >= 1.5 pts, an aggregator feed frozen on an event while most books moved, or AN
+     line_status=opener; SUSPECT = > 4 pts better than every other venue (only counts on an exchange).
+     Flagged quotes are logged (flagged_quotes.csv, arb_log.csv flag column) and excluded from signals/alerts.
+  4. sharp-weighted fair price: per-venue odds_ratio de-vig, log-odds weighted mean (Pinnacle 3, Kalshi/Polymarket
+     1.5 with >= $200 at the quoted price on both sides else 0.5, BetRivers/FanDuel/DraftKings/Circa 1, others 0.5)
+  5. signals: same-line arbs, cross-venue middles, +EV (>= 2% vs the fair price of the OTHER venues), and the
+     consistency/ladder finder (engine/edge_hunt/consistency.py): cross-rung arbs/middles, ML vs spread, ladder
+     monotonicity, team totals vs game total
+  6. exchange legs re-priced from the live book at $100; placeable signals (all legs on PLACEABLE, default
+     Kalshi, Polymarket, FanDuel; env ARB_PLACEABLE) go to results/edge_hunt/alerts.jsonl, deduped
 
-  python -m engine.edge_hunt.arb_scanner scan            # one scan, appends results/edge_hunt/arb_log.csv
-  python -m engine.edge_hunt.arb_scanner loop 6 300      # 6 scans, 300 s apart
-  python -m engine.edge_hunt.arb_scanner settle          # grade logged signals from ESPN finals
+  python -m engine.edge_hunt.arb_scanner scan                      # one scan
+  python -m engine.edge_hunt.arb_scanner loop 6 300                # 6 scans, 300 s apart
+  python -m engine.edge_hunt.arb_scanner watch --minutes 120 --every 75   # continuous + alerts
+  python -m engine.edge_hunt.arb_scanner log-fill --venue Kalshi --price +118 --stake 50 [--alert-key K]
+  python -m engine.edge_hunt.arb_scanner settle                    # grade logged +EV signals from ESPN finals
+  python -m engine.edge_hunt.arb_scanner stale-backtest 20261019   # replay saved snapshots through the stale filter
+  python -m engine.edge_hunt.arb_scanner pmhist [refresh]          # Polymarket-history backtest
 """
 from __future__ import annotations
 
@@ -106,6 +119,7 @@ PLACEABLE = [v.strip() for v in os.environ.get("ARB_PLACEABLE", "Kalshi,Polymark
 SHARP_W = {"Pinnacle": 3.0, "Circa": 1.0, "BetRivers": 1.0, "FanDuel": 1.0, "DraftKings": 1.0,
            "DraftKings(ESPN)": 1.0}
 EXCH_W, EXCH_MIN_DEPTH, OTHER_W = 1.5, 200.0, 0.5
+MIDDLE_ALERT_EV = 0.01      # a middle is alerted only if its EV vs the fair price (window included) is >= 1%
 AN_VENUES = {"DraftKings", "BetMGM", "bet365", "Caesars", "Fanatics", "HardRock", "theScore", "BallyBet",
              "DraftKings(ESPN)"}            # quotes that arrive through an aggregator (can lag / freeze)
 ALERTS = OUT / "alerts.jsonl"
@@ -865,8 +879,9 @@ def normalize(E, Q):
     N["event"] = N.espn_id.map(lambda i: f"{ev.at[i, 'away_name']} @ {ev.at[i, 'home_name']}")
     N["commence"] = N.espn_id.map(lambda i: ev.at[i, "start"])
     N["hkey"] = N.hline.fillna(-9999.0)
-    N, bad = stale_filter(N.reset_index(drop=True))
-    N.attrs["stale"] = bad
+    N, bad, off = stale_filter(N.reset_index(drop=True))
+    OFFMARKET.clear()
+    OFFMARKET.update(bad=bad, rows=off)
     return N
 
 
@@ -884,7 +899,7 @@ def stale_filter(N, ml_tol=0.08, line_tol=3.0, agg_ml_tol=0.045, agg_line_tol=2.
     tolerances (agg_*): Monday 10/19 HardRock had Celtics +105 / Pistons -125 when every other venue had the
     Celtics -112..-120, 5.5 points off the de-vigged median."""
     bad = {}
-    for mkt in ("ml", "spread", "total"):
+    for mkt in ("ml", "spread", "total", "team_total:home", "team_total:away", "spread:1h", "total:1h"):
         a, b = sides(mkt)
         rows = []
         X = N[(N.market == mkt) & (~N.alt.astype(bool))]
@@ -907,13 +922,22 @@ def stale_filter(N, ml_tol=0.08, line_tol=3.0, agg_ml_tol=0.045, agg_line_tol=2.
         R["n"] = R.groupby("espn_id").x.transform("size")
         agg = R.venue.isin(AN_VENUES)
         tol = np.where(agg, agg_ml_tol if mkt == "ml" else agg_line_tol, ml_tol if mkt == "ml" else line_tol)
+        if mkt.startswith("spread"):        # puck/run lines are always +-1.5: the "main" side is ambiguous
+            sp = R.espn_id.map(N.drop_duplicates("espn_id").set_index("espn_id").sport)
+            tol = np.where(sp.isin(["nhl", "mlb"]).values, np.inf, tol)
         for r in R[(R.n >= 3) & ((R.x - R.med).abs() > tol)].itertuples():
             bad[(r.espn_id, r.venue)] = f"{mkt} {r.x:.3g} vs median {r.med:.3g}"
+    off = pd.DataFrame()
     if bad:
         keep = [(e, v) not in bad for e, v in zip(N.espn_id, N.venue)]
-        N.attrs["offmarket_rows"] = N[[not k for k in keep]].copy()
+        off = N[[not k for k in keep]].copy()
+        off["flag_why"] = [f"event off-market: {bad[(e, v)]}" for e, v in zip(off.espn_id, off.venue)]
         N = N[keep].reset_index(drop=True)
-    return N, bad
+    return N, bad, off
+
+
+OFFMARKET = {}       # last normalize(): {(espn_id, venue): reason} and the dropped rows (no DataFrame.attrs:
+                     # pandas deep-copies attrs on every operation)
 
 
 # ------------------------------------------------------------------ exchange depth (for fair-price weights)
@@ -968,7 +992,8 @@ def venue_fairs(N):
         return pd.DataFrame(columns=["espn_id", "market", "hkey", "venue", "pa", "w"])
     P = P[P[("am", "a")].notna() & P[("am", "b")].notna()]
     oa, ob = P[("am", "a")].values.astype(float), P[("am", "b")].values.astype(float)
-    ok = (1 / am2dec_v(oa) + 1 / am2dec_v(ob)) >= 0.99            # drop crossed/broken two-sided quotes
+    ovr = 1 / am2dec_v(oa) + 1 / am2dec_v(ob)
+    ok = (ovr >= 0.99) & (ovr <= 1.15)       # drop crossed/broken quotes and empty exchange books (asks ~.98/.99)
     P, oa, ob = P[ok], oa[ok], ob[ok]
     if not len(P):
         return pd.DataFrame(columns=["espn_id", "market", "hkey", "venue", "pa", "w"])
@@ -986,80 +1011,91 @@ class Fair:
     """Sharp-weighted fair probability: weighted mean of logit(p) over venues (optionally leaving one out)."""
 
     def __init__(self, F):
-        self.F = F
-        self.idx = {k: g for k, g in F.groupby(["espn_id", "market", "hkey"])} if len(F) else {}
+        self.idx = {}
+        if len(F):
+            lo = np.log(F.pa.values / (1 - F.pa.values))
+            for k, v, l_, w in zip(zip(F.espn_id, F.market, F.hkey), F.venue, lo, F.w):
+                self.idx.setdefault(k, []).append((v, float(l_), float(w)))
 
     def get(self, eid, mkt, hk, side=None, exclude=None):
         g = self.idx.get((eid, mkt, hk))
-        if g is None:
+        if not g:
             return np.nan, 0, 0.0, ""
         if exclude:
-            g = g[g.venue != exclude]
-            if exclude.startswith("DraftKings"):
-                g = g[~g.venue.str.startswith("DraftKings")]
-        if g.empty:
-            return np.nan, 0, 0.0, ""
-        lo = np.log(g.pa / (1 - g.pa))
-        pa = float(1 / (1 + np.exp(-np.average(lo, weights=g.w))))
+            dk = exclude.startswith("DraftKings")
+            g = [x for x in g if x[0] != exclude and not (dk and x[0].startswith("DraftKings"))]
+            if not g:
+                return np.nan, 0, 0.0, ""
+        sw = sum(x[2] for x in g)
+        pa = 1 / (1 + math.exp(-sum(x[1] * x[2] for x in g) / sw))
         p = pa if side is None or side == sides(mkt)[0] else 1 - pa
-        return p, len(g), float(g.w.sum()), ",".join(f"{v}:{w:g}" for v, w in sorted(zip(g.venue, g.w)))
+        return p, len(g), sw, ",".join(f"{v}:{w:g}" for v, _, w in sorted(g))
 
     def p(self, eid, mkt, hk, side):
         return self.get(eid, mkt, hk, side)[0]
 
 
 def find_signals(N, fair: Fair, verify=True):
+    """Same-line cross-venue arbs, cross-venue middles and +EV vs the sharp-weighted fair price.
+    Legs are plain dicts (pandas row objects are far too slow here)."""
     sig = []
     if N.empty:
         return sig
+    recs = N.to_dict("records")
     # ---- arbs (same line, two different venues)
-    for (eid, mkt, hk), g in N.groupby(["espn_id", "market", "hkey"]):
+    for (eid, mkt, hk), ix in N.groupby(["espn_id", "market", "hkey"]).indices.items():
         a, b = sides(mkt)
-        A, B = g[g.side == a].sort_values("dec", ascending=False), g[g.side == b].sort_values("dec", ascending=False)
-        if A.empty or B.empty:
-            continue
-        for _, x in A.head(3).iterrows():
-            for _, y in B.head(3).iterrows():
-                if x.venue == y.venue:
+        rows = [recs[i] for i in ix]
+        A = sorted((r for r in rows if r["side"] == a), key=lambda r: -r["dec"])[:3]
+        B = sorted((r for r in rows if r["side"] == b), key=lambda r: -r["dec"])[:3]
+        for x in A:
+            for y in B:
+                if x["venue"] == y["venue"]:
                     continue
-                s_ = 1 / x.dec + 1 / y.dec
+                s_ = 1 / x["dec"] + 1 / y["dec"]
                 if s_ < 1:
-                    sig.append(dict(kind="arb", legs=[x, y], cost=s_, margin=1 - s_, source="scan"))
+                    sig.append(dict(kind="arb", legs=[dict(x), dict(y)], cost=s_, margin=1 - s_, source="scan"))
     # ---- middles (different lines, different venues)
-    for (eid, mkt), g in N[N.market != "ml"].groupby(["espn_id", "market"]):
+    pos = np.flatnonzero(N.market.values != "ml")
+    for (eid, mkt), ix in N.iloc[pos].groupby(["espn_id", "market"]).indices.items():
         a, b = sides(mkt)
-        A = g[g.side == a].sort_values("dec", ascending=False).drop_duplicates("hkey")
-        B = g[g.side == b].sort_values("dec", ascending=False).drop_duplicates("hkey")
-        for _, x in A.iterrows():
-            for _, y in B.iterrows():
-                if x.venue == y.venue:
+        rows = [recs[i] for i in pos[ix]]
+        best = {}
+        for r in rows:
+            k = (r["side"], r["hkey"])
+            if k not in best or r["dec"] > best[k]["dec"]:
+                best[k] = r
+        A = [r for (sd, _), r in best.items() if sd == a and 1.3 <= r["dec"] <= 4.0]
+        B = [r for (sd, _), r in best.items() if sd == b and 1.3 <= r["dec"] <= 4.0]
+        sp = mbase(mkt) == "spread"
+        for x in A:
+            for y in B:
+                if x["venue"] == y["venue"]:
                     continue
-                if mbase(mkt) == "spread":   # home at hx, away at hy: both win if -hx < margin < -hy
-                    lo, hi = -x.hkey, -y.hkey
-                else:                        # over at tx, under at ty: both win if tx < total < ty
-                    lo, hi = x.hkey, y.hkey
+                lo, hi = (-x["hkey"], -y["hkey"]) if sp else (x["hkey"], y["hkey"])
                 if hi <= lo:
                     continue
-                ints = [k for k in range(math.floor(lo) + 1, math.ceil(hi)) if lo < k < hi]
-                s_ = 1 / x.dec + 1 / y.dec
-                if not (1.3 <= x.dec <= 4.0 and 1.3 <= y.dec <= 4.0):   # skip lottery-ticket alt lines
+                s_ = 1 / x["dec"] + 1 / y["dec"]
+                if s_ > MIDDLE_MAX_COST:
                     continue
-                if ints and s_ <= MIDDLE_MAX_COST:
-                    pu, pd_ = fair.p(eid, mkt, x.hkey, x.side), fair.p(eid, mkt, y.hkey, y.side)
-                    ev = (pu + pd_) / s_ - 1 if pu == pu and pd_ == pd_ else np.nan
-                    sig.append(dict(kind="middle", legs=[x, y], cost=s_, margin=1 - s_, gap=hi - lo, ints=ints,
-                                    ev=ev, p_window=pu + pd_ - 1 if ev == ev else np.nan, source="scan"))
+                ints = [k for k in range(math.floor(lo) + 1, math.ceil(hi)) if lo < k < hi]
+                if not ints:
+                    continue
+                pu, pd_ = fair.p(eid, mkt, x["hkey"], x["side"]), fair.p(eid, mkt, y["hkey"], y["side"])
+                ev = (pu + pd_) / s_ - 1 if pu == pu and pd_ == pd_ else np.nan
+                sig.append(dict(kind="middle", legs=[dict(x), dict(y)], cost=s_, margin=1 - s_, gap=hi - lo, ints=ints,
+                                ev=ev, p_window=pu + pd_ - 1 if ev == ev else np.nan, source="scan"))
     # ---- +EV vs the sharp-weighted fair price of the OTHER venues at the exact same line
-    for r in N.itertuples():
-        p, n, w, cv = fair.get(r.espn_id, r.market, r.hkey, r.side, exclude=r.venue)
+    for r in recs:
+        p, n, w, cv = fair.get(r["espn_id"], r["market"], r["hkey"], r["side"], exclude=r["venue"])
         if p != p:
             continue
         pin = "Pinnacle:" in cv
         if not (pin or (n >= MIN_CONSENSUS and w >= 2.0)):
             continue
-        ev = p * r.dec - 1
+        ev = p * r["dec"] - 1
         if ev >= EV_MIN:
-            sig.append(dict(kind="ev", legs=[pd.Series(r._asdict())], fair_p=p, ev=ev, n_cons=n, w_cons=w,
+            sig.append(dict(kind="ev", legs=[dict(r)], fair_p=p, ev=ev, n_cons=n, w_cons=w,
                             cons_venues=cv, pin=pin, source="scan"))
     if verify:
         verify_signals(sig)
@@ -1067,23 +1103,29 @@ def find_signals(N, fair: Fair, verify=True):
 
 
 def verify_signals(sig):
-    """Re-price every exchange leg from the live order book at STAKE_USD."""
-    cache = {}
+    """Re-price every exchange leg from the live order book at STAKE_USD (parallel)."""
+    refs = {}
     for s_ in sig:
         if s_["kind"] == "violation":
             continue
         for L in s_["legs"]:
             if L["venue"] in EXCHANGES and isinstance(L.get("ref"), str):
-                if L["ref"] not in cache:
-                    cache[L["ref"]] = exchange_fill(L["venue"], L["ref"])
-                d, usd, top = cache[L["ref"]]
+                refs[L["ref"]] = L["venue"]
+    with ThreadPoolExecutor(12) as ex:
+        res = dict(zip(refs, ex.map(lambda kv: exchange_fill(kv[1], kv[0]), refs.items())))
+    for s_ in sig:
+        if s_["kind"] == "violation":
+            continue
+        for L in s_["legs"]:
+            if L["venue"] in EXCHANGES and isinstance(L.get("ref"), str):
+                d, usd, top = res[L["ref"]]
                 L["book_dec"], L["book_usd"] = d, usd
         decs = [L.get("book_dec", L["dec"]) if L["venue"] in EXCHANGES else L["dec"] for L in s_["legs"]]
         s_["verified"] = all(d == d for d in decs)
         s_["decs"] = decs
         if s_["kind"] in ("arb", "middle"):
             s_["cost_book"] = sum(1 / d for d in decs) if s_["verified"] else np.nan
-            if s_.get("p_window") == s_.get("p_window") and s_.get("p_window") is not None and s_["verified"]:
+            if s_.get("p_window") is not None and s_.get("p_window") == s_.get("p_window") and s_["verified"]:
                 pu = s_["ev"] + 1          # (p_up+p_down)/cost
                 s_["ev_book"] = pu * s_["cost"] / s_["cost_book"] - 1
         else:
@@ -1197,7 +1239,7 @@ def alerts(sig, now, quiet=False):
             continue
         if s_["kind"] == "arb" and e <= 0:
             continue
-        if s_["kind"] == "middle" and e <= 0:
+        if s_["kind"] == "middle" and e < MIDDLE_ALERT_EV:
             continue
         key = s_["kind"] + "|" + "|".join(":".join(map(str, leg_key(L))) for L in sorted(s_["legs"], key=leg_key))
         st = state.get(key)
@@ -1275,14 +1317,14 @@ def scan(sports=SPORTS, save=True, quiet=False, light=False, snapshot=True):
         N = pm_depth(N)
         H = QuoteHistory(QHIST)
         try:
-            N = H.update_and_flag(N, now=now)
+            N = H.update_and_flag(N, now=now, partial_prefix="prop:" if light else None)
         finally:
             H.close()
         N["exclude"] = N.stale | (N.suspect & ~N.venue.isin(EXCHANGES))
         clean = N[~N.exclude].reset_index(drop=True)
         fair = Fair(venue_fairs(clean))
         sig = find_signals(clean, fair, verify=False)
-        sig = merge_signals(sig, consistency.find(clean, fair.p))
+        sig = merge_signals(sig, consistency.find(clean, fair))
         verify_signals(sig)
         # flagged-only signals: what the excluded quotes would have produced (logged, never alerted)
         flagged = N[N.stale | N.suspect]
@@ -1297,7 +1339,7 @@ def scan(sports=SPORTS, save=True, quiet=False, light=False, snapshot=True):
         else:
             R_flag = pd.DataFrame()
         R = pd.concat([to_rows(sig, ts), R_flag], ignore_index=True)
-    new_alerts = alerts(sig, now, quiet=quiet) if sig else []
+    new_alerts = alerts(sig, now, quiet=quiet) if sig and save else []
     venues = sorted(N.venue.unique()) if len(N) else []
     K = lambda k, extra=None: int(((R.kind == k) & (R.flag.fillna("") == "") & (True if extra is None else extra)).sum()) if len(R) else 0
     summ = dict(scan_ts=ts, n_events=len(E), n_quotes_raw=len(Q), n_quotes_matched=len(N),
@@ -1309,17 +1351,23 @@ def scan(sports=SPORTS, save=True, quiet=False, light=False, snapshot=True):
                 n_flagged_signals=int((R.flag.fillna("") != "").sum()) if len(R) else 0,
                 n_alerts=len(new_alerts), light=light, secs=round(time.time() - t0, 1), secs_fetch=round(t_fetch, 1),
                 errors=" ; ".join(errors)[:2000], feed_status=json.dumps(status),
-                stale_dropped=json.dumps({f"{v}|{e}": why for (e, v), why in N.attrs.get("stale", {}).items()})
+                stale_dropped=json.dumps({f"{v}|{e}": why for (e, v), why in OFFMARKET.get("bad", {}).items()})
                 if len(N) else "{}")
     if save:
         OUT.mkdir(parents=True, exist_ok=True)
         QUOTES.mkdir(parents=True, exist_ok=True)
+        ensure_fills()
         if len(R):
             _append_csv(R, LOG)
         _append_csv(pd.DataFrame([summ]), SCANS)
-        if len(flagged):
-            F = flagged[["venue", "sport", "espn_id", "event", "market", "sel", "line", "hkey", "side", "am",
-                         "unchanged_min", "stale", "suspect", "flag_why"]].copy()
+        off = OFFMARKET.get("rows")
+        if off is not None and len(off):
+            off = off.assign(stale=False, suspect=True, unchanged_min=np.nan)
+        allf = pd.concat([x for x in (flagged, off) if x is not None and len(x)], ignore_index=True) \
+            if (len(flagged) or (off is not None and len(off))) else pd.DataFrame()
+        if len(allf):
+            F = allf[["venue", "sport", "espn_id", "event", "market", "sel", "line", "hkey", "side", "am",
+                      "unchanged_min", "stale", "suspect", "flag_why"]].copy()
             F.insert(0, "scan_ts", ts)
             _append_csv(F, FLAGGED)
         if len(N) and snapshot:
@@ -1787,7 +1835,7 @@ def main(argv):
         import glob
         from engine.edge_hunt.quote_history import backtest_snapshots
         pat = argv[1] if len(argv) > 1 else "*"
-        F = backtest_snapshots(sorted(glob.glob(str(QUOTES / f"quotes_{pat}.csv.gz"))), OUT / "quote_history_backtest.sqlite")
+        F = backtest_snapshots(sorted(glob.glob(str(QUOTES / f"quotes_{pat}*.csv.gz"))), OUT / "quote_history_backtest.sqlite")
         pd.set_option("display.width", 220)
         pd.set_option("display.max_colwidth", 90)
         print(F.groupby(["snapshot", "venue"]).size().unstack(fill_value=0).to_string() if len(F) else "nothing flagged")

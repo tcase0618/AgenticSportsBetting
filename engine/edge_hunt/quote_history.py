@@ -62,8 +62,10 @@ class QuoteHistory:
 
     # ------------------------------------------------------------------ main entry
     def update_and_flag(self, N: pd.DataFrame, now=None, stale_min=STALE_MIN, med_move=MED_MOVE,
-                        outlier=OUTLIER) -> pd.DataFrame:
-        """Record this scan's quotes and return N with columns stale, suspect, flag_why, unchanged_min."""
+                        outlier=OUTLIER, partial_prefix=None) -> pd.DataFrame:
+        """Record this scan's quotes and return N with columns stale, suspect, flag_why, unchanged_min.
+        partial_prefix: market prefix only partly fetched this pass (e.g. 'prop:' when the Kalshi prop ladders
+        were skipped) - its medians are neither recorded nor used, so a missing venue cannot fake a move."""
         N = N.copy()
         now = pd.Timestamp(now or pd.Timestamp.now(tz="UTC"))
         now = now.tz_localize("UTC") if now.tzinfo is None else now.tz_convert("UTC")
@@ -88,7 +90,8 @@ class QuoteHistory:
         N["_med_now"], N["_n"] = N._ok.map(med_now), N._ok.map(n_now)
         why = pd.Series("", index=N.index, dtype=object)
         stale = pd.Series(False, index=N.index)
-        cand = N[(N.unchanged_min >= stale_min) & (~N.venue.isin(EXCHANGES)) & (N._n >= 3)]
+        part = N.market.str.startswith(partial_prefix) if partial_prefix else pd.Series(False, index=N.index)
+        cand = N[(N.unchanged_min >= stale_min) & (~N.venue.isin(EXCHANGES)) & (N._n >= 3) & ~part]
         if len(cand):
             M = self._med_at(cand._ok.tolist(), cand._since.tolist())
             mt = pd.Series(M, index=cand.index)
@@ -146,6 +149,9 @@ class QuoteHistory:
                     why[i] = (why[i] + "; " if why[i] else "") + f"outlier {gap:.1f}pt better than next venue"
         N["stale"], N["suspect"], N["flag_why"] = stale.values, suspect.values, why.values
         # ---- persist
+        if partial_prefix:
+            keep = ~med_now.index.str.split("|").str[1].str.startswith(partial_prefix)
+            med_now, n_now = med_now[keep], n_now[keep]
         self._write(N, nows, same, med_now, n_now)
         return N.drop(columns=[c for c in N.columns if c.startswith("_")])
 

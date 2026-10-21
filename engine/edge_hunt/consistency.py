@@ -32,7 +32,8 @@ import pandas as pd
 
 MIDDLE_MAX = 1.03
 MONO_TOL_VENUE = 0.02
-MONO_TOL_FAIR = 0.015
+MONO_TOL_FAIR = 0.03
+MONO_MIN_W = 1.5          # fair rungs need this much venue weight behind them
 TT_TOL = 1.5
 EXCHANGES = {"Polymarket", "Kalshi"}
 
@@ -74,46 +75,54 @@ def _check(a, b):
     return ("a:spread" if a["fam"].startswith("spread") else "b:total") + "-ladder"
 
 
-def find(N: pd.DataFrame, fair, min_dec=1.2, max_dec=6.0) -> list:
-    """N: clean quotes (stale/suspect removed). fair(espn_id, market, hkey, side) -> fair prob or nan.
+def find(N: pd.DataFrame, fairbook, min_dec=1.2, max_dec=6.0) -> list:
+    """N: clean quotes (stale/suspect removed). fairbook: arb_scanner.Fair (.p(eid, market, hkey, side) -> fair
+    prob or nan; .get(...) -> (p, n venues, weight, venues)).
     Returns signal dicts compatible with arb_scanner (kind arb/middle/violation, legs, cost, margin, ...)."""
     out = []
     if N.empty:
         return out
+    fair = fairbook.p
     R = _rungs(N)
-    for (eid, fam), g in R.groupby(["espn_id", "fam"]):
-        U = g[g.dirn == "up"].sort_values("dec", ascending=False)
-        D = g[g.dirn == "down"].sort_values("dec", ascending=False)
-        if U.empty or D.empty:
+    recs = R.to_dict("records")
+    for (eid, fam), ix in R.groupby(["espn_id", "fam"]).indices.items():
+        rows = [recs[i] for i in ix]
+        U, D = {}, {}
+        for r in rows:                                   # top-2 venues per rung and direction
+            (U if r["dirn"] == "up" else D).setdefault(r["c"], []).append(r)
+        if not U or not D:
             continue
-        U = U.groupby("c").head(2)
-        D = D.groupby("c").head(2)
-        for _, x in U.iterrows():
-            for _, y in D.iterrows():
-                if x.c > y.c:
+        U = [r for v in U.values() for r in sorted(v, key=lambda r: -r["dec"])[:2]]
+        D = [r for v in D.values() for r in sorted(v, key=lambda r: -r["dec"])[:2]]
+        for x in U:
+            if not (min_dec <= x["dec"] <= max_dec):
+                continue
+            for y in D:
+                if x["c"] > y["c"] or not (min_dec <= y["dec"] <= max_dec):
                     continue
-                if x.c == y.c and x.venue != y.venue and x.market == y.market:
+                if x["c"] == y["c"] and x["venue"] != y["venue"] and x["market"] == y["market"]:
                     continue                       # plain same-line cross-venue arb: arb_scanner.find_signals
-                cost = 1 / x.dec + 1 / y.dec
-                if cost >= MIDDLE_MAX or not (min_dec <= x.dec <= max_dec and min_dec <= y.dec <= max_dec):
+                cost = 1 / x["dec"] + 1 / y["dec"]
+                if cost >= MIDDLE_MAX:
                     continue
-                ints = [k for k in range(math.floor(x.c) + 1, math.ceil(y.c)) if x.c < k < y.c]
+                ints = [k for k in range(math.floor(x["c"]) + 1, math.ceil(y["c"])) if x["c"] < k < y["c"]]
                 if cost >= 1 and not ints:
                     continue
-                pu, pd_ = fair(eid, x.market, x.hkey, x.side), fair(eid, y.market, y.hkey, y.side)
+                pu, pd_ = fair(eid, x["market"], x["hkey"], x["side"]), fair(eid, y["market"], y["hkey"], y["side"])
                 ev = (pu + pd_) / cost - 1 if pu == pu and pd_ == pd_ else np.nan
                 pw = pu + pd_ - 1 if ev == ev else np.nan
                 if cost >= 1 and not (ev == ev and ev > 0) and cost > 1.01:
                     continue
-                out.append(dict(kind="arb" if cost < 1 else "middle", legs=[x, y], cost=cost, margin=1 - cost,
-                                worst_case=1 / cost - 1, window=(float(x.c), float(y.c)), ints=ints,
-                                gap=float(y.c - x.c), p_window=pw, ev=ev, check=_check(x, y), source="consistency"))
-    out += monotone(R, fair)
-    out += tt_vs_total(R, fair)
+                out.append(dict(kind="arb" if cost < 1 else "middle", legs=[dict(x), dict(y)], cost=cost,
+                                margin=1 - cost, worst_case=1 / cost - 1, window=(float(x["c"]), float(y["c"])),
+                                ints=ints, gap=float(y["c"] - x["c"]), p_window=pw, ev=ev, check=_check(x, y),
+                                source="consistency"))
+    out += monotone(R, fairbook)
+    out += tt_vs_total(R)
     return out
 
 
-def _venue_fair(R):
+def _venue_fair(R, max_overround=1.08):
     """Per-venue odds_ratio-free quick de-vig (multiplicative) of each two-sided rung -> P(up)."""
     P = R.pivot_table(index=["espn_id", "fam", "venue", "market", "c"], columns="dirn", values="dec", aggfunc="max")
     P = P.dropna(subset=["up", "down"]) if {"up", "down"} <= set(P.columns) else P.iloc[0:0]
@@ -121,11 +130,11 @@ def _venue_fair(R):
         return pd.Series(dtype=float)
     iu, idn = 1 / P["up"], 1 / P["down"]
     s = iu + idn
-    P = P[(s > 0.99) & (s < 1.25)]
+    P = P[(s > 0.99) & (s < max_overround)]       # wide exchange rungs de-vig to noise
     return (iu / s)[P.index]
 
 
-def monotone(R, fair):
+def monotone(R, fairbook):
     out = []
     VF = _venue_fair(R)
     if len(VF):
@@ -134,9 +143,10 @@ def monotone(R, fair):
             out += _mono_scan(eid, fam, v, s, MONO_TOL_VENUE, R)
     # sharp-weighted fair ladder (all venues), one prob per c
     rows = []
-    for (eid, fam, c, mkt, hk), g in R[R.dirn == "up"].groupby(["espn_id", "fam", "c", "market", "hkey"]):
-        p = fair(eid, mkt, hk, g.side.iloc[0])
-        if p == p:
+    Up = R[R.dirn == "up"].drop_duplicates(["espn_id", "fam", "c", "market", "hkey"])
+    for eid, fam, c, mkt, hk, sd in zip(Up.espn_id, Up.fam, Up.c, Up.market, Up.hkey, Up.side):
+        p, n, w, _ = fairbook.get(eid, mkt, hk, sd)
+        if p == p and w >= MONO_MIN_W:
             rows.append((eid, fam, c, p))
     if rows:
         F = pd.DataFrame(rows, columns=["espn_id", "fam", "c", "p"])
@@ -152,7 +162,7 @@ def _mono_scan(eid, fam, venue, s, tol, R):
     for i in range(len(cs) - 1):
         for j in (i + 1,):                   # adjacent rungs
             if ps[j] - ps[i] > tol:          # P(up at higher c) exceeds P(up at lower c)
-                ref = R[(R.espn_id == eid) & (R.fam == fam)].iloc[0]
+                ref = R[(R.espn_id == eid) & (R.fam == fam)].iloc[0].to_dict()
                 out.append(dict(kind="violation", legs=[ref], cost=np.nan, margin=np.nan, ev=np.nan,
                                 check=("d:ml-vs-spread" if fam == "spread" and (0.5 in (cs[i], cs[j]) or -0.5 in (cs[i], cs[j]))
                                        else ("a" if fam.startswith("spread") else ("e" if fam.startswith("team_total") else "b"))
@@ -162,20 +172,29 @@ def _mono_scan(eid, fam, venue, s, tol, R):
     return out
 
 
-def _median_line(s):
-    """s: P(over at c) by c (one venue or fair). Median by linear interpolation; None if not bracketed / unusable."""
+# dP(over)/dline near the median (normal approx: 1/(sd*sqrt(2*pi))) for (sport, family) - used to move a single
+# two-sided line to its 50/50 point so that half-point rounding does not create fake (e) violations
+SLOPE = {("nba", "total"): 0.022, ("nba", "team_total"): 0.033, ("ncaam", "total"): 0.025,
+         ("ncaam", "team_total"): 0.04, ("nfl", "total"): 0.03, ("nfl", "team_total"): 0.042,
+         ("ncaaf", "total"): 0.026, ("ncaaf", "team_total"): 0.036, ("nhl", "total"): 0.17,
+         ("nhl", "team_total"): 0.25, ("mlb", "total"): 0.09, ("mlb", "team_total"): 0.13}
+
+
+def _median_line(s, slope):
+    """s: P(over at c) by c (one venue). Median line: interpolated between bracketing rungs, else the nearest
+    rung shifted by (p - 0.5)/slope. None if no rung is within 15 points of 50%."""
     s = s.sort_index()
     cs, ps = list(s.index), list(s.values)
-    if len(cs) == 1:
-        return cs[0] if abs(ps[0] - 0.5) <= 0.05 else None
     for i in range(len(cs) - 1):
         if (ps[i] - 0.5) * (ps[i + 1] - 0.5) <= 0 and ps[i] != ps[i + 1]:
             return cs[i] + (ps[i] - 0.5) * (cs[i + 1] - cs[i]) / (ps[i] - ps[i + 1])
     k = int(np.argmin(np.abs(np.array(ps) - 0.5)))
-    return cs[k] if abs(ps[k] - 0.5) <= 0.05 else None
+    if abs(ps[k] - 0.5) > 0.15 or not slope:
+        return None
+    return cs[k] + (ps[k] - 0.5) / slope
 
 
-def tt_vs_total(R, fair):
+def tt_vs_total(R):
     """(e) game total vs team totals: sum of the team-total medians vs the game-total median."""
     out = []
     VF = _venue_fair(R)
@@ -187,8 +206,9 @@ def tt_vs_total(R, fair):
     VF = VF[VF.fam.isin(fams)]
     for eid, g in VF.groupby("espn_id"):
         med = {}
+        sport = R.loc[R.espn_id == eid, "sport"].iloc[0]
         for (fam, v), h in g.groupby(["fam", "venue"]):
-            m = _median_line(h.groupby("c").p.mean())
+            m = _median_line(h.groupby("c").p.mean(), SLOPE.get((sport, mbase(fam))))
             if m is not None:
                 med.setdefault(fam, {})[v] = m
         if not all(f in med for f in fams):
@@ -201,7 +221,7 @@ def tt_vs_total(R, fair):
             per_v.append((v, d))
         bad_v = [(v, d) for v, d in per_v if abs(d) >= TT_TOL]
         if abs(diff) >= TT_TOL or bad_v:
-            ref = R[(R.espn_id == eid)].iloc[0]
+            ref = R[(R.espn_id == eid)].iloc[0].to_dict()
             side = "game OVER / team-total UNDERs cheap" if diff > 0 else "game UNDER / team-total OVERs cheap"
             out.append(dict(kind="violation", legs=[ref], cost=np.nan, margin=np.nan, ev=np.nan,
                             check="e:team-totals-vs-total", source="consistency", venue_tag="CONSENSUS",
