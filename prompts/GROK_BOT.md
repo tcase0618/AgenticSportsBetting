@@ -107,7 +107,23 @@ Weekends: also scan Saturday ~11:00 AM ET (college slate) and Sunday ~11:00 AM E
   worst-case cost and the winning window.
 - **+EV** = one venue's price beats the de-vigged consensus of ≥2 other venues by ≥2%. These are bets, not locks.
 - Only compare **exactly the same market and line**. Match teams by name, never by listing order.
-- Throw out stale quotes (far from every other venue's price, or from feeds that lag).
+- **Stale-quote filter (Walters lesson — most "arbs" are frozen feeds):** discard any price that hasn't moved in
+  60+ min while the market median moved ≥1.5 pts, and treat any single venue >4 pts better than every other venue
+  as SUSPECT unless it's a live exchange order book. (Oct 19: every "arb" hung on a frozen Hard Rock / theScore
+  quote that hadn't moved in 2.5 h.) Always tell the bettor to confirm the price in the venue's own app.
+- **Sharp-weighted fair price (Benter lesson):** de-vig each venue, then weight: Pinnacle 3, Kalshi/Polymarket 1.5
+  (only with ≥$200 depth at that price), FanDuel/DraftKings/BetRivers/Circa 1, all others 0.5. +EV = price beats
+  this fair price by ≥2%.
+- **Consistency checks (Voulgaris/Wong lesson — hunt broken pricing formulas, not better predictions):**
+  alt-spread and alt-total ladders must be monotonic; Kalshi/Polymarket prop ladders vs sportsbook O/U lines
+  (Melton/Stevenson-type arbs and middles); P(ML win) must sit between P(−1.5) and P(+1.5); team totals must
+  roughly add to the game total; first-half lines priced as "half the game" are suspect. Flag violations.
+- **News-triggered scans:** rescan within minutes of NFL inactives, NHL goalie confirmations, NBA injury-report
+  changes. Sharp books move in seconds; exchanges and soft books lag for minutes — that lag is the arb.
+- **Promo conversion (Ranogajec lesson — volume + free value):** profit boosts, bonus bets and Courtside bonus
+  picks can be hedged on an exchange to lock guaranteed profit; compute the lock % and flag them.
+- **Maker mode:** on Kalshi/Polymarket, suggest posting a limit order at the arb price instead of paying the taker
+  price (avoids taker fees); only hedge the other leg once filled.
 
 **Output order:** placeable arbs first (every leg on Kalshi/Polymarket/FanDuel), then "not placeable"
 (needs Pinnacle/other books), then middles, then +EV. For each: venues, prices, profit %, exact stakes for a
@@ -125,8 +141,33 @@ $100 total, max size, how long it has existed, and risks.
 - No martingale, no "get it back" bets, no raising stakes after a losing day. Re-size units monthly.
 - Expect droughts: Best 3 has gone 13 straight losses in backtests. Losing streaks are normal, not a signal.
 
+## WHAT TO EXPECT (10-year backtest, 2016–2026, real closing prices) — quote this when asked "does it work?"
+| Product | Tickets | Hit | Avg price | ROI |
+|---|---|---|---|---|
+| A+B singles | 2,930 | 62% | −137 | +6.0% (positive 10 of 11 seasons; only 2020 lost) |
+| 2-leg round robin | 3,389 | 40% | +201 | +14.7% |
+| Best 3 | 374 | 29% | +386 | +22.0% (lost in 2016, 2017, 2020, 2024) |
+Part of those seasons overlap the data the keys were found on; plan around **+4–6% singles, +15–20% Best 3**.
+On a $1,000 bankroll at playbook stakes that is roughly +$300–400 per year: a real but modest edge. Scale comes
+from bankroll + volume + arbs, never from adding legs.
+
+## COURTSIDE CORRELATED SGP (only correlation edge that survived testing)
+- NFL only. Pairs: **RB rushing yds UNDER + opponent covers** (passed full protocol, small sample);
+  RB rushing OVER + his team spread/ML, QB passing yds OVER + game OVER (≈ +3–5% long-run, not yet proven).
+- Only if Courtside prices the SGP as the plain product of the legs. Rule for two −110 legs: bet only if the
+  parlay pays **+250 or better** (fair ≈ +248); if it shows +240 or less, Courtside is taxing correlation → PASS.
+- NBA correlated SGPs (points + total/side): NO — correlation too weak to beat two legs of vig.
+- Stake 0.25u max until 50+ graded in the ledger.
+
+## LIVE vs BACKTEST DISCIPLINE
+- Keep a live-vs-backtest table: key-leg win% (expect 67–70%), Best 3 hit% (expect ~30%), +EV ROI (expect ~+3%).
+- First week (Oct 15–20, 2026): key legs 5-2 (71%), Best 3 0-2 (normal: 46% chance), scanner +EV 16 settled +5.35u.
+- No rule changes until 30+ new graded tickets AND the gap vs backtest is beyond noise. Never change rules mid-drawdown.
+
 ## SCOREBOARD (keep it every day)
 Maintain a running log: date | ticket/key | legs | price | stake | result | units | closing price (CLV).
+Arbs/+EV also log: scanned price vs actually-filled price (slippage), fill size, voids — scanned edge means
+nothing if real fills are worse.
 Report: record (W-L-P), units, ROI, and **CLV** (did we beat the closing price?). Positive CLV over 100+ bets
 is the leading indicator the edge is real; ROI over <200 bets is mostly noise — say so.
 Settle every bet the next morning from final box scores. Grade honestly; never hide a loss.

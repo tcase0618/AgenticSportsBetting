@@ -54,6 +54,7 @@ LOG = OUT / "arb_log.csv"
 SCANS = OUT / "arb_scans.csv"
 QUOTES = OUT / "arb_quotes"
 SETTLED = OUT / "arb_settled.csv"
+QHIST = OUT / "quote_history.sqlite"
 
 SPORTS = ["nfl", "ncaaf", "nba", "ncaam", "mlb", "nhl", "ufc"]
 EV_MIN = 0.02
@@ -762,7 +763,8 @@ def exchange_fill(venue, ref, stake=STAKE_USD):
 
 
 # ------------------------------------------------------------------ scan
-def gather(sports=SPORTS, now=None):
+def gather(sports=SPORTS, now=None, light=False):
+    """light=True skips the Kalshi player-prop ladders (the slowest feed) - used by `watch` on 3 of 4 passes."""
     now = now or pd.Timestamp.now(tz="UTC")
     d0 = now.tz_convert(ET).normalize().tz_localize(None)
     days = [d0, d0 + pd.Timedelta(days=1)]
@@ -777,12 +779,12 @@ def gather(sports=SPORTS, now=None):
         jobs = {}
         for s in sports:
             jobs[("Pinnacle", s)] = ex.submit(pinnacle, s)
-            jobs[("FanDuel", s)] = ex.submit(fanduel, s) if s != "ncaam" or True else None
+            jobs[("FanDuel", s)] = ex.submit(fanduel, s)
             jobs[("BetRivers", s)] = ex.submit(kambi, s)
             jobs[("Bovada", s)] = ex.submit(bovada, s)
             jobs[("ActionNetwork", s)] = ex.submit(actionnetwork, s, days)
             jobs[("Polymarket", s)] = ex.submit(polymarket, s)
-            jobs[("Kalshi", s)] = ex.submit(kalshi, s, days, smeta)
+            jobs[("Kalshi", s)] = ex.submit(kalshi, s, days, smeta, not light)
         E = []
         for s, f in ev_f.items():
             try:
@@ -814,6 +816,9 @@ def normalize(E, Q):
     if E.empty or Q.empty:
         return pd.DataFrame()
     T = Teams(E)
+    for c in ("tt_team", "line_status", "player"):
+        if c not in Q:
+            Q[c] = None
     cache, rows = {}, []
     for r in Q.itertuples():
         k = (r.sport, r.t1, r.t2, r.start, r.venue == "Kalshi")
@@ -823,13 +828,23 @@ def normalize(E, Q):
         m = cache[k]
         if not m:
             continue
-        eid, sides = m
+        eid, sides_ = m
         d = r._asdict()
         d.pop("Index")
-        if r.market == "total" or r.market.startswith("prop:"):
+        b = mbase(r.market)
+        if b in ("total", "prop"):
+            side, hline = r.sel, r.line
+        elif b == "team_total":
+            tside = sides_.get(r.tt_team)
+            if tside is None and isinstance(r.tt_team, str):
+                cand = T.resolve(r.sport, r.tt_team, {eid})
+                tside = next(iter(cand))[1] if len(cand) == 1 else None
+            if tside is None:
+                continue
+            d["market"] = f"team_total:{tside}"
             side, hline = r.sel, r.line
         else:
-            side = sides.get(r.sel)
+            side = sides_.get(r.sel)
             if side is None:   # sel spelled differently from t1/t2 (e.g. Kambi participant)
                 cand = T.resolve(r.sport, r.sel, {eid})
                 side = next(iter(cand))[1] if len(cand) == 1 else None
@@ -859,13 +874,15 @@ SIDES = {"ml": ("home", "away"), "spread": ("home", "away"), "total": ("over", "
 
 
 def sides(mkt):
-    return SIDES.get(mkt, ("over", "under"))
+    return SIDES.get(mbase(mkt), ("over", "under"))
 
 
-def stale_filter(N, ml_tol=0.08, line_tol=3.0):
+def stale_filter(N, ml_tol=0.08, line_tol=3.0, agg_ml_tol=0.045, agg_line_tol=2.0):
     """Drop every quote of a (venue, event) whose main price/line is off the cross-venue median by more than
     ml_tol de-vigged probability or line_tol points: such gaps are stale/mis-posted feeds (e.g. a book that
-    has not moved since the open), not bettable arbs."""
+    has not moved since the open), not bettable arbs. Aggregator-sourced venues (Action Network) get tighter
+    tolerances (agg_*): Monday 10/19 HardRock had Celtics +105 / Pistons -125 when every other venue had the
+    Celtics -112..-120, 5.5 points off the de-vigged median."""
     bad = {}
     for mkt in ("ml", "spread", "total"):
         a, b = sides(mkt)
@@ -888,35 +905,113 @@ def stale_filter(N, ml_tol=0.08, line_tol=3.0):
             continue
         R["med"] = R.groupby("espn_id").x.transform("median")
         R["n"] = R.groupby("espn_id").x.transform("size")
-        tol = ml_tol if mkt == "ml" else line_tol
+        agg = R.venue.isin(AN_VENUES)
+        tol = np.where(agg, agg_ml_tol if mkt == "ml" else agg_line_tol, ml_tol if mkt == "ml" else line_tol)
         for r in R[(R.n >= 3) & ((R.x - R.med).abs() > tol)].itertuples():
             bad[(r.espn_id, r.venue)] = f"{mkt} {r.x:.3g} vs median {r.med:.3g}"
     if bad:
         keep = [(e, v) not in bad for e, v in zip(N.espn_id, N.venue)]
+        N.attrs["offmarket_rows"] = N[[not k for k in keep]].copy()
         N = N[keep].reset_index(drop=True)
     return N, bad
 
 
-def consensus_fair(N):
-    """Per (event, market, hkey, venue) with both sides: odds_ratio de-vigged prob of side A."""
-    rows = []
-    for (eid, mkt, hk, v), g in N.groupby(["espn_id", "market", "hkey", "venue"]):
-        a, b = sides(mkt)
-        s = g.set_index("side")
-        if a in s.index and b in s.index:
-            oa, ob = s.at[a, "am"], s.at[b, "am"]
-            if 1 / am2dec(oa) + 1 / am2dec(ob) < 0.99:     # crossed/broken two-sided quote
-                continue
-            pa, _ = devig(oa, ob, "odds_ratio")
-            rows.append(dict(espn_id=eid, market=mkt, hkey=hk, venue=v, pa=float(pa)))
-    return pd.DataFrame(rows)
+# ------------------------------------------------------------------ exchange depth (for fair-price weights)
+def pm_depth(N):
+    """$ available at the best ask of every Polymarket quote (CLOB POST /books, batched). Sets N.size."""
+    m = N.venue == "Polymarket"
+    if not m.any():
+        return N
+    toks = {}
+    for i, ref in N.loc[m, "ref"].items():
+        try:
+            toks[i] = json.loads(ref)["token"]
+        except Exception:
+            pass
+    uniq = sorted(set(toks.values()))
+    depth = {}
+
+    def fetch(chunk):
+        try:
+            r = requests.post("https://clob.polymarket.com/books", json=[{"token_id": t} for t in chunk],
+                              headers=HEAD, timeout=25)
+            return r.json() if r.status_code == 200 else []
+        except Exception:
+            return []
+    with ThreadPoolExecutor(8) as ex:
+        for res in ex.map(fetch, [uniq[k:k + 100] for k in range(0, len(uniq), 100)]):
+            for bk in res or []:
+                asks = [(float(a["price"]), float(a["size"])) for a in bk.get("asks", [])]
+                if asks:
+                    p = min(a[0] for a in asks)
+                    depth[bk.get("asset_id")] = sum(pp * ss for pp, ss in asks if abs(pp - p) < 1e-9)
+    N.loc[list(toks), "size"] = [depth.get(t, np.nan) for t in toks.values()]
+    return N
 
 
-def find_signals(N, verify=True):
+# ------------------------------------------------------------------ sharp-weighted fair price
+def venue_weight(v, depth_ok):
+    if v in EXCHANGES:
+        return EXCH_W if depth_ok else OTHER_W
+    return SHARP_W.get(v, OTHER_W)
+
+
+def venue_fairs(N):
+    """Per (espn_id, market, hkey, venue) with both sides quoted: odds_ratio de-vigged P(side A) and weight."""
+    if N.empty:
+        return pd.DataFrame(columns=["espn_id", "market", "hkey", "venue", "pa", "w"])
+    X = N.copy()
+    X["ab"] = [("a" if s_ == sides(m)[0] else "b") for s_, m in zip(X.side, X.market)]
+    P = X.pivot_table(index=["espn_id", "market", "hkey", "venue"], columns="ab", values=["am", "size"],
+                      aggfunc="first")
+    if ("am", "a") not in P or ("am", "b") not in P:
+        return pd.DataFrame(columns=["espn_id", "market", "hkey", "venue", "pa", "w"])
+    P = P[P[("am", "a")].notna() & P[("am", "b")].notna()]
+    oa, ob = P[("am", "a")].values.astype(float), P[("am", "b")].values.astype(float)
+    ok = (1 / am2dec_v(oa) + 1 / am2dec_v(ob)) >= 0.99            # drop crossed/broken two-sided quotes
+    P, oa, ob = P[ok], oa[ok], ob[ok]
+    if not len(P):
+        return pd.DataFrame(columns=["espn_id", "market", "hkey", "venue", "pa", "w"])
+    pa, _ = devig(oa, ob, "odds_ratio")
+    F = P.index.to_frame(index=False)
+    F["pa"] = np.asarray(pa, float)
+    sa = P[("size", "a")].values.astype(float) if ("size", "a") in P else np.full(len(P), np.nan)
+    sb = P[("size", "b")].values.astype(float) if ("size", "b") in P else np.full(len(P), np.nan)
+    depth_ok = (np.nan_to_num(sa) >= EXCH_MIN_DEPTH) & (np.nan_to_num(sb) >= EXCH_MIN_DEPTH)
+    F["w"] = [venue_weight(v, d) for v, d in zip(F.venue, depth_ok)]
+    return F
+
+
+class Fair:
+    """Sharp-weighted fair probability: weighted mean of logit(p) over venues (optionally leaving one out)."""
+
+    def __init__(self, F):
+        self.F = F
+        self.idx = {k: g for k, g in F.groupby(["espn_id", "market", "hkey"])} if len(F) else {}
+
+    def get(self, eid, mkt, hk, side=None, exclude=None):
+        g = self.idx.get((eid, mkt, hk))
+        if g is None:
+            return np.nan, 0, 0.0, ""
+        if exclude:
+            g = g[g.venue != exclude]
+            if exclude.startswith("DraftKings"):
+                g = g[~g.venue.str.startswith("DraftKings")]
+        if g.empty:
+            return np.nan, 0, 0.0, ""
+        lo = np.log(g.pa / (1 - g.pa))
+        pa = float(1 / (1 + np.exp(-np.average(lo, weights=g.w))))
+        p = pa if side is None or side == sides(mkt)[0] else 1 - pa
+        return p, len(g), float(g.w.sum()), ",".join(f"{v}:{w:g}" for v, w in sorted(zip(g.venue, g.w)))
+
+    def p(self, eid, mkt, hk, side):
+        return self.get(eid, mkt, hk, side)[0]
+
+
+def find_signals(N, fair: Fair, verify=True):
     sig = []
     if N.empty:
         return sig
-    F = consensus_fair(N)
     # ---- arbs (same line, two different venues)
     for (eid, mkt, hk), g in N.groupby(["espn_id", "market", "hkey"]):
         a, b = sides(mkt)
@@ -927,9 +1022,9 @@ def find_signals(N, verify=True):
             for _, y in B.head(3).iterrows():
                 if x.venue == y.venue:
                     continue
-                s = 1 / x.dec + 1 / y.dec
-                if s < 1:
-                    sig.append(dict(kind="arb", legs=[x, y], cost=s, margin=1 - s))
+                s_ = 1 / x.dec + 1 / y.dec
+                if s_ < 1:
+                    sig.append(dict(kind="arb", legs=[x, y], cost=s_, margin=1 - s_, source="scan"))
     # ---- middles (different lines, different venues)
     for (eid, mkt), g in N[N.market != "ml"].groupby(["espn_id", "market"]):
         a, b = sides(mkt)
@@ -939,64 +1034,93 @@ def find_signals(N, verify=True):
             for _, y in B.iterrows():
                 if x.venue == y.venue:
                     continue
-                if mkt == "spread":       # home at hx, away at hy: both win if -hx < margin < -hy
+                if mbase(mkt) == "spread":   # home at hx, away at hy: both win if -hx < margin < -hy
                     lo, hi = -x.hkey, -y.hkey
-                else:                     # over at tx, under at ty: both win if tx < total < ty
+                else:                        # over at tx, under at ty: both win if tx < total < ty
                     lo, hi = x.hkey, y.hkey
                 if hi <= lo:
                     continue
                 ints = [k for k in range(math.floor(lo) + 1, math.ceil(hi)) if lo < k < hi]
-                s = 1 / x.dec + 1 / y.dec
+                s_ = 1 / x.dec + 1 / y.dec
                 if not (1.3 <= x.dec <= 4.0 and 1.3 <= y.dec <= 4.0):   # skip lottery-ticket alt lines
                     continue
-                if ints and s <= MIDDLE_MAX_COST:
-                    sig.append(dict(kind="middle", legs=[x, y], cost=s, margin=1 - s, gap=hi - lo, ints=ints))
-    # ---- +EV vs de-vigged consensus of the OTHER venues at the exact same line
-    if not F.empty:
-        FI = {k: g for k, g in F.groupby(["espn_id", "market", "hkey"])}
-        for r in N.itertuples():
-            f = FI.get((r.espn_id, r.market, r.hkey))
-            if f is None:
-                continue
-            f = f[f.venue != r.venue]
-            if r.venue.startswith("DraftKings"):
-                f = f[~f.venue.str.startswith("DraftKings")]
-            need = 1 if r.market.startswith("prop:") and (f.venue == "Pinnacle").any() else MIN_CONSENSUS
-            if len(f) < need:
-                continue
-            pa = float(np.mean(f.pa))
-            p = pa if r.side == sides(r.market)[0] else 1 - pa
-            ev = p * r.dec - 1
-            if ev >= EV_MIN:
-                sig.append(dict(kind="ev", legs=[pd.Series(r._asdict())], fair_p=p, ev=ev, n_cons=len(f),
-                                cons_venues=",".join(sorted(f.venue)), pin=bool((f.venue == "Pinnacle").any())))
-    # ---- verify exchange legs on the live book
+                if ints and s_ <= MIDDLE_MAX_COST:
+                    pu, pd_ = fair.p(eid, mkt, x.hkey, x.side), fair.p(eid, mkt, y.hkey, y.side)
+                    ev = (pu + pd_) / s_ - 1 if pu == pu and pd_ == pd_ else np.nan
+                    sig.append(dict(kind="middle", legs=[x, y], cost=s_, margin=1 - s_, gap=hi - lo, ints=ints,
+                                    ev=ev, p_window=pu + pd_ - 1 if ev == ev else np.nan, source="scan"))
+    # ---- +EV vs the sharp-weighted fair price of the OTHER venues at the exact same line
+    for r in N.itertuples():
+        p, n, w, cv = fair.get(r.espn_id, r.market, r.hkey, r.side, exclude=r.venue)
+        if p != p:
+            continue
+        pin = "Pinnacle:" in cv
+        if not (pin or (n >= MIN_CONSENSUS and w >= 2.0)):
+            continue
+        ev = p * r.dec - 1
+        if ev >= EV_MIN:
+            sig.append(dict(kind="ev", legs=[pd.Series(r._asdict())], fair_p=p, ev=ev, n_cons=n, w_cons=w,
+                            cons_venues=cv, pin=pin, source="scan"))
     if verify:
-        cache = {}
-        for s in sig:
-            for L in s["legs"]:
-                if L["venue"] in EXCHANGES and L.get("ref"):
-                    if L["ref"] not in cache:
-                        cache[L["ref"]] = exchange_fill(L["venue"], L["ref"])
-                    d, usd, top = cache[L["ref"]]
-                    L["book_dec"], L["book_usd"] = d, usd
-            decs = [L.get("book_dec", L["dec"]) if L["venue"] in EXCHANGES else L["dec"] for L in s["legs"]]
-            s["verified"] = all(d == d for d in decs)
-            if s["kind"] in ("arb", "middle"):
-                s["cost_book"] = sum(1 / d for d in decs) if s["verified"] else np.nan
-            else:
-                s["ev_book"] = s["fair_p"] * decs[0] - 1 if s["verified"] else np.nan
+        verify_signals(sig)
     return sig
 
 
-def _fmt_leg(L):
+def verify_signals(sig):
+    """Re-price every exchange leg from the live order book at STAKE_USD."""
+    cache = {}
+    for s_ in sig:
+        if s_["kind"] == "violation":
+            continue
+        for L in s_["legs"]:
+            if L["venue"] in EXCHANGES and isinstance(L.get("ref"), str):
+                if L["ref"] not in cache:
+                    cache[L["ref"]] = exchange_fill(L["venue"], L["ref"])
+                d, usd, top = cache[L["ref"]]
+                L["book_dec"], L["book_usd"] = d, usd
+        decs = [L.get("book_dec", L["dec"]) if L["venue"] in EXCHANGES else L["dec"] for L in s_["legs"]]
+        s_["verified"] = all(d == d for d in decs)
+        s_["decs"] = decs
+        if s_["kind"] in ("arb", "middle"):
+            s_["cost_book"] = sum(1 / d for d in decs) if s_["verified"] else np.nan
+            if s_.get("p_window") == s_.get("p_window") and s_.get("p_window") is not None and s_["verified"]:
+                pu = s_["ev"] + 1          # (p_up+p_down)/cost
+                s_["ev_book"] = pu * s_["cost"] / s_["cost_book"] - 1
+        else:
+            s_["ev_book"] = s_["fair_p"] * decs[0] - 1 if s_["verified"] else np.nan
+
+
+def leg_key(L):
+    return (L["venue"], str(L["espn_id"]), L["market"], float(L["hkey"]), L["side"])
+
+
+def merge_signals(a, b):
+    """Union of scan + consistency signals, one per (kind, set of legs); consistency's version wins."""
+    out = {}
+    for s_ in a + b:
+        if s_["kind"] == "violation":
+            k = ("violation", s_.get("check"), str(s_["legs"][0]["espn_id"]), s_.get("note"))
+        else:
+            k = (s_["kind"], tuple(sorted(leg_key(L) for L in s_["legs"])))
+        out[k] = s_
+    return list(out.values())
+
+
+def _fmt_leg(L, price=None):
+    am = L["am"] if price is None else price
     if str(L["market"]).startswith("prop:"):
         _, stat, pl = L["market"].split(":", 2)
         name = L.get("player") if isinstance(L.get("player"), str) else pl
-        return f"{name} {stat} {L['sel'].upper()} {L['line']:g} {L['am']:+.0f} @{L['venue']}"
-    ln = "" if L["market"] == "ml" else (f" {L['line']:+g}" if L["market"] == "spread" else f" {L['line']:g}")
-    who = L["sel"] if L["market"] != "total" else L["sel"].upper()
-    return f"{who}{ln} {L['am']:+.0f} @{L['venue']}"
+        return f"{name} {stat} {L['sel'].upper()} {L['line']:g} {am:+.0f} @{L['venue']}"
+    m = L["market"]
+    tag = " 1H" if m.endswith(":1h") else ""
+    b = mbase(m)
+    if b == "team_total":
+        who = (L.get("tt_team") if isinstance(L.get("tt_team"), str) else m.split(":")[1]) + " TT " + L["sel"].upper()
+        return f"{who} {L['line']:g} {am:+.0f} @{L['venue']}"
+    ln = "" if m == "ml" else (f" {L['line']:+g}" if b == "spread" else f" {L['line']:g}")
+    who = L["sel"] if b != "total" else L["sel"].upper()
+    return f"{who}{tag}{ln} {am:+.0f} @{L['venue']}" + (" ML" if m == "ml" else "")
 
 
 def _min_size(legs):
@@ -1006,44 +1130,184 @@ def _min_size(legs):
     return min(v) if v else np.nan
 
 
-def to_rows(sig, scan_ts):
+def to_rows(sig, scan_ts, flag=""):
     rows = []
-    for s in sig:
-        L0 = s["legs"][0]
-        base = dict(scan_ts=scan_ts, kind=s["kind"], sport=L0["sport"], espn_id=L0["espn_id"], event=L0["event"],
-                    commence=pd.Timestamp(L0["commence"]).isoformat(), market=L0["market"])
-        if s["kind"] == "ev":
+    for s_ in sig:
+        L0 = s_["legs"][0]
+        base = dict(scan_ts=scan_ts, kind=s_["kind"], sport=L0["sport"], espn_id=L0["espn_id"], event=L0["event"],
+                    commence=pd.Timestamp(L0["commence"]).isoformat(), market=L0["market"],
+                    source=s_.get("source", "scan"), check=s_.get("check", ""), flag=s_.get("flag", flag),
+                    note=s_.get("note", ""))
+        if s_["kind"] == "ev":
             rows.append(dict(base, hline=L0["hline"], side=L0["side"], sel=L0["sel"], line=L0["line"], venue=L0["venue"],
-                             odds=round(L0["am"], 1), dec=round(L0["dec"], 4), fair_p=round(s["fair_p"], 4),
-                             edge=round(s["ev"], 4), edge_book=round(s.get("ev_book", np.nan), 4),
-                             n_cons=s["n_cons"], cons_venues=s["cons_venues"], pin_in_cons=s["pin"], alt=L0["alt"],
-                             size_usd=L0.get("book_usd", L0.get("size")), verified=s.get("verified"),
+                             odds=round(L0["am"], 1), dec=round(L0["dec"], 4), fair_p=round(s_["fair_p"], 4),
+                             edge=round(s_["ev"], 4), edge_book=round(s_.get("ev_book", np.nan), 4),
+                             n_cons=s_["n_cons"], w_cons=s_.get("w_cons"), cons_venues=s_["cons_venues"],
+                             pin_in_cons=s_["pin"], alt=L0["alt"],
+                             size_usd=L0.get("book_usd", L0.get("size")), verified=s_.get("verified"),
                              legs=_fmt_leg(L0)))
+        elif s_["kind"] == "violation":
+            rows.append(dict(base, venue=s_.get("venue_tag"), market=s_.get("fam", L0["market"]), legs=s_.get("note")))
         else:
-            rows.append(dict(base, hline=L0["hline"], side=f"{s['legs'][0]['side']}/{s['legs'][1]['side']}",
-                             venue="+".join(L["venue"] for L in s["legs"]), edge=round(s["margin"], 4),
-                             edge_book=round(1 - s.get("cost_book", np.nan), 4), verified=s.get("verified"),
-                             gap=s.get("gap"), size_usd=_min_size(s["legs"]),
-                             legs=" | ".join(_fmt_leg(L) for L in s["legs"])))
+            rows.append(dict(base, hline=L0["hline"], side="/".join(L["side"] for L in s_["legs"]),
+                             venue="+".join(L["venue"] for L in s_["legs"]), edge=round(s_["margin"], 4),
+                             edge_book=round(1 - s_.get("cost_book", np.nan), 4), verified=s_.get("verified"),
+                             gap=s_.get("gap"), size_usd=_min_size(s_["legs"]),
+                             mid_ev=round(s_.get("ev", np.nan), 4) if s_.get("ev") is not None else np.nan,
+                             p_window=round(s_.get("p_window", np.nan), 4) if s_.get("p_window") is not None else np.nan,
+                             legs=" | ".join(_fmt_leg(L) for L in s_["legs"])))
     return pd.DataFrame(rows)
 
 
-def scan(sports=SPORTS, save=True, quiet=False):
+# ------------------------------------------------------------------ alerts
+def _placeable(s_):
+    return all(L["venue"] in PLACEABLE for L in s_["legs"])
+
+
+def _alert_edge(s_):
+    if s_["kind"] == "arb":
+        return 1 - s_.get("cost_book", s_["cost"]) if s_.get("verified") else np.nan
+    if s_["kind"] == "middle":
+        e = s_.get("ev_book", s_.get("ev"))
+        return e if e is not None else np.nan
+    return s_.get("ev_book", np.nan) if s_.get("verified") else np.nan
+
+
+def _stakes(decs, total=100.0):
+    inv = [1 / d for d in decs]
+    c = sum(inv)
+    return [round(total * x / c, 2) for x in inv]
+
+
+def alerts(sig, now, quiet=False):
+    """Append NEW placeable opportunities to alerts.jsonl (dedupe; re-alert only if the edge grew >= 1pt)."""
+    try:
+        state = json.loads(ALERT_STATE.read_text()) if ALERT_STATE.exists() else {}
+    except Exception:
+        state = {}
+    nows = now.strftime("%Y-%m-%dT%H:%M:%SZ")
+    new = []
+    for s_ in sig:
+        if s_["kind"] not in ("arb", "middle", "ev") or not _placeable(s_):
+            continue
+        e = _alert_edge(s_)
+        if e != e:
+            continue
+        if s_["kind"] == "ev" and e < EV_MIN:
+            continue
+        if s_["kind"] == "arb" and e <= 0:
+            continue
+        if s_["kind"] == "middle" and e <= 0:
+            continue
+        key = s_["kind"] + "|" + "|".join(":".join(map(str, leg_key(L))) for L in sorted(s_["legs"], key=leg_key))
+        st = state.get(key)
+        if st is None:
+            st = state[key] = dict(first_seen=nows, alerted_edge=None, n_seen=0)
+        st["n_seen"] = st.get("n_seen", 0) + 1
+        st["last_seen"] = nows
+        st["last_edge"] = round(float(e), 4)
+        if st["alerted_edge"] is not None and e < st["alerted_edge"] + 0.01:
+            continue
+        realert = st["alerted_edge"] is not None
+        st["alerted_edge"] = round(float(e), 4)
+        L0 = s_["legs"][0]
+        decs = s_.get("decs") or [L["dec"] for L in s_["legs"]]
+        stakes = _stakes(decs) if s_["kind"] != "ev" else [100.0]
+        legs = []
+        for L, d, stk in zip(s_["legs"], decs, stakes):
+            legs.append(dict(venue=L["venue"], market=L["market"], side=L["side"], selection=L["sel"],
+                             line=None if L["line"] != L["line"] else L["line"], american=round(float(L["am"])),
+                             book_american=round(dec2am(d)), stake_usd=stk,
+                             max_usd=None if L.get("book_usd", L.get("size")) != L.get("book_usd", L.get("size"))
+                             else round(float(L.get("book_usd", L.get("size")) or 0), 0),
+                             ticker_or_token=(json.loads(L["ref"]).get("ticker") or json.loads(L["ref"]).get("token"))
+                             if isinstance(L.get("ref"), str) else None))
+        mx = _min_size(s_["legs"])
+        commence = pd.Timestamp(L0["commence"]).tz_convert(ET)
+        head = {"arb": f"ARB {100 * e:.2f}% guaranteed", "middle": f"MIDDLE EV {100 * e:+.2f}%",
+                "ev": f"+EV {100 * e:.1f}%"}[s_["kind"]]
+        parts = [f"{L['venue']}: {_fmt_leg(L, dec2am(d)).rsplit(' @', 1)[0]} -> ${stk:.2f}"
+                 for L, d, stk in zip(s_["legs"], decs, stakes)]
+        extra = ""
+        if s_["kind"] == "ev":
+            extra = f" | fair {s_['fair_p']:.3f} vs {s_['cons_venues']}"
+        elif s_["kind"] == "middle":
+            extra = (f" | worst case {100 * (1 / s_.get('cost_book', s_['cost']) - 1):+.2f}%, window "
+                     f"{s_.get('gap', 0):g}pt P~{s_.get('p_window', float('nan')):.2f}")
+        elif s_.get("gap"):
+            extra = f" | + middle window {s_['gap']:g}pt"
+        msg = (f"{head} | {L0['sport'].upper()} {L0['event']} ({commence:%a %-I:%M %p} ET) | " + " | ".join(parts) +
+               f" | $100 total" + (f", max ~${mx:,.0f}" if mx == mx else ", max size unknown (sportsbook limit)") +
+               extra + f" | first seen {pd.Timestamp(st['first_seen']).tz_convert(ET):%-I:%M %p} ET" +
+               (" | RE-ALERT: edge grew" if realert else ""))
+        rec = dict(ts=nows, key=key, kind=s_["kind"], sport=L0["sport"], event=L0["event"],
+                   commence=pd.Timestamp(L0["commence"]).isoformat(), legs=legs, edge_pct=round(100 * float(e), 2),
+                   max_size_usd=None if mx != mx else round(mx, 0), first_seen=st["first_seen"], realert=realert,
+                   check=s_.get("check", ""), message=msg)
+        new.append(rec)
+    if new:
+        with open(ALERTS, "a") as f:
+            for r in new:
+                f.write(json.dumps(r, default=str) + "\n")
+    # prune state for events long gone
+    cut = (now - pd.Timedelta(hours=48)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    state = {k: v for k, v in state.items() if v.get("last_seen", nows) >= cut}
+    ALERT_STATE.write_text(json.dumps(state, indent=0))
+    if not quiet:
+        for r in new:
+            print("  ALERT", r["message"])
+    return new
+
+
+# ------------------------------------------------------------------ scan
+def scan(sports=SPORTS, save=True, quiet=False, light=False, snapshot=True):
+    from engine.edge_hunt import consistency
+    from engine.edge_hunt.quote_history import QuoteHistory
     t0 = time.time()
     now = pd.Timestamp.now(tz="UTC")
     ts = now.strftime("%Y-%m-%dT%H:%M:%SZ")
-    E, Q, status, errors = gather(sports, now)
+    E, Q, status, errors = gather(sports, now, light=light)
+    t_fetch = time.time() - t0
     N = normalize(E, Q)
-    sig = find_signals(N)
-    R = to_rows(sig, ts)
+    flagged = pd.DataFrame()
+    sig, R = [], pd.DataFrame()
+    if len(N):
+        N = pm_depth(N)
+        H = QuoteHistory(QHIST)
+        try:
+            N = H.update_and_flag(N, now=now)
+        finally:
+            H.close()
+        N["exclude"] = N.stale | (N.suspect & ~N.venue.isin(EXCHANGES))
+        clean = N[~N.exclude].reset_index(drop=True)
+        fair = Fair(venue_fairs(clean))
+        sig = find_signals(clean, fair, verify=False)
+        sig = merge_signals(sig, consistency.find(clean, fair.p))
+        verify_signals(sig)
+        # flagged-only signals: what the excluded quotes would have produced (logged, never alerted)
+        flagged = N[N.stale | N.suspect]
+        if len(flagged):
+            grp = set(zip(flagged.espn_id, flagged.market))
+            sub = N[[k in grp for k in zip(N.espn_id, N.market)]].reset_index(drop=True)
+            fsig = [s_ for s_ in find_signals(sub, Fair(venue_fairs(sub)), verify=False) if s_["kind"] in ("arb", "ev")
+                    and any(bool(L.get("exclude")) for L in s_["legs"])]
+            for s_ in fsig:
+                s_["flag"] = ";".join(sorted({str(L.get("flag_why")) for L in s_["legs"] if L.get("exclude")}))
+            R_flag = to_rows(fsig, ts)
+        else:
+            R_flag = pd.DataFrame()
+        R = pd.concat([to_rows(sig, ts), R_flag], ignore_index=True)
+    new_alerts = alerts(sig, now, quiet=quiet) if sig else []
     venues = sorted(N.venue.unique()) if len(N) else []
+    K = lambda k, extra=None: int(((R.kind == k) & (R.flag.fillna("") == "") & (True if extra is None else extra)).sum()) if len(R) else 0
     summ = dict(scan_ts=ts, n_events=len(E), n_quotes_raw=len(Q), n_quotes_matched=len(N),
                 n_events_2plus_venues=int((N.groupby("espn_id").venue.nunique() >= 2).sum()) if len(N) else 0,
                 venues="|".join(f"{v}:{(N.venue == v).sum()}" for v in venues),
-                n_arb=int((R.kind == "arb").sum()) if len(R) else 0,
-                n_arb_verified=int(((R.kind == "arb") & (R.edge_book > 0)).sum()) if len(R) else 0,
-                n_middle=int((R.kind == "middle").sum()) if len(R) else 0,
-                n_ev=int((R.kind == "ev").sum()) if len(R) else 0, secs=round(time.time() - t0, 1),
+                n_arb=K("arb"), n_arb_verified=K("arb", R.edge_book > 0) if len(R) else 0,
+                n_middle=K("middle"), n_ev=K("ev"), n_violation=K("violation"),
+                n_stale=int(N.stale.sum()) if len(N) else 0, n_suspect=int(N.suspect.sum()) if len(N) else 0,
+                n_flagged_signals=int((R.flag.fillna("") != "").sum()) if len(R) else 0,
+                n_alerts=len(new_alerts), light=light, secs=round(time.time() - t0, 1), secs_fetch=round(t_fetch, 1),
                 errors=" ; ".join(errors)[:2000], feed_status=json.dumps(status),
                 stale_dropped=json.dumps({f"{v}|{e}": why for (e, v), why in N.attrs.get("stale", {}).items()})
                 if len(N) else "{}")
@@ -1051,23 +1315,112 @@ def scan(sports=SPORTS, save=True, quiet=False):
         OUT.mkdir(parents=True, exist_ok=True)
         QUOTES.mkdir(parents=True, exist_ok=True)
         if len(R):
-            R.to_csv(LOG, mode="a", header=not LOG.exists(), index=False)
-        pd.DataFrame([summ]).to_csv(SCANS, mode="a", header=not SCANS.exists(), index=False)
-        if len(N):
+            _append_csv(R, LOG)
+        _append_csv(pd.DataFrame([summ]), SCANS)
+        if len(flagged):
+            F = flagged[["venue", "sport", "espn_id", "event", "market", "sel", "line", "hkey", "side", "am",
+                         "unchanged_min", "stale", "suspect", "flag_why"]].copy()
+            F.insert(0, "scan_ts", ts)
+            _append_csv(F, FLAGGED)
+        if len(N) and snapshot:
             N.drop(columns=["ref"]).to_csv(QUOTES / f"quotes_{now:%Y%m%dT%H%M%S}.csv.gz", index=False)
     if not quiet:
-        print(f"[{ts}] events={len(E)} quotes={len(Q)} matched={len(N)} venues: {summ['venues']}")
+        print(f"[{ts}] events={len(E)} quotes={len(Q)} matched={len(N)} stale={summ['n_stale']} "
+              f"suspect={summ['n_suspect']} secs={summ['secs']} (fetch {summ['secs_fetch']}){' LIGHT' if light else ''}")
+        print(f"  venues: {summ['venues']}")
         if errors:
             print("  feed errors:", "; ".join(errors)[:600])
-        for k in ("arb", "middle", "ev"):
-            if len(R) and (R.kind == k).any():
-                X = R[R.kind == k].sort_values("edge", ascending=False)
+        for k in ("arb", "middle", "ev", "violation"):
+            if len(R) and ((R.kind == k) & (R.flag.fillna("") == "")).any():
+                X = R[(R.kind == k) & (R.flag.fillna("") == "")]
+                X = X.sort_values("edge", ascending=False) if "edge" in X and k != "violation" else X
                 print(f"  {k.upper()} x{len(X)}")
-                for _, x in X.head(25).iterrows():
-                    extra = f" fair={x.fair_p:.3f} n={x.n_cons} book_edge={x.edge_book}" if k == "ev" else \
-                        f" book_margin={x.edge_book} size=${x.size_usd}"
-                    print(f"    {x.sport} {x.event} {x.market}: {x.legs}  edge={x.edge:+.3f}{extra}")
+                for _, x in X.head(15).iterrows():
+                    if k == "violation":
+                        print(f"    {x.sport} {x.event} [{x.check}] {x.legs}")
+                        continue
+                    extra = f" fair={x.fair_p:.3f} w={x.w_cons} book_edge={x.edge_book}" if k == "ev" else \
+                        f" book_margin={x.edge_book} size=${x.size_usd} midEV={x.get('mid_ev')}"
+                    print(f"    {x.sport} {x.event} {x.market}: {x.legs}  edge={x.edge:+.3f}{extra} [{x.source} {x.check}]")
+        if len(R) and (R.flag.fillna("") != "").any():
+            X = R[R.flag.fillna("") != ""]
+            print(f"  EXCLUDED (stale/suspect legs) x{len(X)}")
+            for _, x in X.sort_values("edge", ascending=False).head(8).iterrows():
+                print(f"    {x.kind} {x.sport} {x.event}: {x.legs} edge={x.edge:+.3f} <- {x.flag}")
     return E, N, R, summ
+
+
+def _append_csv(df, path):
+    """Append, widening the header if new columns appeared (older logs keep their rows)."""
+    if path.exists():
+        old_cols = list(pd.read_csv(path, nrows=0).columns)
+        if set(df.columns) - set(old_cols):
+            old = pd.read_csv(path, low_memory=False)
+            pd.concat([old, df], ignore_index=True).to_csv(path, index=False)
+            return
+        df.reindex(columns=old_cols).to_csv(path, mode="a", header=False, index=False)
+    else:
+        df.to_csv(path, index=False)
+
+
+def watch(minutes=120, every=75, sports=SPORTS, full_every=4):
+    """Rescan for `minutes`, one pass every `every` seconds (start to start). Kalshi prop ladders and the
+    quote snapshot only on every `full_every`-th pass."""
+    t_end = time.time() + 60 * minutes
+    i = 0
+    while time.time() < t_end:
+        t0 = time.time()
+        full = i % full_every == 0
+        try:
+            scan(sports, light=not full, snapshot=full)
+        except Exception as e:                       # keep watching through a transient failure
+            print(f"  pass {i} failed: {e}")
+        i += 1
+        wait = every - (time.time() - t0)
+        if time.time() + max(wait, 0) >= t_end:
+            break
+        if wait > 0:
+            time.sleep(wait)
+    print(f"watch done: {i} passes")
+
+
+# ------------------------------------------------------------------ fill-quality log
+FILL_COLS = ["logged_at", "alert_key", "kind", "sport", "event", "market", "selection", "line", "venue",
+             "scanned_american", "realized_american", "stake_usd", "filled_usd", "slippage_prob_pts", "note"]
+
+
+def ensure_fills():
+    if not FILLS.exists():
+        FILLS.parent.mkdir(parents=True, exist_ok=True)
+        pd.DataFrame(columns=FILL_COLS).to_csv(FILLS, index=False)
+
+
+def log_fill(venue, price, stake, filled=None, alert_key=None, event=None, market=None, selection=None, line=None,
+             scanned=None, note=""):
+    """Record what the bettor actually got. With alert_key, event/leg/scanned price come from alerts.jsonl."""
+    ensure_fills()
+    kind = sport = None
+    if alert_key and ALERTS.exists():
+        recs = [json.loads(l_) for l_ in ALERTS.read_text().splitlines() if l_.strip()]
+        rec = next((r for r in reversed(recs) if r["key"] == alert_key or r["key"].startswith(alert_key)), None)
+        if rec:
+            kind, sport, event = rec["kind"], rec["sport"], event or rec["event"]
+            leg = next((L for L in rec["legs"] if L["venue"].lower() == venue.lower()), None)
+            if leg:
+                market = market or leg["market"]
+                selection = selection or leg["selection"]
+                line = line if line is not None else leg["line"]
+                scanned = scanned if scanned is not None else leg["book_american"]
+    price = float(price)
+    slip = (100 * (1 / am2dec(price) - 1 / am2dec(float(scanned)))) if scanned is not None else np.nan
+    row = dict(logged_at=pd.Timestamp.now(tz="UTC").strftime("%Y-%m-%dT%H:%M:%SZ"), alert_key=alert_key, kind=kind,
+               sport=sport, event=event, market=market, selection=selection, line=line, venue=venue,
+               scanned_american=scanned, realized_american=price, stake_usd=float(stake),
+               filled_usd=float(filled) if filled is not None else float(stake),
+               slippage_prob_pts=round(slip, 2) if slip == slip else None, note=note)
+    pd.DataFrame([row], columns=FILL_COLS).to_csv(FILLS, mode="a", header=False, index=False)
+    print("logged fill:", row)
+    return row
 
 
 # ------------------------------------------------------------------ settlement
@@ -1119,7 +1472,13 @@ def _player_box(sport, eid):
 
 
 def grade(market, side, hline, hs, as_):
-    """+1 win, -1 loss, 0 push for one leg."""
+    """+1 win, -1 loss, 0 push for one leg (nan: market not gradable from the final score, e.g. 1H)."""
+    if ":" in str(market) and not str(market).startswith("team_total:"):
+        return np.nan
+    if str(market).startswith("team_total:"):
+        sc = hs if market.endswith("home") else as_
+        v = (sc - hline) if side == "over" else (hline - sc)
+        return 0 if abs(v) < 1e-9 else (1 if v > 0 else -1)
     if market == "ml":
         if hs == as_:
             return 0
@@ -1383,20 +1742,60 @@ def am2dec_v(a):
     a = np.asarray(a, float)
     return np.where(a > 0, 1 + a / 100, 1 + 100 / np.abs(a))
 
-if __name__ == "__main__":
-    cmd = sys.argv[1] if len(sys.argv) > 1 else "scan"
+def main(argv):
+    import argparse
+    cmd = argv[0] if argv else "scan"
     if cmd == "scan":
-        scan()
+        scan(light="light" in argv[1:])
     elif cmd == "loop":
-        n, gap = int(sys.argv[2]), int(sys.argv[3])
+        n, gap = int(argv[1]), int(argv[2])
         for i in range(n):
             scan()
             if i < n - 1:
                 time.sleep(gap)
+    elif cmd == "watch":
+        ap = argparse.ArgumentParser(prog="arb_scanner watch")
+        ap.add_argument("--minutes", type=float, default=120)
+        ap.add_argument("--every", type=float, default=75, help="seconds between pass starts")
+        ap.add_argument("--full-every", type=int, default=4, help="full pass (Kalshi prop ladders) every Nth pass")
+        a = ap.parse_args(argv[1:])
+        watch(a.minutes, a.every, full_every=a.full_every)
+    elif cmd == "log-fill":
+        ap = argparse.ArgumentParser(prog="arb_scanner log-fill")
+        ap.add_argument("--venue", required=True)
+        ap.add_argument("--price", required=True, help="American odds actually obtained (all-in, e.g. +118)")
+        ap.add_argument("--stake", required=True, type=float, help="$ intended")
+        ap.add_argument("--filled", type=float, help="$ actually filled (default = stake)")
+        ap.add_argument("--alert-key", help="key (or prefix) from alerts.jsonl; fills event/leg/scanned price")
+        ap.add_argument("--event")
+        ap.add_argument("--market")
+        ap.add_argument("--selection")
+        ap.add_argument("--line", type=float)
+        ap.add_argument("--scanned", type=float, help="American price the scanner showed")
+        ap.add_argument("--note", default="")
+        a = ap.parse_args(argv[1:])
+        log_fill(a.venue, a.price, a.stake, a.filled, a.alert_key, a.event, a.market, a.selection, a.line,
+                 a.scanned, a.note)
     elif cmd == "settle":
         settle()
     elif cmd == "pmhist":
-        J, R, _ = pm_backtest(refresh="refresh" in sys.argv)
+        J, R, _ = pm_backtest(refresh="refresh" in argv)
         pd.set_option("display.width", 220)
         print(f"joined games: {len(J)} by sport {J.groupby('sport').size().to_dict()}  dates {J.date.min()} .. {J.date.max()}")
         print(R.round(4).to_string())
+    elif cmd == "stale-backtest":
+        import glob
+        from engine.edge_hunt.quote_history import backtest_snapshots
+        pat = argv[1] if len(argv) > 1 else "*"
+        F = backtest_snapshots(sorted(glob.glob(str(QUOTES / f"quotes_{pat}.csv.gz"))), OUT / "quote_history_backtest.sqlite")
+        pd.set_option("display.width", 220)
+        pd.set_option("display.max_colwidth", 90)
+        print(F.groupby(["snapshot", "venue"]).size().unstack(fill_value=0).to_string() if len(F) else "nothing flagged")
+        if len(F):
+            F.to_csv(OUT / "stale_backtest.csv", index=False)
+    else:
+        print(__doc__)
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
