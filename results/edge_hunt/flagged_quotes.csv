@@ -31,3 +31,455 @@ scan_ts,venue,sport,espn_id,event,market,sel,line,hkey,side,am,unchanged_min,sta
 2026-10-21T12:37:24Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Oklahoma City Thunder,,-9999.0,home,-278.0,,False,True,event off-market: total 232 vs median 236
 2026-10-21T12:37:24Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,under,0.5,0.5,under,-500.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
 2026-10-21T12:37:24Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,under,0.5,0.5,under,-550.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:04:50Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,spread,Buffalo Sabres,-1.5,-1.5,home,140.0,44.0,True,False,AN line_status=opener
+2026-10-21T13:04:50Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,under,5.5,5.5,under,120.0,44.0,True,False,AN line_status=opener
+2026-10-21T13:04:50Z,theScore,nhl,401892551,Florida Panthers @ Ottawa Senators,total,under,5.5,5.5,under,105.0,44.0,True,False,AN line_status=opener
+2026-10-21T13:04:50Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:home,over,122.5,122.5,over,-110.0,44.0,True,False,AN line_status=opener
+2026-10-21T13:04:50Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:away,under,113.5,113.5,under,-110.0,44.0,True,False,AN line_status=opener
+2026-10-21T13:04:50Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:home,over,118.5,118.5,over,-110.0,44.0,True,False,AN line_status=opener
+2026-10-21T13:04:50Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:away,under,116.5,116.5,under,-110.0,44.0,True,False,AN line_status=opener
+2026-10-21T13:04:50Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:away,over,113.5,113.5,over,-120.0,44.0,True,False,AN line_status=opener
+2026-10-21T13:04:50Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:home,under,122.5,122.5,under,-120.0,44.0,True,False,AN line_status=opener
+2026-10-21T13:04:50Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:away,over,116.5,116.5,over,-120.0,44.0,True,False,AN line_status=opener
+2026-10-21T13:04:50Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:home,under,118.5,118.5,under,-120.0,44.0,True,False,AN line_status=opener
+2026-10-21T13:04:50Z,theScore,nhl,401892551,Florida Panthers @ Ottawa Senators,total,over,5.5,5.5,over,-125.0,44.0,True,False,AN line_status=opener
+2026-10-21T13:04:50Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,over,5.5,5.5,over,-145.0,44.0,True,False,AN line_status=opener
+2026-10-21T13:04:50Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,spread,Philadelphia Flyers,1.5,-1.5,away,-165.0,44.0,True,False,AN line_status=opener
+2026-10-21T13:04:50Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,over,0.5,0.5,over,350.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:04:50Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,over,0.5,0.5,over,325.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:04:50Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Denver Nuggets,,-9999.0,away,222.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:04:50Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,New England Patriots,,-9999.0,away,135.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:04:50Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,under,50.5,50.5,under,-105.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:04:50Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Denver Nuggets,7.5,-7.5,away,-105.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:04:50Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,under,232.5,232.5,under,-105.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:04:50Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,New England Patriots,3.0,-3.0,away,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:04:50Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,Chicago Bears,-3.0,-3.0,home,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:04:50Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,over,50.5,50.5,over,-115.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:04:50Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Oklahoma City Thunder,-7.5,-7.5,home,-115.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:04:50Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,over,232.5,232.5,over,-115.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:04:50Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,Chicago Bears,,-9999.0,home,-160.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:04:50Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Oklahoma City Thunder,,-9999.0,home,-278.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:04:50Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,under,0.5,0.5,under,-500.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:04:50Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,under,0.5,0.5,under,-550.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:15:19Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,spread,Buffalo Sabres,-1.5,-1.5,home,140.0,54.5,True,False,AN line_status=opener
+2026-10-21T13:15:19Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,under,5.5,5.5,under,120.0,54.5,True,False,AN line_status=opener
+2026-10-21T13:15:19Z,theScore,nhl,401892551,Florida Panthers @ Ottawa Senators,total,under,5.5,5.5,under,105.0,54.5,True,False,AN line_status=opener
+2026-10-21T13:15:19Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:home,over,122.5,122.5,over,-110.0,54.5,True,False,AN line_status=opener
+2026-10-21T13:15:19Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:away,under,113.5,113.5,under,-110.0,54.5,True,False,AN line_status=opener
+2026-10-21T13:15:19Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:away,under,116.5,116.5,under,-110.0,54.5,True,False,AN line_status=opener
+2026-10-21T13:15:19Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:home,over,118.5,118.5,over,-110.0,54.5,True,False,AN line_status=opener
+2026-10-21T13:15:19Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:home,under,122.5,122.5,under,-120.0,54.5,True,False,AN line_status=opener
+2026-10-21T13:15:19Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:away,over,113.5,113.5,over,-120.0,54.5,True,False,AN line_status=opener
+2026-10-21T13:15:19Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:home,under,118.5,118.5,under,-120.0,54.5,True,False,AN line_status=opener
+2026-10-21T13:15:19Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:away,over,116.5,116.5,over,-120.0,54.5,True,False,AN line_status=opener
+2026-10-21T13:15:19Z,theScore,nhl,401892551,Florida Panthers @ Ottawa Senators,total,over,5.5,5.5,over,-125.0,54.5,True,False,AN line_status=opener
+2026-10-21T13:15:19Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,over,5.5,5.5,over,-145.0,54.5,True,False,AN line_status=opener
+2026-10-21T13:15:19Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,spread,Philadelphia Flyers,1.5,-1.5,away,-165.0,54.5,True,False,AN line_status=opener
+2026-10-21T13:15:19Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,over,0.5,0.5,over,350.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:15:19Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,over,0.5,0.5,over,325.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:15:19Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Denver Nuggets,,-9999.0,away,222.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:15:19Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,New England Patriots,,-9999.0,away,135.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:15:19Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Denver Nuggets,7.5,-7.5,away,-105.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:15:19Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,under,232.5,232.5,under,-105.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:15:19Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,under,50.5,50.5,under,-105.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:15:19Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,Chicago Bears,-3.0,-3.0,home,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:15:19Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,New England Patriots,3.0,-3.0,away,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:15:19Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,over,50.5,50.5,over,-115.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:15:19Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,over,232.5,232.5,over,-115.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:15:19Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Oklahoma City Thunder,-7.5,-7.5,home,-115.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:15:19Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,Chicago Bears,,-9999.0,home,-160.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:15:19Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Oklahoma City Thunder,,-9999.0,home,-278.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:15:19Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,under,0.5,0.5,under,-500.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:15:19Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,under,0.5,0.5,under,-550.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:16:34Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,spread,Buffalo Sabres,-1.5,-1.5,home,140.0,55.8,True,False,AN line_status=opener
+2026-10-21T13:16:34Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,under,5.5,5.5,under,120.0,55.8,True,False,AN line_status=opener
+2026-10-21T13:16:34Z,theScore,nhl,401892551,Florida Panthers @ Ottawa Senators,total,under,5.5,5.5,under,105.0,55.8,True,False,AN line_status=opener
+2026-10-21T13:16:34Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:away,under,116.5,116.5,under,-110.0,55.8,True,False,AN line_status=opener
+2026-10-21T13:16:34Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:home,over,118.5,118.5,over,-110.0,55.8,True,False,AN line_status=opener
+2026-10-21T13:16:34Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:home,over,122.5,122.5,over,-110.0,55.8,True,False,AN line_status=opener
+2026-10-21T13:16:34Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:away,under,113.5,113.5,under,-110.0,55.8,True,False,AN line_status=opener
+2026-10-21T13:16:34Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:home,under,118.5,118.5,under,-120.0,55.8,True,False,AN line_status=opener
+2026-10-21T13:16:34Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:away,over,116.5,116.5,over,-120.0,55.8,True,False,AN line_status=opener
+2026-10-21T13:16:34Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:away,over,113.5,113.5,over,-120.0,55.8,True,False,AN line_status=opener
+2026-10-21T13:16:34Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:home,under,122.5,122.5,under,-120.0,55.8,True,False,AN line_status=opener
+2026-10-21T13:16:34Z,theScore,nhl,401892551,Florida Panthers @ Ottawa Senators,total,over,5.5,5.5,over,-125.0,55.8,True,False,AN line_status=opener
+2026-10-21T13:16:34Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,over,5.5,5.5,over,-145.0,55.8,True,False,AN line_status=opener
+2026-10-21T13:16:34Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,spread,Philadelphia Flyers,1.5,-1.5,away,-165.0,55.8,True,False,AN line_status=opener
+2026-10-21T13:16:34Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,over,0.5,0.5,over,350.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:16:34Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,over,0.5,0.5,over,325.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:16:34Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Denver Nuggets,,-9999.0,away,222.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:16:34Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,New England Patriots,,-9999.0,away,135.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:16:34Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,under,50.5,50.5,under,-105.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:16:34Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,under,232.5,232.5,under,-105.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:16:34Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Denver Nuggets,7.5,-7.5,away,-105.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:16:34Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,Chicago Bears,-3.0,-3.0,home,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:16:34Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,New England Patriots,3.0,-3.0,away,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:16:34Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,over,50.5,50.5,over,-115.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:16:34Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,over,232.5,232.5,over,-115.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:16:34Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Oklahoma City Thunder,-7.5,-7.5,home,-115.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:16:34Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,Chicago Bears,,-9999.0,home,-160.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:16:34Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Oklahoma City Thunder,,-9999.0,home,-278.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:16:34Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,under,0.5,0.5,under,-500.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:16:34Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,under,0.5,0.5,under,-550.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:17:49Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,spread,Buffalo Sabres,-1.5,-1.5,home,140.0,57.0,True,False,AN line_status=opener
+2026-10-21T13:17:49Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,under,5.5,5.5,under,120.0,57.0,True,False,AN line_status=opener
+2026-10-21T13:17:49Z,theScore,nhl,401892551,Florida Panthers @ Ottawa Senators,total,under,5.5,5.5,under,105.0,57.0,True,False,AN line_status=opener
+2026-10-21T13:17:49Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:home,over,118.5,118.5,over,-110.0,57.0,True,False,AN line_status=opener
+2026-10-21T13:17:49Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:away,under,116.5,116.5,under,-110.0,57.0,True,False,AN line_status=opener
+2026-10-21T13:17:49Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:home,over,122.5,122.5,over,-110.0,57.0,True,False,AN line_status=opener
+2026-10-21T13:17:49Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:away,under,113.5,113.5,under,-110.0,57.0,True,False,AN line_status=opener
+2026-10-21T13:17:49Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:home,under,118.5,118.5,under,-120.0,57.0,True,False,AN line_status=opener
+2026-10-21T13:17:49Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:away,over,116.5,116.5,over,-120.0,57.0,True,False,AN line_status=opener
+2026-10-21T13:17:49Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:away,over,113.5,113.5,over,-120.0,57.0,True,False,AN line_status=opener
+2026-10-21T13:17:49Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:home,under,122.5,122.5,under,-120.0,57.0,True,False,AN line_status=opener
+2026-10-21T13:17:49Z,theScore,nhl,401892551,Florida Panthers @ Ottawa Senators,total,over,5.5,5.5,over,-125.0,57.0,True,False,AN line_status=opener
+2026-10-21T13:17:49Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,over,5.5,5.5,over,-145.0,57.0,True,False,AN line_status=opener
+2026-10-21T13:17:49Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,spread,Philadelphia Flyers,1.5,-1.5,away,-165.0,57.0,True,False,AN line_status=opener
+2026-10-21T13:17:49Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,over,0.5,0.5,over,350.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:17:49Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,over,0.5,0.5,over,325.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:17:49Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Denver Nuggets,,-9999.0,away,222.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:17:49Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,New England Patriots,,-9999.0,away,135.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:17:49Z,bet365,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Brooklyn Nets,-1.5,-1.5,home,101.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Charlotte Hornets,,-9999.0,away,100.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:away,over,110.5,110.5,over,-102.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,under,50.5,50.5,under,-105.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:17:49Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Brooklyn Nets,-1.5,-1.5,home,-105.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Brooklyn Nets,-1.5,-1.5,home,-105.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Denver Nuggets,7.5,-7.5,away,-105.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:17:49Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,under,232.5,232.5,under,-105.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:17:49Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Charlotte Hornets,,-9999.0,away,-108.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:home,over,109.5,109.5,over,-108.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,under,219.5,219.5,under,-108.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,bet365,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,under,219.5,219.5,under,-109.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,bet365,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Charlotte Hornets,,-9999.0,away,-110.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,bet365,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Brooklyn Nets,,-9999.0,home,-110.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,New England Patriots,3.0,-3.0,away,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:17:49Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,Chicago Bears,-3.0,-3.0,home,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:17:49Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,over,220.0,220.0,over,-110.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,under,220.0,220.0,under,-110.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:away,under,109.5,109.5,under,-110.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,bet365,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,over,219.5,219.5,over,-111.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:home,under,109.5,109.5,under,-112.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Brooklyn Nets,,-9999.0,home,-112.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,over,219.5,219.5,over,-112.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,over,50.5,50.5,over,-115.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:17:49Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:home,over,110.5,110.5,over,-115.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Charlotte Hornets,1.5,-1.5,away,-115.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Charlotte Hornets,1.5,-1.5,away,-115.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Oklahoma City Thunder,-7.5,-7.5,home,-115.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:17:49Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,over,232.5,232.5,over,-115.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:17:49Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:home,under,110.5,110.5,under,-115.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:away,under,110.5,110.5,under,-118.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Brooklyn Nets,,-9999.0,home,-120.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:away,over,109.5,109.5,over,-120.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,bet365,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Charlotte Hornets,1.5,-1.5,away,-121.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:17:49Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,Chicago Bears,,-9999.0,home,-160.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:17:49Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Oklahoma City Thunder,,-9999.0,home,-278.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:17:49Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,under,0.5,0.5,under,-500.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:17:49Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,under,0.5,0.5,under,-550.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:19:04Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,spread,Buffalo Sabres,-1.5,-1.5,home,140.0,58.3,True,False,AN line_status=opener
+2026-10-21T13:19:04Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,under,5.5,5.5,under,120.0,58.3,True,False,AN line_status=opener
+2026-10-21T13:19:04Z,theScore,nhl,401892551,Florida Panthers @ Ottawa Senators,total,under,5.5,5.5,under,105.0,58.3,True,False,AN line_status=opener
+2026-10-21T13:19:04Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:home,over,118.5,118.5,over,-110.0,58.3,True,False,AN line_status=opener
+2026-10-21T13:19:04Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:home,over,122.5,122.5,over,-110.0,58.3,True,False,AN line_status=opener
+2026-10-21T13:19:04Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:away,under,113.5,113.5,under,-110.0,58.3,True,False,AN line_status=opener
+2026-10-21T13:19:04Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:away,under,116.5,116.5,under,-110.0,58.3,True,False,AN line_status=opener
+2026-10-21T13:19:04Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:away,over,116.5,116.5,over,-120.0,58.3,True,False,AN line_status=opener
+2026-10-21T13:19:04Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:home,under,122.5,122.5,under,-120.0,58.3,True,False,AN line_status=opener
+2026-10-21T13:19:04Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:away,over,113.5,113.5,over,-120.0,58.3,True,False,AN line_status=opener
+2026-10-21T13:19:04Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:home,under,118.5,118.5,under,-120.0,58.3,True,False,AN line_status=opener
+2026-10-21T13:19:04Z,theScore,nhl,401892551,Florida Panthers @ Ottawa Senators,total,over,5.5,5.5,over,-125.0,58.3,True,False,AN line_status=opener
+2026-10-21T13:19:04Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,over,5.5,5.5,over,-145.0,58.3,True,False,AN line_status=opener
+2026-10-21T13:19:04Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,spread,Philadelphia Flyers,1.5,-1.5,away,-165.0,58.3,True,False,AN line_status=opener
+2026-10-21T13:19:04Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,over,0.5,0.5,over,350.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:19:04Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,over,0.5,0.5,over,325.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:19:04Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Denver Nuggets,,-9999.0,away,222.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:19:04Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,New England Patriots,,-9999.0,away,135.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:19:04Z,bet365,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Brooklyn Nets,-1.5,-1.5,home,101.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:19:04Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:away,over,110.5,110.5,over,-102.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:19:04Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Denver Nuggets,7.5,-7.5,away,-105.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:19:04Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,under,232.5,232.5,under,-105.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:19:04Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,under,50.5,50.5,under,-105.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:19:04Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Brooklyn Nets,-1.5,-1.5,home,-105.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:19:04Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:home,over,109.5,109.5,over,-108.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:19:04Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,under,219.5,219.5,under,-108.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:19:04Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Charlotte Hornets,,-9999.0,away,-108.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:19:04Z,bet365,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,under,219.5,219.5,under,-109.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:19:04Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,New England Patriots,3.0,-3.0,away,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:19:04Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,Chicago Bears,-3.0,-3.0,home,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:19:04Z,bet365,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Charlotte Hornets,,-9999.0,away,-110.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:19:04Z,bet365,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Brooklyn Nets,,-9999.0,home,-110.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:19:04Z,bet365,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,over,219.5,219.5,over,-111.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:19:04Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Brooklyn Nets,,-9999.0,home,-112.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:19:04Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:home,under,109.5,109.5,under,-112.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:19:04Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,over,219.5,219.5,over,-112.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:19:04Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Oklahoma City Thunder,-7.5,-7.5,home,-115.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:19:04Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,over,232.5,232.5,over,-115.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:19:04Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,over,50.5,50.5,over,-115.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:19:04Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Charlotte Hornets,1.5,-1.5,away,-115.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:19:04Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:away,under,110.5,110.5,under,-118.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:19:04Z,bet365,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Charlotte Hornets,1.5,-1.5,away,-121.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:19:04Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,Chicago Bears,,-9999.0,home,-160.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:19:04Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Oklahoma City Thunder,,-9999.0,home,-278.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:19:04Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,under,0.5,0.5,under,-500.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:19:04Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,under,0.5,0.5,under,-550.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:20:19Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,spread,Buffalo Sabres,-1.5,-1.5,home,140.0,59.5,True,False,AN line_status=opener
+2026-10-21T13:20:19Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,under,5.5,5.5,under,120.0,59.5,True,False,AN line_status=opener
+2026-10-21T13:20:19Z,theScore,nhl,401892551,Florida Panthers @ Ottawa Senators,total,under,5.5,5.5,under,105.0,59.5,True,False,AN line_status=opener
+2026-10-21T13:20:19Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:away,under,113.5,113.5,under,-110.0,59.5,True,False,AN line_status=opener
+2026-10-21T13:20:19Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:home,over,122.5,122.5,over,-110.0,59.5,True,False,AN line_status=opener
+2026-10-21T13:20:19Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:away,under,116.5,116.5,under,-110.0,59.5,True,False,AN line_status=opener
+2026-10-21T13:20:19Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:home,over,118.5,118.5,over,-110.0,59.5,True,False,AN line_status=opener
+2026-10-21T13:20:19Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:away,over,113.5,113.5,over,-120.0,59.5,True,False,AN line_status=opener
+2026-10-21T13:20:19Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:home,under,118.5,118.5,under,-120.0,59.5,True,False,AN line_status=opener
+2026-10-21T13:20:19Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:away,over,116.5,116.5,over,-120.0,59.5,True,False,AN line_status=opener
+2026-10-21T13:20:19Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:home,under,122.5,122.5,under,-120.0,59.5,True,False,AN line_status=opener
+2026-10-21T13:20:19Z,theScore,nhl,401892551,Florida Panthers @ Ottawa Senators,total,over,5.5,5.5,over,-125.0,59.5,True,False,AN line_status=opener
+2026-10-21T13:20:19Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,over,5.5,5.5,over,-145.0,59.5,True,False,AN line_status=opener
+2026-10-21T13:20:19Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,spread,Philadelphia Flyers,1.5,-1.5,away,-165.0,59.5,True,False,AN line_status=opener
+2026-10-21T13:20:19Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,over,0.5,0.5,over,350.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:20:19Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,over,0.5,0.5,over,325.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:20:19Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Denver Nuggets,,-9999.0,away,222.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:20:19Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,New England Patriots,,-9999.0,away,135.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:20:19Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:away,over,110.5,110.5,over,-102.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:20:19Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,under,50.5,50.5,under,-105.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:20:19Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,under,232.5,232.5,under,-105.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:20:19Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Denver Nuggets,7.5,-7.5,away,-105.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:20:19Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Brooklyn Nets,-1.5,-1.5,home,-105.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:20:19Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:home,over,109.5,109.5,over,-108.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:20:19Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,under,219.5,219.5,under,-108.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:20:19Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Charlotte Hornets,,-9999.0,away,-108.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:20:19Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,Chicago Bears,-3.0,-3.0,home,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:20:19Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,New England Patriots,3.0,-3.0,away,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:20:19Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,over,219.5,219.5,over,-112.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:20:19Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Brooklyn Nets,,-9999.0,home,-112.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:20:19Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:home,under,109.5,109.5,under,-112.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:20:19Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Charlotte Hornets,1.5,-1.5,away,-115.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:20:19Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Oklahoma City Thunder,-7.5,-7.5,home,-115.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:20:19Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,over,50.5,50.5,over,-115.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:20:19Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,over,232.5,232.5,over,-115.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:20:19Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:away,under,110.5,110.5,under,-118.0,,False,True,event off-market: spread -1.5 vs median 1
+2026-10-21T13:20:19Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,Chicago Bears,,-9999.0,home,-160.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:20:19Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Oklahoma City Thunder,,-9999.0,home,-278.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:20:19Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,under,0.5,0.5,under,-500.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:20:19Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,under,0.5,0.5,under,-550.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:21:34Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,spread,Buffalo Sabres,-1.5,-1.5,home,140.0,60.8,True,False,AN line_status=opener
+2026-10-21T13:21:34Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,under,5.5,5.5,under,120.0,60.8,True,False,AN line_status=opener
+2026-10-21T13:21:34Z,theScore,nhl,401892551,Florida Panthers @ Ottawa Senators,total,under,5.5,5.5,under,105.0,60.8,True,False,AN line_status=opener
+2026-10-21T13:21:34Z,FanDuel,nba,401909837,Chicago Bulls @ Toronto Raptors,spread,Chicago Bulls,9.5,-9.5,away,-105.0,60.8,True,False,price unchanged 61m while median moved -2.8pt
+2026-10-21T13:21:34Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:home,over,118.5,118.5,over,-110.0,60.8,True,False,AN line_status=opener
+2026-10-21T13:21:34Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:away,under,116.5,116.5,under,-110.0,60.8,True,False,AN line_status=opener
+2026-10-21T13:21:34Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:home,over,122.5,122.5,over,-110.0,60.8,True,False,AN line_status=opener
+2026-10-21T13:21:34Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:away,under,113.5,113.5,under,-110.0,60.8,True,False,AN line_status=opener
+2026-10-21T13:21:34Z,FanDuel,nba,401909838,Utah Jazz @ Memphis Grizzlies,total,over,242.5,242.5,over,-110.0,60.8,True,False,price unchanged 61m while median moved +1.6pt
+2026-10-21T13:21:34Z,Caesars,nba,401909834,Atlanta Hawks @ Orlando Magic,team_total:home,under,118.5,118.5,under,-110.0,60.8,True,False,price unchanged 61m while median moved +1.6pt
+2026-10-21T13:21:34Z,BallyBet,nba,401909091,Minnesota Timberwolves @ Miami Heat,team_total:home,under,120.5,120.5,under,-113.0,60.8,True,False,price unchanged 61m while median moved +1.6pt
+2026-10-21T13:21:34Z,BallyBet,nba,401909834,Atlanta Hawks @ Orlando Magic,spread,Orlando Magic,-2.5,-2.5,home,-115.0,60.8,True,False,price unchanged 61m while median moved -2.3pt
+2026-10-21T13:21:34Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:home,under,118.5,118.5,under,-120.0,60.8,True,False,AN line_status=opener
+2026-10-21T13:21:34Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:away,over,116.5,116.5,over,-120.0,60.8,True,False,AN line_status=opener
+2026-10-21T13:21:34Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:home,under,122.5,122.5,under,-120.0,60.8,True,False,AN line_status=opener
+2026-10-21T13:21:34Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:away,over,113.5,113.5,over,-120.0,60.8,True,False,AN line_status=opener
+2026-10-21T13:21:34Z,theScore,nhl,401892551,Florida Panthers @ Ottawa Senators,total,over,5.5,5.5,over,-125.0,60.8,True,False,AN line_status=opener
+2026-10-21T13:21:34Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,over,5.5,5.5,over,-145.0,60.8,True,False,AN line_status=opener
+2026-10-21T13:21:34Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,spread,Philadelphia Flyers,1.5,-1.5,away,-165.0,60.8,True,False,AN line_status=opener
+2026-10-21T13:21:34Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,over,0.5,0.5,over,350.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:21:34Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,over,0.5,0.5,over,325.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:21:34Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Denver Nuggets,,-9999.0,away,222.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:21:34Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,New England Patriots,,-9999.0,away,135.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:21:34Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:away,over,110.5,110.5,over,-102.0,,False,True,event off-market: spread -1.5 vs median 1.5
+2026-10-21T13:21:34Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Brooklyn Nets,-1.5,-1.5,home,-105.0,,False,True,event off-market: spread -1.5 vs median 1.5
+2026-10-21T13:21:34Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Denver Nuggets,7.5,-7.5,away,-105.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:21:34Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,under,232.5,232.5,under,-105.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:21:34Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,under,50.5,50.5,under,-105.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:21:34Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Brooklyn Nets,-1.0,-1.0,home,-105.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:21:34Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:home,over,109.5,109.5,over,-108.0,,False,True,event off-market: spread -1.5 vs median 1.5
+2026-10-21T13:21:34Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Charlotte Hornets,,-9999.0,away,-108.0,,False,True,event off-market: spread -1.5 vs median 1.5
+2026-10-21T13:21:34Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,under,219.5,219.5,under,-108.0,,False,True,event off-market: spread -1.5 vs median 1.5
+2026-10-21T13:21:34Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,under,219.5,219.5,under,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:21:34Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,over,219.5,219.5,over,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:21:34Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:home,under,109.5,109.5,under,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:21:34Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,Chicago Bears,-3.0,-3.0,home,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:21:34Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,New England Patriots,3.0,-3.0,away,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:21:34Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:away,over,110.5,110.5,over,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:21:34Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Brooklyn Nets,,-9999.0,home,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:21:34Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Charlotte Hornets,,-9999.0,away,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:21:34Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,over,219.5,219.5,over,-112.0,,False,True,event off-market: spread -1.5 vs median 1.5
+2026-10-21T13:21:34Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Brooklyn Nets,,-9999.0,home,-112.0,,False,True,event off-market: spread -1.5 vs median 1.5
+2026-10-21T13:21:34Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:home,under,109.5,109.5,under,-112.0,,False,True,event off-market: spread -1.5 vs median 1.5
+2026-10-21T13:21:34Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Charlotte Hornets,1.0,-1.0,away,-115.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:21:34Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,over,50.5,50.5,over,-115.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:21:34Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Charlotte Hornets,1.5,-1.5,away,-115.0,,False,True,event off-market: spread -1.5 vs median 1.5
+2026-10-21T13:21:34Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,over,232.5,232.5,over,-115.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:21:34Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Oklahoma City Thunder,-7.5,-7.5,home,-115.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:21:34Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:away,under,110.5,110.5,under,-118.0,,False,True,event off-market: spread -1.5 vs median 1.5
+2026-10-21T13:21:34Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:away,under,110.5,110.5,under,-120.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:21:34Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:home,over,109.5,109.5,over,-120.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:21:34Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,Chicago Bears,,-9999.0,home,-160.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:21:34Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Oklahoma City Thunder,,-9999.0,home,-278.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:21:34Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,under,0.5,0.5,under,-500.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:21:34Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,under,0.5,0.5,under,-550.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:22:49Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,spread,Buffalo Sabres,-1.5,-1.5,home,140.0,62.0,True,False,AN line_status=opener
+2026-10-21T13:22:49Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,under,5.5,5.5,under,120.0,62.0,True,False,AN line_status=opener
+2026-10-21T13:22:49Z,theScore,nhl,401892551,Florida Panthers @ Ottawa Senators,total,under,5.5,5.5,under,105.0,62.0,True,False,AN line_status=opener
+2026-10-21T13:22:49Z,FanDuel,nba,401909837,Chicago Bulls @ Toronto Raptors,spread,Chicago Bulls,9.5,-9.5,away,-105.0,62.0,True,False,price unchanged 62m while median moved -2.8pt
+2026-10-21T13:22:49Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:away,under,113.5,113.5,under,-110.0,62.0,True,False,AN line_status=opener
+2026-10-21T13:22:49Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:home,over,118.5,118.5,over,-110.0,62.0,True,False,AN line_status=opener
+2026-10-21T13:22:49Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:away,under,116.5,116.5,under,-110.0,62.0,True,False,AN line_status=opener
+2026-10-21T13:22:49Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:home,over,122.5,122.5,over,-110.0,62.0,True,False,AN line_status=opener
+2026-10-21T13:22:49Z,Caesars,nba,401909834,Atlanta Hawks @ Orlando Magic,team_total:home,under,118.5,118.5,under,-110.0,62.0,True,False,price unchanged 62m while median moved +1.6pt
+2026-10-21T13:22:49Z,FanDuel,nba,401909838,Utah Jazz @ Memphis Grizzlies,total,over,242.5,242.5,over,-110.0,62.0,True,False,price unchanged 62m while median moved +1.6pt
+2026-10-21T13:22:49Z,BallyBet,nba,401909091,Minnesota Timberwolves @ Miami Heat,team_total:home,under,120.5,120.5,under,-113.0,62.0,True,False,price unchanged 62m while median moved +1.6pt
+2026-10-21T13:22:49Z,BallyBet,nba,401909834,Atlanta Hawks @ Orlando Magic,spread,Orlando Magic,-2.5,-2.5,home,-115.0,62.0,True,False,price unchanged 62m while median moved -2.3pt
+2026-10-21T13:22:49Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:away,over,113.5,113.5,over,-120.0,62.0,True,False,AN line_status=opener
+2026-10-21T13:22:49Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:home,under,122.5,122.5,under,-120.0,62.0,True,False,AN line_status=opener
+2026-10-21T13:22:49Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:away,over,116.5,116.5,over,-120.0,62.0,True,False,AN line_status=opener
+2026-10-21T13:22:49Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:home,under,118.5,118.5,under,-120.0,62.0,True,False,AN line_status=opener
+2026-10-21T13:22:49Z,theScore,nhl,401892551,Florida Panthers @ Ottawa Senators,total,over,5.5,5.5,over,-125.0,62.0,True,False,AN line_status=opener
+2026-10-21T13:22:49Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,over,5.5,5.5,over,-145.0,62.0,True,False,AN line_status=opener
+2026-10-21T13:22:49Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,spread,Philadelphia Flyers,1.5,-1.5,away,-165.0,62.0,True,False,AN line_status=opener
+2026-10-21T13:22:49Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,over,0.5,0.5,over,350.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:22:49Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,over,0.5,0.5,over,325.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:22:49Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Denver Nuggets,,-9999.0,away,222.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:22:49Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,New England Patriots,,-9999.0,away,135.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:22:49Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:away,over,110.5,110.5,over,-102.0,,False,True,event off-market: spread -1.5 vs median 1.5
+2026-10-21T13:22:49Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Denver Nuggets,7.5,-7.5,away,-105.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:22:49Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,under,50.5,50.5,under,-105.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:22:49Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,under,232.5,232.5,under,-105.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:22:49Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Brooklyn Nets,-1.5,-1.5,home,-105.0,,False,True,event off-market: spread -1.5 vs median 1.5
+2026-10-21T13:22:49Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Brooklyn Nets,-1.0,-1.0,home,-105.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:22:49Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,under,219.5,219.5,under,-108.0,,False,True,event off-market: spread -1.5 vs median 1.5
+2026-10-21T13:22:49Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:home,over,109.5,109.5,over,-108.0,,False,True,event off-market: spread -1.5 vs median 1.5
+2026-10-21T13:22:49Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Charlotte Hornets,,-9999.0,away,-108.0,,False,True,event off-market: spread -1.5 vs median 1.5
+2026-10-21T13:22:49Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,New England Patriots,3.0,-3.0,away,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:22:49Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,Chicago Bears,-3.0,-3.0,home,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:22:49Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:home,under,109.5,109.5,under,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:22:49Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:away,over,110.5,110.5,over,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:22:49Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Charlotte Hornets,,-9999.0,away,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:22:49Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Brooklyn Nets,,-9999.0,home,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:22:49Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,over,219.5,219.5,over,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:22:49Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,under,219.5,219.5,under,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:22:49Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Brooklyn Nets,,-9999.0,home,-112.0,,False,True,event off-market: spread -1.5 vs median 1.5
+2026-10-21T13:22:49Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:home,under,109.5,109.5,under,-112.0,,False,True,event off-market: spread -1.5 vs median 1.5
+2026-10-21T13:22:49Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,over,219.5,219.5,over,-112.0,,False,True,event off-market: spread -1.5 vs median 1.5
+2026-10-21T13:22:49Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,over,50.5,50.5,over,-115.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:22:49Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Charlotte Hornets,1.5,-1.5,away,-115.0,,False,True,event off-market: spread -1.5 vs median 1.5
+2026-10-21T13:22:49Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Charlotte Hornets,1.0,-1.0,away,-115.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:22:49Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,over,232.5,232.5,over,-115.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:22:49Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Oklahoma City Thunder,-7.5,-7.5,home,-115.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:22:49Z,DraftKings,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:away,under,110.5,110.5,under,-118.0,,False,True,event off-market: spread -1.5 vs median 1.5
+2026-10-21T13:22:49Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:away,under,110.5,110.5,under,-120.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:22:49Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:home,over,109.5,109.5,over,-120.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:22:49Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,Chicago Bears,,-9999.0,home,-160.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:22:49Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Oklahoma City Thunder,,-9999.0,home,-278.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:22:49Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,under,0.5,0.5,under,-500.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:22:49Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,under,0.5,0.5,under,-550.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:24:04Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,spread,Buffalo Sabres,-1.5,-1.5,home,140.0,63.3,True,False,AN line_status=opener
+2026-10-21T13:24:04Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,under,5.5,5.5,under,120.0,63.3,True,False,AN line_status=opener
+2026-10-21T13:24:04Z,theScore,nhl,401892551,Florida Panthers @ Ottawa Senators,total,under,5.5,5.5,under,105.0,63.3,True,False,AN line_status=opener
+2026-10-21T13:24:04Z,FanDuel,nba,401909837,Chicago Bulls @ Toronto Raptors,spread,Chicago Bulls,9.5,-9.5,away,-105.0,63.3,True,False,price unchanged 63m while median moved -2.8pt
+2026-10-21T13:24:04Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:away,under,116.5,116.5,under,-110.0,63.3,True,False,AN line_status=opener
+2026-10-21T13:24:04Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:home,over,118.5,118.5,over,-110.0,63.3,True,False,AN line_status=opener
+2026-10-21T13:24:04Z,FanDuel,nba,401909838,Utah Jazz @ Memphis Grizzlies,total,over,242.5,242.5,over,-110.0,63.3,True,False,price unchanged 63m while median moved +1.6pt
+2026-10-21T13:24:04Z,Caesars,nba,401909834,Atlanta Hawks @ Orlando Magic,team_total:home,under,118.5,118.5,under,-110.0,63.3,True,False,price unchanged 63m while median moved +1.6pt
+2026-10-21T13:24:04Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:away,under,113.5,113.5,under,-110.0,63.3,True,False,AN line_status=opener
+2026-10-21T13:24:04Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:home,over,122.5,122.5,over,-110.0,63.3,True,False,AN line_status=opener
+2026-10-21T13:24:04Z,BallyBet,nba,401909091,Minnesota Timberwolves @ Miami Heat,team_total:home,under,120.5,120.5,under,-113.0,63.3,True,False,price unchanged 63m while median moved +2.2pt
+2026-10-21T13:24:04Z,BallyBet,nba,401909834,Atlanta Hawks @ Orlando Magic,spread,Orlando Magic,-2.5,-2.5,home,-115.0,63.3,True,False,price unchanged 63m while median moved -2.3pt
+2026-10-21T13:24:04Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:home,under,122.5,122.5,under,-120.0,63.3,True,False,AN line_status=opener
+2026-10-21T13:24:04Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:home,under,118.5,118.5,under,-120.0,63.3,True,False,AN line_status=opener
+2026-10-21T13:24:04Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:away,over,116.5,116.5,over,-120.0,63.3,True,False,AN line_status=opener
+2026-10-21T13:24:04Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:away,over,113.5,113.5,over,-120.0,63.3,True,False,AN line_status=opener
+2026-10-21T13:24:04Z,theScore,nhl,401892551,Florida Panthers @ Ottawa Senators,total,over,5.5,5.5,over,-125.0,63.3,True,False,AN line_status=opener
+2026-10-21T13:24:04Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,over,5.5,5.5,over,-145.0,63.3,True,False,AN line_status=opener
+2026-10-21T13:24:04Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,spread,Philadelphia Flyers,1.5,-1.5,away,-165.0,63.3,True,False,AN line_status=opener
+2026-10-21T13:24:04Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,over,0.5,0.5,over,350.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:24:04Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,over,0.5,0.5,over,325.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:24:04Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Denver Nuggets,,-9999.0,away,222.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:24:04Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,New England Patriots,,-9999.0,away,135.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:24:04Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,under,50.5,50.5,under,-105.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:24:04Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Brooklyn Nets,-1.0,-1.0,home,-105.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:24:04Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Denver Nuggets,7.5,-7.5,away,-105.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:24:04Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,under,232.5,232.5,under,-105.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:24:04Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,New England Patriots,3.0,-3.0,away,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:24:04Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,Chicago Bears,-3.0,-3.0,home,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:24:04Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Brooklyn Nets,,-9999.0,home,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:24:04Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,over,219.5,219.5,over,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:24:04Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,under,219.5,219.5,under,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:24:04Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:home,under,109.5,109.5,under,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:24:04Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Charlotte Hornets,,-9999.0,away,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:24:04Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:away,over,110.5,110.5,over,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:24:04Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,over,50.5,50.5,over,-115.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:24:04Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Charlotte Hornets,1.0,-1.0,away,-115.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:24:04Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Oklahoma City Thunder,-7.5,-7.5,home,-115.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:24:04Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,over,232.5,232.5,over,-115.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:24:04Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:home,over,109.5,109.5,over,-120.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:24:04Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:away,under,110.5,110.5,under,-120.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:24:04Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,Chicago Bears,,-9999.0,home,-160.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:24:04Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Oklahoma City Thunder,,-9999.0,home,-278.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:24:04Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,under,0.5,0.5,under,-500.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:24:04Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,under,0.5,0.5,under,-550.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:31:31Z,BallyBet,nba,401909092,Golden State Warriors @ Los Angeles Lakers,ml,Golden State Warriors,,-9999.0,away,195.0,70.7,True,False,feed frozen 71m while 7/10 venues moved
+2026-10-21T13:31:31Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,spread,Buffalo Sabres,-1.5,-1.5,home,140.0,70.7,True,False,AN line_status=opener
+2026-10-21T13:31:31Z,DraftKings,nba,401909839,Indiana Pacers @ New Orleans Pelicans,ml,New Orleans Pelicans,,-9999.0,home,130.0,70.7,True,False,feed frozen 71m while 7/10 venues moved
+2026-10-21T13:31:31Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,under,5.5,5.5,under,120.0,70.7,True,False,AN line_status=opener
+2026-10-21T13:31:31Z,theScore,nhl,401892551,Florida Panthers @ Ottawa Senators,total,under,5.5,5.5,under,105.0,70.7,True,False,AN line_status=opener
+2026-10-21T13:31:31Z,FanDuel,nba,401909837,Chicago Bulls @ Toronto Raptors,spread,Chicago Bulls,9.5,-9.5,away,-105.0,70.7,True,False,price unchanged 71m while median moved -2.8pt
+2026-10-21T13:31:31Z,DraftKings,nba,401909839,Indiana Pacers @ New Orleans Pelicans,total,under,239.5,239.5,under,-105.0,70.7,True,False,feed frozen 71m while 7/10 venues moved
+2026-10-21T13:31:31Z,DraftKings,nba,401909839,Indiana Pacers @ New Orleans Pelicans,team_total:home,over,118.5,118.5,over,-105.0,70.7,True,False,feed frozen 71m while 7/10 venues moved
+2026-10-21T13:31:31Z,DraftKings,nba,401909839,Indiana Pacers @ New Orleans Pelicans,spread,Indiana Pacers,-3.5,3.5,away,-108.0,70.7,True,False,feed frozen 71m while 7/10 venues moved
+2026-10-21T13:31:31Z,DraftKings,nba,401909839,Indiana Pacers @ New Orleans Pelicans,team_total:away,under,121.5,121.5,under,-108.0,70.7,True,False,feed frozen 71m while 7/10 venues moved
+2026-10-21T13:31:31Z,BallyBet,nba,401909092,Golden State Warriors @ Los Angeles Lakers,total,under,232.5,232.5,under,-108.0,70.7,True,False,feed frozen 71m while 7/10 venues moved
+2026-10-21T13:31:31Z,BallyBet,nba,401909092,Golden State Warriors @ Los Angeles Lakers,team_total:away,over,114.5,114.5,over,-109.0,70.7,True,False,feed frozen 71m while 7/10 venues moved
+2026-10-21T13:31:31Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:away,under,113.5,113.5,under,-110.0,70.7,True,False,AN line_status=opener
+2026-10-21T13:31:31Z,Caesars,nba,401909834,Atlanta Hawks @ Orlando Magic,team_total:home,under,118.5,118.5,under,-110.0,70.7,True,False,price unchanged 71m while median moved +1.6pt
+2026-10-21T13:31:31Z,BallyBet,nba,401909092,Golden State Warriors @ Los Angeles Lakers,spread,Los Angeles Lakers,-6.5,-6.5,home,-110.0,70.7,True,False,feed frozen 71m while 7/10 venues moved
+2026-10-21T13:31:31Z,BallyBet,nba,401909092,Golden State Warriors @ Los Angeles Lakers,spread,Golden State Warriors,6.5,-6.5,away,-110.0,70.7,True,False,feed frozen 71m while 7/10 venues moved
+2026-10-21T13:31:31Z,BallyBet,nba,401909092,Golden State Warriors @ Los Angeles Lakers,total,over,234.5,234.5,over,-110.0,70.7,True,False,feed frozen 71m while 7/10 venues moved
+2026-10-21T13:31:31Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:home,over,122.5,122.5,over,-110.0,70.7,True,False,AN line_status=opener
+2026-10-21T13:31:31Z,FanDuel,nba,401909838,Utah Jazz @ Memphis Grizzlies,total,over,242.5,242.5,over,-110.0,70.7,True,False,price unchanged 71m while median moved +1.6pt
+2026-10-21T13:31:31Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:home,over,118.5,118.5,over,-110.0,70.7,True,False,AN line_status=opener
+2026-10-21T13:31:31Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:away,under,116.5,116.5,under,-110.0,70.7,True,False,AN line_status=opener
+2026-10-21T13:31:31Z,DraftKings,nba,401909839,Indiana Pacers @ New Orleans Pelicans,spread,New Orleans Pelicans,3.5,3.5,home,-112.0,70.7,True,False,feed frozen 71m while 7/10 venues moved
+2026-10-21T13:31:31Z,DraftKings,nba,401909839,Indiana Pacers @ New Orleans Pelicans,team_total:away,over,121.5,121.5,over,-112.0,70.7,True,False,feed frozen 71m while 7/10 venues moved
+2026-10-21T13:31:31Z,BallyBet,nba,401909091,Minnesota Timberwolves @ Miami Heat,team_total:home,under,120.5,120.5,under,-113.0,70.7,True,False,price unchanged 71m while median moved +1.7pt
+2026-10-21T13:31:31Z,BallyBet,nba,401909834,Atlanta Hawks @ Orlando Magic,spread,Orlando Magic,-2.5,-2.5,home,-115.0,70.7,True,False,price unchanged 71m while median moved -2.3pt
+2026-10-21T13:31:31Z,DraftKings,nba,401909839,Indiana Pacers @ New Orleans Pelicans,total,over,239.5,239.5,over,-115.0,70.7,True,False,feed frozen 71m while 7/10 venues moved
+2026-10-21T13:31:31Z,DraftKings,nba,401909839,Indiana Pacers @ New Orleans Pelicans,team_total:home,under,118.5,118.5,under,-115.0,70.7,True,False,feed frozen 71m while 7/10 venues moved
+2026-10-21T13:31:31Z,BallyBet,nba,401909092,Golden State Warriors @ Los Angeles Lakers,team_total:home,under,120.5,120.5,under,-115.0,70.7,True,False,feed frozen 71m while 7/10 venues moved
+2026-10-21T13:31:31Z,BallyBet,nba,401909092,Golden State Warriors @ Los Angeles Lakers,team_total:home,over,120.5,120.5,over,-115.0,70.7,True,False,feed frozen 71m while 7/10 venues moved
+2026-10-21T13:31:31Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:away,over,113.5,113.5,over,-120.0,70.7,True,False,AN line_status=opener
+2026-10-21T13:31:31Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:away,over,116.5,116.5,over,-120.0,70.7,True,False,AN line_status=opener
+2026-10-21T13:31:31Z,theScore,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,team_total:home,under,118.5,118.5,under,-120.0,70.7,True,False,AN line_status=opener
+2026-10-21T13:31:31Z,theScore,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,team_total:home,under,122.5,122.5,under,-120.0,70.7,True,False,AN line_status=opener
+2026-10-21T13:31:31Z,BallyBet,nba,401909092,Golden State Warriors @ Los Angeles Lakers,team_total:away,under,114.5,114.5,under,-122.0,70.7,True,False,feed frozen 71m while 7/10 venues moved
+2026-10-21T13:31:31Z,theScore,nhl,401892551,Florida Panthers @ Ottawa Senators,total,over,5.5,5.5,over,-125.0,70.7,True,False,AN line_status=opener
+2026-10-21T13:31:31Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,over,5.5,5.5,over,-145.0,70.7,True,False,AN line_status=opener
+2026-10-21T13:31:31Z,DraftKings,nba,401909839,Indiana Pacers @ New Orleans Pelicans,ml,Indiana Pacers,,-9999.0,away,-155.0,70.7,True,False,feed frozen 71m while 7/10 venues moved
+2026-10-21T13:31:31Z,theScore,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,spread,Philadelphia Flyers,1.5,-1.5,away,-165.0,70.7,True,False,AN line_status=opener
+2026-10-21T13:31:31Z,BallyBet,nba,401909092,Golden State Warriors @ Los Angeles Lakers,ml,Los Angeles Lakers,,-9999.0,home,-240.0,70.7,True,False,feed frozen 71m while 7/10 venues moved
+2026-10-21T13:31:31Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,over,0.5,0.5,over,350.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:31:31Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,over,0.5,0.5,over,325.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:31:31Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Denver Nuggets,,-9999.0,away,222.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:31:31Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,New England Patriots,,-9999.0,away,135.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:31:31Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Denver Nuggets,7.5,-7.5,away,-105.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:31:31Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,under,232.5,232.5,under,-105.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:31:31Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Brooklyn Nets,-1.0,-1.0,home,-105.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:31:31Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,under,50.5,50.5,under,-105.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:31:31Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,over,219.5,219.5,over,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:31:31Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:away,over,110.5,110.5,over,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:31:31Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Charlotte Hornets,,-9999.0,away,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:31:31Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,ml,Brooklyn Nets,,-9999.0,home,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:31:31Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,New England Patriots,3.0,-3.0,away,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:31:31Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,Chicago Bears,-3.0,-3.0,home,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:31:31Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:home,under,109.5,109.5,under,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:31:31Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,total,under,219.5,219.5,under,-110.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:31:31Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,over,50.5,50.5,over,-115.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:31:31Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,spread,Charlotte Hornets,1.0,-1.0,away,-115.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:31:31Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Oklahoma City Thunder,-7.5,-7.5,home,-115.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:31:31Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,over,232.5,232.5,over,-115.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:31:31Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:home,over,109.5,109.5,over,-120.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:31:31Z,Fanatics,nba,401909836,Charlotte Hornets @ Brooklyn Nets,team_total:away,under,110.5,110.5,under,-120.0,,False,True,event off-market: spread -1 vs median 1.5
+2026-10-21T13:31:31Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,Chicago Bears,,-9999.0,home,-160.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:31:31Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Oklahoma City Thunder,,-9999.0,home,-278.0,,False,True,event off-market: total 232 vs median 236
+2026-10-21T13:31:31Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,under,0.5,0.5,under,-500.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T13:31:31Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,under,0.5,0.5,under,-550.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5

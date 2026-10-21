@@ -28,7 +28,7 @@ Pipeline per scan
      consistency/ladder finder (engine/edge_hunt/consistency.py): cross-rung arbs/middles, ML vs spread, ladder
      monotonicity, team totals vs game total
   6. exchange legs re-priced from the live book at $100; placeable signals (all legs on PLACEABLE, default
-     Kalshi, Polymarket, FanDuel; env ARB_PLACEABLE) go to results/edge_hunt/alerts.jsonl, deduped
+     Kalshi, Polymarket; env ARB_PLACEABLE) go to results/edge_hunt/alerts.jsonl, deduped
 
   python -m engine.edge_hunt.arb_scanner scan                      # one scan
   python -m engine.edge_hunt.arb_scanner loop 6 300                # 6 scans, 300 s apart
@@ -113,8 +113,8 @@ PIN_HALF = {"nba", "ncaam", "nfl", "ncaaf"}
 PM_HALF = {"first_half_spreads": "spread:1h", "first_half_totals": "total:1h"}
 
 # ---- bettor configuration (19, Tennessee): venues the bettor can actually place on. Override with
-#      ARB_PLACEABLE="Kalshi,Polymarket,FanDuel" (comma list).
-PLACEABLE = [v.strip() for v in os.environ.get("ARB_PLACEABLE", "Kalshi,Polymarket,FanDuel").split(",") if v.strip()]
+#      ARB_PLACEABLE="Kalshi,Polymarket" (comma list; FanDuel is 21+ in TN).
+PLACEABLE = [v.strip() for v in os.environ.get("ARB_PLACEABLE", "Kalshi,Polymarket").split(",") if v.strip()]
 # sharp weights for the fair price (log-odds weighted average of per-venue odds_ratio de-vigged probs)
 SHARP_W = {"Pinnacle": 3.0, "Circa": 1.0, "BetRivers": 1.0, "FanDuel": 1.0, "DraftKings": 1.0,
            "DraftKings(ESPN)": 1.0}

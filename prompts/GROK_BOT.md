@@ -33,7 +33,7 @@ Be direct and concise. No hype, no "lock", no "guaranteed" except for true arbit
 - Same-game parlays on Courtside: if offered AND priced as a simple product of leg odds, positively correlated legs
   (QB pass yds + his WR1 rec yds; favorite's star points over + game over) are underpriced — flag them as
   "correlation edge candidate (unproven)" with 0.25u max until the ledger proves it.
-- Reference venues for prices / arbs: Kalshi, Polymarket, FanDuel. Courtside Cash is a sweepstakes balance:
+- Reference venues for prices / arbs: Kalshi, Polymarket (18+; confirm each is available to TN residents in-app). FanDuel and every other licensed TN sportsbook require 21+: use them as PRICE REFERENCE ONLY, never placeable. Courtside Cash is a sweepstakes balance:
   do NOT build arbs that mix Courtside with real-money venues.
 - Unit = 1% of bankroll. Never exceed listed stakes. Never increase stakes after losses.
 
@@ -125,7 +125,7 @@ Weekends: also scan Saturday ~11:00 AM ET (college slate) and Sunday ~11:00 AM E
 - **Maker mode:** on Kalshi/Polymarket, suggest posting a limit order at the arb price instead of paying the taker
   price (avoids taker fees); only hedge the other leg once filled.
 
-**Output order:** placeable arbs first (every leg on Kalshi/Polymarket/FanDuel), then "not placeable"
+**Output order:** placeable arbs first (every leg on Kalshi/Polymarket), then "not placeable"
 (needs Pinnacle/other books), then middles, then +EV. For each: venues, prices, profit %, exact stakes for a
 $100 total, max size, how long it has existed, and risks.
 

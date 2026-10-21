@@ -3,11 +3,169 @@
 Code: `engine/edge_hunt/arb_scanner.py` · Run window: 2026-10-17 23:47Z to 2026-10-18 00:26Z (8 scans, about 5.5 min apart)
 
 ```
-python -m engine.edge_hunt.arb_scanner scan            # one scan, appends results/edge_hunt/arb_log.csv
-python -m engine.edge_hunt.arb_scanner loop 6 300      # 6 scans, 300 s apart
-python -m engine.edge_hunt.arb_scanner settle          # grade logged +EV signals from ESPN finals -> arb_settled.csv
-python -m engine.edge_hunt.arb_scanner pmhist [refresh]  # Polymarket-history backtest
+python -m engine.edge_hunt.arb_scanner scan                     # one scan -> arb_log.csv, arb_scans.csv, flagged_quotes.csv, alerts.jsonl
+python -m engine.edge_hunt.arb_scanner scan light               # same, skipping the Kalshi player-prop ladders
+python -m engine.edge_hunt.arb_scanner loop 6 300               # 6 scans, 300 s apart
+python -m engine.edge_hunt.arb_scanner watch --minutes 120 --every 75 [--full-every 4]   # continuous + alerts
+python -m engine.edge_hunt.arb_scanner log-fill --venue Kalshi --price +118 --stake 50 [--filled 40] \
+        [--alert-key <key or prefix from alerts.jsonl>] [--scanned +122] [--event ..] [--market ..] [--selection ..] [--line ..] [--note ..]
+python -m engine.edge_hunt.arb_scanner settle                   # grade logged +EV signals from ESPN finals -> arb_settled.csv
+python -m engine.edge_hunt.arb_scanner stale-backtest 20261019  # replay saved quote snapshots through the stale filter
+python -m engine.edge_hunt.arb_scanner pmhist [refresh]         # Polymarket-history backtest
 ```
+Placeable venues default to `Kalshi,Polymarket,FanDuel`; override with `ARB_PLACEABLE="Kalshi,Polymarket"`.
+**Note:** Tennessee sportsbooks, FanDuel included, require bettors to be 21. A 19-year-old cannot legally hold a TN
+FanDuel account, so for this bettor FanDuel alerts are not actionable. Running with
+`ARB_PLACEABLE=Kalshi,Polymarket` is the honest setting. Check the exchanges' own age and state terms too.
+
+## v2 (2026-10-21): stale filter, sharp fair price, watch/alerts, ladder-consistency finder, fill log
+
+New files:
+- `engine/edge_hunt/quote_history.py`
+- `engine/edge_hunt/consistency.py`
+- `results/edge_hunt/quote_history.sqlite` (48h)
+- `flagged_quotes.csv`, `alerts.jsonl` (+ `alerts_state.json`), `fills.csv`
+
+`arb_log.csv` gained these columns: `source`, `check`, `flag`, `note`, `mid_ev`, `p_window`, `w_cons`.
+
+**Feeds added**
+- Pinnacle team totals and 1H spread/total (basketball and football).
+- Action Network team totals and `line_status`.
+- Polymarket 1H spreads and totals, plus `POST /books` depth on every Polymarket quote.
+- Kalshi 1H spread/total and team totals (`KXNBA1HSPREAD`, `KXNBA1HTOTAL`, `KXNBATEAMTOTAL`).
+- Kalshi NBA prop ladders (PTS/REB/AST/3PT) and NHL prop ladders (GOAL/AST/PTS).
+- Kalshi depth on both sides: YES uses ask size; NO uses YES-bid size.
+
+**1. Stale and suspect quotes.** Every scan records each (venue, event, market, line, side) price and the
+cross-venue median for each outcome. A flagged quote stays in the quote table and in `flagged_quotes.csv`, but it
+is excluded from arbs, +EV and alerts. Any signal it would have produced is logged with `flag` set.
+
+STALE fires on any of three conditions:
+- **Per-outcome freeze.** A non-exchange price has not changed for at least 60 min while the median for that
+  outcome moved at least 1.5 pts.
+- **Frozen aggregator feed.** An Action Network or ESPN-DraftKings book has not changed any main ml/spread/total quote
+  on the event for at least 60 min, while at least 4 other sportsbooks (and at least 2/3 of them) moved.
+- **Feed age.** Action Network reports `line_status=opener`. Action Network exposes no per-quote timestamp, so this
+  flag is the only feed-age signal available.
+
+SUSPECT fires when a quote is more than 4 pts better than every other venue. It counts only on Kalshi or
+Polymarket, where the order book is re-checked.
+
+The event-level off-market filter is also tighter for Action Network books: 4.5 pts of de-vigged ML, or 2 points of
+line. It now also covers team totals and 1H lines. It skips puck lines and run lines, which are always ±1.5.
+
+**2. Fair price.**
+- Each venue is de-vigged with `odds_ratio`. Two-sided quotes with an overround above 1.15 are dropped; these are
+  empty exchange books with asks around 0.98/0.99.
+- The fair price is a log-odds weighted mean. Weights: Pinnacle 3; Kalshi and Polymarket 1.5 when both sides have
+  at least $200 at the quoted price, otherwise 0.5; BetRivers, FanDuel, DraftKings and Circa 1; others 0.5.
+- +EV means the venue's price is at least 2% better than the fair price of the *other* venues. Those venues need
+  Pinnacle among them, or at least 2 venues with weight of at least 2.
+
+**3. Watch and alerts.**
+- `watch` rescans every `--every` seconds, measured start to start. It fetches the Kalshi prop ladders and saves a
+  snapshot on every 4th pass only.
+- Light passes do not record or use prop medians, so a missing Kalshi rung cannot fake a median move.
+- Opportunities whose legs are all on PLACEABLE and not flagged are appended to `alerts.jsonl`:
+  - arb: book-verified margin above 0
+  - middle: EV of at least 1% against the fair price, window included
+  - +EV: book-verified edge of at least 2%
+- Each alert carries a ready-to-send `message`: event and start time ET, each leg (venue, side, all-in American
+  price after re-pricing from the book), the stake split for $100, max size (exchange top-of-book or Pinnacle limit),
+  and the time first seen.
+- An opportunity alerts once. It re-alerts only if its edge grows by at least 1 pt (state in `alerts_state.json`).
+
+**4. Consistency finder (`consistency.py`).** Every quote is mapped onto a threshold `c` on one integer outcome:
+- Spread family: the home margin. ML is a rung of this ladder: home ML is the same bet as home -0.5, and NFL ML is
+  the same as home pick'em.
+- Totals family: the game total, 1H total, a team's total, or a player's stat.
+
+The checks:
+- **Pairs.** Up at c_u plus down at c_d, with c_u ≤ c_d, always has at least one winning leg. Cost below 1 is a
+  guaranteed arb, with a middle bonus. Cost up to 1.03 with an integer inside the window is a middle, with
+  EV = (p_up + p_down)/cost − 1 using the fair price at each leg's own line. Same-venue pairs are included.
+- **Monotonicity.**
+  - Per-venue de-vigged ladders: violations above 2 pts are reported, for rungs with an overround of 1.08 or less.
+  - The fair ladder: violations above 3 pts are reported, for rungs with at least 1.5 of venue weight.
+  - Together these cover (a) alt spreads, (b) alt totals and (d) P(win) between P(−1.5) and P(+1.5).
+- **(e) Team totals vs game total.** Compares the sum of the two team-total medians with the game-total median.
+  Single lines are shifted to their 50/50 point with a per-sport slope; ladders are interpolated. A gap of at least
+  1.5 is reported.
+- Output kinds are `arb`, `middle` or `violation` (informational), tagged `check` = a/b/c/d/e.
+
+**5. Fill log.** `fills.csv` has these columns: logged_at, alert_key, kind, sport, event, market, selection, line,
+venue, scanned_american, realized_american, stake_usd, filled_usd, slippage_prob_pts, note. With `--alert-key`,
+`log-fill` copies the event, leg and scanned price from `alerts.jsonl`. Slippage is measured in implied-probability
+points (positive means a worse fill than scanned).
+
+**Runtime.** About 23–32 s per scan (fetch 8–17 s). The first v2 build took 200 s+ because pandas deep-copies
+`DataFrame.attrs` on every row operation. The fix was to stop using attrs and switch the hot loops to plain dicts.
+
+### Backtest of the stale filter on Monday 10/19 snapshots (3 scans: 21:31, 22:51, 23:51Z)
+
+This replays `arb_quotes/quotes_20261019*` through the new filters (`stale-backtest`, plus a replay of the signals).
+Results:
+
+| Monday case | What the data shows | Caught by |
+|---|---|---|
+| HardRock Celtics +105 / +1.5 −105 (ML 1–1.6% "arbs", +5–6.5% "+EV") | HardRock had the **sides swapped**: Celtics +105 / Pistons −125 and Celtics +1.5, while every other venue had the Celtics −112 to −120 and −1 to −1.5. Nobody else moved either (the game was the next day), so a "frozen while others moved" rule cannot catch it | the tighter AN off-market filter (spread −1.5 vs median +1.25), from scan 1; the HardRock +1.5 quote is also SUSPECT (4.5 pts better than the next venue) |
+| theScore Rays −1.5 +165 (0.3–1.2% arbs, +3.7% EV) | unchanged for 140 min. At 80 min only 7/12 venues had moved (not enough to flag); at 140 min 9/10 had | the frozen-feed rule at the 23:51 scan. The single-outcome rule alone never fires: the −1.5 median moved only about 0.5 pts |
+
+Signals removed across the replay, all on HardRock, theScore or HardRock-NHL:
+- 21:31: 6 of 7 arbs and 2 of 4 +EV
+- 22:51: 10 of 11 arbs and 3 of 4 +EV
+- 23:51: 11 of 11 arbs and 4 of 5 +EV
+
+The first scan of any session has no history, so only the off-market and outlier rules work in it. This is why
+`quote_history.sqlite` persists across runs.
+
+### Live test 2026-10-21
+
+Runs: scans at 12:37Z, 13:04Z and 13:31Z; an 8-pass `watch` from 13:15 to 13:25Z (2 full passes, 6 light). The slate
+was 11 NBA, NHL and NCAAF/NFL lookahead games, with 32 events in all. There were no MLB games today.
+
+**Stale filter.**
+- Before 60 min of history: 14 flags per scan, all `AN line_status=opener` on theScore NHL and NBA lines and team
+  totals.
+- After 60 min (13:21Z onward): 19 flags, then 39 at 13:31Z. Detail:
+  - **frozen feed:** DraftKings on Pacers@Pelicans and BallyBet on Warriors@Lakers, 71 min with 7/10 books moving
+  - **per-outcome freeze:** FanDuel Bulls +9.5 −105 (median −2.8 pts) and FanDuel Jazz/Grizzlies O242.5,
+    Caesars/BallyBet team totals and spreads (1.6–2.3 pts)
+- The off-market filter removed:
+  - HardRock NFL Patriots@Bears: team totals posted at 0.5, which produced fake 4–58% "team-total ladder arbs" before
+    the filter was extended
+  - Caesars Nuggets@Thunder (total 232 vs 236)
+  - Fanatics Hornets@Nets (spread on the wrong side of pick'em)
+- No arb or +EV signal was lost to a stale flag today: `flag` was empty for every row.
+- Caveat: FanDuel is a direct feed, not an aggregator. A frozen FanDuel price may be live and stale *in the bettor's
+  favour*. The spec excludes it anyway; recheck by hand if FanDuel shows in `flagged_quotes.csv`.
+
+**Consistency findings.** There were no guaranteed cross-rung arbs and no monotonicity (a/b/d) violations above the
+tolerances in the final code. Findings:
+- **Middles with positive EV (cost 1.01–1.03).** Examples:
+  - Hornets@Nets: Nets +1.5 −104 Polymarket with Hornets +1 −105 Bovada (EV +1.5%, window P≈3.8%)
+  - ML vs spread (d): Nets ML +104 Polymarket with Hornets +1.5 −115 DraftKings/Fanatics (+0.5%); Grizzlies ML −108
+    Polymarket with Jazz +1.5 +100/+102 (+0.0–0.5%)
+  - Polymarket rungs vs book lines (c): Heat/Wolves O240.5 +104 Polymarket with U241.5 −110 Fanatics (+1.0%)
+- **(e) team totals vs total.** The consensus gap was ≤0.9 everywhere. The per-venue outliers were theScore (+1.5 to
+  +1.9) and a few books at ±1.5.
+- Early versions flagged Kalshi prop ladders as non-monotone. This was de-vig noise on empty books, now filtered by
+  overround.
+
+**Placeable alerts (5, all +EV; no placeable arb or middle cleared its threshold).** None has been placed or graded
+yet. All are in `alerts.jsonl`:
+
+| First seen (ET) | Event | Bet | Edge vs fair (book-verified) | Max $ at price |
+|---|---|---|---|---|
+| 9:04 | NHL Flyers@Sabres | Flyers ML +175 Polymarket | +2.0% | $264 |
+| 9:04 | NBA Hornets@Nets | OVER 221.5 +117 Polymarket | +2.2% | $853 |
+| 9:04 | NBA Hornets@Nets | Brandon Miller O24.5 pts +101 Kalshi (fair = Pinnacle only) | +2.3% | $1,097 |
+| 9:15 | NBA Hornets@Nets | Nets −1.5 +122 Polymarket | +3.1% | $120 |
+| 9:31 | NBA Pacers@Pelicans | Pelicans +2.5 +113 Polymarket | +2.6% | $7,805 |
+
+The arbs found today (Polymarket vs BallyBet/DraftKings/Fanatics/Pinnacle/Caesars, 0.1–1.5%; Kalshi vs theScore
+team total 4.1%) all have a non-placeable leg. The Kalshi/theScore team total is a theScore line that was steady
+all morning, so it is probably stale but not yet flagged.
 
 ## Venues (reachability tested from this sandbox, not assumed)
 
