@@ -80,7 +80,11 @@ PM_SERIES = {"nba": 10345, "nfl": 12185, "ncaaf": 12756, "nhl": 10346, "mlb": 3,
 KALSHI = "https://api.elections.kalshi.com/trade-api/v2"
 KX_PROPS = {"nfl": {"KXNFLRECYDS": "receiving_yards", "KXNFLRSHYDS": "rushing_yards", "KXNFLPASSYDS": "passing_yards",
                     "KXNFLREC": "receptions", "KXNFLPASSTDS": "passing_touchdowns",
-                    "KXNFLPASSCOMP": "passing_completions", "KXNFLPASSATT": "passing_attempts"}}
+                    "KXNFLPASSCOMP": "passing_completions", "KXNFLPASSATT": "passing_attempts"},
+            "nba": {"KXNBAPTS": "points", "KXNBAREB": "rebounds", "KXNBAAST": "assists", "KXNBA3PT": "threes"},
+            "nhl": {"KXNHLGOAL": "goals", "KXNHLAST": "assists", "KXNHLPTS": "hockey_points"}}
+# extra Kalshi game-level series (suffix after KX_SERIES prefix) -> our market name
+KX_EXTRA = {"1HSPREAD": "spread:1h", "1HTOTAL": "total:1h", "TEAMTOTAL": "team_total"}
 KX_SERIES = {"nfl": "KXNFL", "ncaaf": "KXNCAAF", "nba": "KXNBA", "ncaam": "KXNCAAMB", "mlb": "KXMLB", "nhl": "KXNHL"}
 EXCHANGES = {"Polymarket", "Kalshi"}
 # Pinnacle special description suffix -> Polymarket sportsMarketType (player props, O/U)
@@ -88,7 +92,30 @@ PROP_STATS = {"Total Receptions": "receptions", "Total Receiving Yards": "receiv
               "Total Rushing Yards": "rushing_yards", "Total Passing Yards": "passing_yards",
               "Total Touchdown Passes": "passing_touchdowns", "Total Pass Attempts": "passing_attempts",
               "Total Pass Completions": "passing_completions", "Total Points": "points",
-              "Total Rebounds": "rebounds", "Total Assists": "assists"}
+              "Total Rebounds": "rebounds", "Total Assists": "assists", "Threes Made": "threes",
+              "Total Goals": "goals"}
+# Pinnacle period 1 is the first half only in these sports (hockey: 1st period, baseball: first 5 innings)
+PIN_HALF = {"nba", "ncaam", "nfl", "ncaaf"}
+PM_HALF = {"first_half_spreads": "spread:1h", "first_half_totals": "total:1h"}
+
+# ---- bettor configuration (19, Tennessee): venues the bettor can actually place on. Override with
+#      ARB_PLACEABLE="Kalshi,Polymarket,FanDuel" (comma list).
+PLACEABLE = [v.strip() for v in os.environ.get("ARB_PLACEABLE", "Kalshi,Polymarket,FanDuel").split(",") if v.strip()]
+# sharp weights for the fair price (log-odds weighted average of per-venue odds_ratio de-vigged probs)
+SHARP_W = {"Pinnacle": 3.0, "Circa": 1.0, "BetRivers": 1.0, "FanDuel": 1.0, "DraftKings": 1.0,
+           "DraftKings(ESPN)": 1.0}
+EXCH_W, EXCH_MIN_DEPTH, OTHER_W = 1.5, 200.0, 0.5
+AN_VENUES = {"DraftKings", "BetMGM", "bet365", "Caesars", "Fanatics", "HardRock", "theScore", "BallyBet",
+             "DraftKings(ESPN)"}            # quotes that arrive through an aggregator (can lag / freeze)
+ALERTS = OUT / "alerts.jsonl"
+ALERT_STATE = OUT / "alerts_state.json"
+FILLS = OUT / "fills.csv"
+FLAGGED = OUT / "flagged_quotes.csv"
+
+
+def mbase(mkt):
+    """'spread:1h' -> 'spread', 'team_total:home' -> 'team_total', 'prop:x:y' -> 'prop'."""
+    return str(mkt).split(":", 1)[0]
 
 
 # ------------------------------------------------------------------ odds helpers
@@ -128,13 +155,17 @@ def _get(url, params=None, tries=2, timeout=25):
     raise RuntimeError(f"{url.split('?')[0]}: {last}")
 
 
-def _q(venue, sport, start, teams, market, sel, line, am, size=np.nan, ref=None, alt=False):
-    """One quote. sel: team name (ml/spread) or 'over'/'under'; line: points for sel (spread) or total."""
+def _q(venue, sport, start, teams, market, sel, line, am, size=np.nan, ref=None, alt=False, **extra):
+    """One quote. sel: team name (ml/spread) or 'over'/'under'; line: points for sel (spread) or total.
+    size = $ available at the quoted price (exchange top-of-book depth or sportsbook max risk), NaN if unknown.
+    extra: tt_team (team of a team total), line_status (Action Network), ..."""
     if am is None or (isinstance(am, float) and np.isnan(am)):
         return None
-    return dict(venue=venue, sport=sport, start=pd.Timestamp(start).tz_convert("UTC") if pd.Timestamp(start).tzinfo
-                else pd.Timestamp(start).tz_localize("UTC"), t1=teams[0], t2=teams[1], market=market, sel=sel,
-                line=None if line is None else float(line), am=float(am), dec=am2dec(am), size=size, ref=ref, alt=alt)
+    d = dict(venue=venue, sport=sport, start=pd.Timestamp(start).tz_convert("UTC") if pd.Timestamp(start).tzinfo
+             else pd.Timestamp(start).tz_localize("UTC"), t1=teams[0], t2=teams[1], market=market, sel=sel,
+             line=None if line is None else float(line), am=float(am), dec=am2dec(am), size=size, ref=ref, alt=alt)
+    d.update(extra)
+    return d
 
 
 # ------------------------------------------------------------------ name matching
@@ -322,7 +353,14 @@ def pinnacle(sport):
                         q["player"] = pl
                         out.append(q)
     for k in mk:
-        if k.get("matchupId") not in M or k.get("period") != 0 or k.get("status") != "open":
+        per = k.get("period")
+        if k.get("matchupId") not in M or k.get("status") != "open":
+            continue
+        if per == 0:
+            sfx = ""
+        elif per == 1 and sport in PIN_HALF and k["type"] in ("spread", "total"):
+            sfx = ":1h"
+        else:
             continue
         h, a, st = M[k["matchupId"]]
         lim = next((x["amount"] for x in k.get("limits", []) if x.get("type") == "maxRiskStake"), np.nan)
@@ -330,12 +368,15 @@ def pinnacle(sport):
         for p in k.get("prices", []):
             d = p.get("designation")
             nm = h if d == "home" else a if d == "away" else d
-            if k["type"] == "moneyline" and d in ("home", "away"):
+            if k["type"] == "moneyline" and d in ("home", "away") and not sfx:
                 out.append(_q("Pinnacle", sport, st, (h, a), "ml", nm, None, p["price"], lim))
             elif k["type"] == "spread" and d in ("home", "away"):
-                out.append(_q("Pinnacle", sport, st, (h, a), "spread", nm, p["points"], p["price"], lim, alt=alt))
+                out.append(_q("Pinnacle", sport, st, (h, a), "spread" + sfx, nm, p["points"], p["price"], lim, alt=alt))
             elif k["type"] == "total" and d in ("over", "under"):
-                out.append(_q("Pinnacle", sport, st, (h, a), "total", d, p["points"], p["price"], lim, alt=alt))
+                out.append(_q("Pinnacle", sport, st, (h, a), "total" + sfx, d, p["points"], p["price"], lim, alt=alt))
+            elif k["type"] == "team_total" and d in ("over", "under") and k.get("side") in ("home", "away") and not sfx:
+                out.append(_q("Pinnacle", sport, st, (h, a), "team_total", d, p["points"], p["price"], lim, alt=alt,
+                              tt_team=h if k["side"] == "home" else a))
     return [x for x in out if x]
 
 
@@ -442,16 +483,25 @@ def actionnetwork(sport, days):
                 if not venue:
                     continue
                 ev = mk.get("event", {})
+                ls = lambda o: o.get("line_status") or ""
                 for o in ev.get("moneyline", []):
                     if not o.get("is_live") and o.get("odds"):
-                        out.append(_q(venue, sport, g["start_time"], (h, a), "ml", h if o["side"] == "home" else a, None, o["odds"]))
+                        out.append(_q(venue, sport, g["start_time"], (h, a), "ml", h if o["side"] == "home" else a, None,
+                                      o["odds"], line_status=ls(o)))
                 for o in ev.get("spread", []):
                     if not o.get("is_live") and o.get("odds") and o.get("value") is not None:
                         out.append(_q(venue, sport, g["start_time"], (h, a), "spread", h if o["side"] == "home" else a,
-                                      o["value"], o["odds"]))
+                                      o["value"], o["odds"], line_status=ls(o)))
                 for o in ev.get("total", []):
                     if not o.get("is_live") and o.get("odds") and o.get("value") is not None:
-                        out.append(_q(venue, sport, g["start_time"], (h, a), "total", o["side"], o["value"], o["odds"]))
+                        out.append(_q(venue, sport, g["start_time"], (h, a), "total", o["side"], o["value"], o["odds"],
+                                      line_status=ls(o)))
+                for o in ev.get("core_bet_type_6_team_score", []):       # team totals
+                    tm = T.get(o.get("team_id"))
+                    if not o.get("is_live") and o.get("odds") and o.get("value") is not None and tm \
+                            and o.get("side") in ("over", "under") and not o.get("is_alt_market"):
+                        out.append(_q(venue, sport, g["start_time"], (h, a), "team_total", o["side"], o["value"],
+                                      o["odds"], tt_team=tm, line_status=ls(o)))
     return [x for x in out if x]
 
 
@@ -518,6 +568,11 @@ def polymarket(sport):
                     out.append(_q("Polymarket", sport, st, T, "spread", o, ln if o == outs[0] else -ln, am, ref=ref))
                 elif smt == "totals" and m.get("line") is not None and o.lower() in ("over", "under"):
                     out.append(_q("Polymarket", sport, st, T, "total", o.lower(), float(m["line"]), am, ref=ref))
+                elif smt == "first_half_spreads" and m.get("line") is not None:
+                    ln = float(m["line"])
+                    out.append(_q("Polymarket", sport, st, T, "spread:1h", o, ln if o == outs[0] else -ln, am, ref=ref))
+                elif smt == "first_half_totals" and m.get("line") is not None and o.lower() in ("over", "under"):
+                    out.append(_q("Polymarket", sport, st, T, "total:1h", o.lower(), float(m["line"]), am, ref=ref))
                 elif smt in PROP_STATS.values() and m.get("line") is not None and o.lower() in ("over", "under"):
                     pl = (m.get("question") or "").split(":")[0].strip()
                     q = _q("Polymarket", sport, st, T, f"prop:{smt}:{norm(pl)}", o.lower(), float(m["line"]), am, ref=ref)
@@ -548,50 +603,69 @@ def _kx_date(ev_ticker):
     return datetime.strptime(f"20{m.group(1)}{m.group(2)}{m.group(3)}", "%Y%b%d").date()
 
 
-def kalshi(sport, days, series_meta):
+def kalshi(sport, days, series_meta, props=True):
+    """Kalshi GAME/SPREAD/TOTAL + 1H spread/total + team totals (+ player-prop ladders when props=True).
+    size on each quote = $ at the top of book for that side: YES ask size*price, NO = YES-bid size*NO price."""
     pre = KX_SERIES.get(sport)
     if not pre:
         return []
     dset = {d.date() for d in days}
     titles = {}
     try:
-        for s in ("GAME",):
-            cur = None
-            for _ in range(5):
-                p = {"series_ticker": pre + s, "status": "open", "limit": 200}
-                if cur:
-                    p["cursor"] = cur
-                js = _get(f"{KALSHI}/events", p)
-                for e in js.get("events", []):
-                    titles[e["event_ticker"].split("-", 1)[1]] = e.get("title", "")
-                cur = js.get("cursor")
-                if not cur:
-                    break
+        cur = None
+        for _ in range(5):
+            p = {"series_ticker": pre + "GAME", "status": "open", "limit": 200}
+            if cur:
+                p["cursor"] = cur
+            js = _get(f"{KALSHI}/events", p)
+            for e in js.get("events", []):
+                titles[e["event_ticker"].split("-", 1)[1]] = e.get("title", "")
+            cur = js.get("cursor")
+            if not cur:
+                break
     except Exception:
         pass
     out = []
     games = {}
-    for kind in ("GAME", "SPREAD", "TOTAL"):
+
+    def depth(m):
+        ya, na = float(m.get("yes_ask_dollars") or 0), float(m.get("no_ask_dollars") or 0)
+        return ya, na, float(m.get("yes_ask_size_fp") or 0) * ya, float(m.get("yes_bid_size_fp") or 0) * na
+
+    kinds = [("GAME", "ml"), ("SPREAD", "spread"), ("TOTAL", "total")] + [(k, v) for k, v in KX_EXTRA.items()]
+    for kind, mname in kinds:
         mult = float(series_meta.get(pre + kind, {}).get("fee_multiplier") or 1)
-        for m in _kx_pages(pre + kind):
+        try:
+            pages = _kx_pages(pre + kind)
+        except Exception:
+            if kind in ("GAME", "SPREAD", "TOTAL"):
+                raise
+            continue
+        for m in pages:
             d = _kx_date(m["event_ticker"])
             if d not in dset or m.get("status") != "active":
                 continue
             key = m["event_ticker"].split("-", 1)[1]
             games.setdefault(key, {"date": d})
-            ya, na = float(m.get("yes_ask_dollars") or 0), float(m.get("no_ask_dollars") or 0)
-            ys = float(m.get("yes_ask_size_fp") or 0)
+            ya, na, ys, ns = depth(m)
             meta = dict(ticker=m["ticker"], mult=mult)
+            sub = m.get("yes_sub_title") or m.get("title") or ""
             if kind == "GAME":
-                games[key].setdefault("teams", []).append((m["ticker"].rsplit("-", 1)[1], m.get("yes_sub_title"), ya, na, ys, meta))
-            elif kind == "SPREAD":
-                tm = re.match(r"(.+?) wins by over ([\d.]+)", m.get("yes_sub_title") or m.get("title") or "")
+                games[key].setdefault("teams", []).append((m["ticker"].rsplit("-", 1)[1], m.get("yes_sub_title"), ya, na,
+                                                           ys, ns, meta))
+            elif mname.startswith("spread"):
+                tm = re.match(r"(.+?) wins (?:the 1st half )?by over ([\d.]+)", sub) or \
+                    re.match(r"(.+?) wins (?:the 1st half )?by over ([\d.]+)", m.get("title") or "")
                 if tm:
-                    games[key].setdefault("spreads", []).append((tm.group(1), float(tm.group(2)), ya, na, ys, meta))
+                    games[key].setdefault("spreads", []).append((mname, tm.group(1), float(tm.group(2)), ya, na, ys, ns, meta))
+            elif mname == "team_total":
+                tm = re.match(r"(.+?) over ([\d.]+)", sub)
+                if tm and m.get("floor_strike") is not None:
+                    games[key].setdefault("tt", []).append((tm.group(1).strip(), float(m["floor_strike"]), ya, na, ys, ns, meta))
             else:
                 if m.get("floor_strike") is not None and "over" in (m.get("title") or "").lower():
-                    games[key].setdefault("totals", []).append((float(m["floor_strike"]), ya, na, ys, meta))
-    for ser, stat in KX_PROPS.get(sport, {}).items():
+                    games[key].setdefault("totals", []).append((mname, float(m["floor_strike"]), ya, na, ys, ns, meta))
+    for ser, stat in (KX_PROPS.get(sport, {}).items() if props else []):
         mult = float(series_meta.get(ser, {}).get("fee_multiplier") or 1)
         try:
             pm = _kx_pages(ser)
@@ -603,61 +677,54 @@ def kalshi(sport, days, series_meta):
                 continue
             key = m["event_ticker"].split("-", 1)[1]
             pl = (m.get("title") or "").split(":")[0].strip()
-            ya, na = float(m.get("yes_ask_dollars") or 0), float(m.get("no_ask_dollars") or 0)
+            ya, na, ys, ns = depth(m)
             games.setdefault(key, {"date": d}).setdefault("props", []).append(
-                (stat, pl, float(m["floor_strike"]), ya, na, float(m.get("yes_ask_size_fp") or 0),
-                 dict(ticker=m["ticker"], mult=mult)))
+                (stat, pl, float(m["floor_strike"]), ya, na, ys, ns, dict(ticker=m["ticker"], mult=mult)))
+    cost = lambda p, mult: p + kx_fee(p, mult) if 0 < p < 1 else np.nan
     for key, g in games.items():
         tm = g.get("teams", [])
         if len(tm) != 2:
             continue
         title = titles.get(key, "")
-        # map code -> best name: "HOU Texans vs JAC Jaguars" -> {'HOU': 'HOU Texans'}
         names = {}
         for code, sub, *_ in tm:
-            seg = next((s.strip() for s in re.split(r"\s+(?:vs\.?|at|@)\s+", title) if s.strip().startswith(code + " ")), None)
+            seg = next((s_.strip() for s_ in re.split(r"\s+(?:vs\.?|at|@)\s+", title) if s_.strip().startswith(code + " ")), None)
             names[code] = seg or sub
         t = (names[tm[0][0]], names[tm[1][0]])
         sub2name = {sub: names[code] for code, sub, *_ in tm}
         start = pd.Timestamp(datetime.combine(g["date"], datetime.min.time())).tz_localize(ET)
-        cost = lambda p, mult: p + kx_fee(p, mult) if 0 < p < 1 else np.nan
-        for i, (code, sub, ya, na, ys, meta) in enumerate(tm):
+
+        def emit(market, sel, line, p, side, sz, meta, **extra):
+            c = cost(p, meta["mult"])
+            if c == c and c < 1:
+                q = _q("Kalshi", sport, start, t, market, sel, line, dec2am(1 / c), sz,
+                       json.dumps(dict(ticker=meta["ticker"], side=side, mult=meta["mult"], p=p)), **extra)
+                if q:
+                    out.append(q)
+
+        for i, (code, sub, ya, na, ys, ns, meta) in enumerate(tm):
             other = tm[1 - i]
-            # buy team: YES on its market, or NO on the opponent's market
-            for p, how, sz in ((ya, "yes", ys), (other[3], "no_opp", np.nan)):
-                c = cost(p, meta["mult"])
-                if c == c and c < 1:
-                    ref = json.dumps(dict(ticker=meta["ticker"] if how == "yes" else other[5]["ticker"],
-                                          side="yes" if how == "yes" else "no", mult=meta["mult"], p=p))
-                    out.append(_q("Kalshi", sport, start, t, "ml", names[code], None, dec2am(1 / c), sz * p, ref))
-        for (who, ln, ya, na, ys, meta) in g.get("spreads", []):
+            emit("ml", names[code], None, ya, "yes", ys, meta)               # YES on its own market
+            emit("ml", names[code], None, other[3], "no", other[5], other[6])  # NO on the opponent's market
+        for (mname, who, ln, ya, na, ys, ns, meta) in g.get("spreads", []):
             nm = sub2name.get(who)
             if nm is None:
                 continue
             opp = t[1] if nm == t[0] else t[0]
-            for sel, line, p, side in ((nm, -ln, ya, "yes"), (opp, ln, na, "no")):
-                c = cost(p, meta["mult"])
-                if c == c and c < 1:
-                    out.append(_q("Kalshi", sport, start, t, "spread", sel, line, dec2am(1 / c),
-                                  ys * p if side == "yes" else np.nan,
-                                  json.dumps(dict(ticker=meta["ticker"], side=side, mult=meta["mult"], p=p))))
-        for (stat, pl, ln, ya, na, ys, meta) in g.get("props", []):
-            for sel, p, side in (("over", ya, "yes"), ("under", na, "no")):
-                c = cost(p, meta["mult"])
-                if c == c and c < 1:
-                    q = _q("Kalshi", sport, start, t, f"prop:{stat}:{norm(pl)}", sel, ln, dec2am(1 / c),
-                           ys * p if side == "yes" else np.nan,
-                           json.dumps(dict(ticker=meta["ticker"], side=side, mult=meta["mult"], p=p)))
-                    if q:
-                        q["player"] = pl
-                        out.append(q)
-        for (ln, ya, na, ys, meta) in g.get("totals", []):
-            for sel, p, side in (("over", ya, "yes"), ("under", na, "no")):
-                c = cost(p, meta["mult"])
-                if c == c and c < 1:
-                    out.append(_q("Kalshi", sport, start, t, "total", sel, ln, dec2am(1 / c),
-                                  ys * p if side == "yes" else np.nan,
-                                  json.dumps(dict(ticker=meta["ticker"], side=side, mult=meta["mult"], p=p))))
+            emit(mname, nm, -ln, ya, "yes", ys, meta)
+            emit(mname, opp, ln, na, "no", ns, meta)
+        for (mname, ln, ya, na, ys, ns, meta) in g.get("totals", []):
+            emit(mname, "over", ln, ya, "yes", ys, meta)
+            emit(mname, "under", ln, na, "no", ns, meta)
+        for (who, ln, ya, na, ys, ns, meta) in g.get("tt", []):
+            nm = sub2name.get(who)
+            if nm is None:
+                continue
+            emit("team_total", "over", ln, ya, "yes", ys, meta, tt_team=nm)
+            emit("team_total", "under", ln, na, "no", ns, meta, tt_team=nm)
+        for (stat, pl, ln, ya, na, ys, ns, meta) in g.get("props", []):
+            emit(f"prop:{stat}:{norm(pl)}", "over", ln, ya, "yes", ys, meta, player=pl)
+            emit(f"prop:{stat}:{norm(pl)}", "under", ln, na, "no", ns, meta, player=pl)
     return [x for x in out if x]
 
 
