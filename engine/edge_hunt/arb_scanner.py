@@ -899,6 +899,22 @@ def stale_filter(N, ml_tol=0.08, line_tol=3.0, agg_ml_tol=0.045, agg_line_tol=2.
     tolerances (agg_*): Monday 10/19 HardRock had Celtics +105 / Pistons -125 when every other venue had the
     Celtics -112..-120, 5.5 points off the de-vigged median."""
     bad = {}
+    # line sanity: a full-game total far from the event's median total is a mislabeled period/team market
+    # (10/21: BetMGM "OVER 35.5" on Wolves@Heat produced 10 fake 3-26% "arbs" vs Kalshi game-total rungs)
+    tot = (N.market == "total") & N.hline.notna()
+    if tot.any():
+        med = N[tot & ~N.alt.astype(bool)].groupby("espn_id").hline.median()
+        m = N.loc[tot, "espn_id"].map(med)
+        insane = tot.copy()
+        insane[tot] = ((N.loc[tot, "hline"] - m).abs() > 0.3 * m).fillna(False)
+        if insane.any():
+            off0 = N[insane].copy()
+            off0["flag_why"] = "total line far from event median (mislabeled period/team total)"
+            N = N[~insane].reset_index(drop=True)
+        else:
+            off0 = pd.DataFrame()
+    else:
+        off0 = pd.DataFrame()
     for mkt in ("ml", "spread", "total", "team_total:home", "team_total:away", "spread:1h", "total:1h"):
         a, b = sides(mkt)
         rows = []
@@ -933,6 +949,8 @@ def stale_filter(N, ml_tol=0.08, line_tol=3.0, agg_ml_tol=0.045, agg_line_tol=2.
         off = N[[not k for k in keep]].copy()
         off["flag_why"] = [f"event off-market: {bad[(e, v)]}" for e, v in zip(off.espn_id, off.venue)]
         N = N[keep].reset_index(drop=True)
+    if len(off0):
+        off = pd.concat([off0, off], ignore_index=True)
     return N, bad, off
 
 

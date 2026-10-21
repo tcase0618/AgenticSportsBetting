@@ -483,3 +483,586 @@ scan_ts,venue,sport,espn_id,event,market,sel,line,hkey,side,am,unchanged_min,sta
 2026-10-21T13:31:31Z,Caesars,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Oklahoma City Thunder,,-9999.0,home,-278.0,,False,True,event off-market: total 232 vs median 236
 2026-10-21T13:31:31Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,under,0.5,0.5,under,-500.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
 2026-10-21T13:31:31Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,under,0.5,0.5,under,-550.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T22:51:22Z,theScore,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,ml,Kennesaw State Owls,,-9999.0,home,340.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,DraftKings,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,ml,Appalachian State Mountaineers,,-9999.0,home,330.0,630.6,True,False,feed frozen 631m while 7/10 venues moved
+2026-10-21T22:51:22Z,Fanatics,nba,401909840,Dallas Mavericks @ Houston Rockets,ml,Dallas Mavericks,,-9999.0,away,325.0,586.5,True,False,feed frozen 576m while 9/9 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,ml,Appalachian State Mountaineers,,-9999.0,home,320.0,630.6,True,False,feed frozen 631m while 7/10 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,ml,East Carolina Pirates,,-9999.0,away,300.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,BallyBet,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Denver Nuggets,,-9999.0,away,265.0,630.6,True,False,feed frozen 631m while 7/9 venues moved
+2026-10-21T22:51:22Z,HardRock,nhl,401892557,Los Angeles Kings @ New York Islanders,spread,New York Islanders,-1.5,-1.5,home,180.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892558,Vegas Golden Knights @ St. Louis Blues,spread,Vegas Golden Knights,-1.5,1.5,away,175.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892560,Minnesota Wild @ Calgary Flames,ml,Calgary Flames,,-9999.0,home,160.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892563,Detroit Red Wings @ Vancouver Canucks,spread,Detroit Red Wings,-1.5,1.5,away,140.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892562,Utah Mammoth @ Seattle Kraken,spread,Utah Mammoth,-1.5,1.5,away,140.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892563,Detroit Red Wings @ Vancouver Canucks,ml,Vancouver Canucks,,-9999.0,home,135.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892560,Minnesota Wild @ Calgary Flames,spread,Minnesota Wild,-1.5,1.5,away,130.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,BallyBet,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,ml,Cleveland Cavaliers,,-9999.0,away,123.0,630.6,True,False,price unchanged 631m while median moved -2.1pt
+2026-10-21T22:51:22Z,BetRivers,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,ml,CLE Cavaliers,,-9999.0,away,120.0,630.6,True,False,price unchanged 631m while median moved -2.1pt
+2026-10-21T22:51:22Z,HardRock,nhl,401892557,Los Angeles Kings @ New York Islanders,team_total:home,under,2.5,2.5,under,120.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892553,New York Rangers @ Toronto Maple Leafs,team_total:home,over,3.5,3.5,over,120.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,team_total:home,over,3.5,3.5,over,120.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892558,Vegas Golden Knights @ St. Louis Blues,team_total:home,under,2.5,2.5,under,115.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892558,Vegas Golden Knights @ St. Louis Blues,total,under,5.5,5.5,under,115.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,theScore,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,ml,Sam Houston State Bearkats,,-9999.0,home,115.0,630.6,True,False,price unchanged 631m while median moved -3.1pt
+2026-10-21T22:51:22Z,theScore,nhl,401892552,Nashville Predators @ Boston Bruins,total,under,5.5,5.5,under,110.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,Pinnacle,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,spread,Appalachian State,9.5,9.5,home,108.0,630.6,True,False,price unchanged 631m while median moved +1.8pt
+2026-10-21T22:51:22Z,HardRock,nhl,401892557,Los Angeles Kings @ New York Islanders,team_total:away,under,2.5,2.5,under,105.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892559,Winnipeg Jets @ Dallas Stars,total,under,5.5,5.5,under,100.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892559,Winnipeg Jets @ Dallas Stars,team_total:home,over,3.5,3.5,over,100.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892557,Los Angeles Kings @ New York Islanders,ml,Los Angeles Kings,,-9999.0,away,100.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,theScore,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,spread,Liberty Flames,-10.5,10.5,away,100.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,theScore,nhl,401892562,Utah Mammoth @ Seattle Kraken,total,over,6.5,6.5,over,100.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,Caesars,nba,401909091,Minnesota Timberwolves @ Miami Heat,ml,Minnesota Timberwolves,,-9999.0,away,100.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,BallyBet,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Denver Nuggets,7.5,-7.5,away,-103.0,630.6,True,False,feed frozen 631m while 7/9 venues moved
+2026-10-21T22:51:22Z,DraftKings,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,team_total:away,under,33.5,33.5,under,-105.0,0.0,True,False,feed frozen 631m while 7/10 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,team_total:away,under,30.5,30.5,under,-105.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,team_total:home,under,19.5,19.5,under,-105.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,total,over,56.5,56.5,over,-105.0,630.6,True,False,feed frozen 631m while 7/10 venues moved
+2026-10-21T22:51:22Z,BetMGM,nhl,401892560,Minnesota Wild @ Calgary Flames,team_total:home,over,2.5,2.5,over,-105.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,theScore,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,team_total:home,under,23.5,23.5,under,-105.0,630.6,True,False,feed frozen 631m while 7/7 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,spread,Memphis Tigers,-10.5,-10.5,home,-105.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,total,over,54.5,54.5,over,-105.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,FanDuel,nba,401909840,Dallas Mavericks @ Houston Rockets,spread,Dallas Mavericks,9.5,-9.5,away,-105.0,610.8,True,False,price unchanged 611m while median moved -2.1pt
+2026-10-21T22:51:22Z,theScore,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,spread,Sam Houston State Bearkats,2.5,2.5,home,-105.0,630.6,True,False,price unchanged 631m while median moved -4.6pt
+2026-10-21T22:51:22Z,BallyBet,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,over,236.5,236.5,over,-105.0,630.6,True,False,feed frozen 631m while 7/9 venues moved
+2026-10-21T22:51:22Z,theScore,nhl,401892557,Los Angeles Kings @ New York Islanders,total,over,5.5,5.5,over,-105.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892557,Los Angeles Kings @ New York Islanders,total,over,5.5,5.5,over,-105.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,DraftKings,nba,401909092,Golden State Warriors @ Los Angeles Lakers,total,under,234.5,234.5,under,-108.0,630.6,True,False,price unchanged 631m while median moved +1.6pt
+2026-10-21T22:51:22Z,DraftKings,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,total,under,56.5,56.5,under,-110.0,630.6,True,False,feed frozen 631m while 7/10 venues moved
+2026-10-21T22:51:22Z,DraftKings,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,total,over,56.5,56.5,over,-110.0,630.6,True,False,feed frozen 631m while 7/10 venues moved
+2026-10-21T22:51:22Z,Fanatics,nba,401909840,Dallas Mavericks @ Houston Rockets,total,under,230.0,230.0,under,-110.0,576.1,True,False,feed frozen 576m while 9/9 venues moved
+2026-10-21T22:51:22Z,DraftKings,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,spread,James Madison Dukes,-10.5,10.5,away,-110.0,630.6,True,False,feed frozen 631m while 7/10 venues moved
+2026-10-21T22:51:22Z,DraftKings,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,spread,Appalachian State Mountaineers,10.5,10.5,home,-110.0,630.6,True,False,feed frozen 631m while 7/10 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,spread,Appalachian State Mountaineers,10.5,10.5,home,-110.0,630.6,True,False,feed frozen 631m while 7/10 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,spread,James Madison Dukes,-10.5,10.5,away,-110.0,630.6,True,False,feed frozen 631m while 7/10 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,total,over,44.5,44.5,over,-110.0,630.6,True,False,feed frozen 631m while 7/7 venues moved
+2026-10-21T22:51:22Z,BetMGM,nhl,401892560,Minnesota Wild @ Calgary Flames,team_total:away,over,3.5,3.5,over,-110.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,theScore,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,team_total:away,over,34.5,34.5,over,-110.0,630.6,True,False,feed frozen 631m while 7/10 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,team_total:home,over,22.5,22.5,over,-110.0,630.6,True,False,feed frozen 631m while 7/10 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,total,under,44.5,44.5,under,-110.0,630.6,True,False,feed frozen 631m while 7/7 venues moved
+2026-10-21T22:51:22Z,DraftKings,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,team_total:home,over,22.5,22.5,over,-110.0,0.0,True,False,feed frozen 631m while 7/10 venues moved
+2026-10-21T22:51:22Z,theScore,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,total,under,6.5,6.5,under,-110.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,theScore,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,total,over,6.5,6.5,over,-110.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,total,under,6.5,6.5,under,-110.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,total,over,6.5,6.5,over,-110.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,theScore,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,total,under,50.5,50.5,under,-110.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,total,over,50.5,50.5,over,-110.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,Caesars,nba,401909091,Minnesota Timberwolves @ Miami Heat,spread,Minnesota Timberwolves,1.5,-1.5,away,-110.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,Caesars,nba,401909091,Minnesota Timberwolves @ Miami Heat,total,under,241.0,241.0,under,-110.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,Caesars,nba,401909091,Minnesota Timberwolves @ Miami Heat,total,over,241.0,241.0,over,-110.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,Caesars,nba,401909091,Minnesota Timberwolves @ Miami Heat,team_total:home,under,120.5,120.5,under,-110.0,0.0,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,Pinnacle,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,team_total:away,over,2.5,2.5,over,-110.0,586.5,True,False,price unchanged 586m while median moved -1.5pt
+2026-10-21T22:51:22Z,Caesars,nba,401909091,Minnesota Timberwolves @ Miami Heat,spread,Miami Heat,-1.5,-1.5,home,-110.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,theScore,nba,401909837,Chicago Bulls @ Toronto Raptors,spread,Toronto Raptors,-10.5,-10.5,home,-110.0,610.8,True,False,price unchanged 611m while median moved +1.5pt
+2026-10-21T22:51:22Z,Fanatics,nba,401909840,Dallas Mavericks @ Houston Rockets,team_total:away,over,110.5,110.5,over,-110.0,0.0,True,False,feed frozen 576m while 9/9 venues moved
+2026-10-21T22:51:22Z,Fanatics,nba,401909840,Dallas Mavericks @ Houston Rockets,spread,Dallas Mavericks,10.0,-10.0,away,-110.0,586.5,True,False,feed frozen 576m while 9/9 venues moved
+2026-10-21T22:51:22Z,Fanatics,nba,401909840,Dallas Mavericks @ Houston Rockets,spread,Houston Rockets,-10.0,-10.0,home,-110.0,586.5,True,False,feed frozen 576m while 9/9 venues moved
+2026-10-21T22:51:22Z,Fanatics,nba,401909840,Dallas Mavericks @ Houston Rockets,total,over,230.0,230.0,over,-110.0,576.1,True,False,feed frozen 576m while 9/9 venues moved
+2026-10-21T22:51:22Z,Caesars,nba,401909091,Minnesota Timberwolves @ Miami Heat,team_total:away,over,120.5,120.5,over,-110.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,DraftKings,nba,401909092,Golden State Warriors @ Los Angeles Lakers,total,over,234.5,234.5,over,-112.0,630.6,True,False,price unchanged 631m while median moved -3.0pt
+2026-10-21T22:51:22Z,BallyBet,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,team_total:away,over,21.5,21.5,over,-113.0,630.6,True,False,price unchanged 631m while median moved -1.6pt
+2026-10-21T22:51:22Z,theScore,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,total,under,56.5,56.5,under,-115.0,630.6,True,False,feed frozen 631m while 7/10 venues moved
+2026-10-21T22:51:22Z,Caesars,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,spread,Philadelphia 76ers,-3.0,-3.0,home,-115.0,630.6,True,False,price unchanged 631m while median moved +1.7pt
+2026-10-21T22:51:22Z,DraftKings,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,team_total:home,under,22.5,22.5,under,-115.0,0.0,True,False,feed frozen 631m while 7/10 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,spread,New Mexico State Aggies,-2.5,2.5,away,-115.0,630.6,True,False,price unchanged 631m while median moved +2.3pt
+2026-10-21T22:51:22Z,theScore,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,team_total:home,over,33.5,33.5,over,-115.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,team_total:home,under,33.5,33.5,under,-115.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,team_total:away,under,22.5,22.5,under,-115.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,total,under,54.5,54.5,under,-115.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,spread,East Carolina Pirates,10.5,-10.5,away,-115.0,630.6,True,False,price unchanged 631m while median moved -1.7pt
+2026-10-21T22:51:22Z,theScore,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,team_total:away,over,22.5,22.5,over,-115.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,theScore,nhl,401892557,Los Angeles Kings @ New York Islanders,total,under,5.5,5.5,under,-115.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,Fanatics,nba,401909840,Dallas Mavericks @ Houston Rockets,team_total:home,over,120.5,120.5,over,-115.0,0.0,True,False,feed frozen 576m while 9/9 venues moved
+2026-10-21T22:51:22Z,FanDuel,nba,401909840,Dallas Mavericks @ Houston Rockets,spread,Houston Rockets,-9.5,-9.5,home,-115.0,610.8,True,False,price unchanged 611m while median moved +2.5pt
+2026-10-21T22:51:22Z,HardRock,nhl,401892557,Los Angeles Kings @ New York Islanders,total,under,5.5,5.5,under,-115.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,Fanatics,nba,401909840,Dallas Mavericks @ Houston Rockets,team_total:home,under,120.5,120.5,under,-115.0,0.0,True,False,feed frozen 576m while 9/9 venues moved
+2026-10-21T22:51:22Z,BallyBet,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,under,236.5,236.5,under,-117.0,630.6,True,False,feed frozen 631m while 7/9 venues moved
+2026-10-21T22:51:22Z,BetMGM,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,team_total:away,over,2.5,2.5,over,-118.0,630.6,True,False,price unchanged 631m while median moved -1.7pt
+2026-10-21T22:51:22Z,Fanatics,nba,401909840,Dallas Mavericks @ Houston Rockets,team_total:away,under,110.5,110.5,under,-120.0,0.0,True,False,feed frozen 576m while 9/9 venues moved
+2026-10-21T22:51:22Z,Caesars,nba,401909091,Minnesota Timberwolves @ Miami Heat,ml,Miami Heat,,-9999.0,home,-120.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,BetMGM,nba,401909834,Atlanta Hawks @ Orlando Magic,team_total:home,over,117.5,117.5,over,-120.0,586.5,True,False,price unchanged 586m while median moved -1.8pt
+2026-10-21T22:51:22Z,theScore,nhl,401892562,Utah Mammoth @ Seattle Kraken,total,under,6.5,6.5,under,-120.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,theScore,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,team_total:away,under,34.5,34.5,under,-120.0,630.6,True,False,feed frozen 631m while 7/10 venues moved
+2026-10-21T22:51:22Z,Caesars,nba,401909091,Minnesota Timberwolves @ Miami Heat,team_total:home,over,120.5,120.5,over,-120.0,0.0,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,HardRock,nhl,401892557,Los Angeles Kings @ New York Islanders,ml,New York Islanders,,-9999.0,home,-120.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,Caesars,nba,401909091,Minnesota Timberwolves @ Miami Heat,team_total:away,under,120.5,120.5,under,-120.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,team_total:home,under,22.5,22.5,under,-120.0,630.6,True,False,feed frozen 631m while 7/10 venues moved
+2026-10-21T22:51:22Z,BallyBet,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Oklahoma City Thunder,-7.5,-7.5,home,-120.0,630.6,True,False,feed frozen 631m while 7/9 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,spread,Kennesaw State Owls,10.5,10.5,home,-120.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,HardRock,nhl,401892559,Winnipeg Jets @ Dallas Stars,total,over,5.5,5.5,over,-120.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892559,Winnipeg Jets @ Dallas Stars,team_total:home,under,3.5,3.5,under,-120.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,BetMGM,nhl,401892560,Minnesota Wild @ Calgary Flames,team_total:away,under,3.5,3.5,under,-125.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,theScore,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,team_total:home,over,23.5,23.5,over,-125.0,630.6,True,False,feed frozen 631m while 7/7 venues moved
+2026-10-21T22:51:22Z,DraftKings,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,team_total:away,over,33.5,33.5,over,-125.0,630.6,True,False,feed frozen 631m while 7/10 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,team_total:away,over,30.5,30.5,over,-125.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,team_total:home,over,19.5,19.5,over,-125.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,BallyBet,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,team_total:away,under,21.5,21.5,under,-129.0,630.6,True,False,price unchanged 631m while median moved +2.5pt
+2026-10-21T22:51:22Z,theScore,nhl,401892552,Nashville Predators @ Boston Bruins,total,over,5.5,5.5,over,-130.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892557,Los Angeles Kings @ New York Islanders,team_total:away,over,2.5,2.5,over,-135.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,theScore,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,ml,New Mexico State Aggies,,-9999.0,away,-135.0,630.6,True,False,price unchanged 631m while median moved +3.3pt
+2026-10-21T22:51:22Z,BetMGM,nhl,401892560,Minnesota Wild @ Calgary Flames,team_total:home,under,2.5,2.5,under,-135.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892558,Vegas Golden Knights @ St. Louis Blues,total,over,5.5,5.5,over,-145.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,BallyBet,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,ml,Philadelphia 76ers,,-9999.0,home,-148.0,630.6,True,False,price unchanged 631m while median moved +1.9pt
+2026-10-21T22:51:22Z,BetRivers,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,ml,PHI 76ers,,-9999.0,home,-148.0,630.6,True,False,price unchanged 631m while median moved +1.9pt
+2026-10-21T22:51:22Z,BetMGM,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,spread,Philadelphia Flyers,1.5,-1.5,away,-155.0,630.6,True,False,price unchanged 631m while median moved -2.6pt
+2026-10-21T22:51:22Z,HardRock,nhl,401892563,Detroit Red Wings @ Vancouver Canucks,ml,Detroit Red Wings,,-9999.0,away,-160.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892557,Los Angeles Kings @ New York Islanders,team_total:home,over,2.5,2.5,over,-160.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892560,Minnesota Wild @ Calgary Flames,spread,Calgary Flames,1.5,1.5,home,-165.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892562,Utah Mammoth @ Seattle Kraken,spread,Seattle Kraken,1.5,1.5,home,-185.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892563,Detroit Red Wings @ Vancouver Canucks,spread,Vancouver Canucks,1.5,1.5,home,-185.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892558,Vegas Golden Knights @ St. Louis Blues,spread,St. Louis Blues,1.5,1.5,home,-230.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,HardRock,nhl,401892557,Los Angeles Kings @ New York Islanders,spread,Los Angeles Kings,1.5,-1.5,away,-250.0,0.0,True,False,AN line_status=opener
+2026-10-21T22:51:22Z,BallyBet,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Oklahoma City Thunder,,-9999.0,home,-345.0,630.6,True,False,feed frozen 631m while 7/9 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,ml,Memphis Tigers,,-9999.0,home,-400.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,DraftKings,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,ml,James Madison Dukes,,-9999.0,away,-425.0,630.6,True,False,feed frozen 631m while 7/10 venues moved
+2026-10-21T22:51:22Z,Fanatics,nba,401909840,Dallas Mavericks @ Houston Rockets,ml,Houston Rockets,,-9999.0,home,-425.0,586.5,True,False,feed frozen 576m while 9/9 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,ml,James Madison Dukes,,-9999.0,away,-425.0,630.6,True,False,feed frozen 631m while 7/10 venues moved
+2026-10-21T22:51:22Z,theScore,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,ml,Liberty Flames,,-9999.0,away,-450.0,630.6,True,False,feed frozen 631m while 9/10 venues moved
+2026-10-21T22:51:22Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,over,0.5,0.5,over,350.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T22:51:22Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,over,0.5,0.5,over,325.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T22:51:22Z,BetMGM,nba,401909840,Dallas Mavericks @ Houston Rockets,ml,Dallas Mavericks,,-9999.0,away,320.0,,False,True,event off-market: total 6.5 vs median 230
+2026-10-21T22:51:22Z,BetMGM,nba,401909092,Golden State Warriors @ Los Angeles Lakers,ml,Golden State Warriors,,-9999.0,away,185.0,,False,True,event off-market: total 17.5 vs median 234
+2026-10-21T22:51:22Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,New England Patriots,,-9999.0,away,135.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T22:51:22Z,BetMGM,nba,401909840,Dallas Mavericks @ Houston Rockets,total,over,6.5,6.5,over,110.0,,False,True,event off-market: total 6.5 vs median 230
+2026-10-21T22:51:22Z,BetMGM,nba,401909092,Golden State Warriors @ Los Angeles Lakers,total,under,17.5,17.5,under,-105.0,,False,True,event off-market: total 17.5 vs median 234
+2026-10-21T22:51:22Z,BetMGM,nba,401909092,Golden State Warriors @ Los Angeles Lakers,spread,Golden State Warriors,6.5,-6.5,away,-105.0,,False,True,event off-market: total 17.5 vs median 234
+2026-10-21T22:51:22Z,BetMGM,nba,401909840,Dallas Mavericks @ Houston Rockets,spread,Dallas Mavericks,9.5,-9.5,away,-105.0,,False,True,event off-market: total 6.5 vs median 230
+2026-10-21T22:51:22Z,BetMGM,nba,401909092,Golden State Warriors @ Los Angeles Lakers,team_total:home,over,120.5,120.5,over,-110.0,,False,True,event off-market: total 17.5 vs median 234
+2026-10-21T22:51:22Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,over,51.0,51.0,over,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T22:51:22Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,Chicago Bears,-3.0,-3.0,home,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T22:51:22Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,under,51.0,51.0,under,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T22:51:22Z,BetMGM,nba,401909092,Golden State Warriors @ Los Angeles Lakers,team_total:away,under,113.5,113.5,under,-110.0,,False,True,event off-market: total 17.5 vs median 234
+2026-10-21T22:51:22Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,New England Patriots,3.0,-3.0,away,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T22:51:22Z,BetMGM,nba,401909840,Dallas Mavericks @ Houston Rockets,team_total:home,over,120.5,120.5,over,-110.0,,False,True,event off-market: total 6.5 vs median 230
+2026-10-21T22:51:22Z,BetMGM,nba,401909840,Dallas Mavericks @ Houston Rockets,team_total:away,under,109.5,109.5,under,-110.0,,False,True,event off-market: total 6.5 vs median 230
+2026-10-21T22:51:22Z,BetMGM,nba,401909840,Dallas Mavericks @ Houston Rockets,spread,Houston Rockets,-9.5,-9.5,home,-115.0,,False,True,event off-market: total 6.5 vs median 230
+2026-10-21T22:51:22Z,BetMGM,nba,401909092,Golden State Warriors @ Los Angeles Lakers,team_total:away,over,113.5,113.5,over,-115.0,,False,True,event off-market: total 17.5 vs median 234
+2026-10-21T22:51:22Z,BetMGM,nba,401909092,Golden State Warriors @ Los Angeles Lakers,spread,Los Angeles Lakers,-6.5,-6.5,home,-115.0,,False,True,event off-market: total 17.5 vs median 234
+2026-10-21T22:51:22Z,BetMGM,nba,401909840,Dallas Mavericks @ Houston Rockets,team_total:home,under,120.5,120.5,under,-118.0,,False,True,event off-market: total 6.5 vs median 230
+2026-10-21T22:51:22Z,BetMGM,nba,401909092,Golden State Warriors @ Los Angeles Lakers,team_total:home,under,120.5,120.5,under,-118.0,,False,True,event off-market: total 17.5 vs median 234
+2026-10-21T22:51:22Z,BetMGM,nba,401909840,Dallas Mavericks @ Houston Rockets,team_total:away,over,109.5,109.5,over,-118.0,,False,True,event off-market: total 6.5 vs median 230
+2026-10-21T22:51:22Z,BetMGM,nba,401909092,Golden State Warriors @ Los Angeles Lakers,total,over,17.5,17.5,over,-125.0,,False,True,event off-market: total 17.5 vs median 234
+2026-10-21T22:51:22Z,BetMGM,nba,401909840,Dallas Mavericks @ Houston Rockets,total,under,6.5,6.5,under,-150.0,,False,True,event off-market: total 6.5 vs median 230
+2026-10-21T22:51:22Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,Chicago Bears,,-9999.0,home,-160.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T22:51:22Z,BetMGM,nba,401909092,Golden State Warriors @ Los Angeles Lakers,ml,Los Angeles Lakers,,-9999.0,home,-225.0,,False,True,event off-market: total 17.5 vs median 234
+2026-10-21T22:51:22Z,BetMGM,nba,401909840,Dallas Mavericks @ Houston Rockets,ml,Houston Rockets,,-9999.0,home,-425.0,,False,True,event off-market: total 6.5 vs median 230
+2026-10-21T22:51:22Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,under,0.5,0.5,under,-500.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T22:51:22Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,under,0.5,0.5,under,-550.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T22:52:24Z,theScore,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,ml,Kennesaw State Owls,,-9999.0,home,340.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,DraftKings,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,ml,Appalachian State Mountaineers,,-9999.0,home,330.0,631.6,True,False,feed frozen 632m while 7/10 venues moved
+2026-10-21T22:52:24Z,Fanatics,nba,401909840,Dallas Mavericks @ Houston Rockets,ml,Dallas Mavericks,,-9999.0,away,325.0,587.6,True,False,feed frozen 577m while 10/10 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,ml,Appalachian State Mountaineers,,-9999.0,home,320.0,631.6,True,False,feed frozen 632m while 7/10 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,ml,East Carolina Pirates,,-9999.0,away,300.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,BallyBet,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Denver Nuggets,,-9999.0,away,265.0,631.6,True,False,feed frozen 632m while 7/9 venues moved
+2026-10-21T22:52:24Z,HardRock,nhl,401892557,Los Angeles Kings @ New York Islanders,spread,New York Islanders,-1.5,-1.5,home,180.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,HardRock,nhl,401892558,Vegas Golden Knights @ St. Louis Blues,spread,Vegas Golden Knights,-1.5,1.5,away,175.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,HardRock,nhl,401892560,Minnesota Wild @ Calgary Flames,ml,Calgary Flames,,-9999.0,home,160.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,HardRock,nhl,401892562,Utah Mammoth @ Seattle Kraken,spread,Utah Mammoth,-1.5,1.5,away,140.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,HardRock,nhl,401892563,Detroit Red Wings @ Vancouver Canucks,spread,Detroit Red Wings,-1.5,1.5,away,140.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,HardRock,nhl,401892563,Detroit Red Wings @ Vancouver Canucks,ml,Vancouver Canucks,,-9999.0,home,135.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,HardRock,nhl,401892560,Minnesota Wild @ Calgary Flames,spread,Minnesota Wild,-1.5,1.5,away,130.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,BallyBet,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,ml,Cleveland Cavaliers,,-9999.0,away,123.0,631.6,True,False,price unchanged 632m while median moved -2.1pt
+2026-10-21T22:52:24Z,HardRock,nhl,401892553,New York Rangers @ Toronto Maple Leafs,team_total:home,over,3.5,3.5,over,120.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,BetRivers,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,ml,CLE Cavaliers,,-9999.0,away,120.0,631.6,True,False,price unchanged 632m while median moved -2.1pt
+2026-10-21T22:52:24Z,HardRock,nhl,401892557,Los Angeles Kings @ New York Islanders,team_total:home,under,2.5,2.5,under,120.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,HardRock,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,team_total:home,over,3.5,3.5,over,120.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,theScore,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,ml,Sam Houston State Bearkats,,-9999.0,home,115.0,631.6,True,False,price unchanged 632m while median moved -3.1pt
+2026-10-21T22:52:24Z,HardRock,nhl,401892558,Vegas Golden Knights @ St. Louis Blues,team_total:home,under,2.5,2.5,under,115.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,HardRock,nhl,401892558,Vegas Golden Knights @ St. Louis Blues,total,under,5.5,5.5,under,115.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,theScore,nhl,401892552,Nashville Predators @ Boston Bruins,total,under,5.5,5.5,under,110.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,Pinnacle,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,spread,Appalachian State,9.5,9.5,home,108.0,631.6,True,False,price unchanged 632m while median moved +1.8pt
+2026-10-21T22:52:24Z,HardRock,nhl,401892557,Los Angeles Kings @ New York Islanders,team_total:away,under,2.5,2.5,under,105.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,HardRock,nhl,401892559,Winnipeg Jets @ Dallas Stars,total,under,5.5,5.5,under,100.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,HardRock,nhl,401892559,Winnipeg Jets @ Dallas Stars,team_total:home,over,3.5,3.5,over,100.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,theScore,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,spread,Liberty Flames,-10.5,10.5,away,100.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,Caesars,nba,401909091,Minnesota Timberwolves @ Miami Heat,ml,Minnesota Timberwolves,,-9999.0,away,100.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,theScore,nhl,401892562,Utah Mammoth @ Seattle Kraken,total,over,6.5,6.5,over,100.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,HardRock,nhl,401892557,Los Angeles Kings @ New York Islanders,ml,Los Angeles Kings,,-9999.0,away,100.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,DraftKings,nba,401909835,Milwaukee Bucks @ Washington Wizards,total,over,239.5,239.5,over,-102.0,631.6,True,False,price unchanged 632m while median moved -2.4pt
+2026-10-21T22:52:24Z,BallyBet,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Denver Nuggets,7.5,-7.5,away,-103.0,631.6,True,False,feed frozen 632m while 7/9 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,team_total:away,under,30.5,30.5,under,-105.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,total,over,54.5,54.5,over,-105.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,spread,Sam Houston State Bearkats,2.5,2.5,home,-105.0,631.6,True,False,price unchanged 632m while median moved -4.6pt
+2026-10-21T22:52:24Z,DraftKings,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,team_total:away,under,33.5,33.5,under,-105.0,1.0,True,False,feed frozen 632m while 7/10 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,team_total:home,under,23.5,23.5,under,-105.0,631.6,True,False,feed frozen 632m while 7/7 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,team_total:home,under,19.5,19.5,under,-105.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,HardRock,nhl,401892557,Los Angeles Kings @ New York Islanders,total,over,5.5,5.5,over,-105.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,theScore,nhl,401892557,Los Angeles Kings @ New York Islanders,total,over,5.5,5.5,over,-105.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,theScore,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,total,over,56.5,56.5,over,-105.0,631.6,True,False,feed frozen 632m while 7/10 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,spread,Memphis Tigers,-10.5,-10.5,home,-105.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,BetMGM,nhl,401892560,Minnesota Wild @ Calgary Flames,team_total:home,over,2.5,2.5,over,-105.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,FanDuel,nba,401909840,Dallas Mavericks @ Houston Rockets,spread,Dallas Mavericks,9.5,-9.5,away,-105.0,611.8,True,False,price unchanged 612m while median moved -2.0pt
+2026-10-21T22:52:24Z,BallyBet,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,over,236.5,236.5,over,-105.0,631.6,True,False,feed frozen 632m while 7/9 venues moved
+2026-10-21T22:52:24Z,DraftKings,nba,401909092,Golden State Warriors @ Los Angeles Lakers,total,under,234.5,234.5,under,-108.0,631.6,True,False,price unchanged 632m while median moved +1.6pt
+2026-10-21T22:52:24Z,DraftKings,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,total,under,56.5,56.5,under,-110.0,631.6,True,False,feed frozen 632m while 7/10 venues moved
+2026-10-21T22:52:24Z,DraftKings,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,total,over,56.5,56.5,over,-110.0,631.6,True,False,feed frozen 632m while 7/10 venues moved
+2026-10-21T22:52:24Z,DraftKings,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,team_total:home,over,22.5,22.5,over,-110.0,1.0,True,False,feed frozen 632m while 7/10 venues moved
+2026-10-21T22:52:24Z,DraftKings,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,spread,Appalachian State Mountaineers,10.5,10.5,home,-110.0,631.6,True,False,feed frozen 632m while 7/10 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,total,under,44.5,44.5,under,-110.0,631.6,True,False,feed frozen 632m while 7/7 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,total,over,44.5,44.5,over,-110.0,631.6,True,False,feed frozen 632m while 7/7 venues moved
+2026-10-21T22:52:24Z,DraftKings,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,spread,James Madison Dukes,-10.5,10.5,away,-110.0,631.6,True,False,feed frozen 632m while 7/10 venues moved
+2026-10-21T22:52:24Z,Caesars,nba,401909091,Minnesota Timberwolves @ Miami Heat,total,over,241.0,241.0,over,-110.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,Caesars,nba,401909091,Minnesota Timberwolves @ Miami Heat,team_total:home,over,121.5,121.5,over,-110.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,Caesars,nba,401909091,Minnesota Timberwolves @ Miami Heat,total,under,241.0,241.0,under,-110.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,Caesars,nba,401909091,Minnesota Timberwolves @ Miami Heat,team_total:away,over,120.5,120.5,over,-110.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,total,over,50.5,50.5,over,-110.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,total,under,50.5,50.5,under,-110.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,spread,Appalachian State Mountaineers,10.5,10.5,home,-110.0,631.6,True,False,feed frozen 632m while 7/10 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,spread,James Madison Dukes,-10.5,10.5,away,-110.0,631.6,True,False,feed frozen 632m while 7/10 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,team_total:home,over,22.5,22.5,over,-110.0,631.6,True,False,feed frozen 632m while 7/10 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,team_total:away,over,34.5,34.5,over,-110.0,631.6,True,False,feed frozen 632m while 7/10 venues moved
+2026-10-21T22:52:24Z,theScore,nba,401909837,Chicago Bulls @ Toronto Raptors,spread,Toronto Raptors,-10.5,-10.5,home,-110.0,611.8,True,False,price unchanged 612m while median moved +1.5pt
+2026-10-21T22:52:24Z,Fanatics,nba,401909840,Dallas Mavericks @ Houston Rockets,spread,Dallas Mavericks,10.0,-10.0,away,-110.0,587.6,True,False,feed frozen 577m while 10/10 venues moved
+2026-10-21T22:52:24Z,Fanatics,nba,401909840,Dallas Mavericks @ Houston Rockets,spread,Houston Rockets,-10.0,-10.0,home,-110.0,587.6,True,False,feed frozen 577m while 10/10 venues moved
+2026-10-21T22:52:24Z,Fanatics,nba,401909840,Dallas Mavericks @ Houston Rockets,total,over,230.0,230.0,over,-110.0,577.1,True,False,feed frozen 577m while 10/10 venues moved
+2026-10-21T22:52:24Z,Fanatics,nba,401909840,Dallas Mavericks @ Houston Rockets,total,under,230.0,230.0,under,-110.0,577.1,True,False,feed frozen 577m while 10/10 venues moved
+2026-10-21T22:52:24Z,Fanatics,nba,401909840,Dallas Mavericks @ Houston Rockets,team_total:away,over,110.5,110.5,over,-110.0,1.0,True,False,feed frozen 577m while 10/10 venues moved
+2026-10-21T22:52:24Z,BetMGM,nhl,401892560,Minnesota Wild @ Calgary Flames,team_total:away,over,3.5,3.5,over,-110.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,Caesars,nba,401909091,Minnesota Timberwolves @ Miami Heat,spread,Minnesota Timberwolves,1.5,-1.5,away,-110.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,Caesars,nba,401909091,Minnesota Timberwolves @ Miami Heat,spread,Miami Heat,-1.5,-1.5,home,-110.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,theScore,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,total,over,6.5,6.5,over,-110.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,HardRock,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,total,under,6.5,6.5,under,-110.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,HardRock,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,total,over,6.5,6.5,over,-110.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,theScore,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,total,under,6.5,6.5,under,-110.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,DraftKings,nba,401909092,Golden State Warriors @ Los Angeles Lakers,total,over,234.5,234.5,over,-112.0,631.6,True,False,price unchanged 632m while median moved -3.0pt
+2026-10-21T22:52:24Z,BallyBet,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,team_total:away,over,21.5,21.5,over,-113.0,631.6,True,False,price unchanged 632m while median moved -1.6pt
+2026-10-21T22:52:24Z,theScore,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,spread,New Mexico State Aggies,-2.5,2.5,away,-115.0,631.6,True,False,price unchanged 632m while median moved +2.3pt
+2026-10-21T22:52:24Z,FanDuel,nba,401909834,Atlanta Hawks @ Orlando Magic,spread,Atlanta Hawks,2.5,-2.5,away,-115.0,615.0,True,False,price unchanged 615m while median moved +1.9pt
+2026-10-21T22:52:24Z,theScore,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,team_total:home,under,33.5,33.5,under,-115.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,team_total:away,under,22.5,22.5,under,-115.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,total,under,54.5,54.5,under,-115.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,DraftKings,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,team_total:home,under,22.5,22.5,under,-115.0,1.0,True,False,feed frozen 632m while 7/10 venues moved
+2026-10-21T22:52:24Z,FanDuel,nba,401909840,Dallas Mavericks @ Houston Rockets,spread,Houston Rockets,-9.5,-9.5,home,-115.0,611.8,True,False,price unchanged 612m while median moved +2.4pt
+2026-10-21T22:52:24Z,theScore,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,team_total:away,over,22.5,22.5,over,-115.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,spread,East Carolina Pirates,10.5,-10.5,away,-115.0,631.6,True,False,price unchanged 632m while median moved -1.7pt
+2026-10-21T22:52:24Z,theScore,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,team_total:home,over,33.5,33.5,over,-115.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,Fanatics,nba,401909840,Dallas Mavericks @ Houston Rockets,team_total:home,over,120.5,120.5,over,-115.0,1.0,True,False,feed frozen 577m while 10/10 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,total,under,56.5,56.5,under,-115.0,631.6,True,False,feed frozen 632m while 7/10 venues moved
+2026-10-21T22:52:24Z,HardRock,nhl,401892557,Los Angeles Kings @ New York Islanders,total,under,5.5,5.5,under,-115.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,Caesars,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,spread,Philadelphia 76ers,-3.0,-3.0,home,-115.0,631.6,True,False,price unchanged 632m while median moved +1.7pt
+2026-10-21T22:52:24Z,theScore,nhl,401892557,Los Angeles Kings @ New York Islanders,total,under,5.5,5.5,under,-115.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,Fanatics,nba,401909840,Dallas Mavericks @ Houston Rockets,team_total:home,under,120.5,120.5,under,-115.0,1.0,True,False,feed frozen 577m while 10/10 venues moved
+2026-10-21T22:52:24Z,BallyBet,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,total,under,236.5,236.5,under,-117.0,631.6,True,False,feed frozen 632m while 7/9 venues moved
+2026-10-21T22:52:24Z,Caesars,nba,401909091,Minnesota Timberwolves @ Miami Heat,ml,Miami Heat,,-9999.0,home,-120.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,HardRock,nhl,401892557,Los Angeles Kings @ New York Islanders,ml,New York Islanders,,-9999.0,home,-120.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,theScore,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,team_total:home,under,22.5,22.5,under,-120.0,631.6,True,False,feed frozen 632m while 7/10 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,spread,Kennesaw State Owls,10.5,10.5,home,-120.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,BallyBet,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,spread,Oklahoma City Thunder,-7.5,-7.5,home,-120.0,631.6,True,False,feed frozen 632m while 7/9 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,team_total:away,under,34.5,34.5,under,-120.0,631.6,True,False,feed frozen 632m while 7/10 venues moved
+2026-10-21T22:52:24Z,theScore,nhl,401892562,Utah Mammoth @ Seattle Kraken,total,under,6.5,6.5,under,-120.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,Caesars,nba,401909091,Minnesota Timberwolves @ Miami Heat,team_total:home,under,121.5,121.5,under,-120.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,Caesars,nba,401909091,Minnesota Timberwolves @ Miami Heat,team_total:away,under,120.5,120.5,under,-120.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,HardRock,nhl,401892559,Winnipeg Jets @ Dallas Stars,total,over,5.5,5.5,over,-120.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,BetMGM,nba,401909834,Atlanta Hawks @ Orlando Magic,team_total:home,over,117.5,117.5,over,-120.0,587.6,True,False,price unchanged 588m while median moved -1.8pt
+2026-10-21T22:52:24Z,HardRock,nhl,401892559,Winnipeg Jets @ Dallas Stars,team_total:home,under,3.5,3.5,under,-120.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,Fanatics,nba,401909840,Dallas Mavericks @ Houston Rockets,team_total:away,under,110.5,110.5,under,-120.0,1.0,True,False,feed frozen 577m while 10/10 venues moved
+2026-10-21T22:52:24Z,DraftKings,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,team_total:away,over,33.5,33.5,over,-125.0,631.6,True,False,feed frozen 632m while 7/10 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,team_total:home,over,23.5,23.5,over,-125.0,631.6,True,False,feed frozen 632m while 7/7 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,team_total:away,over,30.5,30.5,over,-125.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,team_total:home,over,19.5,19.5,over,-125.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,BetMGM,nhl,401892560,Minnesota Wild @ Calgary Flames,team_total:away,under,3.5,3.5,under,-125.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,Pinnacle,nhl,401892551,Florida Panthers @ Ottawa Senators,team_total:away,over,2.5,2.5,over,-127.0,1.0,False,True,outlier 4.1pt better than next venue
+2026-10-21T22:52:24Z,BallyBet,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,team_total:away,under,21.5,21.5,under,-129.0,631.6,True,False,price unchanged 632m while median moved +2.5pt
+2026-10-21T22:52:24Z,theScore,nhl,401892552,Nashville Predators @ Boston Bruins,total,over,5.5,5.5,over,-130.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,HardRock,nhl,401892557,Los Angeles Kings @ New York Islanders,team_total:away,over,2.5,2.5,over,-135.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,theScore,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,ml,New Mexico State Aggies,,-9999.0,away,-135.0,631.6,True,False,price unchanged 632m while median moved +3.3pt
+2026-10-21T22:52:24Z,BetMGM,nhl,401892560,Minnesota Wild @ Calgary Flames,team_total:home,under,2.5,2.5,under,-135.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,HardRock,nhl,401892558,Vegas Golden Knights @ St. Louis Blues,total,over,5.5,5.5,over,-145.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,BetRivers,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,ml,PHI 76ers,,-9999.0,home,-148.0,631.6,True,False,price unchanged 632m while median moved +1.9pt
+2026-10-21T22:52:24Z,BallyBet,nba,401909093,Cleveland Cavaliers @ Philadelphia 76ers,ml,Philadelphia 76ers,,-9999.0,home,-148.0,631.6,True,False,price unchanged 632m while median moved +1.9pt
+2026-10-21T22:52:24Z,BetMGM,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,spread,Philadelphia Flyers,1.5,-1.5,away,-155.0,631.6,True,False,price unchanged 632m while median moved -2.6pt
+2026-10-21T22:52:24Z,HardRock,nhl,401892557,Los Angeles Kings @ New York Islanders,team_total:home,over,2.5,2.5,over,-160.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,HardRock,nhl,401892563,Detroit Red Wings @ Vancouver Canucks,ml,Detroit Red Wings,,-9999.0,away,-160.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,HardRock,nhl,401892560,Minnesota Wild @ Calgary Flames,spread,Calgary Flames,1.5,1.5,home,-165.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,HardRock,nhl,401892562,Utah Mammoth @ Seattle Kraken,spread,Seattle Kraken,1.5,1.5,home,-185.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,HardRock,nhl,401892563,Detroit Red Wings @ Vancouver Canucks,spread,Vancouver Canucks,1.5,1.5,home,-185.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,HardRock,nhl,401892558,Vegas Golden Knights @ St. Louis Blues,spread,St. Louis Blues,1.5,1.5,home,-230.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,HardRock,nhl,401892557,Los Angeles Kings @ New York Islanders,spread,Los Angeles Kings,1.5,-1.5,away,-250.0,1.0,True,False,AN line_status=opener
+2026-10-21T22:52:24Z,BallyBet,nba,401909094,Denver Nuggets @ Oklahoma City Thunder,ml,Oklahoma City Thunder,,-9999.0,home,-345.0,631.6,True,False,feed frozen 632m while 7/9 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,ml,Memphis Tigers,,-9999.0,home,-400.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,ml,James Madison Dukes,,-9999.0,away,-425.0,631.6,True,False,feed frozen 632m while 7/10 venues moved
+2026-10-21T22:52:24Z,DraftKings,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,ml,James Madison Dukes,,-9999.0,away,-425.0,631.6,True,False,feed frozen 632m while 7/10 venues moved
+2026-10-21T22:52:24Z,Fanatics,nba,401909840,Dallas Mavericks @ Houston Rockets,ml,Houston Rockets,,-9999.0,home,-425.0,587.6,True,False,feed frozen 577m while 10/10 venues moved
+2026-10-21T22:52:24Z,theScore,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,ml,Liberty Flames,,-9999.0,away,-450.0,631.6,True,False,feed frozen 632m while 9/10 venues moved
+2026-10-21T22:52:24Z,Kalshi,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,under,1.5,1.5,under,4572.8971962616815,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892552,Nashville Predators @ Boston Bruins,total,under,1.5,1.5,under,4572.8971962616815,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892558,Vegas Golden Knights @ St. Louis Blues,total,under,1.5,1.5,under,4572.8971962616815,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892551,Florida Panthers @ Ottawa Senators,total,under,1.5,1.5,under,4572.8971962616815,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892560,Minnesota Wild @ Calgary Flames,total,under,1.5,1.5,under,4572.8971962616815,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892555,Anaheim Ducks @ New Jersey Devils,total,under,1.5,1.5,under,4572.8971962616815,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892556,Florida Panthers @ Pittsburgh Penguins,total,under,1.5,1.5,under,4572.8971962616815,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892554,San Jose Sharks @ Ottawa Senators,total,under,1.5,1.5,under,4572.8971962616815,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,total,under,1.5,1.5,under,4572.8971962616815,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892553,New York Rangers @ Toronto Maple Leafs,total,under,1.5,1.5,under,4572.8971962616815,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892563,Detroit Red Wings @ Vancouver Canucks,total,under,2.5,2.5,under,3015.2647975077884,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892562,Utah Mammoth @ Seattle Kraken,total,under,2.5,2.5,under,3015.2647975077884,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892557,Los Angeles Kings @ New York Islanders,total,under,1.5,1.5,under,3015.2647975077884,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892553,New York Rangers @ Toronto Maple Leafs,total,under,2.5,2.5,under,3015.2647975077884,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892559,Winnipeg Jets @ Dallas Stars,total,under,1.5,1.5,under,3015.2647975077884,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892563,Detroit Red Wings @ Vancouver Canucks,total,under,1.5,1.5,under,3015.2647975077884,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892555,Anaheim Ducks @ New Jersey Devils,total,under,2.5,2.5,under,3015.2647975077884,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,total,under,2.5,2.5,under,3015.2647975077884,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892556,Florida Panthers @ Pittsburgh Penguins,total,under,2.5,2.5,under,3015.2647975077884,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,under,2.5,2.5,under,2241.9203747072597,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892552,Nashville Predators @ Boston Bruins,total,under,2.5,2.5,under,2241.9203747072597,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892559,Winnipeg Jets @ Dallas Stars,total,under,2.5,2.5,under,2241.9203747072597,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892560,Minnesota Wild @ Calgary Flames,total,under,2.5,2.5,under,2241.9203747072597,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892551,Florida Panthers @ Ottawa Senators,total,under,2.5,2.5,under,2241.9203747072597,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892558,Vegas Golden Knights @ St. Louis Blues,total,under,2.5,2.5,under,2241.9203747072597,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892562,Utah Mammoth @ Seattle Kraken,total,under,1.5,1.5,under,2241.9203747072597,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892554,San Jose Sharks @ Ottawa Senators,total,under,2.5,2.5,under,2241.9203747072597,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892557,Los Angeles Kings @ New York Islanders,total,under,2.5,2.5,under,1772.6591760299623,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nfl,401873010,New England Patriots @ Chicago Bears,total,under,27.5,27.5,under,1772.6591760299623,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892551,Florida Panthers @ Ottawa Senators,total,over,9.5,9.5,over,1462.5,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,total,under,27.5,27.5,under,1462.5,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nfl,401873010,New England Patriots @ Chicago Bears,total,under,30.5,30.5,under,1240.4825737265417,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,total,over,69.5,69.5,over,1240.4825737265417,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892557,Los Angeles Kings @ New York Islanders,total,over,9.5,9.5,over,1240.4825737265417,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nfl,401873010,New England Patriots @ Chicago Bears,total,under,30.5,30.5,under,1147.2460806539166,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,total,over,69.5,69.5,over,1147.2460806539161,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892552,Nashville Predators @ Boston Bruins,total,over,9.5,9.5,over,1073.7089201877934,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892559,Winnipeg Jets @ Dallas Stars,total,over,9.5,9.5,over,1073.7089201877934,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892560,Minnesota Wild @ Calgary Flames,total,over,9.5,9.5,over,1073.7089201877934,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892554,San Jose Sharks @ Ottawa Senators,total,over,9.5,9.5,over,1073.7089201877934,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nfl,401873010,New England Patriots @ Chicago Bears,total,under,32.5,32.5,under,1008.3878022809072,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,total,over,79.5,79.5,over,943.8413361169103,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,over,9.5,9.5,over,943.8413361169103,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892558,Vegas Golden Knights @ St. Louis Blues,total,over,9.5,9.5,over,943.8413361169103,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,total,under,30.5,30.5,under,943.8413361169103,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nfl,401873010,New England Patriots @ Chicago Bears,total,over,69.5,69.5,over,943.8413361169103,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,total,under,33.5,33.5,under,943.8413361169103,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nfl,401873010,New England Patriots @ Chicago Bears,total,under,33.5,33.5,under,840.733772342427,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892556,Florida Panthers @ Pittsburgh Penguins,total,under,3.5,3.5,under,840.733772342427,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,total,over,66.5,66.5,over,840.733772342427,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,total,under,27.5,27.5,under,840.733772342427,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892563,Detroit Red Wings @ Vancouver Canucks,total,over,9.5,9.5,over,840.733772342427,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892562,Utah Mammoth @ Seattle Kraken,total,over,9.5,9.5,over,840.733772342427,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nfl,401873010,New England Patriots @ Chicago Bears,total,under,34.5,34.5,under,806.428727917017,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892555,Anaheim Ducks @ New Jersey Devils,total,over,9.5,9.5,over,755.431993156544,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,total,over,9.5,9.5,over,755.431993156544,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892553,New York Rangers @ Toronto Maple Leafs,total,over,9.5,9.5,over,755.431993156544,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,total,under,37.5,37.5,under,755.431993156544,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,total,over,75.5,75.5,over,755.431993156544,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,total,over,75.5,75.5,over,730.7016704413751,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,total,under,36.5,36.5,under,684.9293563579279,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892555,Anaheim Ducks @ New Jersey Devils,total,under,3.5,3.5,under,684.9293563579279,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,total,over,69.5,69.5,over,684.9293563579279,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,total,under,3.5,3.5,under,684.9293563579279,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,total,over,76.5,76.5,over,684.9293563579279,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,total,over,69.5,69.5,over,666.6295950148836,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,total,under,37.5,37.5,under,666.6295950148836,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892553,New York Rangers @ Toronto Maple Leafs,total,under,3.5,3.5,under,624.6376811594203,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892562,Utah Mammoth @ Seattle Kraken,total,under,3.5,3.5,under,624.6376811594203,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892556,Florida Panthers @ Pittsburgh Penguins,total,over,9.5,9.5,over,624.6376811594203,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nfl,401873010,New England Patriots @ Chicago Bears,total,over,66.5,66.5,over,624.6376811594203,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,total,under,30.5,30.5,under,624.6376811594203,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892563,Detroit Red Wings @ Vancouver Canucks,total,under,3.5,3.5,under,624.6376811594203,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,total,under,33.5,33.5,under,624.6376811594203,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,total,over,63.5,63.5,over,573.4006734006732,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892557,Los Angeles Kings @ New York Islanders,total,over,8.5,8.5,over,573.4006734006732,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,total,over,72.5,72.5,over,573.4006734006732,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,under,3.5,3.5,under,573.4006734006732,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892554,San Jose Sharks @ Ottawa Senators,total,under,3.5,3.5,under,573.4006734006732,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,total,over,63.5,63.5,over,564.1263832507326,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Pinnacle,nhl,401892557,Los Angeles Kings @ New York Islanders,total,over,8.5,8.5,over,552.0,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,total,over,66.5,66.5,over,528.9308176100628,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892551,Florida Panthers @ Ottawa Senators,total,over,8.5,8.5,over,528.9308176100628,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892558,Vegas Golden Knights @ St. Louis Blues,total,under,3.5,3.5,under,528.9308176100628,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,total,over,73.5,73.5,over,528.9308176100628,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,total,over,73.5,73.5,over,522.4901198368179,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Pinnacle,nhl,401892551,Florida Panthers @ Ottawa Senators,total,over,8.5,8.5,over,510.0,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Pinnacle,nhl,401892559,Winnipeg Jets @ Dallas Stars,total,over,8.5,8.5,over,492.0,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892559,Winnipeg Jets @ Dallas Stars,total,over,8.5,8.5,over,489.9705014749262,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892560,Minnesota Wild @ Calgary Flames,total,under,3.5,3.5,under,489.9705014749262,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892552,Nashville Predators @ Boston Bruins,total,under,3.5,3.5,under,489.9705014749262,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892556,Florida Panthers @ Pittsburgh Penguins,total,under,4.5,4.5,under,489.9705014749262,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892556,Florida Panthers @ Pittsburgh Penguins,total,under,4.5,4.5,under,484.11436725665124,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892559,Winnipeg Jets @ Dallas Stars,total,under,3.5,3.5,under,455.86436909394104,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892560,Minnesota Wild @ Calgary Flames,total,over,8.5,8.5,over,455.86436909394104,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892551,Florida Panthers @ Ottawa Senators,total,under,3.5,3.5,under,455.86436909394104,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Pinnacle,nhl,401892560,Minnesota Wild @ Calgary Flames,total,over,8.5,8.5,over,453.0,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Pinnacle,nhl,401892552,Nashville Predators @ Boston Bruins,total,over,8.5,8.5,over,443.0,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Pinnacle,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,over,8.5,8.5,over,426.0,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,over,8.5,8.5,over,425.21008403361344,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892558,Vegas Golden Knights @ St. Louis Blues,total,over,8.5,8.5,over,425.21008403361344,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892552,Nashville Predators @ Boston Bruins,total,over,8.5,8.5,over,425.21008403361344,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Pinnacle,nhl,401892558,Vegas Golden Knights @ St. Louis Blues,total,over,8.5,8.5,over,414.0,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892553,New York Rangers @ Toronto Maple Leafs,total,under,4.5,4.5,under,398.00796812749,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892557,Los Angeles Kings @ New York Islanders,total,under,3.5,3.5,under,398.00796812749,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,total,under,4.5,4.5,under,398.00796812749,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892555,Anaheim Ducks @ New Jersey Devils,total,under,4.5,4.5,under,398.00796812749,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,total,under,4.5,4.5,under,396.03174603174614,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892555,Anaheim Ducks @ New Jersey Devils,total,under,4.5,4.5,under,396.03174603174614,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892554,San Jose Sharks @ Ottawa Senators,total,over,8.5,8.5,over,373.48484848484856,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892551,Florida Panthers @ Ottawa Senators,total,over,7.5,7.5,over,373.48484848484856,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892562,Utah Mammoth @ Seattle Kraken,total,under,4.5,4.5,under,373.48484848484856,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892563,Detroit Red Wings @ Vancouver Canucks,total,under,4.5,4.5,under,373.48484848484856,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892562,Utah Mammoth @ Seattle Kraken,total,under,4.5,4.5,under,372.27297188865987,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892553,New York Rangers @ Toronto Maple Leafs,total,under,4.5,4.5,under,372.27297188865987,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892557,Los Angeles Kings @ New York Islanders,total,over,7.5,7.5,over,372.27297188865975,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892551,Florida Panthers @ Ottawa Senators,total,over,7.5,7.5,over,372.27297188865975,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892554,San Jose Sharks @ Ottawa Senators,total,under,4.5,4.5,under,351.0599909788002,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892557,Los Angeles Kings @ New York Islanders,total,over,7.5,7.5,over,351.0599909788002,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892563,Detroit Red Wings @ Vancouver Canucks,total,under,4.5,4.5,under,350.67863188389083,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892554,San Jose Sharks @ Ottawa Senators,total,under,4.5,4.5,under,330.9664012129119,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892555,Anaheim Ducks @ New Jersey Devils,total,over,8.5,8.5,over,330.8487720809996,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892562,Utah Mammoth @ Seattle Kraken,total,over,8.5,8.5,over,330.8487720809996,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,total,over,8.5,8.5,over,330.8487720809996,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892563,Detroit Red Wings @ Vancouver Canucks,total,over,8.5,8.5,over,330.8487720809996,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892559,Winnipeg Jets @ Dallas Stars,total,over,7.5,7.5,over,312.90100946038797,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892560,Minnesota Wild @ Calgary Flames,total,over,7.5,7.5,over,312.90100946038797,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892553,New York Rangers @ Toronto Maple Leafs,total,over,8.5,8.5,over,312.5412541254125,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892552,Nashville Predators @ Boston Bruins,total,over,7.5,7.5,over,296.28482972136226,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892559,Winnipeg Jets @ Dallas Stars,total,over,7.5,7.5,over,295.5696202531646,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892560,Minnesota Wild @ Calgary Flames,total,over,7.5,7.5,over,295.5696202531646,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892552,Nashville Predators @ Boston Bruins,total,over,7.5,7.5,over,279.9392097264438,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892556,Florida Panthers @ Pittsburgh Penguins,total,over,8.5,8.5,over,265.6307129798903,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,BetMGM,nba,401909840,Dallas Mavericks @ Houston Rockets,total,over,6.5,6.5,over,110.0,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,BetMGM,nba,401909092,Golden State Warriors @ Los Angeles Lakers,total,under,17.5,17.5,under,-105.0,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,BetMGM,nba,401909091,Minnesota Timberwolves @ Miami Heat,total,under,17.5,17.5,under,-105.0,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,BetMGM,nba,401909091,Minnesota Timberwolves @ Miami Heat,total,over,35.5,35.5,over,-125.0,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,BetMGM,nba,401909092,Golden State Warriors @ Los Angeles Lakers,total,over,17.5,17.5,over,-125.0,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,BetMGM,nba,401909840,Dallas Mavericks @ Houston Rockets,total,under,6.5,6.5,under,-150.0,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892556,Florida Panthers @ Pittsburgh Penguins,total,under,8.5,8.5,under,-340.1408450704225,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892560,Minnesota Wild @ Calgary Flames,total,under,7.5,7.5,under,-348.0655107621976,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892552,Nashville Predators @ Boston Bruins,total,under,7.5,7.5,under,-348.0655107621976,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892560,Minnesota Wild @ Calgary Flames,total,under,7.5,7.5,under,-359.5588235294117,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892559,Winnipeg Jets @ Dallas Stars,total,under,7.5,7.5,under,-368.80654979006846,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892552,Nashville Predators @ Boston Bruins,total,under,7.5,7.5,under,-381.0004810004811,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892559,Winnipeg Jets @ Dallas Stars,total,under,7.5,7.5,under,-404.2864346949071,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892557,Los Angeles Kings @ New York Islanders,total,under,7.5,7.5,under,-416.52892561983464,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892551,Florida Panthers @ Ottawa Senators,total,under,7.5,7.5,under,-416.52892561983464,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892555,Anaheim Ducks @ New Jersey Devils,total,under,8.5,8.5,under,-429.6610169491528,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892563,Detroit Red Wings @ Vancouver Canucks,total,over,4.5,4.5,over,-444.16719428210894,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892562,Utah Mammoth @ Seattle Kraken,total,over,4.5,4.5,over,-444.16719428210894,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892554,San Jose Sharks @ Ottawa Senators,total,over,4.5,4.5,over,-444.16719428210894,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892563,Detroit Red Wings @ Vancouver Canucks,total,under,8.5,8.5,under,-458.0357142857148,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,total,under,8.5,8.5,under,-458.0357142857148,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892562,Utah Mammoth @ Seattle Kraken,total,under,8.5,8.5,under,-458.0357142857148,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892554,San Jose Sharks @ Ottawa Senators,total,over,4.5,4.5,over,-458.0357142857148,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892553,New York Rangers @ Toronto Maple Leafs,total,under,8.5,8.5,under,-458.0357142857148,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892557,Los Angeles Kings @ New York Islanders,total,under,7.5,7.5,under,-458.0357142857148,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892551,Florida Panthers @ Ottawa Senators,total,under,7.5,7.5,under,-458.0357142857148,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892555,Anaheim Ducks @ New Jersey Devils,total,over,4.5,4.5,over,-474.8831262604311,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892553,New York Rangers @ Toronto Maple Leafs,total,over,4.5,4.5,over,-474.8831262604311,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892562,Utah Mammoth @ Seattle Kraken,total,over,4.5,4.5,over,-489.6226415094338,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892563,Detroit Red Wings @ Vancouver Canucks,total,over,4.5,4.5,over,-489.6226415094338,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892554,San Jose Sharks @ Ottawa Senators,total,under,8.5,8.5,under,-489.6226415094338,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892555,Anaheim Ducks @ New Jersey Devils,total,over,4.5,4.5,over,-489.6226415094338,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892553,New York Rangers @ Toronto Maple Leafs,total,over,4.5,4.5,over,-489.6226415094338,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,total,over,4.5,4.5,over,-509.2198726304011,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,total,over,4.5,4.5,over,-524.6096189881322,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Pinnacle,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,under,8.5,8.5,under,-556.0,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Pinnacle,nhl,401892558,Vegas Golden Knights @ St. Louis Blues,total,under,8.5,8.5,under,-558.0,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892557,Los Angeles Kings @ New York Islanders,total,over,3.5,3.5,over,-564.4518272425244,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892558,Vegas Golden Knights @ St. Louis Blues,total,under,8.5,8.5,under,-564.4518272425244,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,under,8.5,8.5,under,-564.4518272425244,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nhl,401892556,Florida Panthers @ Pittsburgh Penguins,total,over,4.5,4.5,over,-591.6526174728742,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Pinnacle,nhl,401892552,Nashville Predators @ Boston Bruins,total,under,8.5,8.5,under,-604.0,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892551,Florida Panthers @ Ottawa Senators,total,over,3.5,3.5,over,-609.219858156028,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892560,Minnesota Wild @ Calgary Flames,total,under,8.5,8.5,under,-609.219858156028,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892552,Nashville Predators @ Boston Bruins,total,under,8.5,8.5,under,-609.219858156028,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892556,Florida Panthers @ Pittsburgh Penguins,total,over,4.5,4.5,over,-609.219858156028,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Pinnacle,nhl,401892560,Minnesota Wild @ Calgary Flames,total,under,8.5,8.5,under,-621.0,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,total,under,73.5,73.5,under,-660.456273764258,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892551,Florida Panthers @ Ottawa Senators,total,under,8.5,8.5,under,-660.456273764258,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,total,under,66.5,66.5,under,-660.456273764258,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892560,Minnesota Wild @ Calgary Flames,total,over,3.5,3.5,over,-660.456273764258,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892559,Winnipeg Jets @ Dallas Stars,total,under,8.5,8.5,under,-660.456273764258,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892559,Winnipeg Jets @ Dallas Stars,total,over,3.5,3.5,over,-660.456273764258,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Pinnacle,nhl,401892559,Winnipeg Jets @ Dallas Stars,total,under,8.5,8.5,under,-685.0,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,total,under,63.5,63.5,under,-687.1035290652533,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,total,under,73.5,73.5,under,-687.1035290652533,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Pinnacle,nhl,401892551,Florida Panthers @ Ottawa Senators,total,under,8.5,8.5,under,-688.0,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,total,under,72.5,72.5,under,-719.6721311475411,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892552,Nashville Predators @ Boston Bruins,total,over,3.5,3.5,over,-719.6721311475411,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,total,under,63.5,63.5,under,-719.6721311475411,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Pinnacle,nhl,401892557,Los Angeles Kings @ New York Islanders,total,under,8.5,8.5,under,-788.0,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892558,Vegas Golden Knights @ St. Louis Blues,total,over,3.5,3.5,over,-788.09946714032,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892557,Los Angeles Kings @ New York Islanders,total,under,8.5,8.5,under,-788.09946714032,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,total,over,33.5,33.5,over,-788.09946714032,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,total,over,30.5,30.5,over,-788.09946714032,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,over,3.5,3.5,over,-788.09946714032,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nfl,401873010,New England Patriots @ Chicago Bears,total,under,66.5,66.5,under,-788.09946714032,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,total,under,76.5,76.5,under,-869.9321047526678,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892556,Florida Panthers @ Pittsburgh Penguins,total,under,9.5,9.5,under,-869.9321047526678,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,total,over,36.5,36.5,over,-869.9321047526678,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,total,under,69.5,69.5,under,-869.9321047526678,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892555,Anaheim Ducks @ New Jersey Devils,total,over,3.5,3.5,over,-869.9321047526678,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892554,San Jose Sharks @ Ottawa Senators,total,over,3.5,3.5,over,-869.9321047526678,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,total,under,69.5,69.5,under,-924.9051962693453,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892553,New York Rangers @ Toronto Maple Leafs,total,over,3.5,3.5,over,-967.2358591248667,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892562,Utah Mammoth @ Seattle Kraken,total,over,3.5,3.5,over,-967.2358591248667,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,total,over,37.5,37.5,over,-967.2358591248667,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,total,under,75.5,75.5,under,-967.2358591248667,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892563,Detroit Red Wings @ Vancouver Canucks,total,over,3.5,3.5,over,-967.2358591248667,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,total,under,75.5,75.5,under,-1039.4176641413758,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,total,over,37.5,37.5,over,-1039.4176641413758,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892555,Anaheim Ducks @ New Jersey Devils,total,under,9.5,9.5,under,-1087.6484560570077,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,total,over,27.5,27.5,over,-1087.6484560570077,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,total,under,66.5,66.5,under,-1087.6484560570077,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,total,over,3.5,3.5,over,-1087.6484560570077,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892556,Florida Panthers @ Pittsburgh Penguins,total,over,3.5,3.5,over,-1087.6484560570077,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nfl,401873010,New England Patriots @ Chicago Bears,total,over,34.5,34.5,over,-1182.5669397337201,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nfl,401873010,New England Patriots @ Chicago Bears,total,under,69.5,69.5,under,-1236.8983957219261,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892562,Utah Mammoth @ Seattle Kraken,total,under,9.5,9.5,under,-1236.8983957219261,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892563,Detroit Red Wings @ Vancouver Canucks,total,under,9.5,9.5,under,-1236.8983957219261,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,total,over,30.5,30.5,over,-1236.8983957219261,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nfl,401873010,New England Patriots @ Chicago Bears,total,over,33.5,33.5,over,-1236.8983957219261,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401869845,James Madison Dukes @ App State Mountaineers,total,under,79.5,79.5,under,-1236.8983957219261,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,total,under,9.5,9.5,under,-1236.8983957219261,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892553,New York Rangers @ Toronto Maple Leafs,total,under,9.5,9.5,under,-1236.8983957219261,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,under,9.5,9.5,under,-1429.0519877675854,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401862807,East Carolina Pirates @ Memphis Tigers,total,over,33.5,33.5,over,-1429.0519877675854,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nfl,401873010,New England Patriots @ Chicago Bears,total,over,30.5,30.5,over,-1612.04967957278,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892554,San Jose Sharks @ Ottawa Senators,total,under,9.5,9.5,under,-1685.714285714284,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,total,under,69.5,69.5,under,-1685.714285714284,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892558,Vegas Golden Knights @ St. Louis Blues,total,under,9.5,9.5,under,-1685.714285714284,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,nfl,401873010,New England Patriots @ Chicago Bears,total,over,32.5,32.5,over,-1955.6569108615765,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Polymarket,ncaaf,401871070,New Mexico State Aggies @ Sam Houston Bearkats,total,under,69.5,69.5,under,-1955.6569108615765,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892552,Nashville Predators @ Boston Bruins,total,under,9.5,9.5,under,-2045.922746781112,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892551,Florida Panthers @ Ottawa Senators,total,under,9.5,9.5,under,-2045.922746781112,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892560,Minnesota Wild @ Calgary Flames,total,under,9.5,9.5,under,-2045.922746781112,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892559,Winnipeg Jets @ Dallas Stars,total,under,9.5,9.5,under,-2045.922746781112,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,ncaaf,401871056,Liberty Flames @ Kennesaw State Owls,total,over,27.5,27.5,over,-2045.922746781112,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nfl,401873010,New England Patriots @ Chicago Bears,total,over,30.5,30.5,over,-2045.922746781112,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892557,Los Angeles Kings @ New York Islanders,total,under,9.5,9.5,under,-2580.965147453079,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nfl,401873010,New England Patriots @ Chicago Bears,total,over,27.5,27.5,over,-2580.965147453079,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892551,Florida Panthers @ Ottawa Senators,total,over,2.5,2.5,over,-3484.2293906809996,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892557,Los Angeles Kings @ New York Islanders,total,over,2.5,2.5,over,-3484.2293906809996,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892554,San Jose Sharks @ Ottawa Senators,total,over,2.5,2.5,over,-5276.344086021519,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892559,Winnipeg Jets @ Dallas Stars,total,over,2.5,2.5,over,-5276.344086021519,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892559,Winnipeg Jets @ Dallas Stars,total,over,1.5,1.5,over,-5276.344086021519,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892557,Los Angeles Kings @ New York Islanders,total,over,1.5,1.5,over,-5276.344086021519,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892562,Utah Mammoth @ Seattle Kraken,total,over,2.5,2.5,over,-5276.344086021519,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,over,2.5,2.5,over,-5276.344086021519,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892558,Vegas Golden Knights @ St. Louis Blues,total,over,2.5,2.5,over,-5276.344086021519,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892563,Detroit Red Wings @ Vancouver Canucks,total,over,2.5,2.5,over,-5276.344086021519,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892555,Anaheim Ducks @ New Jersey Devils,total,over,2.5,2.5,over,-5276.344086021519,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892553,New York Rangers @ Toronto Maple Leafs,total,over,2.5,2.5,over,-5276.344086021519,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892556,Florida Panthers @ Pittsburgh Penguins,total,over,2.5,2.5,over,-5276.344086021519,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892552,Nashville Predators @ Boston Bruins,total,over,2.5,2.5,over,-10652.688172043067,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892552,Nashville Predators @ Boston Bruins,total,over,1.5,1.5,over,-10652.688172043067,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892556,Florida Panthers @ Pittsburgh Penguins,total,over,1.5,1.5,over,-10652.688172043067,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892553,New York Rangers @ Toronto Maple Leafs,total,over,1.5,1.5,over,-10652.688172043067,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892555,Anaheim Ducks @ New Jersey Devils,total,over,1.5,1.5,over,-10652.688172043067,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,total,over,2.5,2.5,over,-10652.688172043067,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892561,Carolina Hurricanes @ Edmonton Oilers,total,over,1.5,1.5,over,-10652.688172043067,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892563,Detroit Red Wings @ Vancouver Canucks,total,over,1.5,1.5,over,-10652.688172043067,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892560,Minnesota Wild @ Calgary Flames,total,over,2.5,2.5,over,-10652.688172043067,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892560,Minnesota Wild @ Calgary Flames,total,over,1.5,1.5,over,-10652.688172043067,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892551,Florida Panthers @ Ottawa Senators,total,over,1.5,1.5,over,-10652.688172043067,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892550,Philadelphia Flyers @ Buffalo Sabres,total,over,1.5,1.5,over,-10652.688172043067,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892562,Utah Mammoth @ Seattle Kraken,total,over,1.5,1.5,over,-10652.688172043067,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892558,Vegas Golden Knights @ St. Louis Blues,total,over,1.5,1.5,over,-10652.688172043067,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,Kalshi,nhl,401892554,San Jose Sharks @ Ottawa Senators,total,over,1.5,1.5,over,-10652.688172043067,,False,True,total line far from event median (mislabeled period/team total)
+2026-10-21T22:52:24Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,over,0.5,0.5,over,350.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T22:52:24Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,over,0.5,0.5,over,325.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T22:52:24Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,New England Patriots,,-9999.0,away,135.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T22:52:24Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,New England Patriots,3.0,-3.0,away,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T22:52:24Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,under,51.0,51.0,under,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T22:52:24Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,total,over,51.0,51.0,over,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T22:52:24Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,spread,Chicago Bears,-3.0,-3.0,home,-110.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T22:52:24Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,ml,Chicago Bears,,-9999.0,home,-160.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T22:52:24Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:away,under,0.5,0.5,under,-500.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
+2026-10-21T22:52:24Z,HardRock,nfl,401873010,New England Patriots @ Chicago Bears,team_total:home,under,0.5,0.5,under,-550.0,,False,True,event off-market: team_total:away 0.5 vs median 23.5
