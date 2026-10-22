@@ -106,7 +106,7 @@ PROP_STATS = {"Total Receptions": "receptions", "Total Receiving Yards": "receiv
               "Total Rushing Yards": "rushing_yards", "Total Passing Yards": "passing_yards",
               "Total Touchdown Passes": "passing_touchdowns", "Total Pass Attempts": "passing_attempts",
               "Total Pass Completions": "passing_completions", "Total Points": "points",
-              "Total Rebounds": "rebounds", "Total Assists": "assists", "Threes Made": "threes",
+              "Total Rebounds": "rebounds", "Total Assists": "assists", "Total Threes Made": "threes",
               "Total Goals": "goals"}
 # Pinnacle period 1 is the first half only in these sports (hockey: 1st period, baseball: first 5 innings)
 PIN_HALF = {"nba", "ncaam", "nfl", "ncaaf"}
@@ -1511,30 +1511,46 @@ PROP_BOX = {"passing_yards": ("passing", "YDS"), "passing_touchdowns": ("passing
             "passing_completions": ("passing", "C/ATT", 0), "passing_attempts": ("passing", "C/ATT", 1),
             "rushing_yards": ("rushing", "YDS"), "receptions": ("receiving", "REC"),
             "receiving_yards": ("receiving", "YDS"), "points": ("", "PTS"), "rebounds": ("", "REB"),
-            "assists": ("", "AST")}
+            "assists": ("", "AST"), "threes": ("", "3PT", 0)}
+# hockey box labels differ (assists are 'A', not 'AST'); hockey_points = G + A is derived below
+PROP_BOX_NHL = {"goals": ("", "G"), "assists": ("", "A")}
 
 
-def _player_box(sport, eid):
-    """{(norm(player), stat): value} from the ESPN summary box score of a completed game."""
-    js = _get(f"https://site.api.espn.com/apis/site/v2/sports/{ESPN_PATH[sport]}/summary", {"event": eid})
+def _parse_box(js, sport="nba"):
+    """{(norm(player), stat): value} from an ESPN summary JSON. Players who did not play have an empty stats
+    list: they are skipped (before the 10/22 audit one DNP raised IndexError and left the whole game ungraded)."""
+    spec_map = PROP_BOX_NHL if sport == "nhl" else PROP_BOX
     out = {}
     for team in (js.get("boxscore") or {}).get("players", []):
         for cat in team.get("statistics", []):
             labels = cat.get("labels") or cat.get("keys") or []
             for a in cat.get("athletes", []):
+                st = a.get("stats") or []
+                if len(st) != len(labels):         # DNP / malformed row
+                    continue
                 nm = norm((a.get("athlete") or {}).get("displayName", ""))
-                for stat, spec in PROP_BOX.items():
+                for stat, spec in spec_map.items():
                     if spec[0] and spec[0] != cat.get("name"):
                         continue
                     if spec[1] not in labels:
                         continue
-                    v = a.get("stats", [])[labels.index(spec[1])]
+                    v = st[labels.index(spec[1])]
                     try:
-                        v = float(str(v).split("/")[spec[2]]) if len(spec) == 3 else float(v)
+                        v = float(re.split(r"[/-]", str(v))[spec[2]]) if len(spec) == 3 else float(v)
                     except Exception:
                         continue
                     out[(nm, stat)] = v
+    if sport == "nhl":
+        for (nm, stat), v in list(out.items()):
+            if stat == "goals" and (nm, "assists") in out:
+                out[(nm, "hockey_points")] = v + out[(nm, "assists")]
     return out
+
+
+def _player_box(sport, eid):
+    """{(norm(player), stat): value} from the ESPN summary box score of a completed game."""
+    js = _get(f"https://site.api.espn.com/apis/site/v2/sports/{ESPN_PATH[sport]}/summary", {"event": eid})
+    return _parse_box(js, sport)
 
 
 def grade(market, side, hline, hs, as_):
@@ -1565,6 +1581,9 @@ def settle(first_only=True):
         return pd.DataFrame()
     L = pd.read_csv(LOG, dtype={"espn_id": str})
     L = L[L.kind == "ev"].copy()
+    # flagged (stale/suspect) quotes were never actionable signals: they are logged for audit only
+    if "flag" in L:
+        L = L[L.flag.isna() | (L.flag.astype(str).str.strip() == "")]
     if first_only:
         L = L.sort_values("scan_ts").drop_duplicates(["espn_id", "market", "hline", "side", "venue"])
     fin = {}
@@ -1604,6 +1623,9 @@ def settle(first_only=True):
               f"(expected ROI from fair_p {S.edge.mean():+.3%}); pending={L.result.isna().sum()}")
         for k, g in S.groupby("sport"):
             print(f"  {k}: n={len(g)} ROI={g.profit.mean():+.3%}")
+        P = S[S.venue.isin(PLACEABLE)]
+        if len(P):
+            print(f"  placeable ({','.join(PLACEABLE)}): n={len(P)} units={P.profit.sum():+.2f} ROI={P.profit.mean():+.3%}")
     else:
         print(f"nothing settled yet; pending={len(L)}")
     return L
