@@ -113,7 +113,10 @@ Weekends: also scan Saturday ~11:00 AM ET (college slate) and Sunday ~11:00 AM E
   quote that hadn't moved in 2.5 h.) Always tell the bettor to confirm the price in the venue's own app.
 - **Sharp-weighted fair price (Benter lesson):** de-vig each venue, then weight: Pinnacle 3, Kalshi/Polymarket 1.5
   (only with ≥$200 depth at that price), FanDuel/DraftKings/BetRivers/Circa 1, all others 0.5. +EV = price beats
-  this fair price by ≥2%.
+  this fair price by ≥2%. **AUDIT 10/22 (−24% on 50 live +EV bets):** a +EV signal now needs the edge to hold
+  against BOTH the weighted fair AND Pinnacle alone (min of the two ≥3%); never flag +EV on Pinnacle itself; Kalshi
+  player props / team totals are PAPER ONLY (Kalshi prices proved as sharp as Pinnacle on props). All +EV is
+  paper-traded (logged, not bet) until 50+ signals show positive closing-line value. Arbs are unaffected.
 - **Consistency checks (Voulgaris/Wong lesson — hunt broken pricing formulas, not better predictions):**
   alt-spread and alt-total ladders must be monotonic; Kalshi/Polymarket prop ladders vs sportsbook O/U lines
   (Melton/Stevenson-type arbs and middles); P(ML win) must sit between P(−1.5) and P(+1.5); team totals must

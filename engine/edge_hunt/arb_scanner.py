@@ -72,6 +72,11 @@ QHIST = OUT / "quote_history.sqlite"
 SPORTS = ["nfl", "ncaaf", "nba", "ncaam", "mlb", "nhl", "ufc"]
 EV_MIN = 0.02
 MIN_CONSENSUS = 2
+# 10/22 +EV audit (results/edge_hunt/ev_audit.md): only game lines where Pinnacle ALONE also shows the edge beat the
+# close (+1.4% CLV, 8/13); sharp-weighted-only edges went 0/8 and Kalshi props never moved toward Pinnacle.
+EV_GATE = 0.03                     # min(edge vs sharp-weighted fair, edge vs Pinnacle-only fair)
+EV_PAPER_ONLY = True               # log every +EV signal for CLV, but never alert it as a bet until 50+ show +CLV
+EV_PAPER_MARKETS = ("prop:", "team_total")   # Kalshi props / team totals: paper even if the gate is later lifted
 MIDDLE_MAX_COST = 1.03
 STAKE_USD = 100.0          # stake used to re-price exchange legs from the book
 PM_MAX_SPREAD = 0.05
@@ -901,15 +906,16 @@ def stale_filter(N, ml_tol=0.08, line_tol=3.0, agg_ml_tol=0.045, agg_line_tol=2.
     bad = {}
     # line sanity: a full-game total far from the event's median total is a mislabeled period/team market
     # (10/21: BetMGM "OVER 35.5" on Wolves@Heat produced 10 fake 3-26% "arbs" vs Kalshi game-total rungs)
-    tot = (N.market == "total") & N.hline.notna()
+    tot = N.market.isin(["total", "total:1h", "team_total:home", "team_total:away"]) & N.hline.notna()
     if tot.any():
-        med = N[tot & ~N.alt.astype(bool)].groupby("espn_id").hline.median()
-        m = N.loc[tot, "espn_id"].map(med)
+        med = N[tot & ~N.alt.astype(bool)].groupby(["espn_id", "market"]).hline.median()
+        m = pd.Series([med.get((e, k), np.nan) for e, k in zip(N.loc[tot, "espn_id"], N.loc[tot, "market"])],
+                      index=N.index[tot])
         insane = tot.copy()
         insane[tot] = ((N.loc[tot, "hline"] - m).abs() > 0.3 * m).fillna(False)
         if insane.any():
             off0 = N[insane].copy()
-            off0["flag_why"] = "total line far from event median (mislabeled period/team total)"
+            off0["flag_why"] = "total/team-total line far from event median (mislabeled or misposted)"
             N = N[~insane].reset_index(drop=True)
         else:
             off0 = pd.DataFrame()
@@ -1052,6 +1058,14 @@ class Fair:
     def p(self, eid, mkt, hk, side):
         return self.get(eid, mkt, hk, side)[0]
 
+    def pin(self, eid, mkt, hk, side):
+        """Pinnacle-only de-vigged probability for this side (nan if Pinnacle has no two-sided quote)."""
+        for v, l_, _ in self.idx.get((eid, mkt, hk), []):
+            if v == "Pinnacle":
+                pa = 1 / (1 + math.exp(-l_))
+                return pa if side == sides(mkt)[0] else 1 - pa
+        return np.nan
+
 
 def find_signals(N, fair: Fair, verify=True):
     """Same-line cross-venue arbs, cross-venue middles and +EV vs the sharp-weighted fair price.
@@ -1105,16 +1119,27 @@ def find_signals(N, fair: Fair, verify=True):
                                 ev=ev, p_window=pu + pd_ - 1 if ev == ev else np.nan, source="scan"))
     # ---- +EV vs the sharp-weighted fair price of the OTHER venues at the exact same line
     for r in recs:
+        if r["venue"] == "Pinnacle":          # Pinnacle is the reference; +EV "on Pinnacle" went 0/3 on CLV
+            continue
         p, n, w, cv = fair.get(r["espn_id"], r["market"], r["hkey"], r["side"], exclude=r["venue"])
         if p != p:
             continue
         pin = "Pinnacle:" in cv
-        if not (pin or (n >= MIN_CONSENSUS and w >= 2.0)):
-            continue
         ev = p * r["dec"] - 1
-        if ev >= EV_MIN:
-            sig.append(dict(kind="ev", legs=[dict(r)], fair_p=p, ev=ev, n_cons=n, w_cons=w,
-                            cons_venues=cv, pin=pin, source="scan"))
+        if pin:                               # gate: the edge must also hold against Pinnacle alone
+            pp = fair.pin(r["espn_id"], r["market"], r["hkey"], r["side"])
+            ev_pin = pp * r["dec"] - 1 if pp == pp else np.nan
+            gate_ev = min(ev, ev_pin) if ev_pin == ev_pin else ev
+        else:                                 # no Pinnacle at this line: need >= 2 other venues of weight >= 1
+            strong = sum(1 for x in cv.split(",") if x and float(x.rsplit(":", 1)[1]) >= 1)
+            if strong < 2:
+                continue
+            pp, ev_pin, gate_ev = np.nan, np.nan, ev
+        if gate_ev >= EV_GATE:
+            paper = EV_PAPER_ONLY or str(r["market"]).startswith(EV_PAPER_MARKETS)
+            sig.append(dict(kind="ev", legs=[dict(r)], fair_p=p, ev=gate_ev, ev_sharp=ev, ev_pin=ev_pin, pin_p=pp,
+                            n_cons=n, w_cons=w, cons_venues=cv, pin=pin, source="scan",
+                            flag="paper" if paper else ""))
     if verify:
         verify_signals(sig)
     return sig
@@ -1147,7 +1172,12 @@ def verify_signals(sig):
                 pu = s_["ev"] + 1          # (p_up+p_down)/cost
                 s_["ev_book"] = pu * s_["cost"] / s_["cost_book"] - 1
         else:
-            s_["ev_book"] = s_["fair_p"] * decs[0] - 1 if s_["verified"] else np.nan
+            if s_["verified"]:
+                eb = s_["fair_p"] * decs[0] - 1
+                pp = s_.get("pin_p", np.nan)
+                s_["ev_book"] = min(eb, pp * decs[0] - 1) if pp == pp else eb
+            else:
+                s_["ev_book"] = np.nan
 
 
 def leg_key(L):
@@ -1253,8 +1283,8 @@ def alerts(sig, now, quiet=False):
         e = _alert_edge(s_)
         if e != e:
             continue
-        if s_["kind"] == "ev" and e < EV_MIN:
-            continue
+        if s_["kind"] == "ev" and (e < EV_GATE or s_.get("flag") == "paper"):
+            continue                          # +EV is paper-traded (logged for CLV) until it proves itself
         if s_["kind"] == "arb" and e <= 0:
             continue
         if s_["kind"] == "middle" and e < MIDDLE_ALERT_EV:
